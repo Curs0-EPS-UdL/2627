@@ -1,0 +1,401 @@
+[
+  {
+    "objectID": "teoria/03-version-control.html#el-problema-de-les-versions",
+    "href": "teoria/03-version-control.html#el-problema-de-les-versions",
+    "title": "Control de Versions Git · GitHub",
+    "section": "El problema de les versions 💾",
+    "text": "El problema de les versions 💾\nQuantes vegades us ha passat que heu perdut un document o heu treballat sobre una versió antiga?\n\n\nprojecte_final.docx\nprojecte_final_v1.docx\nprojecte_final_definitiu.docx\n\n\n\nÉs difícil saber quin és l’arxiu correcte, quins canvis s’hi han fet i per què. I si vull recuperar parts d’una versió anterior?"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#la-solució-control-de-versions",
+    "href": "teoria/03-version-control.html#la-solució-control-de-versions",
+    "title": "Control de Versions Git · GitHub",
+    "section": "La solució: Control de Versions",
+    "text": "La solució: Control de Versions\nImagina’t que cada vegada que fas un canvi important en el teu document:\n\nGuardes una foto del document en aquell moment, amb una descripció dels canvis que has fet.\nAconsegueixes tenir un historial de totes les versions del document.\n\n\nSeria com tenir una màquina del temps per als teus documents!"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#control-de-versions-amb-git",
+    "href": "teoria/03-version-control.html#control-de-versions-amb-git",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Control de Versions amb Git 🕰️",
+    "text": "Control de Versions amb Git 🕰️"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#el-túnel-del-temps-de-git",
+    "href": "teoria/03-version-control.html#el-túnel-del-temps-de-git",
+    "title": "Control de Versions Git · GitHub",
+    "section": "El túnel del temps de Git ⏳",
+    "text": "El túnel del temps de Git ⏳"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#el-multivers-de-git",
+    "href": "teoria/03-version-control.html#el-multivers-de-git",
+    "title": "Control de Versions Git · GitHub",
+    "section": "El multivers de Git 🌌",
+    "text": "El multivers de Git 🌌"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#laboratori-4-objectiu",
+    "href": "teoria/03-version-control.html#laboratori-4-objectiu",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Laboratori 4: Objectiu",
+    "text": "Laboratori 4: Objectiu\n\nInstal·lar i configurar el vostre entorn de desenvolupament (IDE) per connectar-vos a la màquina virtual mitjançant SSH i utilitzar Git per al control de versions dels vostres projectes.\nReplicarem l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git.\n\n\n📄 Laboratori 4: Git"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#collaboració-en-equip",
+    "href": "teoria/03-version-control.html#collaboració-en-equip",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Col·laboració en equip 🤝",
+    "text": "Col·laboració en equip 🤝\nEn la vostra vida professional, és molt probable que treballeu en equips on diverses persones col·laboren en els mateixos projectes. Necessitareu que tots els membres de l’equip puguin sincronitzar els seus controls de versions i compartir els canvis de manera eficient.\n\nSeria com quan feu fotos amb el vostre mòbil i es guarden automàticament al núvol i les podeu veure en qualsevol moment i des de qualsevol dispositiu i les podeu compartir fàcilment."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#control-de-versions-amb-github",
+    "href": "teoria/03-version-control.html#control-de-versions-amb-github",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Control de Versions amb GitHub 🐙",
+    "text": "Control de Versions amb GitHub 🐙\nGitHub és una plataforma en línia que facilita aquesta col·laboració, us permet mantenir una còpia als seus servidors i compartir els vostres projectes amb altres persones o tenir una còpia de seguretat al núvol per si perdeu la vostra còpia local."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#esquema-de-collaboració-amb-github",
+    "href": "teoria/03-version-control.html#esquema-de-collaboració-amb-github",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Esquema de col·laboració amb GitHub",
+    "text": "Esquema de col·laboració amb GitHub"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#laboratori-5-objectiu",
+    "href": "teoria/03-version-control.html#laboratori-5-objectiu",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Laboratori 5: Objectiu",
+    "text": "Laboratori 5: Objectiu\n\nCrear una calculadora col·laborativa utilitzant Git i GitHub.\nAprendre a treballar amb branques i fer merge de canvis.\nPracticar la resolució de conflictes en un entorn de col·laboració.\n\n\n📄 Laboratori 5: Calculadora col·laborativa"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#forks",
+    "href": "teoria/03-version-control.html#forks",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Forks 🍴",
+    "text": "Forks 🍴\nUn fork és una còpia d’un repositori públic que un altre usuari ha creat.\n\nÉs una manera de contribuir a projectes d’altres persones sense afectar l’original.\nQuan fas un fork, crees una còpia independent del repositori original al teu compte.\nAquesta còpia és totalment teva i pots fer-hi canvis lliurement respectant sempre la llicència del projecte original."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#clone-vs-fork",
+    "href": "teoria/03-version-control.html#clone-vs-fork",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Clone 📋 vs Fork 🍴",
+    "text": "Clone 📋 vs Fork 🍴"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#laboratori-6-objectiu",
+    "href": "teoria/03-version-control.html#laboratori-6-objectiu",
+    "title": "Control de Versions Git · GitHub",
+    "section": "Laboratori 6: Objectiu",
+    "text": "Laboratori 6: Objectiu\n\nCrear un lloc web personal utilitzant Jekyll i GitHub Pages.\nRealitzar un fork d’una plantilla de lloc web i personalitzar-la.\nDesplegar el lloc web al vostre compte de GitHub.\n\n\n📄 Laboratori 6: GitHub Pages"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Curs zero d’Informàtica",
+    "section": "",
+    "text": "El curs s’organitza en sessions diàries de 2 hores. L’enfoc és eminentment pràctic. En cadascuna de les sessions s’abordarà un dels temes del programa, presentant primer, i breument, els coneixements teòrics bàsics, per abordar tot seguit el plantejament i resolució de problemes a l’aula. L’estudiantat ha de portar el seu propi portàtil."
+  },
+  {
+    "objectID": "index.html#planificació",
+    "href": "index.html#planificació",
+    "title": "Curs zero d’Informàtica",
+    "section": "Planificació",
+    "text": "Planificació\n\n\n\nSessió\nData\nTema\nDiapositives\nLaboratori\n\n\n\n\n1\n04/09/2024\nIntroducció i entorns de programació\n\n\n\n\n2\n05/09/2024\nVirtualització\n📖\n📄 📄\n\n\n3\n08/09/2024\nIntroducció al control de versions\n📖\n📄 📄 📄"
+  },
+  {
+    "objectID": "laboratori/lab05.html",
+    "href": "laboratori/lab05.html",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "",
+    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
+  },
+  {
+    "objectID": "laboratori/lab05.html#configurant-github",
+    "href": "laboratori/lab05.html#configurant-github",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "",
+    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
+  },
+  {
+    "objectID": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
+    "href": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "Configuració de l’accés a GitHub des de la màquina virtual",
+    "text": "Configuració de l’accés a GitHub des de la màquina virtual\n\nInicia una sessió a la terminal de la màquina virtual com a usuari normal.\nConfigura Git per utilitzar el token de GitHub executant la següent comanda:\ngit config --global github.token TOKEN\n\n🔑 Actualitza:\nReemplaça TOKEN pel token d’accés que has generat al pas anterior.\n\nAixò emmagatzemarà el token de GitHub en la configuració global de Git al teu sistema Debian.\nVerifica que el token s’hagi configurat correctament executant:\ngit config --global --get github.token\nSi tot ha anat bé, veuràs el token que has configurat."
+  },
+  {
+    "objectID": "laboratori/lab05.html#tasques",
+    "href": "laboratori/lab05.html#tasques",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "Tasques",
+    "text": "Tasques\n\nCreació d’equips\n\nFormeu equips de 3 persones. Cada grup haurà d’escollir un líder, que serà el responsable de coordinar el treball, gestionar el repositori i fer el seguiment del projecte.\nTrieu un nom d’equip original.\n\n\n\nPreparació del projecte\nEnllaç de la tasca a GitHub Classroom: https://classroom.github.com/a/HZQmHzs-)\n\nEl líder de l’equip haurà d’iniciar el grup a través de GitHub Classroom.\n\nIntrodueix el nom de l’equip.\n\nAccepta la tasca.\n\nUn cop acceptada la tasca, es crearà un repositori per a l’equip.\n\n\nLa resta de membres s’hi podran unir seleccionant el nom de l’equip al mateix enllaç https://classroom.github.com/a/HZQmHzs-.\nEl repositori base contindrà el codi inicial necessari i la seva estructura.\n\nEl líder és responsable d’assignar les tasques a cada membre mitjançant issues a GitHub.\nPer fer-ho:\n\nFer clic a la pestanya Issues.\n\nFer clic a New issue, i seleccionar Feature request.\n\nUs he preparat una plantilla per a les issues. Feu clic a Get started.\n\nOmplir el títol i la descripció de la tasca.\nAssignar la tasca a un membre de l’equip. Click a Assignees i seleccionar el membre.\nUn cop assignada la tasca, fer clic a Submit new issue.\n\nLlista de tasques i assignació:\n\n\n\nTasca\nAssignat a\n\n\n\n\nImplementació de la funció de suma\nlíder\n\n\nImplementació de la funció de resta\nlíder\n\n\nImplementació de la funció de multiplicació\nmembre1\n\n\nImplementació de la funció de divisió\nmembre1\n\n\nImplementació de la funció de potència\nmembre2\n\n\nImplementació de la funció de arrels quadrades\nmembre2\n\n\n\n\n\n\nTreball individual\nInstal·la el paquet build-essential, que inclou les eines i llibreries necessàries per compilar i construir programes en C. Aquest paquet inclou el compilador GCC, que és comunament utilitzat per programar en C.\n```sh\napt install build-essential -y\n```\n\nCada membre de l’equip haurà de clonar el repositori al seu ordinador i crear una branca develop per les seves tasques.\ngit clone URL_DEL_REPOSITORI\ncd NOM_DEL_REPOSITORI\n\nℹ️ Informació\nSi feu clic a Code al repositori, podreu copiar la URL del repositori.\n\n\n\n🚀 Recomanació\nTanqueu la sessió de VSCode i torneu-la a obrir però indicant la ruta a la carpeta del projecte. En el meu cas, seria /home/jordi/test/projecte-0-calculadora-teacher. D’aquesta manera, podreu utilitzar les eines de VSCode per a desenvolupar el projecte.\n\n\n\nPer cada tasca assignada, el membre haurà de crear una branca amb el nom de la tasca. Per exemple, si la tasca és implementar la funció de suma, la branca es podria anomenar feature-suma.\ngit checkout -b feature-suma\nObserveu que VSCode us mostra la branca actual a la part inferior esquerra.\n\nEl codi de la funció suma podria ser:\n// calc.c\nint suma(int a, int b) {\n    return a + b;\n}\n// calc.h\nint suma(int a, int b);\nCompileu el codi i comproveu que funciona correctament.\nmake\n./calc\n\nSi tot funciona correctament, el codi s’executarà i mostrarà el resultat de la suma.\nUn cop finalitzada la tasca, fer un commit amb els canvis realitzats indicant la tasca realitzada.\nHo podeu fer amb les eines de VSCode o amb la terminal.\nSi feu servir la terminal, la comanda seria:\ngit add src/calc.c src/calc.h src/main.c\ngit commit -m \"@feat: Implementació de la funció de suma\"\n\n\n⚠️ Compte!\nSi no feu git add abans de fer el commit, no es pujaran els canvis al repositori. Així que assegureu-vos de fer git add abans de fer el commit.\n\n\n\n💡 TIP:\nUtilitza els missatges de commit per tancar les issues relacionades amb la tasca. Per exemple, si la tasca és implementar la funció de suma, el missatge de commit podria ser: git commit -m \"@feat: Implementació de la funció de suma. Closes #1\". Si la tasca 1 és la implementació de la funció de suma.\n\nPer fer-ho amb VSCode, feu clic a la icona de la branca a la part inferior esquerra i seleccioneu Commit. Després, introduïu el missatge de commit i confirmeu-lo.\n\nRepeteix els passos 2 i 3 per a cada tasca assignada. Sempre creant la branca des de main. Per tornar a la branca main, feu git checkout main. O bé, click a la branca a la part inferior esquerra de VSCode i seleccioneu main.\nUn cop finalitzades les seves tasques ajuntarem totes les branques a la nostra branca local main.\n\nPer fer-ho, amb la terminal, farem:\ngit checkout -b main\ngit merge feature-suma \n\n\n⚠️ Compte!\nSi hi ha conflictes, caldrà resoldre’ls abans de fer el commit.\n\nPer fer-ho amb VSCode, farem clic a la icona de la branca a la part inferior esquerra i seleccionarem Merge branch into current.\n\nSeleccioneu la branca a ajuntar.\n\nQuan integreu la segona funcionalitat (resta, multiplicació, etc.), caldrà fer un merge ja que es detectaran conflictes.\n\nUn dels conflictes es el fitxer calc.c. Cada branca ha modificat aquest fitxer i caldrà resoldre els conflictes. Acceptant els canvis de les dues branques. Podeu fer-ho manualment o amb el resolutor de conflictes de VSCode.\n\nRepetiu el mateix procediment per tots els conflictes que apareguin.\nUn cop resolts els conflictes, feu un commit amb el missatge @feat: Merge branch feature-resta.\n\n\n\n\nAjuntar les tasques\n\nUn cop totes les tasques estiguin implementades i ajuntades a la branca main, caldrà testar que el codi funciona correctament.\nAquestes tasques estaràn en la branca main del repositori local. Ara caldrà pujar aquestes tasques al repositori remot.\n\nCrea a GitHub una branca remota anomenada develop-&lt;nom-usuari&gt; i la vincularem amb la branca main local.\n\n\n\n\nBranca develop\n\n\nPrimer, caldrà actualitzar les branques remotes del repositori.\ngit fetch origin\n\nUn cop actualitzades les branques remotes, caldrà fer un push de la branca main a la branca develop-&lt;nom-usuari&gt;.\ngit push origin main:develop-&lt;nom-usuari&gt;\nUn cop pujades totes les tasques al repositori remot, el líder actualitzarà les branques remotes de tots els membres de l’equip.\ngit fetch origin\nFara un merge de totes les tasques a la seva branca main.\nFinalment, testeu que el codi funciona correctament.\nUn cop testejat, caldrà pujar la branca main al repositori remot.\ngit push origin main"
+  },
+  {
+    "objectID": "laboratori/lab05.html#exercici-extra-opcional",
+    "href": "laboratori/lab05.html#exercici-extra-opcional",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "Exercici Extra (opcional)",
+    "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis REMOTE."
+  },
+  {
+    "objectID": "laboratori/lab04.html",
+    "href": "laboratori/lab04.html",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "",
+    "text": "Instal·lar i configurar Git a la màquina virtual.\nReplicar l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git."
+  },
+  {
+    "objectID": "laboratori/lab04.html#objectius",
+    "href": "laboratori/lab04.html#objectius",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "",
+    "text": "Instal·lar i configurar Git a la màquina virtual.\nReplicar l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git."
+  },
+  {
+    "objectID": "laboratori/lab04.html#requisits-previs",
+    "href": "laboratori/lab04.html#requisits-previs",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "Requisits previs",
+    "text": "Requisits previs\n\nMàquina virtual en funcionament (vegeu Laboratori 2).\nVisual Studio Code (VSCode) connectat a la màquina virtual mitjançant SSH (vegeu Laboratori 3)."
+  },
+  {
+    "objectID": "laboratori/lab04.html#installació-de-git-a-la-màquina-virtual",
+    "href": "laboratori/lab04.html#installació-de-git-a-la-màquina-virtual",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "Instal·lació de Git a la màquina virtual",
+    "text": "Instal·lació de Git a la màquina virtual\n\nConnecteu VSCode a la màquina virtual mitjançant SSH (vegeu Laboratori 3).\nInicia la sessió de l’usuari root amb la comanda:\nsu -\nEl guionet - és important perquè carregui correctament les variables d’entorn de l’usuari root.\nCom a usuari root. Instal·la el programari git amb la comanda:\napt install git -y\nUn cop finalitzi la instal·lació, comproveu la versió de git amb la comanda:\ngit --version\nSortiu de la sessió de l’usuari root amb la comanda:\nexit"
+  },
+  {
+    "objectID": "laboratori/lab04.html#configuració-de-git",
+    "href": "laboratori/lab04.html#configuració-de-git",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "Configuració de Git",
+    "text": "Configuració de Git\nPer començar a treballar amb Git, primer cal configurar el nostre usuari i correu electrònic. Aquesta informació s’utilitzarà per identificar els commits que fem al repositori. Per configurar el nostre usuari i correu electrònic, executem les següents comandes:\ngit config --global user.name \"JordiMateo\"\ngit config --global user.email \"jordi.mateo@udl.cat\""
+  },
+  {
+    "objectID": "laboratori/lab04.html#replicació-de-lexemple",
+    "href": "laboratori/lab04.html#replicació-de-lexemple",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "Replicació de l’exemple",
+    "text": "Replicació de l’exemple\n\nCrearem un repositori nou anomenat projecte-final:\nmkdir projecte-final\nAccedim al directori del projecte:\ncd projecte-final\no bé podeu fer click a Obre la carpeta a VSCode i seleccionar el directori projecte-final.\n\nCrearem els 3 fitxers (treball.txt, figura1.png, figura2.png) i els afegirem al directori de treball:\necho \"Aquest és el fitxer de treball.\" &gt; treball.txt\ntouch figura1.png figura2.png\n\nAra inicialitzarem el repositori Git:\ngit init\n\no bé, podeu fer click a la icona de Git a la barra lateral esquerra de VSCode i fer click a Inicia el repositori Git.\n\n\n\n\n\n\n\nNota\n\n\n\n\nSi feu anar la línia de comandes, haures de posar els fitxers a la caixa d’espera (staging area) manualment. git add . afegeix tots els fitxers del directori actual a la caixa d’espera.\nSi feu servir la eina integrada de Git a VSCode, us apareixerà una finestra emergent que us demanarà si voleu afegir tots els fitxers a la caixa d’espera (staging area). Feu click a Yes.\n\n\n\n\nSi us fixeu, veureu que VSCODE us indica que hi ha 3 fitxers nous que encara no s’han confirmat (posats al camió de mudances).\n\n\n\nAra farem el primer commit amb el missatge “Primer commit: Afegits els fitxers inicials”. Podeu fer-ho des de la línia de comandes:\ngit commit -m \"Primer commit: Afegits els fitxers inicials\"\no bé, podeu fer click a la icona de Git a la barra lateral esquerra de VSCode, escriure el missatge del commit i fer click a la icona de check (✓) per confirmar els canvis.\n\n\n\n\n\n\n\n\nNota\n\n\n\nObserveu que després de fer el commit, els fitxers ja no apareixen a la secció de canvis pendents (Changes). I teniu la linia temporal inicialitzada amb un commit.\n\n\n\n\nFarem un canvi al fitxer treball.txt:\necho \"Afegit la introducció.\" &gt;&gt; treball.txt\n\nCom el document treball.txt ja està a la caixa d’espera, només cal que fem un nou commit:\ngit commit -am \"Segon commit: Afegida la introducció al fitxer de treball\"\n\nAra podem veure l’historial dels commits fets fins ara:\ngit log\n\nPodem tornar a una versió anterior si cal. Per exemple, per tornar al primer commit:\ngit checkout HEAD~1\no bé, utilitzant VSCODE i fent click a la icona de Git a la barra lateral esquerra, després a la pestanya d’Historial (History) i fent click dret al commit on volem tornar i seleccionant l’opció Checkout.\n\n\n\n\n\n\n\n\nNota\n\n\n\nQuan fem un checkout a una versió anterior, el directori de treball es posa en la versió seleccionada, ara ja no tenim el text “Afegit la introducció.” al fitxer treball.txt. Això és perquè hem tornat a la versió anterior on aquest canvi no existia.\n\n\n\nPer tornar a la versió més recent, fem:\ngit checkout main\n\n\n\n\n\n\n\n\nNota\n\n\n\nQuan fem un checkout a la versió més recent, el directori de treball es torna a la versió més nova, i ara tornem a tenir el text “Afegit la introducció.” al fitxer treball.txt.\n\n\n\nAra podem crear una branca nova per treballar en una nova funcionalitat:\ngit checkout -b metodologia\no bé, utilitzant VSCODE i fent click a la icona de Git a la barra lateral esquerra, després a la part inferior esquerra on apareix el nom de la branca actual (main) i fent click a Create new branch.\n\nFarem un canvi al fitxer treball.txt a la branca metodologia:\necho \"Afegida la secció de metodologia.\" &gt;&gt; treball.txt\n\nFem un commit amb aquest canvi:\ngit commit -m \"Afegida la secció de metodologia al fitxer de treball\"\nPodem veure les branques existents:\ngit branch\n\nPer tornar a la branca principal:\ngit checkout main\nPer anar a la branca metodologia:\ngit checkout metodologia\nTambé podem fusionar la branca metodologia a la branca main:\ngit checkout main\ngit merge metodologia\n\n\nAmb això hem explorat les funcionalitats bàsiques de Git. Podeu continuar experimentant amb més canvis, branques i commits per familiaritzar-vos amb el flux de treball de Git."
+  },
+  {
+    "objectID": "laboratori/lab04.html#exercici-extra-opcional",
+    "href": "laboratori/lab04.html#exercici-extra-opcional",
+    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "section": "Exercici Extra (opcional)",
+    "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis MAIN."
+  },
+  {
+    "objectID": "laboratori/lab06.html",
+    "href": "laboratori/lab06.html",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "",
+    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+  },
+  {
+    "objectID": "laboratori/lab06.html#objectius",
+    "href": "laboratori/lab06.html#objectius",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "",
+    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+  },
+  {
+    "objectID": "laboratori/lab06.html#introducció",
+    "href": "laboratori/lab06.html#introducció",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Introducció",
+    "text": "Introducció\nGitHub Pages amaga la complexitat de configurar un servidor web i et permet allotjar un lloc web de manera gratuïta. Aquesta eina et permetrà allotjar llocs web estàtics directament des del teu repositori de GitHub. Tu ets responsable de crear el lloc web i de pujar-lo al teu repositori, i GitHub s’encarrega de la resta.\nUtilitzarem una plantilla de lloc web creada per Dean Attali, les seves instruccions sobre com utilitzar la plantilla es troben aquí, però no et preocupis per això, utilitzarem una simplificació per a fer les coses més fàcils."
+  },
+  {
+    "objectID": "laboratori/lab06.html#prerequisits",
+    "href": "laboratori/lab06.html#prerequisits",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Prerequisits",
+    "text": "Prerequisits\n\nCompte de GitHub (crea’n un a https://github.com si no en tens un)"
+  },
+  {
+    "objectID": "laboratori/lab06.html#eines",
+    "href": "laboratori/lab06.html#eines",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Eines",
+    "text": "Eines\n\nJekyll (un generador de llocs estàtics) - https://jekyllrb.com\nGitHub Pages (un servei d’allotjament de llocs estàtics) - https://pages.github.com"
+  },
+  {
+    "objectID": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
+    "href": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Tasca 1: Configuració del teu lloc web personal",
+    "text": "Tasca 1: Configuració del teu lloc web personal\n\nFes un fork de https://github.com/ferranad/website-template al teu compte de GitHub fent clic al botó “Fork” a la part superior dreta d’aquesta pàgina.\n\nCanvia el nom del repositori a username.github.io, on username és el teu nom d’usuari de GitHub.\n\nVes a la configuració del repositori i troba la secció GitHub Pages.\n\nHabilita GitHub Pages seleccionant la branca main com a origen. Fes clic al botó “Save” i torna a la pàgina principal del teu repositori.\n\nEspera un parell de minuts fins que el teu lloc web es desplegui. Quan el desplegament s’hagi completat, veuràs una marca verda al costat del teu darrer commit. Veuràs un punt taronja mentre el desplegament està en curs (intenta actualitzar la pàgina si no veus la marca verda després d’uns minuts).\n\n&lt;div style=“display: flex; justify-content: center; gap: 10px;”&gt; &lt;img src=“figures/pages/ci-waiting.png” width=“35%”&gt; &lt;img src=“figures/pages/ci-done.png” width=“35%”&gt; &lt;/div&gt;\n\nOpcionalment, pots editar la descripció del repositori perquè contingui l’URL del teu lloc web. Això et facilitarà a tu i als altres l’accés al teu lloc web des de la pàgina del repositori de GitHub.\n\nProva el teu lloc web visitant https://username.github.io al teu navegador web (substitueix username pel teu nom d’usuari de GitHub). Notaràs que el lloc web ja està ple de contingut d’exemple."
+  },
+  {
+    "objectID": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
+    "href": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Tasca 2: Personalització del teu lloc web personal",
+    "text": "Tasca 2: Personalització del teu lloc web personal\n\nEdita el fitxer _config.yml per personalitzar el teu lloc web. Pots utilitzar la interfície web de GitHub per editar el fitxer directament, tal com es mostra al vídeo següent. Un cop hagis confirmat els canvis a la branca principal, el desplegament del lloc web s’activarà automàticament de nou i en un parell de minuts tindràs el teu lloc web actualitzat.\n\n\n\n\n\n\n\nNota\n\n\n\nEn lloc d’editar el fitxer utilitzant la interfície web de GitHub, pots clonar el repositori a la teva màquina local i editar el fitxer amb un editor de text si et sents més còmode.\n\n\nEdita el fitxer aboutme.md per afegir la teva informació personal, sent lliure d’escriure el que vulguis. Repeteix el mateix procés que a l’apartat anterior, però ara editant el fitxer aboutme.md.\nCanvia la imatge de l’avatar editant _config.yml i reemplaçant la ruta. Observa que és només una cadena amb la ruta a un fitxer present al repositori, en aquest cas, el fitxer images/ferran.jpeg. Pots pujar qualsevol imatge que vulguis al repositori navegant al directori images i fent clic al botó “Add file -&gt; Upload files”. Si, per exemple, has pujat un fitxer anomenat myavatar.jpg, hauries de canviar la ruta a _config.yml a images/myavatar.jpg. Si no vols utilitzar una imatge d’avatar, pots eliminar la línia avatar: \"/images/ferran.jpeg del fitxer _config.yml."
+  },
+  {
+    "objectID": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
+    "href": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Tasca 3: Escriptura d’una entrada de blog",
+    "text": "Tasca 3: Escriptura d’una entrada de blog\nAra que tenim el lloc web a punt, escrivim una entrada de blog. Potser ja has notat que a la pàgina d’inici del lloc web hi ha una publicació de blog anomenada Sample blog post... en la qual pots fer clic per llegir-la completament. Aquesta és una publicació de blog de plantilla que pots utilitzar per aprendre les diferents sintaxis i estils que pots fer servir per escriure la teva pròpia publicació. Aquest fitxer es troba a _posts/2020-02-26-example-post.md. Sempre pots consultar aquest fitxer per veure com escriure una publicació de blog. En cas que no vulguis que es mostri al teu lloc web, només has d’eliminar-lo i consultar el que hi ha al repositori que has fet un fork.\nPer escriure una nova entrada de blog, només has de crear un nou fitxer dins del directori _posts amb el següent format de nom: YYYY-MM-DD-títol.md. Si no segueixes aquest format, la publicació de blog no es mostrarà al teu lloc web. Pots crear un nou fitxer navegant al directori _posts i fent clic al botó “Add file -&gt; Create a new file”. Ara que ja sabem com crear una nova publicació de blog, escrivim-ne una!"
+  },
+  {
+    "objectID": "laboratori/lab02.html",
+    "href": "laboratori/lab02.html",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "",
+    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+  },
+  {
+    "objectID": "laboratori/lab02.html#objectius",
+    "href": "laboratori/lab02.html#objectius",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "",
+    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+  },
+  {
+    "objectID": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
+    "href": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)",
+    "text": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)\nAquestes instruccions et guiaran a través del procés per crear un compte a Broadcom i descarregar una de les versions gratuïtes de VMware Workstation Pro (per a Windows) o VMware Fusion (per a macOS).\n\nRegistra’t per a un compte gratuït a Broadcom: Per accedir a les descàrregues de programari de VMware, necessites un compte a la plataforma de Broadcom.\n\nDirigeix-te a la pàgina de registre de Broadcom: https://profile.broadcom.com/web/registration\nIntrodueix la teva adreça de correu electrònic, realitza la verificació de seguretat i fes clic a Next \nIntrodueix el codi de verificació que has rebut al teu correu electrònic. Fes clic a Verify per continuar. \nCompleta el formulari de registre amb la teva informació personal i crea una contrasenya. Fes clic a Create Account per completar el registre. \nUn cop completat el registre, visualitzaràs un missatge de registre correcte. I us demanarà si voleu completar el perfil. Seleccioneu, I will do it later per continuar. \n\nAccedeix a les descàrregues gratuïtes de VMware:\n\nVes a la pàgina de login de Broadcom: https://profile.broadcom.com/web/login\nInicia sessió amb el teu correu electrònic i la contrasenya que has creat.\nVes directament a la secció de descàrregues a (https://support.broadcom.com/group/ecx/free-downloads). \nSelecciona VMware Workstation Pro o VMware Fusion segons el teu sistema operatiu (Windows o macOS). En el meu cas, utiltizo Mac, així que seleccionaré VMware Fusion.\nSeleccioneu la versió que voleu descarregar. En aquest cas, podem seleccionar la versió més recent. \nEn la pàgina següent:\n\nFes clic a l’enllaç de termes i condicions per que s’activi el checkbox de l’acceptació.\nAcceptar els termes i condicions.\nFes clic a descàrrega per començar a descarregar el fitxer d’instal·lació. \n\n\nInstal·la VMware Workstation Pro o VMware Fusion."
+  },
+  {
+    "objectID": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
+    "href": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Descarrega de la imatge ISO de Debian 12.5.0",
+    "text": "Descarrega de la imatge ISO de Debian 12.5.0\n\nVes a la pàgina de descàrrega de Debian 12.5.0: https://get.debian.org/images/archive/12.5.0/\nSelecciona la imatge ISO per a la teva arquitectura (amd64 o arm64). La majoria dels vostres ordinadors tenen processadors amd64 (Intel o AMD). Els processadors ARM són més comuns en dispositius mòbils i en els nous Mac amb xips M.\nSeleccioneu la carpeta iso-cd.\nSeleccioneu el fitxer debian-12.5.0-x-netinst.iso. On x és l’arquitectura del vostre sistema (amd64 o arm64).\n\n💡 Nota:\nLa imatge netinst és una imatge d’instal·lació mínima que descarrega els paquets necessaris durant la instal·lació. Això permet personalitzar la instal·lació i seleccionar els paquets que voleu instal·lar."
+  },
+  {
+    "objectID": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
+    "href": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Configuració de la màquina virtual amb VMWare",
+    "text": "Configuració de la màquina virtual amb VMWare\n\nSelecciona l’opció Create a New Virtual Machine a VMWare Workstation Pro o VMWare Fusion.\nSelecciona Install from disc or image. \nSelecciona la imatge ISO de Debian 12. \nConfigura els recursos de la màquina virtual. \nAnomena la màquina virtual i selecciona la ubicació on es guardarà. Per exemple, podeu posar el nom vm-curs0-debian12 i seleccionar una ubicació al vostre directori d’usuari."
+  },
+  {
+    "objectID": "laboratori/lab02.html#installació-del-sistema-operatiu",
+    "href": "laboratori/lab02.html#installació-del-sistema-operatiu",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Instal·lació del sistema operatiu",
+    "text": "Instal·lació del sistema operatiu\n\nUn cop iniciada la màquina virtual, podeu seleccionar la opció Install o bé Graphical install. \nEn aquest tutoriral, seleccionarem la opció Graphical install per a una instal·lació més amigable. La principal diferència entre les dues opcions és l’entorn gràfic.\nSelecciona l’idioma d’instal·lació. \nPodeu seleccionar l’idioma que vulgueu per a la instal·lació. En aquest cas, seleccionarem l’idioma Català.\nSelecciona la ubicació geogràfica. \nEn aquest cas, seleccionarem la ubicació Espanya.\nSelecciona la disposició del teclat. \nEn aquest cas, seleccionarem la disposició de teclat Català. Això ens asegurarà un mapeig correcte del teclat.\nEspereu que el sistema carregui els components necessaris. \nConfigura la xarxa.\n\nEl primer pas és configurar el nom d’amfitrió o hostname. Aquest nom permet identificar de forma única el vostre sistema. Podeu deixar el nom per defecte o canviar-lo al vostre gust.\n\n\nEn aquest cas, hem canviat el nom d’amfitrió a vm-curs0-debian12, però podeu posar el nom que vulgeu com debianlab, etc.\n\nEl segon pas és configurar el domini de la xarxa. Aquest pas el podeu deixar en blanc si no teniu un domini específic. O bé, podem utilitzar .local com a domini local per identicar que el servidor pertany a la xarxa local.\n\n\nConfigura l’usuari administrador.\n\nEn aquest punt, heu de tenir en compte que si no poseu cap contrasenya, es crearà l’usuari normal amb permisos de sudo i això us permetra executar comandes amb privilegis d’administrador.\nSi poseu una contrasenya, aquesta serà la contrasenya de l’usuari root i no es crearà un usuari normal amb permisos de sudo. I tampoc s’instal·larà el paquet sudo.\n\n⚠️ Compte\nCom utilitzarem les màquines virtuals com a laboratoris de pràctiques, no cal que poseu una contrasenya molt segura. Podeu utilitzar una com a 1234. Però, recordeu que en un entorn real, la seguretat és molt important i cal utilitzar contrasenyes segures.\n\nConfigura un usuari normal.\n\nNom complet: Podeu posar el vostre nom complet o el que vulgueu.\n\n\n\nNom d’usuari: Podeu posar el vostre nom d’usuari o el que vulgueu.\n\n\n\nContrasenya: El mateix que per l’usuari root.\n\n\nConfigura la zona horària.\n\nEn aquest cas, seleccionarem la zona horària de Madrid.\nConfigura el disc dur.\n\nParticionament: En aquest curs, el tema del particionament no és molt important. Per tant, podeu fer servir la configuració per defecte més senzilla (Guiat - utilitzar el disc sencer). Aquesta configuració crearà les particions necessàries per a l’instal·lació del sistema.\n\n\n\nSelecciona el disc on instal·lar el sistema. En el meu cas, només tinc un disc virtual amb l’etiqueta /dev/nvme0n1. L’etiqueta indica el tipus de disc (NVMe) i el número de disc (1). Es possible tenir altres etiquetes com /dev/sda per discos SATA o /dev/vda per discos virtuals.\n\n\n\nParticions: Podeu seleccionar (Tots els fitxers en una partició) per simplificar la gestió i evitar problemes podeu seleccionar aquesta opció. Aquesta opció crearà una sola partició per a tot el sistema.\n\n\n\nConfirmeu els canvis. En aquest punt, el sistema crearà les particions necessàries:\n\nLa primera partició serà la partició /boot on es guardaran els fitxers per arrancar el sistema.\nLa segona partició serà la partició / on es guardaran els fitxers del sistema.\nLa tercera partició serà la partició de swap on es guardaran les dades de la memòria virtual.\n\n\n\nℹ️ Què és la partició swap?\nLa swap és una partició especial que s’utilitza com a memòria virtual quan la memòria RAM s’omple. Aquesta partició permet alliberar memòria RAM i evitar que el sistema es bloquegi.\n\n\n\nEscriu els canvis al disc.\n\n\nEspera que s’instal·li el sistema.\n\nConfigura el gestor de paquets.\n\nAnalitzar els discos de la instal·lació. Aquest pas permet seleccionar els discos on es troben els paquets d’instal·lació. Normalment, aquest pas no cal modificar-lo.\n\n\n\nConfigura el gestor de paquets. En aquest cas, seleccionarem el servidor de paquets més proper a la nostra ubicació.\n\nFiltrar els servidors de paquets per ubicació. \nSeleccionar el servidor de paquets. \n\n\n👀 Nota:\nA vegades, els servidors de paquets poden estar saturats o no funcionar correctament. En aquest cas, podeu seleccionar un servidor alternatiu o provar més tard.\n\nConfigura el proxy. Si esteu darrere d’un proxy, podeu configurar-lo en aquest pas.\n\n\nℹ️ Què és un proxy?\nUn proxy és un servidor intermediari entre el vostre sistema i Internet. Aquest servidor pot ser utilitzat per controlar l’accés a Internet, per protegir la vostra privacitat o per accelerar la connexió a Internet. Les peticions de connexió a Internet es fan a través del servidor proxy, que actua com a intermediari i reenvia les peticions al servidor de destinació. Per exemple, en una empresa, el proxy pot ser utilitzat per controlar l’accés a Internet dels empleats i protegir la xarxa interna de possibles amenaces.\n\n\nEspera que s’instal·lin els paquets.\n\nConfigura el paquet popularity-contest.\n\nAquest paquet permet enviar informació anònima sobre els paquets instal·lats al servidor de Debian per millorar la selecció de paquets i la qualitat dels paquets. Podeu seleccionar si voleu participar en aquest programa o no.\n\n\nSelecció de programari. En aquest punt podeu seleccionar si voleu un servidor en mode text o amb interfície gràfica. També us permet seleccionar si voleu instal·lar els serveis web i ssh al servidor i finalment si voleu les utilitats estàndard del sistema. Seleccionarem el servidor en mode text, el servei SSH activat i les utilitats estàndard del sistema.\n\n\nℹ️ Què és un servidor en mode text?\nUn servidor en mode text és un servidor que no té una interfície gràfica. Això significa que tota la interacció amb el servidor es fa a través de la línia de comandes. Aquest tipus de servidor és molt comú en entorns de producció, ja que consumeix menys recursos i és més segur que un servidor amb interfície gràfica.\n\n\n\nℹ️ Què és el servei SSH?\nEl servei SSH (Secure Shell) és un protocol de xifratament que permet connectar-se de forma segura a un servidor remot. Aquest servei és molt utilitzat per administrar servidors a distància, ja que permet accedir al servidor de forma segura i xifratada.\n\nEspera que s’instal·li el programari.\n\nInstal·la el gestor d’arrancada GRUB. \nInstal·lació acabada. Un cop finalitzada la instal·lació, el sistema es reiniciarà i podreu accedir al GRUB per seleccionar el sistema operatiu. \nEl GRUB us permet accedir al sistema operatiu. En aquest cas, seleccionarem Debian GNU/Linux. La resta d’opcions les veurem més endavant en el curs.\n\n\nℹ️ Què és el GRUB?\nEl GRUB és un gestor d’arrencada que permet seleccionar el sistema operatiu que volem iniciar. Aquest gestor és molt útil en sistemes amb múltiples sistemes operatius o múltiples versions del mateix sistema operatiu.\n\nInicieu sessió amb l’usuari i la contrasenya que heu configurat durant la instal·lació.\n\n\n\n\n\n\n\nAlerta\n\n\n\nQuan escriviu la contrasenya, no es mostrarà cap caràcter a la pantalla. Això és normal en sistemes Unix/Linux per motius de seguretat. Simplement escriviu la contrasenya i premeu Enter.\n\n\nTanqueu la sessió amb la comanda exit.\nInicieu sessió amb l’usuari root i la contrasenya que heu configurat durant la instal·lació."
+  },
+  {
+    "objectID": "laboratori/lab02.html#exercicis-adicionals",
+    "href": "laboratori/lab02.html#exercicis-adicionals",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Exercicis adicionals",
+    "text": "Exercicis adicionals\n\nInstal·leu altres màquines virtuals amb altres sistemes operatius en mode gràfic com:\n\nUbuntu 24.04 LTS\nFedora 39"
+  },
+  {
+    "objectID": "laboratori/lab03.html",
+    "href": "laboratori/lab03.html",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "",
+    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
+  },
+  {
+    "objectID": "laboratori/lab03.html#objectius",
+    "href": "laboratori/lab03.html#objectius",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "",
+    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
+  },
+  {
+    "objectID": "laboratori/lab03.html#requisits-previs",
+    "href": "laboratori/lab03.html#requisits-previs",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "Requisits previs",
+    "text": "Requisits previs\n\nMàquina virtual en funcionament (vegeu Laboratori 2).\nVisual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de https://code.visualstudio.com/.\nObtenir la IP de la màquina virtual. Per fer-ho, podeu:\n\nConsultar la informació a VMWare: \nO bé, iniciar sessió a la màquina virtual i executar la comanda ip a per obtenir la IP: \n\n\n\n\n\n\n\nNota\n\n\n\nEn els dos casos, la IP de la màquina virtual és 172.16.10.223."
+  },
+  {
+    "objectID": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
+    "href": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "Configurant VSCode per connectar-se a la màquina virtual",
+    "text": "Configurant VSCode per connectar-se a la màquina virtual\nUn cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: remote-ssh. Primer, feu clic a Marketplace (1), després cerqueu remote-ssh i, finalment, feu clic a (3) per instal·lar la extensió. Consulteu la imatge:\n\nUn cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra (1) i seleccioneu l’opció Remote-SSH: Connect to Host… (2). Consulteu la imatge:\n\nAra apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció Add a New SSH Host. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:\n\nSeleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a Add. Consulteu la imatge:\n\ni comproveu que l’amfitrió s’ha afegit correctament.\n\nAra feu clic a Open Config i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:\nHost 172.16.10.223\n  HostName 172.16.10.223\n  User jordi\nUs recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per vm-curs0-debian12 :\nHost vm-curs0-debian12\n  HostName 172.16.10.202\n  User jordi\nUn cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual vm-curs0-debian12. Per fer-ho:\n\nFeu clic a la icona de la part inferior esquerra.\nSeleccioneu Remote-SSH: Connect to Host….\nSeleccioneu vm-curs0-debian12:\n\n\nUs apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a Continue. \nUs apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari jordi. \n\n\n\n\n\n\n\nNota\n\n\n\nLa primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.\n\n\nUn cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió vm-curs0-debian12.\n\nPer comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda uname -a per veure la informació del sistema i comprovar que esteu a la màquina virtual."
+  },
+  {
+    "objectID": "laboratori/lab03.html#exercicis",
+    "href": "laboratori/lab03.html#exercicis",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "Exercicis",
+    "text": "Exercicis\n\nCreeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.\nEditeu fitxers utilitzant l’editor de VSCode.\nPodeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#una-analogia-amb-el-bus-escolar",
+    "href": "teoria/02-virtualitzation.html#una-analogia-amb-el-bus-escolar",
+    "title": "Virtualització",
+    "section": "🚗 Una analogia amb el bus escolar",
+    "text": "🚗 Una analogia amb el bus escolar\nImagineu un món sense bus escolar:\n\nPer portar cada estudiant (una aplicació o servei) a l’escola, cada família utilitza el seu propi cotxe (un servidor físic).\nCada cotxe malgasta molts recursos: un motor (processador), benzina (energia), rodes (disc dur) i un espai d’aparcament (espai físic), tot per a un sol passatger.\n\n\nAixò és extremadament ineficient."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#larribada-del-bus-escolar-la-virtualització",
+    "href": "teoria/02-virtualitzation.html#larribada-del-bus-escolar-la-virtualització",
+    "title": "Virtualització",
+    "section": "🚌 L’arribada del Bus Escolar (La Virtualització)",
+    "text": "🚌 L’arribada del Bus Escolar (La Virtualització)\n\nEn lloc de que cada estudiant vingui amb el seu cotxe, tots poden agafar un bus escolar (un únic servidor físic amb virtualització).\nEl bus és un vehicle molt més gran i potent (un únic servidor físic). En lloc de N cotxes, només en necessitem un.\nEl bus comparteix els seus recursos (motor, benzina, rodes, espai d’aparcament) entre tots els estudiants (aplicacions o serveis), fent un ús molt més eficient dels recursos."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#les-cabines-del-bus-les-màquines-virtuals",
+    "href": "teoria/02-virtualitzation.html#les-cabines-del-bus-les-màquines-virtuals",
+    "title": "Virtualització",
+    "section": "👩‍🎓 Les Cabines del Bus (Les Màquines Virtuals)",
+    "text": "👩‍🎓 Les Cabines del Bus (Les Màquines Virtuals)\nImagineu un autobús futurista:\n\nCada estudiant té el seu propi seient, que és com una petita cabina aïllada (una màquina virtual). Aquesta cabina té la seva pròpia pantalla, controls i espai personal, totalment independent de les altres.\nSi un estudiant mira una pel·lícula en veu alta, només afecta la seva cabina, no la resta del bus. Les accions d’un estudiant no interfereixen amb les dels altres."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#lhipervisor-el-conductor-del-bus",
+    "href": "teoria/02-virtualitzation.html#lhipervisor-el-conductor-del-bus",
+    "title": "Virtualització",
+    "section": "👩‍✈️ L’hipervisor: El Conductor del Bus",
+    "text": "👩‍✈️ L’hipervisor: El Conductor del Bus\n\nEll és qui s’assegura que cada estudiant tingui el seu seient (recursos), arribi a la seva destinació (funcioni) i que no hi hagi problemes entre ells.\nGestiona els seus recursos de manera que totes les cabines funcionin sense problemes, fins i tot si alguns estudiants necessiten més atenció o recursos en certs moments."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#esquema-sense-virtualització",
+    "href": "teoria/02-virtualitzation.html#esquema-sense-virtualització",
+    "title": "Virtualització",
+    "section": "Esquema sense virtualització",
+    "text": "Esquema sense virtualització"
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#esquema-amb-virtualització",
+    "href": "teoria/02-virtualitzation.html#esquema-amb-virtualització",
+    "title": "Virtualització",
+    "section": "Esquema amb virtualització",
+    "text": "Esquema amb virtualització"
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#laboratori-2-objectiu",
+    "href": "teoria/02-virtualitzation.html#laboratori-2-objectiu",
+    "title": "Virtualització",
+    "section": "Laboratori 2: Objectiu",
+    "text": "Laboratori 2: Objectiu\n\nUna màquina virtual amb Debian 12 comparint recursos amb el vostre ordinador físic."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#laboratori-2-tasques",
+    "href": "teoria/02-virtualitzation.html#laboratori-2-tasques",
+    "title": "Virtualització",
+    "section": "Laboratori 2: Tasques",
+    "text": "Laboratori 2: Tasques\n\nInstal·lar un hypervisor: VMWare Workstation Player o VMWare Fusion.\nDesplegar una màquina virtual amb Linux dins de l’hypervisor.\n\n\n📄 Laboratori 2: Instal·lació de Debian 12"
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#laboratori-3-objectiu",
+    "href": "teoria/02-virtualitzation.html#laboratori-3-objectiu",
+    "title": "Virtualització",
+    "section": "Laboratori 3: Objectiu",
+    "text": "Laboratori 3: Objectiu\n\nConnectar VSCode que s’executa a la màquina real per executar i comunicar-se amb la màquina virtual via SSH."
+  },
+  {
+    "objectID": "teoria/02-virtualitzation.html#laboratori-3-tasques",
+    "href": "teoria/02-virtualitzation.html#laboratori-3-tasques",
+    "title": "Virtualització",
+    "section": "Laboratori 3: Tasques",
+    "text": "Laboratori 3: Tasques\n\nConfigurar VSCode per connectar-se a la màquina virtual via SSH.\nProvar la connexió i executar ordres a la màquina virtual des de VSCode\n\n\n📄 Laboratori 3: Connexió via SSH"
+  }
+]

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Laboratori 5: Calculadora col·laborativa – Curs zero d’Informàtica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6ac2aec46ad7f46b16024ee4409aa65c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Cap resultat",
+    "search-matching-documents-text": "documents que coincideixen",
+    "search-copy-link-title": "Copia l'enllaç a la cerca",
+    "search-hide-matches-text": "Amaga les coincidències addicionals",
+    "search-more-match-text": "altra coincidència en aquest document",
+    "search-more-matches-text": "altres coincidències en aquest document",
+    "search-clear-button-title": "Neteja",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel·la",
+    "search-submit-button-title": "Envia",
+    "search-label": "Cerca"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Curs zero d’Informàtica</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Cerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Commuta la navegació" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoria" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoria</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoria">    
+        <li>
+    <a class="dropdown-item" href="../teoria/02-virtualitzation.html">
+ <span class="dropdown-text">Sessió 2 · Virtualització</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/03-version-control.html">
+ <span class="dropdown-text">Sessió 3 · Control de versions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-laboratori" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Laboratori</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-laboratori">    
+        <li>
+    <a class="dropdown-item" href="../laboratori/lab02.html">
+ <span class="dropdown-text">Instal·lació de Debian 12</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laboratori/lab03.html">
+ <span class="dropdown-text">Configurant el meu entorn de desenvolupament amb VSCode</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laboratori/lab04.html">
+ <span class="dropdown-text">Introducció a Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laboratori/lab05.html">
+ <span class="dropdown-text">Calculadora col·laborativa</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laboratori/lab06.html">
+ <span class="dropdown-text">Github Pages</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En aquesta pàgina</h2>
+   
+  <ul>
+  <li><a href="#configurant-github" id="toc-configurant-github" class="nav-link active" data-scroll-target="#configurant-github">Configurant Github</a></li>
+  <li><a href="#configuració-de-laccés-a-github-des-de-la-màquina-virtual" id="toc-configuració-de-laccés-a-github-des-de-la-màquina-virtual" class="nav-link" data-scroll-target="#configuració-de-laccés-a-github-des-de-la-màquina-virtual">Configuració de l’accés a GitHub des de la màquina virtual</a></li>
+  <li><a href="#tasques" id="toc-tasques" class="nav-link" data-scroll-target="#tasques">Tasques</a>
+  <ul class="collapse">
+  <li><a href="#creació-dequips" id="toc-creació-dequips" class="nav-link" data-scroll-target="#creació-dequips">Creació d’equips</a></li>
+  <li><a href="#preparació-del-projecte" id="toc-preparació-del-projecte" class="nav-link" data-scroll-target="#preparació-del-projecte">Preparació del projecte</a></li>
+  <li><a href="#treball-individual" id="toc-treball-individual" class="nav-link" data-scroll-target="#treball-individual">Treball individual</a></li>
+  <li><a href="#ajuntar-les-tasques" id="toc-ajuntar-les-tasques" class="nav-link" data-scroll-target="#ajuntar-les-tasques">Ajuntar les tasques</a></li>
+  </ul></li>
+  <li><a href="#exercici-extra-opcional" id="toc-exercici-extra-opcional" class="nav-link" data-scroll-target="#exercici-extra-opcional">Exercici Extra (opcional)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Laboratori 5: Calculadora col·laborativa</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="configurant-github" class="level2">
+<h2 class="anchored" data-anchor-id="configurant-github">Configurant Github</h2>
+<ol type="1">
+<li><p>Crea un compte a GitHub: Si no tens un compte a GitHub, visita <a href="https://github.com/">https://github.com/</a> i crea un compte gratuït.</p></li>
+<li><p>Inicia la sessió al teu compte de GitHub en el navegador web.</p></li>
+<li><p>Fes clic a la teva foto de perfil a la cantonada superior dreta i selecciona <strong>Configuració</strong> al menú desplegable.</p></li>
+<li><p>A la pàgina de configuració de GitHub, selecciona <strong>Configuració de desenvolupador</strong> al menú lateral esquerre.</p></li>
+<li><p>A la secció <em>Tokens personals</em>, fes clic a <em>Genera un token personal</em> i selecciona un Token (clássic) per a l’ús amb la línia de comandes.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figures/git/token-gen.png" class="img-fluid figure-img"></p>
+<figcaption>Generar token</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><p>Completa la informació requerida i fes clic a “Generar token”:</p>
+<ul>
+<li>Introdueix un nom per al teu token.</li>
+</ul>
+<blockquote class="blockquote">
+<p>🚀 <strong>Per exemple:</strong></p>
+<p><em>Token per a la màquina virtual del curs 0.</em></p>
+</blockquote>
+<ul>
+<li>Selecciona un temps d’expiració per al teu token.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>🧐 Simplicitat:</strong></p>
+<p>Podeu posar <em>7 dies</em> per a aquest laboratori.</p>
+</blockquote>
+<hr></li>
+</ol>
+</section>
+<section id="configuració-de-laccés-a-github-des-de-la-màquina-virtual" class="level2">
+<h2 class="anchored" data-anchor-id="configuració-de-laccés-a-github-des-de-la-màquina-virtual">Configuració de l’accés a GitHub des de la màquina virtual</h2>
+<ol type="1">
+<li><p>Inicia una sessió a la terminal de la màquina virtual com a usuari normal.</p></li>
+<li><p>Configura Git per utilitzar el token de GitHub executant la següent comanda:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> github.token TOKEN</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>🔑 Actualitza:</strong></p>
+<p>Reemplaça <code>TOKEN</code> pel token d’accés que has generat al pas anterior.</p>
+</blockquote>
+<p>Això emmagatzemarà el token de GitHub en la configuració global de Git al teu sistema Debian.</p></li>
+<li><p>Verifica que el token s’hagi configurat correctament executant:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--get</span> github.token</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si tot ha anat bé, veuràs el token que has configurat.</p></li>
+</ol>
+</section>
+<section id="tasques" class="level2">
+<h2 class="anchored" data-anchor-id="tasques">Tasques</h2>
+<section id="creació-dequips" class="level3">
+<h3 class="anchored" data-anchor-id="creació-dequips">Creació d’equips</h3>
+<ol type="1">
+<li><p>Formeu equips de 3 persones. Cada grup haurà d’escollir un <strong>líder</strong>, que serà el responsable de coordinar el treball, gestionar el repositori i fer el seguiment del projecte.</p></li>
+<li><p>Trieu un nom d’equip original.</p></li>
+</ol>
+</section>
+<section id="preparació-del-projecte" class="level3">
+<h3 class="anchored" data-anchor-id="preparació-del-projecte">Preparació del projecte</h3>
+<p>Enllaç de la tasca a GitHub Classroom: <a href="https://classroom.github.com/a/HZQmHzs-">https://classroom.github.com/a/HZQmHzs-</a>)</p>
+<ol type="1">
+<li><p>El líder de l’equip haurà d’iniciar el grup a través de GitHub Classroom.</p>
+<ul>
+<li><p>Introdueix el nom de l’equip.</p>
+<p><img src="../figures/projecte/github-classroom.png" class="img-fluid"></p></li>
+<li><p>Accepta la tasca.</p>
+<p><img src="../figures/projecte/accept-task.png" class="img-fluid"></p></li>
+<li><p>Un cop acceptada la tasca, es crearà un repositori per a l’equip.</p>
+<p><img src="../figures/projecte/repo-created.png" class="img-fluid"></p></li>
+</ul></li>
+<li><p>La resta de membres s’hi podran unir seleccionant el nom de l’equip al mateix enllaç <a href="https://classroom.github.com/a/HZQmHzs-">https://classroom.github.com/a/HZQmHzs-</a>.</p></li>
+<li><p>El repositori base contindrà el codi inicial necessari i la seva estructura.</p>
+<p><img src="../figures/projecte/repo-structure.png" class="img-fluid"></p></li>
+<li><p>El líder és responsable d’assignar les tasques a cada membre mitjançant issues a GitHub.</p>
+<p>Per fer-ho:</p>
+<ol type="1">
+<li><p>Fer clic a la pestanya <strong>Issues</strong>.</p>
+<p><img src="../figures/projecte/issues-tab.png" class="img-fluid"></p></li>
+<li><p>Fer clic a <strong>New issue</strong>, i seleccionar <strong>Feature request</strong>.</p>
+<p><img src="../figures/projecte/new-issue.png" class="img-fluid"></p></li>
+<li><p>Us he preparat una plantilla per a les issues. Feu clic a <strong>Get started</strong>.</p>
+<p><img src="../figures/projecte/issue-template.png" class="img-fluid"></p></li>
+<li><p>Omplir el títol i la descripció de la tasca.</p></li>
+<li><p>Assignar la tasca a un membre de l’equip. Click a <strong>Assignees</strong> i seleccionar el membre.</p></li>
+<li><p>Un cop assignada la tasca, fer clic a <strong>Submit new issue</strong>.</p></li>
+</ol>
+<p>Llista de tasques i assignació:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tasca</th>
+<th>Assignat a</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Implementació de la funció de suma</td>
+<td>líder</td>
+</tr>
+<tr class="even">
+<td>Implementació de la funció de resta</td>
+<td>líder</td>
+</tr>
+<tr class="odd">
+<td>Implementació de la funció de multiplicació</td>
+<td>membre1</td>
+</tr>
+<tr class="even">
+<td>Implementació de la funció de divisió</td>
+<td>membre1</td>
+</tr>
+<tr class="odd">
+<td>Implementació de la funció de potència</td>
+<td>membre2</td>
+</tr>
+<tr class="even">
+<td>Implementació de la funció de arrels quadrades</td>
+<td>membre2</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+</section>
+<section id="treball-individual" class="level3">
+<h3 class="anchored" data-anchor-id="treball-individual">Treball individual</h3>
+<p>Instal·la el paquet build-essential, que inclou les eines i llibreries necessàries per compilar i construir programes en C. Aquest paquet inclou el compilador GCC, que és comunament utilitzat per programar en C.</p>
+<pre><code>```sh
+apt install build-essential -y
+```</code></pre>
+<ol type="1">
+<li><p>Cada membre de l’equip haurà de clonar el repositori al seu ordinador i crear una branca <code>develop</code> per les seves tasques.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone URL_DEL_REPOSITORI</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> NOM_DEL_REPOSITORI</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>ℹ️ Informació</strong></p>
+<p>Si feu clic a <strong>Code</strong> al repositori, podreu copiar la URL del repositori.</p>
+</blockquote>
+<p><img src="../figures/projecte/clone-repo.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>🚀 Recomanació</strong></p>
+<p>Tanqueu la sessió de VSCode i torneu-la a obrir però indicant la ruta a la carpeta del projecte. En el meu cas, seria <code>/home/jordi/test/projecte-0-calculadora-teacher</code>. D’aquesta manera, podreu utilitzar les eines de VSCode per a desenvolupar el projecte.</p>
+<p><img src="../figures/projecte/open-folder.png" class="img-fluid"></p>
+<p><img src="../figures/projecte/vscode.png" class="img-fluid"></p>
+</blockquote></li>
+<li><p>Per cada tasca assignada, el membre haurà de crear una branca amb el nom de la tasca. Per exemple, si la tasca és implementar la funció de suma, la branca es podria anomenar <code>feature-suma</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> feature-suma</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Observeu que VSCode us mostra la branca actual a la part inferior esquerra.</p>
+<p><img src="../figures/projecte/branch.png" class="img-fluid"></p></li>
+<li><p>El codi de la funció suma podria ser:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// calc.c</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> suma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// calc.h</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> suma<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">);</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Compileu el codi i comproveu que funciona correctament.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./calc</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="../figures/projecte/run.png" class="img-fluid"></p>
+<p>Si tot funciona correctament, el codi s’executarà i mostrarà el resultat de la suma.</p></li>
+<li><p>Un cop finalitzada la tasca, fer un <code>commit</code> amb els canvis realitzats indicant la tasca realitzada.</p>
+<p>Ho podeu fer amb les eines de VSCode o amb la terminal.</p>
+<p>Si feu servir la terminal, la comanda seria:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add src/calc.c src/calc.h src/main.c</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"@feat: Implementació de la funció de suma"</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="../figures/projecte/commit.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>⚠️ Compte!</strong></p>
+<p>Si no feu <code>git add</code> abans de fer el <code>commit</code>, no es pujaran els canvis al repositori. Així que assegureu-vos de fer <code>git add</code> abans de fer el <code>commit</code>.</p>
+</blockquote>
+<hr>
+<blockquote class="blockquote">
+<p><strong>💡 TIP:</strong></p>
+<p>Utilitza els missatges de commit per tancar les issues relacionades amb la tasca. Per exemple, si la tasca és implementar la funció de suma, el missatge de commit podria ser: <code>git commit -m "@feat: Implementació de la funció de suma. Closes #1"</code>. Si la tasca 1 és la implementació de la funció de suma.</p>
+</blockquote>
+<p>Per fer-ho amb VSCode, feu clic a la icona de la branca a la part inferior esquerra i seleccioneu <strong>Commit</strong>. Després, introduïu el missatge de commit i confirmeu-lo.</p>
+<p><img src="../figures/projecte/commit-vscode.png" class="img-fluid"></p></li>
+<li><p>Repeteix els passos 2 i 3 per a cada tasca assignada. Sempre creant la branca des de <code>main</code>. Per tornar a la branca <code>main</code>, feu <code>git checkout main</code>. O bé, click a la branca a la part inferior esquerra de VSCode i seleccioneu <code>main</code>.</p></li>
+<li><p>Un cop finalitzades les seves tasques ajuntarem totes les branques a la nostra branca local <code>main</code>.</p>
+<ul>
+<li><p>Per fer-ho, amb la terminal, farem:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> main</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge feature-suma </span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="../figures/projecte/merge.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>⚠️ Compte!</strong></p>
+<p>Si hi ha conflictes, caldrà resoldre’ls abans de fer el <code>commit</code>.</p>
+</blockquote></li>
+<li><p>Per fer-ho amb VSCode, farem clic a la icona de la branca a la part inferior esquerra i seleccionarem <strong>Merge branch into current</strong>.</p>
+<p><img src="../figures/projecte/merge-vscode.png" class="img-fluid"></p></li>
+<li><p>Seleccioneu la branca a ajuntar.</p>
+<p><img src="../figures/projecte/select-branch.png" class="img-fluid"></p></li>
+<li><p>Quan integreu la segona funcionalitat (resta, multiplicació, etc.), caldrà fer un <code>merge</code> ja que es detectaran conflictes.</p>
+<p><img src="../figures/projecte/conflict.png" class="img-fluid"></p></li>
+<li><p>Un dels conflictes es el fitxer <code>calc.c</code>. Cada branca ha modificat aquest fitxer i caldrà resoldre els conflictes. Acceptant els canvis de les dues branques. Podeu fer-ho manualment o amb el resolutor de conflictes de VSCode.</p>
+<p><img src="../figures/projecte/conflict-resolve.png" class="img-fluid"></p></li>
+<li><p>Repetiu el mateix procediment per tots els conflictes que apareguin.</p></li>
+<li><p>Un cop resolts els conflictes, feu un <code>commit</code> amb el missatge <code>@feat: Merge branch feature-resta</code>.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="ajuntar-les-tasques" class="level3">
+<h3 class="anchored" data-anchor-id="ajuntar-les-tasques">Ajuntar les tasques</h3>
+<ol type="1">
+<li><p>Un cop totes les tasques estiguin implementades i ajuntades a la branca <code>main</code>, caldrà testar que el codi funciona correctament.</p></li>
+<li><p>Aquestes tasques estaràn en la branca <code>main</code> del repositori local. Ara caldrà pujar aquestes tasques al repositori remot.</p>
+<ul>
+<li>Crea a GitHub una branca remota anomenada <code>develop-&lt;nom-usuari&gt;</code> i la vincularem amb la branca <code>main</code> local.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figures/projecte/branch-remote-develop.png" class="img-fluid figure-img"></p>
+<figcaption>Branca develop</figcaption>
+</figure>
+</div>
+<p>Primer, caldrà actualitzar les branques remotes del repositori.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="../figures/projecte/fetch.png" class="img-fluid"></p>
+<p>Un cop actualitzades les branques remotes, caldrà fer un <code>push</code> de la branca <code>main</code> a la branca <code>develop-&lt;nom-usuari&gt;</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main:develop-<span class="op">&lt;</span>nom-usuari<span class="op">&gt;</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Un cop pujades totes les tasques al repositori remot, el líder actualitzarà les branques remotes de tots els membres de l’equip.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Fara un <code>merge</code> de totes les tasques a la seva branca <code>main</code>.</p></li>
+<li><p>Finalment, testeu que el codi funciona correctament.</p></li>
+<li><p>Un cop testejat, caldrà pujar la branca <code>main</code> al repositori remot.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+</section>
+</section>
+<section id="exercici-extra-opcional" class="level2">
+<h2 class="anchored" data-anchor-id="exercici-extra-opcional">Exercici Extra (opcional)</h2>
+<p>Podeu intentar superar els nivells del joc <a href="https://learngitbranching.js.org/">Learn Git Branching</a> per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis <strong>REMOTE</strong>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Curs0-EPS-UdL\.github\.io\/2627\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
