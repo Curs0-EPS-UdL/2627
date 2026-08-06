@@ -1,0 +1,224 @@
+---
+title: "Laboratori 4: Configurant Git a la màquina virtual"
+lang: "ca"
+---
+
+## Objectius
+- Instal·lar i configurar Git a la màquina virtual.
+- Replicar l'exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git.
+
+## Requisits previs
+- Màquina virtual en funcionament (vegeu [Laboratori 2](./lab02.html)).
+- Visual Studio Code (VSCode) connectat a la màquina virtual mitjançant SSH (vegeu [Laboratori 3](./lab03.html)).
+
+## Instal·lació de Git a la màquina virtual
+
+1. Connecteu VSCode a la màquina virtual mitjançant SSH (vegeu [Laboratori 3](./lab03.html)).
+
+2. Inicia la sessió de l'usuari **root** amb la comanda:
+
+    ```sh
+    su -
+    ```
+
+    El guionet `-` és important perquè carregui correctament les variables d'entorn de l'usuari **root**.
+
+3. Com a usuari **root**. Instal·la el programari **git** amb la comanda:
+
+    ```sh
+    apt install git -y
+    ```
+
+4. Un cop finalitzi la instal·lació, comproveu la versió de **git** amb la comanda:
+
+    ```sh
+    git --version
+    ```
+
+5. Sortiu de la sessió de l'usuari **root** amb la comanda:
+
+    ```sh
+    exit
+    ```
+
+## Configuració de Git
+
+Per començar a treballar amb Git, primer cal configurar el nostre usuari i correu electrònic. Aquesta informació s'utilitzarà per identificar els commits que fem al repositori. Per configurar el nostre usuari i correu electrònic, executem les següents comandes:
+
+```sh
+git config --global user.name "JordiMateo"
+git config --global user.email "jordi.mateo@udl.cat"
+```
+
+## Replicació de l'exemple
+
+1. Crearem un repositori nou anomenat **projecte-final**:
+
+    ```sh
+    mkdir projecte-final
+    ```
+
+2. Accedim al directori del projecte:
+
+    ```sh
+    cd projecte-final
+    ```
+
+    o bé podeu fer click a *Obre la carpeta* a VSCode i seleccionar el directori **projecte-final**.
+
+    ![](../figures/git/lab04/open-folder.png)
+
+2. Crearem els 3 fitxers (treball.txt, figura1.png, figura2.png) i els afegirem al directori de treball:
+
+    ```sh
+    echo "Aquest és el fitxer de treball." > treball.txt
+    touch figura1.png figura2.png
+    ```
+
+    ![](../figures/git/lab04/create-files.png)
+
+3. Ara inicialitzarem el repositori Git:
+
+    ```sh
+    git init
+    ```
+
+  o bé, podeu fer click a la icona de Git a la barra lateral esquerra de VSCode i fer click a **Inicia el repositori Git**.
+
+  ![](../figures/git/lab04/init-repo.png)
+
+:::{.callout-note}
+ - Si feu anar la línia de comandes, haures de posar els fitxers a la caixa d'espera (staging area) manualment. ```git add .``` afegeix tots els fitxers del directori actual a la caixa d'espera.
+
+- Si feu servir la eina integrada de Git a VSCode, us apareixerà una finestra emergent que us demanarà si voleu afegir tots els fitxers a la caixa d'espera (staging area). Feu click a **Yes**.
+:::
+
+4. Si us fixeu, veureu que VSCODE us indica que hi ha 3 fitxers nous que encara no s'han confirmat (posats al camió de mudances).
+
+  ![](../figures/git/lab04/files-staged.png)
+
+5. Ara farem el primer commit amb el missatge "Primer commit: Afegits els fitxers inicials". Podeu fer-ho des de la línia de comandes:
+
+    ```sh
+    git commit -m "Primer commit: Afegits els fitxers inicials"
+    ```
+
+    o bé, podeu fer click a la icona de Git a la barra lateral esquerra de VSCode, escriure el missatge del commit i fer click a la icona de check (✓) per confirmar els canvis.
+
+    ![](../figures/git/lab04/first-commit.png)
+
+
+:::{.callout-note}
+ Observeu que després de fer el commit, els fitxers ja no apareixen a la secció de canvis pendents (Changes). I teniu la linia temporal inicialitzada amb un commit.
+
+![](../figures/git/lab04/first-commit-done.png)
+:::
+
+6. Farem un canvi al fitxer **treball.txt**:
+
+    ```sh
+    echo "Afegit la introducció." >> treball.txt
+    ```
+
+    ![](../figures/git/lab04/modify-file.png)
+
+    Com el document treball.txt ja està a la caixa d'espera, només cal que fem un nou commit:
+
+    ```sh
+    git commit -am "Segon commit: Afegida la introducció al fitxer de treball"
+    ```
+
+    ![](../figures/git/lab04/second-commit.png)
+
+7. Ara podem veure l'historial dels commits fets fins ara:
+
+    ```sh
+    git log
+    ```
+
+    ![](../figures/git/lab04/git-log.png)
+
+8. Podem tornar a una versió anterior si cal. Per exemple, per tornar al primer commit:
+
+    ```sh
+    git checkout HEAD~1
+    ```
+
+    o bé, utilitzant VSCODE i fent click a la icona de Git a la barra lateral esquerra, després a la pestanya d'Historial (History) i fent click dret al commit on volem tornar i seleccionant l'opció **Checkout**.
+
+    ![](../figures/git/lab04/checkout.png)
+
+:::{.callout-note}
+Quan fem un checkout a una versió anterior, el directori de treball es posa en la versió seleccionada, ara ja no tenim el text "Afegit la introducció." al fitxer treball.txt. Això és perquè hem tornat a la versió anterior on aquest canvi no existia.
+:::
+
+9.  Per tornar a la versió més recent, fem:
+
+    ```sh
+    git checkout main
+    ```
+
+    ![](../figures/git/lab04/checkout-main.png)
+
+:::{.callout-note}
+Quan fem un checkout a la versió més recent, el directori de treball es torna a la versió més nova, i ara tornem a tenir el text "Afegit la introducció." al fitxer treball.txt.
+:::
+
+10. Ara podem crear una branca nova per treballar en una nova funcionalitat:
+
+    ```sh
+    git checkout -b metodologia
+    ```
+
+    o bé, utilitzant VSCODE i fent click a la icona de Git a la barra lateral esquerra, després a la part inferior esquerra on apareix el nom de la branca actual (main) i fent click a **Create new branch**.
+
+    ![](../figures/git/lab04/create-branch.png)
+
+11. Farem un canvi al fitxer **treball.txt** a la branca **metodologia**:
+
+    ```sh
+    echo "Afegida la secció de metodologia." >> treball.txt
+    ```
+
+    ![](../figures/git/lab04/modify-file-branch.png)
+
+    Fem un commit amb aquest canvi:
+
+    ```sh
+    git commit -m "Afegida la secció de metodologia al fitxer de treball"
+    ```
+
+12. Podem veure les branques existents:
+
+    ```sh
+    git branch
+    ```
+
+    ![](../figures/git/lab04/list-branches.png)
+
+13. Per tornar a la branca principal:
+
+    ```sh
+    git checkout main
+    ```
+
+14. Per anar a la branca **metodologia**:
+
+    ```sh
+    git checkout metodologia
+    ```
+
+15. També podem fusionar la branca **metodologia** a la branca **main**:
+
+    ```sh
+    git checkout main
+    git merge metodologia
+    ```
+
+    ![](../figures/git/lab04/merge-branch.png)
+
+Amb això hem explorat les funcionalitats bàsiques de Git. Podeu continuar experimentant amb més canvis, branques i commits per familiaritzar-vos amb el flux de treball de Git.
+
+## Exercici Extra (opcional)
+
+Podeu intentar superar els nivells del joc [Learn Git Branching](https://learngitbranching.js.org/) per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis **MAIN**.

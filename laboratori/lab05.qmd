@@ -1,0 +1,295 @@
+---
+title: "Laboratori 5: Calculadora col·laborativa"
+lang: "ca"
+---
+
+## Configurant Github
+
+1. Crea un compte a GitHub: Si no tens un compte a GitHub, visita [https://github.com/](https://github.com/) i crea un compte gratuït.
+
+2. Inicia la sessió al teu compte de GitHub en el navegador web.
+
+3. Fes clic a la teva foto de perfil a la cantonada superior dreta i selecciona **Configuració** al menú desplegable.
+
+4. A la pàgina de configuració de GitHub, selecciona **Configuració de desenvolupador** al menú lateral esquerre.
+
+5. A la secció *Tokens personals*, fes clic a *Genera un token personal* i selecciona un Token (clássic) per a l'ús amb la línia de comandes.
+
+![Generar token](../figures/git/token-gen.png)
+
+1. Completa la informació requerida i fes clic a "Generar token":
+
+    - Introdueix un nom per al teu token.
+
+    > 🚀 **Per exemple:**
+    >
+    > *Token per a la màquina virtual del curs 0.*
+
+    - Selecciona un temps d'expiració per al teu token.
+  
+    > **🧐 Simplicitat:**
+    >
+    > Podeu posar *7 dies* per a aquest laboratori.
+
+    ---
+
+## Configuració de l'accés a GitHub des de la màquina virtual
+
+1. Inicia una sessió a la terminal de la màquina virtual com a usuari normal.
+
+2. Configura Git per utilitzar el token de GitHub executant la següent comanda:
+
+    ```sh
+    git config --global github.token TOKEN
+    ```
+
+    > **🔑 Actualitza:**
+    >
+    > Reemplaça `TOKEN` pel token d'accés que has generat al pas anterior.
+
+    Això emmagatzemarà el token de GitHub en la configuració global de Git al teu sistema Debian.
+
+3. Verifica que el token s'hagi configurat correctament executant:
+
+    ```sh
+    git config --global --get github.token
+    ```
+
+    Si tot ha anat bé, veuràs el token que has configurat.
+
+
+## Tasques
+
+### Creació d'equips
+
+1. Formeu equips de 3 persones. Cada grup haurà d'escollir un **líder**, que serà el responsable de coordinar el treball, gestionar el repositori i fer el seguiment del projecte.
+
+2. Trieu un nom d'equip original.
+
+### Preparació del projecte
+
+Enllaç de la tasca a GitHub Classroom: [https://classroom.github.com/a/HZQmHzs-](https://classroom.github.com/a/HZQmHzs-))
+
+1. El líder de l'equip haurà d’iniciar el grup a través de GitHub Classroom.
+
+    - Introdueix el nom de l'equip.
+  
+        ![](../figures/projecte/github-classroom.png)
+
+    - Accepta la tasca.
+
+        ![](../figures/projecte/accept-task.png)
+
+    - Un cop acceptada la tasca, es crearà un repositori per a l'equip.
+
+        ![](../figures/projecte/repo-created.png)
+
+2. La resta de membres s’hi podran unir seleccionant el nom de l’equip al mateix enllaç [https://classroom.github.com/a/HZQmHzs-](https://classroom.github.com/a/HZQmHzs-).
+
+3. El repositori base contindrà el codi inicial necessari i la seva estructura.
+
+    ![](../figures/projecte/repo-structure.png)
+
+4. El líder és responsable d'assignar les tasques a cada membre mitjançant issues a GitHub.
+
+    Per fer-ho:
+
+    1. Fer clic a la pestanya **Issues**.
+
+        ![](../figures/projecte/issues-tab.png)
+
+    2. Fer clic a **New issue**, i seleccionar **Feature request**.
+
+        ![](../figures/projecte/new-issue.png)
+
+    3. Us he preparat una plantilla per a les issues. Feu clic a **Get started**.
+
+        ![](../figures/projecte/issue-template.png)
+
+    4. Omplir el títol i la descripció de la tasca.
+    5. Assignar la tasca a un membre de l'equip. Click a **Assignees** i seleccionar el membre.
+    6. Un cop assignada la tasca, fer clic a **Submit new issue**.
+
+    Llista de tasques i assignació:
+
+    | Tasca | Assignat a |
+    |-------|------------|
+    | Implementació de la funció de suma | líder |
+    | Implementació de la funció de resta | líder |
+    | Implementació de la funció de multiplicació | membre1|
+    | Implementació de la funció de divisió | membre1 |
+    | Implementació de la funció de potència | membre2 |
+    | Implementació de la funció de arrels quadrades | membre2 |
+
+### Treball individual
+
+Instal·la el paquet build-essential, que inclou les eines i llibreries necessàries per compilar i construir programes en C. Aquest paquet inclou el compilador GCC, que és comunament utilitzat per programar en C.
+
+    ```sh
+    apt install build-essential -y
+    ```
+
+1. Cada membre de l'equip haurà de clonar el repositori al seu ordinador i crear una branca `develop` per les seves tasques.
+
+    ```sh
+    git clone URL_DEL_REPOSITORI
+    cd NOM_DEL_REPOSITORI
+    ```
+
+    > **ℹ️ Informació**
+    >
+    > Si feu clic a **Code** al repositori, podreu copiar la URL del repositori.
+
+    ![](../figures/projecte/clone-repo.png)
+
+    > **🚀 Recomanació**
+    >
+    > Tanqueu la sessió de VSCode i torneu-la a obrir però indicant la ruta a la carpeta del projecte. En el meu cas, seria `/home/jordi/test/projecte-0-calculadora-teacher`. D'aquesta manera, podreu utilitzar les eines de VSCode per a desenvolupar el projecte.
+    >
+    > ![](../figures/projecte/open-folder.png)
+    >
+    > ![](../figures/projecte/vscode.png)
+
+2. Per cada tasca assignada, el membre haurà de crear una branca amb el nom de la tasca. Per exemple, si la tasca és implementar la funció de suma, la branca es podria anomenar `feature-suma`.
+
+    ```sh
+    git checkout -b feature-suma
+    ```
+
+    Observeu que VSCode us mostra la branca actual a la part inferior esquerra.
+
+    ![](../figures/projecte/branch.png)
+
+3. El codi de la funció suma podria ser:
+
+    ```c
+    // calc.c
+    int suma(int a, int b) {
+        return a + b;
+    }
+    ```
+
+    ```c
+    // calc.h
+    int suma(int a, int b);
+    ```
+
+4. Compileu el codi i comproveu que funciona correctament.
+
+    ```sh
+    make
+    ./calc
+    ```
+
+    ![](../figures/projecte/run.png)
+
+    Si tot funciona correctament, el codi s'executarà i mostrarà el resultat de la suma.
+
+5. Un cop finalitzada la tasca, fer un `commit` amb els canvis realitzats indicant la tasca realitzada.
+
+    Ho podeu fer amb les eines de VSCode o amb la terminal.
+
+    Si feu servir la terminal, la comanda seria:
+
+    ```sh
+    git add src/calc.c src/calc.h src/main.c
+    git commit -m "@feat: Implementació de la funció de suma"
+    ```
+
+    ![](../figures/projecte/commit.png)
+
+    > **⚠️ Compte!**
+    >
+    > Si no feu `git add` abans de fer el `commit`, no es pujaran els canvis al repositori. Així que assegureu-vos de fer `git add` abans de fer el `commit`.
+
+    ---
+
+    > **💡 TIP:**
+    >
+    > Utilitza els missatges de commit per tancar les issues relacionades amb la tasca. Per exemple, si la tasca és implementar la funció de suma, el missatge de commit podria ser: `git commit -m "@feat: Implementació de la funció de suma. Closes #1"`. Si la tasca 1 és la implementació de la funció de suma.
+
+    Per fer-ho amb VSCode, feu clic a la icona de la branca a la part inferior esquerra i seleccioneu **Commit**. Després, introduïu el missatge de commit i confirmeu-lo.
+
+    ![](../figures/projecte/commit-vscode.png)
+
+6. Repeteix els passos 2 i 3 per a cada tasca assignada. Sempre creant la branca des de `main`. Per tornar a la branca `main`, feu `git checkout main`. O bé, click a la branca a la part inferior esquerra de VSCode i seleccioneu `main`.
+
+7. Un cop finalitzades les seves tasques ajuntarem totes les branques a la nostra branca local `main`.
+
+    - Per fer-ho, amb la terminal, farem:
+
+        ```sh
+        git checkout -b main
+        git merge feature-suma 
+        ```
+
+        ![](../figures/projecte/merge.png)
+
+        > **⚠️ Compte!**
+        >
+        > Si hi ha conflictes, caldrà resoldre'ls abans de fer el `commit`.
+
+    - Per fer-ho amb VSCode, farem clic a la icona de la branca a la part inferior esquerra i seleccionarem **Merge branch into current**.
+
+        ![](../figures/projecte/merge-vscode.png)
+
+    - Seleccioneu la branca a ajuntar.
+
+        ![](../figures/projecte/select-branch.png)
+
+    - Quan integreu la segona funcionalitat (resta, multiplicació, etc.), caldrà fer un `merge` ja que es detectaran conflictes.
+
+        ![](../figures/projecte/conflict.png)
+
+    - Un dels conflictes es el fitxer `calc.c`. Cada branca ha modificat aquest fitxer i caldrà resoldre els conflictes. Acceptant els canvis de les dues branques. Podeu fer-ho manualment o amb el resolutor de conflictes de VSCode.
+
+        ![](../figures/projecte/conflict-resolve.png)
+
+    - Repetiu el mateix procediment per tots els conflictes que apareguin.
+
+    - Un cop resolts els conflictes, feu un `commit` amb el missatge `@feat: Merge branch feature-resta`.
+
+### Ajuntar les tasques
+
+1. Un cop totes les tasques estiguin implementades i ajuntades a la branca `main`, caldrà testar que el codi funciona correctament.
+
+2. Aquestes tasques estaràn en la branca `main` del repositori local. Ara caldrà pujar aquestes tasques al repositori remot.
+
+    - Crea a GitHub una branca remota anomenada `develop-<nom-usuari>` i la vincularem amb la branca `main` local.
+
+    ![Branca develop](../figures/projecte/branch-remote-develop.png)
+
+    Primer, caldrà actualitzar les branques remotes del repositori.
+
+    ```sh
+    git fetch origin
+    ```
+
+    ![](../figures/projecte/fetch.png)
+
+    Un cop actualitzades les branques remotes, caldrà fer un `push` de la branca `main` a la branca `develop-<nom-usuari>`.
+
+    ```sh
+    git push origin main:develop-<nom-usuari>
+    ```
+
+3. Un cop pujades totes les tasques al repositori remot, el líder actualitzarà les branques remotes de tots els membres de l'equip.
+
+    ```sh
+    git fetch origin
+    ```
+
+4. Fara un `merge` de totes les tasques a la seva branca `main`.
+
+5. Finalment, testeu que el codi funciona correctament.
+
+6. Un cop testejat, caldrà pujar la branca `main` al repositori remot.
+
+    ```sh
+    git push origin main
+    ```
+
+## Exercici Extra (opcional)
+
+Podeu intentar superar els nivells del joc [Learn Git Branching](https://learngitbranching.js.org/) per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis **REMOTE**.
+
