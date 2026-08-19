@@ -1,9 +1,8 @@
 ---
-title: "Control de Versions *Git · GitHub*"
-subtitle: "Sessió 3 · Curs zero d'Informàtica"
+title: Control de Versions *Git*
+subtitle: "Sessió 3 - Curs zero d'Informàtica"
 author: 
-    - name: Jordi Mateo Fornés
-    - name: Jordi Vilaplana Mayoral
+    - name: Josep Alòs
 logo: "/figures/corporative/institute.png"
 format: 
   revealjs:
@@ -22,98 +21,498 @@ execute:
   echo: false
 ---
 
-## El problema de les versions 💾
+# Perquè necessitem control de versions?
 
-**Quantes vegades us ha passat que heu perdut un document o heu treballat sobre una versió antiga?**
+## Història d'un fitxer
 
+Habitualment gestionem múltiples versions d'un document de forma manual.
 
-::: {.fragment}
-- `projecte_final.docx`
-- `projecte_final_v1.docx`
-- `projecte_final_definitiu.docx`
+- `projecte.docx`
+- `projecte_v1.docx`
+- `projecte_abans_revisió.docx`
+- `projecte_final_definitiu_ara_si.docx`
+- `...`
+
+## Història d'un fitxer (una mica millor)
+
+Habitualment gestionem múltiples versions d'un document de forma manual.
+
+- `20260727_projecte.docx`
+- `20260728_projecte.docx`
+- `20260810_projecte.docx`
+- `20260915_projecte.docx`
+- `...`
+
+## Perquè necessitem control de versions?
+
+Imaginem aquesta situació:
+
+Hem estat treballant en un projecte durant dues hores.
+
+Després d'aquestes dues hores, el nostre projecte no funciona, i volem recuperar com estava abans dels canvis.
+
+**Quin dels fitxers que teniem és el correcte a recuperar?**
+
+. . .
+
+No necessitem còpies dels fitxers, **necessitem la seva història**.
+
+## Sistemes de control de versions
+
+Un sistema de control de versions guarda la història d'un projecte.
+
+Aquesta història permet:
+
+- Consultar la seva evolució
+- Visualitzar les diferències entre dues versions
+- Navegar entre versions sense perdre informació
+- Consultar qui ha fet/quan s'ha fet/perquè s'ha fet un canvi concret.
+- Permeten la col·laboració de múltiples desenvolupadors *(pròxima sessió)*
+- Permeten treballar en paral·lel *(pròxima sessió)*
+
+## Sistemes de control de versions
+
+```{mermaid}
+flowchart LR
+    V1[Versió #1]
+    V2[Versió #2]
+    V3[Versió #3]
+    V4[Versió #4]
+
+    A1[Fitxer A]
+    A2[Fitxer A]
+    A3[Fitxer A]
+    A4[Fitxer A]
+    B1[Fitxer B]
+    B2[Fitxer B]
+    B3[Fitxer B]
+    B4[Fitxer B]
+    C1[Fitxer C]
+    C2[Fitxer C]
+    C3[Fitxer C]
+    C4[Fitxer C]
+
+    V1 --> V2 --> V3 --> V4
+
+    A1 -->|Canvis| A2 --> A3 -->|Canvis| A4
+    B1 --> B2 -->|Canvis| B3 --> B4
+    C1 --> C2 --> C3 -->|Canvis| C4
+```
+
+## Git
+
+Git és un sistema de control de versions (VCS).
+
+Ens permet guardar la història d'un projecte i consultar-la posteriorment.
+
+Es crea l'any 2005 per donar suport al desenvolupament del *kernel* de Linux.
+
+## Git: Què és una versió?
+
+En Git, cada versió guardada s'anomena **commit**.
+
+Un **commit** té associat:
+
+- l'estat dels fitxers del projecte en un moment concret
+- metadades dels canvis: autor, data, missatge...
+
+Podem imaginar un commit com una **fotografia de l'estat del projecte**.
+
+## Git: Què és una versió?
+
+```{mermaid}
+flowchart LR
+    V1[Versió #1]
+    V2[Versió #2]
+    V3[Versió #3]
+    V4[Versió #4]
+
+    A1[Fitxer A]
+    A2[Fitxer A]
+    A3[Fitxer A]
+    A4[Fitxer A]
+    B1[Fitxer B]
+    B2[Fitxer B]
+    B3[Fitxer B]
+    B4[Fitxer B]
+    C1[Fitxer C]
+    C2[Fitxer C]
+    C3[Fitxer C]
+    C4[Fitxer C]
+
+    V1 --> V2 --> V3 --> V4
+
+    A1 -->|Canvis| A2 --> A3 -->|Canvis| A4
+    B1 --> B2 -->|Canvis| B3 --> B4
+    C1 --> C2 --> C3 -->|Canvis| C4
+```
+
+# Model mental de Git
+
+Tenim un projecte controlat per Git.
+
+Modifiquem `README.md`.
+
+**El canvi ja forma part de la història de Git?**
+
+. . .
+
+La resposta és que **no**.
+
+## Estat dels fitxers
+
+En Git, els fitxers poden estar en diferents estats:
+
+- Sense seguir (*untracked*): Git encara no controla aquest fitxer.
+- Modificat (*modified*): El fitxer conté canvis respecte respecte al *commit* anterior.
+- Preparat (*staged*): els canvis del fitxer s'han seleccionat per formar part del pròxim *commit*.
+- Guardat (*commited*): l'estat actual del fitxer forma part de la història del repositori.
+
+## Tres àrees
+
+Quan treballem amb Git, podem distingir tres àrees:
+
+```{mermaid}
+flowchart LR
+    W["**Working directory**<br/><br/>On fem els canvis"]
+    S["**Staging area**<br/><br/>Canvis preparats<br/>per al pròxim commit"]
+    R["**Repository**<br/><br/>Història del projecte<br/>(commits)"]
+
+    W -->|afegim canvis| S
+    S -->|nou commit| R
+```
+
+- Working directory: els fitxers amb què estem treballant.
+- Staging area: els canvis que hem seleccionat per incloure en el pròxim commit.
+- Repository: la història del projecte, formada pels commits.
+
+# Hands-On: Instal·lació de Git
+
+<https://git-scm.com/>
+
+Verificar amb la línia de comandes:
+
+```         
+git --version
+```
+
+# Hands-On: Configuració de Git
+
+Configurem el nostre nom i el correu:
+
+```         
+git config --global user.name "Mr Potato"
+git config --global user.email "mr@potato.com"
+```
+
+`--global` indica que s'aplicarà a tots els projectes.
+
+::: aside
+Més informació a: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
 :::
+
+# Comandes bàsiques
+
+## Comandes bàsiques: ajuda
+
+Les comandes de Git tenen el següent format:
+
+```         
+git <verb> <opcions>
+```
+
+Podem obtenir informació sobre una comanda concreta amb qualsevol de les següents opcions:
+
+- `git help <verb>`
+- `git <verb> --help`
+- `man git-<verb>`
+
+## Comandes bàsiques: `git init`
+
+Per crear un repositori nou, naveguem al directori del projecte[^1] i executem:
+
+[^1]: Per navegar, podem fer servir `cd`, i per crear un directori nou `mkdir`
+
+```         
+git init
+```
+
+Aquesta comanda crea el directori `.git`[^2] on es guardarà tota la informació del repositori.
+
+[^2]: Per tant els canvis s'afegiran a la següent versió.
+
+## Comandes bàsiques: `git status` {.smaller}
+
+La comanda `git status` ens mostra en quin estat/àrea estan els fitxers/canvis:
+
+```         
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .devcontainer/devcontainer.json
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   teoria/03-version-control.qmd
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        teoria/04-version-control.qmd
+```
+
+## Comandes bàsiques: `git status` {.smaller}
+
+```         
+[...]
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .devcontainer/devcontainer.json
+[...]
+```
+
+Els canvis indicats estan dins de l'àrea d'staging. S'afegiran a la següent versió.
+
+## Comandes bàsiques: `git status` {.smaller}
+
+```         
+[...]
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   teoria/03-version-control.qmd
+[...]
+```
+
+Els canvis indicats estan dins de l'àrea de treball. Git coneix els fitxers, ha detectat que hi ha canvis, però no s'afegiran a la següent versió.
+
+## Comandes bàsiques: `git status` {.smaller}
+
+```         
+[...]
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        teoria/04-version-control.qmd
+```
+
+Git ha detectat que hi ha fitxers que no havia vist anteriorment. No estan en cap àrea.
+
+## Comandes bàsiques: `git status` {.smaller}
+
+També podem veure la sortida simplificada fent `git status -s`:
+
+```         
+$ git status -s
+A  .devcontainer/devcontainer.json
+ M teoria/03-version-control.qmd
+?? teoria/04-version-control.qmd
+```
+
+## Comandes bàsiques: `git add`
+
+La comanda `git add <file>` ens permet moure un fitxer des de l'àrea de treball a l'àrea d'*staging*[^3].
+
+[^3]: Per tant els canvis s'afegiran a la següent versió.
+
+```         
+$ git status
+[...]
+Changes not staged for commit:
+  [...]
+        modified:   teoria/03-version-control.qmd
+[...]
+$ git add teoria/03-version-control.qmd
+$ git status
+[...]
+Changes to be committed:
+  [...]
+        modified:   teoria/03-version-control.qmd
+[...]
+```
+
+. . .
+
+També ens serveix per afegir fitxers nous.
+
+::: aside
+`git add .` afegeix tots els fitxers del directori.
+:::
+
+## Comandes bàsiques: `git diff`
+
+- `git diff`
+- `git diff --staged`
+
+## Comandes bàsiques: `git commit`
+
+La comanda `git commit` ens permet crear una nova versió (anomenada **commit**) del repositori.
+
+## Comandes bàsiques: `git restore`
+
+`git restore` ens permet dues coses:
+
+- `git restore <file>` elimina els canvis d'un fitxer en l'àrea de treball.
+- `git restore --staged <file>` mou els canvis d'un fitxer de l'àrea *staging* a l'àrea de treball.
+
+## Comandes bàsiques: `git rm`
+
+- `git rm`
+- `git rm --cached`
+
+## Quiz
+
+![Quina comanda fa cada acció?](../figures/git/lifecycle.png)
+
+# Hands-On: Comandes bàsiques de Git
 
 ::: {.fragment style="text-align: center;"}
- És difícil saber quin és l'arxiu correcte, quins canvis s'hi han fet i per què. I si vull recuperar parts d'una versió anterior?
+[📄 Laboratori 3.1: Comandes bàsiques de Git](../laboratori/lab-git-1.html#prepare)
 :::
 
-## La solució: Control de Versions
+# Visualitzant la història
 
-Imagina't que cada vegada que fas un canvi important en el teu document:
+Fins ara hem après com crear commits, i tenim una història.
 
-1. Guardes una **foto** del document en aquell moment, amb una descripció dels canvis que has fet. 
-2. Aconsegueixes tenir un **historial** de totes les versions del document.
+**Com podem consultar-la?**
+
+## Visualitzant la història: `git log`
+
+La comanda `git log` mostra els commits del repositori.
+
+Cada commit conté informació com: - identificador - autor - data - missatge
+
+``` text
+commit 8f3a21c...
+Author: Mr Potato <mr@potato.com>
+Date:   ...
+
+    Afegeix informació sobre Git
+
+commit 42b17de...
+Author: Mr Potato <mr@potato.com>
+Date:   ...
+
+    Primer commit
+```
+
+## Visualitzant la història: `git log`
+
+Podem simplificar la sortida fent servir `--oneline`:
+
+```         
+$ git log --oneline
+8f3a21c Afegeix informació sobre Git
+42b17de Primer commit
+```
+
+::: aside
+El primer valor és l'identificador del commit abreviat.
+:::
+
+## Visualitzant la història: `git log`
+
+També podem veure des d'un commit concret amb `git log <c1>..<c2>`, on `c1` i `c2` són dos identificadors de commit.
+
+Podem fer servir l'identificador especial `HEAD` per indicar el commit on ens trobem.
+
+## Visualitzant la història: `git show`
+
+Amb `git show` podem consultar quins canvis introdueix un commit concret:
+
+```         
+$ git show 8f3a21c
+...TODO...
+```
+
+## Visualitzant la història: `git diff <c1>..<c2>`
+
+Per comparar dues versions (no necessàriament consecutives), podem fer servir `git diff <c1>..<c2>`, on `c1` i `c2` són dos identificadors de commit.
+
+Per exemple:
+
+Versió `aaaaaa`: `README.md` té:
+
+``` text
+...TODO...
+```
+
+Versió `bbbbbb`: `README.md` té:
+
+``` text
+...TODO...
+```
+
+```         
+$ git diff aaaaaa..bbbbbb
+...TODO...
+```
+
+# Recuperar versions antigues
+
+Hem vist com consultar la història del projecte.
+
+Un dels punts forts dels VCS és poder recuperar versions anteriors.
+
+**Com podem recuperar una versió anterior amb Git?**
+
+## Recuperar un fitxer
+
+Podem recuperar un fitxer tal com estava en un commit anterior amb:
+
+```         
+git restore --source=<commit> <fitxer>
+```
+
+Per exemple:
+
+```         
+git restore --source=42b17de README.md
+```
+
+El fitxer README.md tornarà a tenir el contingut que tenia en aquell commit.
+
+. . .
+
+**Això només modifica el working directory, no crea automàticament un commit**.
+
+Hem recuperat el contingut anterior, però la història de Git no ha canviat.
+
+## Consultar una versió antiga
+
+També podem situar-nos temporalment en un commit anterior:
+
+En aquest punt estem consultant una versió antiga. No estem creant un nou commit ni modificant la història.
+
+git checkout main o master per tornar on estavem.
+
+# Hands-On: Navegant la història
 
 ::: {.fragment style="text-align: center;"}
-**Seria com tenir una màquina del temps per als teus documents!**
+[📄 Laboratori 3.2: Navegant la història](../laboratori/lab-git-2.html#prepare)
 :::
 
-## Control de Versions amb *Git* 🕰️
+# Recap
 
-![](/figures/git/git.png){style="display: block; margin-left: auto; margin-right:auto;"}
+## Recap: Conceptes
 
-## El túnel del temps de *Git* ⏳
+1.  Git guarda la història d'un projecte.
+2.  Cada versió és un **commit**.
+3.  Podem consultar, comparar, i recuperar versions antigues.
+4.  3 àrees: Working / staging / repository
 
-![](/figures/git/linia-temporal.png){style="display: block; margin-left: auto; margin-right: auto;"}
+## Recap: Comandes
 
-## El multivers de *Git* 🌌
+1.  git init
+2.  git add
+3.  git commit
+4.  git log
+5.  git show
+6.  git diff
+7.  git restore
 
-![](/figures/git/multivers.png){style="display: block; margin-left: auto; margin-right: auto;"}
+# Material addicional
 
-## Laboratori 4: Objectiu
-
-- Instal·lar i configurar el vostre entorn de desenvolupament (IDE) per connectar-vos a la màquina virtual mitjançant SSH i utilitzar Git per al control de versions dels vostres projectes.
-
-- Replicarem l'exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git.
-
-::: {.fragment style="text-align: center;"}
-[📄 Laboratori 4: Git](../laboratori/lab04.html#prepare)
-:::
-
-## Col·laboració en equip 🤝
-
-En la vostra vida professional, és molt probable que treballeu en equips on diverses persones col·laboren en els mateixos projectes. Necessitareu que tots els membres de l'equip puguin sincronitzar els seus controls de versions i compartir els canvis de manera eficient.
-
-::: {.fragment style="text-align: center;"}
-**Seria com quan feu fotos amb el vostre mòbil i es guarden automàticament al núvol i les podeu veure en qualsevol moment i des de qualsevol dispositiu i les podeu compartir fàcilment.**
-:::
-
-## Control de Versions amb *GitHub* 🐙
-
-*GitHub* és una plataforma en línia que facilita aquesta col·laboració, us permet mantenir una còpia als seus servidors i compartir els vostres projectes amb altres persones o tenir una còpia de seguretat al núvol per si perdeu la vostra còpia local.
-
-## Esquema de col·laboració amb *GitHub*
-
-![](/figures/git/github.png){style="display: block; margin-left: auto; margin-right: auto;"}
-
-## Laboratori 5: Objectiu
-
-- Crear una calculadora col·laborativa utilitzant *Git* i *GitHub*.
-- Aprendre a treballar amb branques i fer *merge* de canvis.
-- Practicar la resolució de conflictes en un entorn de col·laboració.
-
-::: {.fragment style="text-align: center;"}
-[📄 Laboratori 5: Calculadora col·laborativa](../laboratori/lab05.html#prepare )
-:::
-
-## Forks 🍴
-
-Un **fork** és una còpia d'un repositori públic que un altre usuari ha creat. 
-
-- És una manera de contribuir a projectes d'altres persones sense afectar l'original. 
-- Quan fas un *fork*, crees una còpia independent del repositori original al teu compte. 
-- Aquesta còpia és totalment teva i pots fer-hi canvis lliurement respectant sempre la llicència del projecte original.
-
-## Clone 📋 vs Fork 🍴
-
-![](/figures/git/fork-clone.png){style="display: block; margin-left: auto; margin-right: auto;"}
-
-## Laboratori 6: Objectiu
-
-- Crear un lloc web personal utilitzant Jekyll i GitHub Pages.
-- Realitzar un *fork* d'una plantilla de lloc web i personalitzar-la.
-- Desplegar el lloc web al vostre compte de GitHub.
-
-::: {.fragment style="text-align: center;"}
-[📄 Laboratori 6: GitHub Pages](../laboratori/lab06.html#prepare)
-:::
+- Llibre de Git: <https://git-scm.com/book/en/v2>
+- The Missing Semester: <https://missing.csail.mit.edu/2020/version-control/>
