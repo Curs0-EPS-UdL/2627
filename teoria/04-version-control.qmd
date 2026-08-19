@@ -1,0 +1,831 @@
+---
+title: Control de Versions *Git*
+subtitle: "Sessió 4 - Curs zero d'Informàtica"
+author: 
+    - name: Josep Alòs
+logo: "/figures/corporative/institute.png"
+format: 
+  revealjs:
+    transition: fade
+    slide-number: true
+    incremental: true 
+    chalkboard: false
+    footer: "Sessió 4 · Curs zero d'Informàtica [🏠](/index.html)</a>"
+editor: visual
+
+mermaid:
+    theme: forest
+
+execute:
+  freeze: auto
+  echo: false
+---
+
+# Recordatori
+
+<!-- TODO -->
+
+# Referències: commits, tags, i branques
+
+## Commits
+
+**Recordatori:**
+
+Cada commit té un identificador únic.
+
+```         
+git log --oneline
+a31f42c Afegeix README
+8b7291a Afegeix dades
+f42c812 Crea projecte
+```
+
+`HEAD` és una referència al commit que estem consultant actualment
+
+```{mermaid}
+flowchart LR
+    A["f42c812<br/>Crea projecte"]
+    B["8b7291a<br/>Afegeix dades"]
+    C["a31f42c<br/>Afegeix README"]
+
+    A --> B --> C
+
+    H["HEAD"] --> C
+```
+
+## Tags
+
+Git ens permet marcar certs commits amb noms fàcils de recordar. Aquests noms s'anomenen *tags*.
+
+Per exemple:
+
+```         
+git tag v1.0
+```
+
+```{mermaid}
+flowchart LR
+    A["f42c812"]
+    B["8b7291a"]
+    C["a31f42c"]
+
+    A --> B --> C
+
+    T["v1.0"] --> B
+    H["HEAD"] --> C
+```
+
+**Rarament modificarem a quin commit fa referència un tag.**
+
+És habitual utilitzar-los per marcar versions importants.
+
+## Tags
+
+Ara podem utilitzar `v1.0` enlloc de l'ID del commit:
+
+```         
+git show v1.0
+git diff v1.0..HEAD
+```
+
+Podem veure els tags amb `git tag`[^1].
+
+[^1]: O explícitament amb `git tag --list` o `git tag -l`
+
+## Branques
+
+Fins ara hem tingut una única línia d'història.
+
+Imaginem que estem treballant en una nova versió del projecte i algú troba un error en una versió anterior.
+
+**Podem treballar per arreglar aquest error sense interferir amb el desenvolupament actual?**
+
+## Branques
+
+Git ens permet crear diferents camins dins de la història del projecte.
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+
+    D["D<br/>correcció"]
+    E["E<br/>correcció"]
+
+    F["D'<br/>nova funcionalitat"]
+    G["E'<br/>nova funcionalitat"]
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+```
+
+Les dues branques comparteixen la història fins al punt on se separen.
+
+A partir d'aquest punt, podem fer commits diferents en cadascuna.
+
+## Branques
+
+Una **branca** és un nom que utilitzem per seguir una línia de la història del projecte.
+
+*S'assembla a un tag, però es va actualitzant cada commit que fem.*
+
+Per defecte, Git crea una branca anomenada `master` o `main`[^2].
+
+[^2]: No és especial, simplement es crea automàticament.
+
+## Branques
+
+Podem veure les branques del repositori amb:
+
+```         
+git branch
+```
+
+Podem crear una nova branca (e.g. `fix-error`) amb:
+
+```         
+git branch fix-error
+```
+
+i començar a treballar sobre aquesta branca amb:
+
+```         
+git switch fix-error
+```
+
+**Nota** podem fer la nova branca i canviar-hi amb una sola comanda fent servir `git switch -c fix-error`.
+
+Per tornar a la branca `main` fem `git switch main`.
+
+## Branques: el multivers de Git
+
+Una branca no és una còpia sencera del projecte.
+
+És una manera de continuar la història del projecte per un camí diferent.
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+
+    D["D"]
+    E["E"]
+
+    F["D'"]
+    G["E'"]
+
+    M["main"] --> C
+    R["fix-error"] --> G
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+```
+
+Les dues branques tenen en comú els commits anteriors a la separació.
+
+Els commits posteriors poden ser diferents.
+
+## Commits, tags, i branques
+
+Podem veure aquests conceptes com diferents maneres de referir-nos a la història
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+
+    M["main"] --> E
+    R["fix-error"] --> G
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+```
+
+- Commit: un punt concret en la història.
+- Tag: un nom a un commit concret.
+- Branca: un nom que va avançant per una línia de la història.
+
+. . .
+
+Podem veure el graf fent servir:
+
+```         
+git log --all --graph --oneline --decorate
+```
+
+# Unificant la història
+
+Amb les branques podem desenvolupar en paral·lel parts del nostre projecte, arreglar errors en versions anteriors, etc.
+
+**No volem tenir N línies d'història diferents del nostre projecte, en algun punt volem unificar-les tot.**
+
+Git no només ens permet divergir la nostra història sinó també convergir-la.
+
+## Merge de branques
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+
+    M["main"] --> E
+    R["fix-error"] --> G
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+```
+
+En aquest punt, tenim l'error arreglat i volem unificar `main` amb `fix-error`.
+
+Podem fer dues coses:
+
+- Portar els canvis de `fix-error` cap a `main`
+- Portar els canvis de `main` cap a `fix-error`
+
+**El merge sempre es fa des de la branca que volem actualitzar.**
+
+## Merge de branques
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+
+    M["main"] --> E
+    R["fix-error"] --> G
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+```
+
+Portarem els canvis de `fix-error` cap a `main`:
+
+1.  Ens situem a la branca `main`
+2.  Creem un **commit de merge** que té dos *antecessors*:
+    - El commit al que fa referència `main`
+    - El commit al que fa referència `fix-error`
+3.  Actualitzem `main` per a que faci referència al **commit de merge**
+
+. . .
+
+El primer pas el fem amb `git switch main`, i els passos 2 i 3 els fem amb `git merge fix-error`.
+
+## Merge de branques
+
+`git switch main` ens situa a:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+
+    M["main"] --> E
+    R["fix-error"] --> G
+    HD["HEAD"] --> M
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+```
+
+## Merge de branques
+
+`git merge fix-error` ens situa a:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+    H["F"]
+
+    M["main"] --> H
+    R["fix-error"] --> G
+    HD["HEAD"] --> M
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+    G --> H
+    E --> H
+```
+
+::: aside
+`F` és el commit de merge.
+:::
+
+## Merge de branques
+
+**Quiz** Si fem `git log main`, quins commits veurem? I `git log fix-error`?
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+    H["F"]
+
+    M["main"] --> H
+    R["fix-error"] --> G
+    HD["HEAD"] --> M
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+    G --> H
+    E --> H
+```
+
+## Merge de branques: fast-forward
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+    H["F"]
+
+    M["main"] --> H
+    R["fix-error"] --> G
+    HD["HEAD"] --> M
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+    G --> H
+    E --> H
+```
+
+Imaginem que volem actualitzar `fix-error` per incorporar la història a `main`.
+
+**Que passa si fem un merge en aquesta direcció?**
+
+```         
+git switch fix-error
+git merge main
+```
+
+## Merge de branques: fast-forward
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+    H["F"]
+
+    M["main"] --> H
+    R["fix-error"] --> G
+    HD["HEAD"] --> M
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+    G --> H
+    E --> H
+```
+
+```         
+git switch fix-error
+git merge main
+```
+
+La branca `fix-error` no té cap commit que no tingui `main`. En aquest cas, diem que `fix-error` està endarrere (*behind*) `main`.
+
+**No té sentit crear un commit de merge, no estariem unificant res!**
+
+. . .
+
+Git ens permet **avançar** la branca `fix-error` fins on fa referència `main`. D'això se'n diu **fast-forward merge**.
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["E"]
+    F["D'"]
+    G["E'"]
+    H["F"]
+
+    M["main"] --> H
+    R["fix-error"] --> H
+    HD["HEAD"] --> R
+
+    A --> B --> C
+    C --> D --> E
+    C --> F --> G
+    G --> H
+    E --> H
+```
+
+## Rebase de branques
+
+Fins ara hem vist com unificar dues branques amb `merge`.
+
+Però hi ha una altra manera d'incorporar els canvis d'una branca:
+
+**`rebase`**
+
+## Rebase de branques
+
+Tornem a una situació en què tenim dues branques:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["D'"]
+    F["E'"]
+
+    M["main"] --> D
+    R["fix-error"] --> F
+
+    A --> B --> C --> D
+    C --> E --> F
+```
+
+`main` ha avançat mentre nosaltres treballàvem a `fix-error`.
+
+**Com podem actualitzar `fix-error` amb els canvis de `main`?**
+
+## Rebase de branques
+
+**Objectiu:** Passar de:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["D'"]
+    F["E'"]
+
+    M["main"] --> D
+    R["fix-error"] --> F
+
+    A --> B --> C --> D
+    C --> E --> F
+```
+
+a:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["D'"]
+    F["E'"]
+
+    M["main"] --> D
+    R["fix-error"] --> F
+
+    A --> B --> C --> D --> E --> F
+```
+
+. . .
+
+**"Apliquem" els commits de `fix-error` sobre els commits de `main`.**
+
+## Rebase de branques
+
+`git rebase main`
+
+Git agafa els commits de `fix-error` que no formen part de `main` i els torna a aplicar, un a un, sobre l'últim commit de `main`.
+
+## **Rebase: els commits canvien**
+
+Els commits de `fix-error` s'han **recreat** a partir de `main`.
+
+Per tant, **no són els mateixos commits** (tenen un ID diferent):
+
+Abans:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["D'"]
+    F["E'"]
+
+    M["main"] --> D
+    R["fix-error"] --> F
+    O["other"] --> E
+
+    A --> B --> C --> D
+    C --> E --> F
+```
+
+Després:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+    E["D'"]
+    F["E'"]
+    G["D''"]
+    H["E''"]
+
+    M["main"] --> D
+    R["fix-error"] --> H
+    O["other"] --> E
+
+    A --> B --> C --> D --> G --> H
+    C --> E --> F
+```
+
+## Merge o rebase?
+
+Podem incorporar els canvis de `main` a `fix-error` de dues maneres.
+
+**Merge:**
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    D["D"]
+
+    A --> B --> D
+    A --> C --> D
+```
+
+**Rebase:**
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    C2["C'"]
+
+    A --> B --> C2
+    A --> C
+```
+
+El **merge** conserva la història tal com ha succeït.
+
+El **rebase** recrea els commits de la branca sobre una nova base i produeix una història lineal.
+
+# Hands-On: Branques
+
+[📄 Laboratori 4.1: Navegant la història](../laboratori/lab-git-3.html#prepare)
+
+# Conflictes i com resoldre'ls
+
+Fins ara, Git ha pogut unificar les nostres branques automàticament.
+
+Git és capaç de gestionar canvis que no interfereixen entre ells (p.e., una branca edita el fitxer A i l'altra el fitxer B).
+
+També és capaç de gestionar múltiples canvis en un mateix fitxer, sempre que no sigui al mateix lloc (p.e. una branca edita el principi del fitxer A i l'altra el final).
+
+**Però què passa si les dues branques han modificat la mateixa part d'un fitxer?**
+
+## Conflictes
+
+Imaginem que tenim el fitxer `README.md`:
+
+``` text
+Hola!
+```
+
+Creem una branca `b1` i modifiquem el fitxer (amb el seu commit corresponent):
+
+``` text
+Hola des de b1!
+```
+
+Tornem a `main` i també modifiquem el fitxer:
+
+``` text
+Hola des de main!
+```
+
+El graf de commits ara és:
+
+```{mermaid}
+flowchart LR
+    A["A"]
+    B["B"]
+    C["C"]
+    M["main"] --> C
+    b1["b1"] --> B
+
+    A --> B
+    A --> C
+```
+
+I ara procedim a unificar-ho fent un merge des de `b1` cap a `main`.
+
+## Conflictes
+
+Quan fem el merge:
+
+```         
+git switch main
+git merge b1
+```
+
+. . .
+
+Git detecta que hi ha un conflicte!
+
+**Les dues històries han modificat la mateixa part del fitxer**.
+
+```         
+CONFLICT (content): Merge conflict in README.md
+[...]
+```
+
+. . .
+
+Git no fa assumpcions sobre el contingut del fitxer, i per tant **no** pren la decisió per nosaltres.
+
+```         
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+## Conflictes
+
+Si executem `git status` veurem que Git ens indica que hi ha fitxers amb conflictes pendents de resoldre:
+
+```         
+$ git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+    both modified:      README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+## Conflictes
+
+Git modifica el fitxer per indicar-nos on és el conflicte.
+
+Per exemple, `README.md` ara conté:
+
+```         
+<<<<<<< HEAD
+Hola des de main!
+=======
+Hola des de b1!
+>>>>>>> b1
+```
+
+Les marques indiquen:
+
+```         
+<<<<<<< HEAD
+canvis de la branca actual (en el exemple: main)
+=======
+canvis de l'altra branca (en el nostre exemple: b1)
+>>>>>>> b1
+```
+
+## Resolent el conflicte
+
+Per resoldre el conflicte hem de decidir quin contingut volem.
+
+Podem decidir conservar una versió o l'altra, o una combinació de les dues.
+
+**Editem el fitxer eliminant les marques `<<<<<<< HEAD`, `=======`, i `>>>>>>> b1` i deixant el contingut desitjat.**
+
+Per exemple, editem `README.md` per a que contingui:
+
+```         
+Hola des de main i b1!
+```
+
+## Resolent el conflicte
+
+Un cop hem resolt tots els conflictes del fitxer (no hi ha les marques), podem indicar a Git que aquest fitxer està llest.
+
+Per fer-ho, executem `git add <file>`. En el nostre cas, fariem `git add README.md`.
+
+**ALERTA** Git no comprova que, efectivament, haguem resolt el conflicte. Confia en el nostre criteri! Abans de fer `git add`, ens hem d'assegurar que el fitxer és correcte.
+
+## Acabant el merge
+
+Un cop hem resolt tots els conflictes de tots els fitxers, podem continuar amb el nostre merge:
+
+```         
+$ git status
+On branch main
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+
+    modified:   README.md
+```
+
+Seguint les instruccions que ens dona Git, fem `git commit` per acabar el merge correctament.
+
+::: aside
+Si alguna cosa no ens quadra, sempre podem abortar el merge fent servir `git merge --abort`
+:::
+
+# Gestió de branques
+
+## Visualitzant branques del repositori
+
+A mesura que un projecte evoluciona, tindrem branques que ja no fem servir (p.e. perquè ja hem fet el *merge*).
+
+Git ens proporciona eines per visualitzar branques:
+
+- `git branch`: mostra la llista de totes les branques (**l'asterisc mostra la branca actual**)
+- `git branch -v`: mostra totes les branques i el seu últim commit (amb el missatge)
+- `git branch --merged`: mostra les branques que s'ha fet merge cap a la branca actual (també hi ha `--no-merged`)
+
+## Eliminant branques
+
+`git branch -d <branca>`: elimina la branca `<branca>`del repositori
+
+**Nota sobre eliminar branques**: Si intentem eliminar una branca sense que s'hagi fet un merge previ cap a la branca actual, Git ens donarà un error. Si estem segurs d'eliminar la branca, potencialment perdent la feina feta, podem fer servir `git branch -D <branca>`.
+
+## Renombrant branques
+
+`git branch --move <nom vell> <nom nou>`: canvia el nom de la branca.
+
+**Nota:** a continuació veurem que Git ens permet col·laborar amb altres persones. No renombreu branques que s'estiguin fent servir per altres persones.
+
+**Nota 2:** tampoc és recomanable renombrar la branca principal (main/master) sense haver llegit: <https://git-scm.com/book/en/v2/Git-Branching-Branch-Management#_changing_master>
+
+# GIT és un sistema distribuït
+
+<!-- TODO Repositori remot -->
+
+# Interaccionant amb repositoris remots
+
+<!-- TODO clone, fetch, push, pull -->
+
+# Recap
+
+<!-- TODO -->
+
+# Material addicional
+
+- Llibre de Git: <https://git-scm.com/book/en/v2>
+- The Missing Semester: <https://missing.csail.mit.edu/2020/version-control/>
+- Joc interactiu: LearnGitBranching <https://learngitbranching.js.org/>
