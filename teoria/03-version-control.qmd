@@ -368,7 +368,7 @@ La comanda `git commit` ens permet crear una nova versió (anomenada **commit**)
 # Hands-On: Comandes bàsiques de Git
 
 ::: {.fragment style="text-align: center;"}
-[📄 Laboratori 3.1: Comandes bàsiques de Git](../laboratori/lab-git-1.html#prepare)
+[📄 Laboratori 3: Comandes bàsiques de Git](../laboratori/lab-git-1.html#prepare)
 :::
 
 # Visualitzant la història

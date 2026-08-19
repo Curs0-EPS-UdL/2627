@@ -20,8 +20,8 @@ website:
             text: Instal·lació de Debian 12
           - href: laboratori/lab03.qmd
             text: Configurant el meu entorn de desenvolupament amb VSCode
-          - href: laboratori/lab04.qmd
-            text: Introducció a Git
+          - href: laboratori/lab-git-1.qmd
+            text: Comandes bàsiques de Git
           - href: laboratori/lab05.qmd
             text: Calculadora col·laborativa
           - href: laboratori/lab06.qmd
@@ -32,5 +32,3 @@ format:
     theme:
       - cosmo
     toc: true
-
-
