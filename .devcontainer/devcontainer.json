@@ -1,0 +1,19 @@
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:resolute",
+
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"quarto.quarto"
+			]
+		}
+	}
+}
