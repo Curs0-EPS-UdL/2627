@@ -490,7 +490,7 @@ git checkout main o master per tornar on estavem.
 # Hands-On: Navegant la història
 
 ::: {.fragment style="text-align: center;"}
-[📄 Laboratori 3.2: Navegant la història](../laboratori/lab-git-2.html#prepare)
+[📄 Laboratori 4: Navegant la història](../laboratori/lab-git-2.html#prepare)
 :::
 
 # Recap
