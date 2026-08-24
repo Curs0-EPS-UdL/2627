@@ -624,7 +624,7 @@ El **rebase** recrea els commits de la branca sobre una nova base i produeix una
 
 # Hands-On: Branques
 
-[📄 Laboratori 4.1: Navegant la història](../laboratori/lab-git-3.html#prepare)
+[📄 Laboratori 5: Branques](../laboratori/lab-git-3.html#prepare)
 
 # Conflictes i com resoldre'ls
 
@@ -811,6 +811,10 @@ Git ens proporciona eines per visualitzar branques:
 **Nota:** a continuació veurem que Git ens permet col·laborar amb altres persones. No renombreu branques que s'estiguin fent servir per altres persones.
 
 **Nota 2:** tampoc és recomanable renombrar la branca principal (main/master) sense haver llegit: <https://git-scm.com/book/en/v2/Git-Branching-Branch-Management#_changing_master>
+
+# Hands-On: Branques (part 2)
+
+[📄 Laboratori 5: Branques](../laboratori/lab-git-3.html#prepare)
 
 # GIT és un sistema distribuït
 
