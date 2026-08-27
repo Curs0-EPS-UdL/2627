@@ -2,7 +2,7 @@
 title: Control de Versions *Git*
 subtitle: "Sessió 4 - Curs zero d'Informàtica"
 author: 
-    - name: Josep Alòs
+  - name: Josep Alòs
 logo: "/figures/corporative/institute.png"
 format: 
   revealjs:
@@ -14,7 +14,7 @@ format:
 editor: visual
 
 mermaid:
-    theme: forest
+  theme: forest
 
 execute:
   freeze: auto
@@ -42,15 +42,23 @@ f42c812 Crea projecte
 
 `HEAD` és una referència al commit que estem consultant actualment
 
-```{mermaid}
-flowchart LR
-    A["f42c812<br/>Crea projecte"]
-    B["8b7291a<br/>Afegeix dades"]
-    C["a31f42c<br/>Afegeix README"]
+``` tikz
+%%| filename: commits
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30}
+]
+    \node[commit] (A) {f42c812\\Crea projecte};
+    \node[commit, right = of A] (B) {8b7291a\\Afegeix dades};
+    \node[commit, right = of B] (C) {a31f42c\\Afegeix README};
+    \node[head, below = of C] (H) {HEAD};
 
-    A --> B --> C
-
-    H["HEAD"] --> C
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (H.north) -- (C.south);
+\end{tikzpicture}
 ```
 
 ## Tags
@@ -63,16 +71,26 @@ Per exemple:
 git tag v1.0
 ```
 
-```{mermaid}
-flowchart LR
-    A["f42c812"]
-    B["8b7291a"]
-    C["a31f42c"]
+``` tikz
+%%| filename: tags
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small}
+]
+    \node[commit] (A) {f42c812};
+    \node[commit, right = of A] (B) {8b7291a};
+    \node[commit, right = of B] (C) {a31f42c};
+    \node[head, below = of C] (H) {HEAD};
+    \node[tag]    (T) [above=of B] {v1.0};
 
-    A --> B --> C
-
-    T["v1.0"] --> B
-    H["HEAD"] --> C
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (H.north) -- (C.south);
+    \draw[->] (T.south) -- (B.north);
+\end{tikzpicture}
 ```
 
 **Rarament modificarem a quin commit fa referència un tag.**
@@ -104,21 +122,30 @@ Imaginem que estem treballant en una nova versió del projecte i algú troba un 
 
 Git ens permet crear diferents camins dins de la història del projecte.
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
+``` tikz
+%%| filename: branches-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [above right=of C] {D\\nova funcionalitat};
+    \node[commit] (E) [right=of D] {E\\nova funcionalitat};
+    \node[commit] (F) [below right=of C] {F\\correcció};
+    \node[commit] (G) [right=of F] {G\\correcció};
 
-    D["D<br/>correcció"]
-    E["E<br/>correcció"]
-
-    F["D'<br/>nova funcionalitat"]
-    G["E'<br/>nova funcionalitat"]
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+\end{tikzpicture}
 ```
 
 Les dues branques comparteixen la història fins al punt on se separen.
@@ -134,6 +161,38 @@ Una **branca** és un nom que utilitzem per seguir una línia de la història de
 Per defecte, Git crea una branca anomenada `master` o `main`[^2].
 
 [^2]: No és especial, simplement es crea automàticament.
+
+``` tikz
+%%| filename: branches-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [above right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right=of C] {F};
+    \node[commit] (G) [right=of F] {G};
+
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
+```
 
 ## Branques
 
@@ -165,24 +224,36 @@ Una branca no és una còpia sencera del projecte.
 
 És una manera de continuar la història del projecte per un camí diferent.
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
+``` tikz
+%%| filename: branches-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [above right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right=of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    D["D"]
-    E["E"]
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
 
-    F["D'"]
-    G["E'"]
-
-    M["main"] --> C
-    R["fix-error"] --> G
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 Les dues branques tenen en comú els commits anteriors a la separació.
@@ -193,22 +264,39 @@ Els commits posteriors poden ser diferents.
 
 Podem veure aquests conceptes com diferents maneres de referir-nos a la història
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
+``` tikz
+%%| filename: commits-tags-branches
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [above right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right=of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> E
-    R["fix-error"] --> G
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \node[tag] (v1) [above = of C] {v1.0};
 
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (v1) -- (C);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 - Commit: un punt concret en la història.
@@ -233,22 +321,36 @@ Git no només ens permet divergir la nostra història sinó també convergir-la.
 
 ## Merge de branques
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
+``` tikz
+%%| filename: merge-before
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> E
-    R["fix-error"] --> G
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 En aquest punt, tenim l'error arreglat i volem unificar `main` amb `fix-error`.
@@ -262,22 +364,36 @@ Podem fer dues coses:
 
 ## Merge de branques
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
+``` tikz
+%%| filename: merge-before-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> E
-    R["fix-error"] --> G
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 Portarem els canvis de `fix-error` cap a `main`:
@@ -296,106 +412,164 @@ El primer pas el fem amb `git switch main`, i els passos 2 i 3 els fem amb `git 
 
 `git switch main` ens situa a:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
+``` tikz
+%%| filename: merging-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> E
-    R["fix-error"] --> G
-    HD["HEAD"] --> M
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    \node[head] (head) [above of=main] {HEAD};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+    \draw[->] (head) -- (main);
+\end{tikzpicture}
 ```
 
 ## Merge de branques
 
 `git merge fix-error` ens situa a:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
-    H["F"]
+``` tikz
+%%| filename: merging-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
+    \node[commit] (H) [right=of E] {H};
 
-    M["main"] --> H
-    R["fix-error"] --> G
-    HD["HEAD"] --> M
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
-    G --> H
-    E --> H
+    \node[branch] (main) [above=of H] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    \node[head] (head) [above of=main] {HEAD};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (E.east) -- (H.west);
+    \draw[->] (G.east) -- (H.west);
+    \draw[->] (main) -- (H);
+    \draw[->] (fix-error) -- (G);
+    \draw[->] (head) -- (main);
+\end{tikzpicture}
 ```
 
 ::: aside
-`F` és el commit de merge.
+`H` és el commit de merge.
 :::
 
 ## Merge de branques
 
 **Quiz** Si fem `git log main`, quins commits veurem? I `git log fix-error`?
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
-    H["F"]
+``` tikz
+%%| filename: merged
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
+    \node[commit] (H) [right=of E] {H};
 
-    M["main"] --> H
-    R["fix-error"] --> G
-    HD["HEAD"] --> M
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
-    G --> H
-    E --> H
+    \node[branch] (main) [above=of H] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (E.east) -- (H.west);
+    \draw[->] (G.east) -- (H.west);
+    \draw[->] (main) -- (H);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 ## Merge de branques: fast-forward
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
-    H["F"]
+``` tikz
+%%| filename: ff-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
+    \node[commit] (H) [right=of E] {H};
 
-    M["main"] --> H
-    R["fix-error"] --> G
-    HD["HEAD"] --> M
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
-    G --> H
-    E --> H
+    \node[branch] (main) [above=of H] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    \node[head] (head) [above of=main] {HEAD};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (E.east) -- (H.west);
+    \draw[->] (G.east) -- (H.west);
+    \draw[->] (main) -- (H);
+    \draw[->] (fix-error) -- (G);
+    \draw[->] (head) -- (main);
+\end{tikzpicture}
 ```
 
-Imaginem que volem actualitzar `fix-error` per incorporar la història a `main`.
+Imaginem que volem actualitzar `fix-error` per incorporar la història de `main`.
 
 **Que passa si fem un merge en aquesta direcció?**
 
@@ -406,26 +580,41 @@ git merge main
 
 ## Merge de branques: fast-forward
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
-    H["F"]
+``` tikz
+%%| filename: ff-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
+    \node[commit] (H) [right=of E] {H};
 
-    M["main"] --> H
-    R["fix-error"] --> G
-    HD["HEAD"] --> M
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
-    G --> H
-    E --> H
+    \node[branch] (main) [above=of H] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    \node[head] (head) [above of=main] {HEAD};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (E.east) -- (H.west);
+    \draw[->] (G.east) -- (H.west);
+    \draw[->] (main) -- (H);
+    \draw[->] (fix-error) -- (G);
+    \draw[->] (head) -- (main);
+\end{tikzpicture}
 ```
 
 ```         
@@ -441,26 +630,41 @@ La branca `fix-error` no té cap commit que no tingui `main`. En aquest cas, die
 
 Git ens permet **avançar** la branca `fix-error` fins on fa referència `main`. D'això se'n diu **fast-forward merge**.
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["E"]
-    F["D'"]
-    G["E'"]
-    H["F"]
+``` tikz
+%%| filename: ff-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
+    \node[commit] (H) [right=of E] {H};
 
-    M["main"] --> H
-    R["fix-error"] --> H
-    HD["HEAD"] --> R
-
-    A --> B --> C
-    C --> D --> E
-    C --> F --> G
-    G --> H
-    E --> H
+    \node[branch] (main) [above=of H] {main};
+    \node[branch] (fix-error) [below=of H] {fix-error};
+    \node[head] (head) [below of=fix-error] {HEAD};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (E.east) -- (H.west);
+    \draw[->] (G.east) -- (H.west);
+    \draw[->] (main) -- (H);
+    \draw[->] (fix-error) -- (H);
+    \draw[->] (head) -- (fix-error);
+\end{tikzpicture}
 ```
 
 ## Rebase de branques
@@ -475,20 +679,36 @@ Però hi ha una altra manera d'incorporar els canvis d'una branca:
 
 Tornem a una situació en què tenim dues branques:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["D'"]
-    F["E'"]
+``` tikz
+%%| filename: rebase-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> D
-    R["fix-error"] --> F
-
-    A --> B --> C --> D
-    C --> E --> F
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 `main` ha avançat mentre nosaltres treballàvem a `fix-error`.
@@ -499,37 +719,70 @@ flowchart LR
 
 **Objectiu:** Passar de:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["D'"]
-    F["E'"]
+``` tikz
+%%| filename: rebase-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> D
-    R["fix-error"] --> F
-
-    A --> B --> C --> D
-    C --> E --> F
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 a:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["D'"]
-    F["E'"]
+``` tikz
+%%| filename: rebase-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [right = of E] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> D
-    R["fix-error"] --> F
-
-    A --> B --> C --> D --> E --> F
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (E.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 . . .
@@ -550,42 +803,74 @@ Per tant, **no són els mateixos commits** (tenen un ID diferent):
 
 Abans:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["D'"]
-    F["E'"]
+``` tikz
+%%| filename: rebase-4
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right = of C] {F};
+    \node[commit] (G) [right=of F] {G};
 
-    M["main"] --> D
-    R["fix-error"] --> F
-    O["other"] --> E
-
-    A --> B --> C --> D
-    C --> E --> F
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
 ```
 
 Després:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
-    E["D'"]
-    F["E'"]
-    G["D''"]
-    H["E''"]
+``` tikz
+%%| filename: rebase-5
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F2) [right = of E] {F'};
+    \node[commit] (G2) [right=of F2] {G'};
+    \node[commit, nearly transparent] (F) [below right = of C] {F};
+    \node[commit, nearly transparent] (G) [right=of F] {G};
 
-    M["main"] --> D
-    R["fix-error"] --> H
-    O["other"] --> E
-
-    A --> B --> C --> D --> G --> H
-    C --> E --> F
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G2] {fix-error};
+    
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (E.east) -- (F2.west);
+    \draw[->] (F2.east) -- (G2.west);
+    \draw[->, nearly transparent] (C.east) -- (F.west);
+    \draw[->, nearly transparent] (F.east) -- (G.west);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G2);
+\end{tikzpicture}
 ```
 
 ## Merge o rebase?
@@ -594,28 +879,49 @@ Podem incorporar els canvis de `main` a `fix-error` de dues maneres.
 
 **Merge:**
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    D["D"]
+``` tikz
+%%| filename: merge-vs-rebase-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, above right = of A] (B) {B};
+    \node[commit, below right = of A] (C) {C};
+    \node[commit, below right = of B] (D) {D};
 
-    A --> B --> D
-    A --> C --> D
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (A.east) -- (C.west);
+    \draw[->] (B.east) -- (D.west);
+    \draw[->] (C.east) -- (D.west);
+\end{tikzpicture}
 ```
 
 **Rebase:**
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    C2["C'"]
+``` tikz
+%%| filename: merge-vs-rebase-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, above right = of A] (B) {B};
+    \node[commit, below right = of A, nearly transparent] (C) {C};
+    \node[commit, right = of B] (C2) {C'};
 
-    A --> B --> C2
-    A --> C
+    \draw[->] (A.east) -- (B.west);
+    \draw[->, nearly transparent] (A.east) -- (C.west);
+    \draw[->] (B.east) -- (C2.west);
+\end{tikzpicture}
 ```
 
 El **merge** conserva la història tal com ha succeït.
@@ -658,16 +964,27 @@ Hola des de main!
 
 El graf de commits ara és:
 
-```{mermaid}
-flowchart LR
-    A["A"]
-    B["B"]
-    C["C"]
-    M["main"] --> C
-    b1["b1"] --> B
+``` tikz
+%%| filename: conflicts-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right = of A] (B) {B};
+    \node[commit, below right = of A] (C) {C};
+    \node[branch, above = of B] (main) {main};
+    \node[branch, below = of C] (b1) {b1};
 
-    A --> B
-    A --> C
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (A.east) -- (C.west);
+    \draw[->] (main.south) -- (B.north);
+    \draw[->] (b1.north) -- (C.south);
+\end{tikzpicture}
 ```
 
 I ara procedim a unificar-ho fent un merge des de `b1` cap a `main`.
