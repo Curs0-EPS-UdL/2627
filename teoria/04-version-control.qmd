@@ -1042,7 +1042,7 @@ Git modifica el fitxer per indicar-nos on és el conflicte.
 
 Per exemple, `README.md` ara conté:
 
-```         
+```text
 <<<<<<< HEAD
 Hola des de main!
 =======
@@ -1070,7 +1070,7 @@ Podem decidir conservar una versió o l'altra, o una combinació de les dues.
 
 Per exemple, editem `README.md` per a que contingui:
 
-```         
+```text
 Hola des de main i b1!
 ```
 
@@ -1102,6 +1102,27 @@ Seguint les instruccions que ens dona Git, fem `git commit` per acabar el merge 
 ::: aside
 Si alguna cosa no ens quadra, sempre podem abortar el merge fent servir `git merge --abort`
 :::
+
+## **Conflictes durant un rebase**
+
+Els conflictes també poden aparèixer quan fem un `rebase`.
+
+```bash
+git rebase main
+```
+
+Si Git no pot aplicar automàticament un dels commits, el rebase s'atura i ens demana que resolguem el conflicte.
+
+El procés és:
+
+- `git rebase`
+- resolem el conflicte
+- `git add <file>`
+- `git rebase --continue`
+
+. . .
+
+Sempre podem cancel·lar el rebase fent `git rebase --abort`
 
 # Gestió de branques
 
@@ -1135,15 +1156,650 @@ Git ens proporciona eines per visualitzar branques:
 
 # GIT és un sistema distribuït
 
-<!-- TODO Repositori remot -->
+Git és un sistema de control de versions distribuït.
+
+Això significa que cada repositori conté una còpia completa de la història del projecte.
+
+No necessitem estar connectats a Internet per consultar la història, crear commits, crear branques, comparar versions, etc.
+
+. . .
+
+**Però si diverses persones treballen en un mateix projecte, com podem compartir els canvis?**
+
+## Repositori locals i remots
+
+Git no estableix cap repositori com a "central", sinó que els canvis es poden intercanviar entre ells.
+
+```{mermaid}
+flowchart LR
+    A["Repositori d'Alice"]
+    B["Repositori de Bob"]
+    C["Nostre repositori"]
+
+    A <--> B
+    A <--> C
+    B <--> C
+```
+
+El nostre repositori s'anomena **local**, i els que es troben en altres sistemes **remots**.
+
+. . .
+
+Durant la vida del projecte, anirem sincronitzant la història del **repositori local** amb la història dels **repositoris remots**.
+
+## Repositoris locals i remots
+
+Alternativament, podem tenir un repositori que utilitzem com a punt de trobada entre diferents persones.
+
+```{mermaid}
+flowchart LR
+    A["Repositori local<br/>Alice"]
+    B["Repositori remot"]
+    C["Repositori local<br/>Bob"]
+
+    A <--> B
+    B <--> C
+```
+
+Aquest repositori remot és un repositori Git normal, **que li donem un ús especial**.
+
+::: aside
+Podriem arribar a tenir múltiples repositoris remots, per exemple GitHub i GitLab a la vegada.
+:::
+
+## Repositoris remots
+
+Per fer referència a un repositori remot, Git ens permet associar-hi noms.
+
+Per convenció, el repositori remot *"principal"* (p.e. GitHub, GitLab...) s'anomena `origin`.
+
+. . .
+
+Donat el nom, podem referir-nos a les branques del repositori remot.
+
+## **`main` i `origin/main`**
+
+Suposem que tenim un repositori local amb una branca `main` i un repositori remot anomenat `origin`.
+
+::::: columns
+::: column
+Repositori local:
+
+```tikz
+%%| filename: remotes-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[branch] (main) [above=of C] {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main.south) -- (C.north);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Repositori remot:
+
+```tikz
+%%| filename: remotes-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[commit, right = of C] (D) {D};
+    \node[branch] (main) [above=of D] {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (main.south) -- (D.north);
+\end{tikzpicture}
+```
+:::
+:::::
+
+. . .
+
+Un cop hem sincronitzat el repositori remot amb el local, des del repositori local veiem això:
+
+```tikz
+%%| filename: remotes-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[commit, right = of C] (D) {D};
+    \node[branch] (main) [above=of C] {main};
+    \node[branch] (omain) [above=of D] {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (main.south) -- (C.north);
+    \draw[->] (omain.south) -- (D.north);
+\end{tikzpicture}
+```
+
+Tenim dues branques:
+
+- `main`: fa referència a la branca local
+- `origin/main`: fa referència a l'estat conegut de la branca `main` al repositori remot `origin`
+
+## `main` i `origin/main`
+
+```tikz
+%%| filename: remotes-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1.5cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[commit, right = of C] (D) {D};
+    \node[branch] (main) [above=of C] {main};
+    \node[branch] (omain) [above=of D] {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (main.south) -- (C.north);
+    \draw[->] (omain.south) -- (D.north);
+\end{tikzpicture}
+```
+
+Podem fer `merge`, `rebase`, `reset`... fent servir la branca remota per incorporar els seus canvis al nostre repositori local.
+
+. . .
+
+**Però consultar o utilitzar `origin/main` no implica una connexió amb el servidor remot.**
+
+`origin/main` és una referència que tenim dins del nostre repositori local. Per sincronitzar el nostre repositori amb el repositori remot necessitarem comandes noves.
 
 # Interaccionant amb repositoris remots
 
-<!-- TODO clone, fetch, push, pull -->
+Les operacions bàsiques són:
 
-# Recap
+- `git clone` Crea un repositori local a partir d'un repositori remot
+- `git fetch` Descarrega informació i commits nous del remot
+- `git push` Publica els nostres commits al remot
+- `git pull` Descarrega els canvis del remot i els integra
 
-<!-- TODO -->
+## `git clone`
+
+Per començar a treballar amb un projecte que ja existeix en un repositori remot:
+
+`git clone <url>`
+
+Per exemple:
+
+`git clone https://example.com/projecte.git`
+
+Git crea un nou directori amb:
+
+- els fitxers del projecte
+- tota la història del repositori
+- la configuració necessària per interactuar amb el repositori remot
+
+::: aside
+El directori creat té el nom del projecte. Podem canviar-lo fent servir `git clone <url> <directori>`.
+:::
+
+## `git push` {.smaller}
+
+Imaginem que hem fet nous commits al nostre repositori local:
+
+::::: columns
+::: column
+Local:
+
+```tikz
+%%| filename: push-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+    \node[branch, below = of B] (omain) {origin/main};
+
+    \draw[->] (A) -- (B);
+    \draw[->] (B) -- (C);
+    \draw[->] (main) -- (C);
+    \draw[->] (omain) -- (B);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Remot:
+
+```tikz
+%%| filename: push-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[branch, below = of B] (main) {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (main) -- (B);
+\end{tikzpicture}
+```
+:::
+:::::
+
+Podem publicar els nostres commits al repositori remot amb `git push`:
+
+::::: columns
+::: column
+Local:
+
+```tikz
+%%| filename: push-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+    \node[branch, above = of C] (omain) {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main) -- (C);
+    \draw[->] (omain) -- (C);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Remot:
+
+```tikz
+%%| filename: push-4
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main.north) -- (C.south);
+\end{tikzpicture}
+```
+:::
+:::::
+
+push **envia els nostres commits al repositori remot**.
+
+## `git fetch` {.smaller}
+
+Ara imaginem la situació contrària: algú ha publicat nous commits al repositori remot:
+
+::::: columns
+::: column
+Local:
+
+```tikz
+%%| filename: fetch-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[branch, below = of B] (main) {main};
+    \node[branch, above = of B] (omain) {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (main) -- (B);
+    \draw[->] (omain) -- (B);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Remot:
+
+```tikz
+%%| filename: fetch-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main.north) -- (C.south);
+\end{tikzpicture}
+```
+:::
+:::::
+
+Podem descarregar aquests nous commits amb `git fetch`:
+
+::::: columns
+::: column
+Local:
+
+```tikz
+%%| filename: fetch-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of B] (main) {main};
+    \node[branch, below = of C] (omain) {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main) -- (B);
+    \draw[->] (omain) -- (C);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Remot:
+
+```tikz
+%%| filename: fetch-4
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main.north) -- (C.south);
+\end{tikzpicture}
+```
+:::
+:::::
+
+fetch **descarrega els canvis, però no modifica la nostra branca actual**.
+
+## `git pull`
+
+Hem vist que `git fetch` descarrega els nous commits del repositori remot, però no modifica la nostra branca actual.
+
+Si volem descarregar els canvis i integrar-los directament a la nostra branca actual, podem fer servir `git pull`
+
+. . .
+
+`git pull` combina dues operacions:
+
+1.  `git fetch`
+2.  `git merge`
+
+Per exemple, si estem a `main`, `git pull` seria equivalent conceptualment a: 1. `git fetch` 2. `git merge origin/main`
+
+## `git pull`
+
+::::: columns
+::: column
+Local:
+
+```tikz
+%%| filename: pull-1
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[branch, below = of B] (main) {main};
+    \node[branch, above = of B] (omain) {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (main) -- (B);
+    \draw[->] (omain) -- (B);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Remot:
+
+```tikz
+%%| filename: pull-2
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main.north) -- (C.south);
+\end{tikzpicture}
+```
+:::
+:::::
+
+`git pull`
+
+::::: columns
+::: column
+Local:
+
+```tikz
+%%| filename: pull-3
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+    \node[branch, above = of C] (omain) {origin/main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main) -- (C);
+    \draw[->] (omain) -- (C);
+\end{tikzpicture}
+```
+:::
+
+::: column
+Remot:
+
+```tikz
+%%| filename: pull-4
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm and 1.5cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit, right=of A] (B) {B};
+    \node[commit, right=of B] (C) {C};
+    \node[branch, below = of C] (main) {main};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (main.north) -- (C.south);
+\end{tikzpicture}
+```
+:::
+:::::
+
+## Conflictes amb remots {.smaller}
+
+Degut a que la història del repositori remot pot divergir de la nostra, podem trobar-nos amb aquestes situacions:
+
+- Quan fem `push`, el repositori remot ens pot rebutjar l'operació perquè la branca remota té commits que nosaltres no tenim.
+- Quan fem `pull`, els canvis remots i locals poden haver divergit. En aquest cas, la integració pot requerir un `merge` o un `rebase` i, si hi ha conflictes, Git aturarà l'operació perquè els solucionem.
+
+. . .
+
+Per evitar sorpreses, és recomanable actualitzar sovint la informació del nostre repositori sobre els remots amb `git fetch` i integrar els canvis remots regularment.
+
+# Recap {.smaller}
+
+Hem après a treballar amb diferents línies de la història d'un projecte:
+
+```tikz
+%%| filename: commits-tags-branches
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    node distance=1cm,
+    commit/.style={draw, rectangle, rounded corners, align=center, fill=green!30},
+    head/.style={draw, rectangle, rounded corners, align=center, fill=red!30},
+    tag/.style={draw, rectangle, rounded corners, align=center, fill=gray!30, font=\small},
+    branch/.style={draw, rectangle, rounded corners, align=center, fill=orange!30}
+]
+    \node[commit] (A) {A};
+    \node[commit] (B) [right=of A] {B};
+    \node[commit] (C) [right=of B] {C};
+    \node[commit] (D) [right=of C] {D};
+    \node[commit] (E) [right=of D] {E};
+    \node[commit] (F) [below right=of C] {F};
+    \node[commit] (G) [right=of F] {G};
+
+    \node[branch] (main) [above=of E] {main};
+    \node[branch] (fix-error) [below=of G] {fix-error};
+    
+    \node[tag] (v1) [above = of C] {v1.0};
+
+    \draw[->] (A.east) -- (B.west);
+    \draw[->] (B.east) -- (C.west);
+    \draw[->] (C.east) -- (D.west);
+    \draw[->] (D.east) -- (E.west);
+    \draw[->] (C.east) -- (F.west);
+    \draw[->] (F.east) -- (G.west);
+    \draw[->] (v1) -- (C);
+    \draw[->] (main) -- (E);
+    \draw[->] (fix-error) -- (G);
+\end{tikzpicture}
+```
+
+Una **branca** ens permet desenvolupar diferents camins a partir d'una mateixa història.
+
+Podem tornar a unificar aquests camins amb **merge** o reorganitzar-los amb **rebase**, tot i que a vegades hem de **resoldre els conflictes**.
+
+. . .
+
+Els commits poden tenir noms fàcils de recordar mitjançant **tags**, i les **branques** són referències que avancen a mesura que fem nous commits.
+
+## Recap {.smaller}
+
+Git és distribuït: cada repositori té la seva pròpia còpia de la història.
+
+```{mermaid}
+flowchart LR
+    A["Repositori local"] <--> B["Repositori remot"]
+```
+
+Podem sincronitzar els repositoris amb:
+
+- git fetch
+- git pull
+- git push
+
+I quan les històries divergeixen, Git ens pot demanar que integrem els canvis o que resolguem conflictes.
 
 # Material addicional
 
