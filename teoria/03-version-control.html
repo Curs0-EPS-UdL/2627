@@ -9,9 +9,8 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <meta name="author" content="Jordi Mateo Fornés">
-  <meta name="author" content="Jordi Vilaplana Mayoral">
-  <title>Curs zero d’Informàtica – Control de Versions Git · GitHub</title>
+  <meta name="author" content="Josep Alòs">
+  <title>Curs zero d’Informàtica – Control de Versions Git</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,6 +34,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -134,122 +199,436 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Control de Versions <em>Git · GitHub</em></h1>
-  <p class="subtitle">Sessió 3 · Curs zero d’Informàtica</p>
+  <h1 class="title">Control de Versions <em>Git</em></h1>
+  <p class="subtitle">Sessió 3 - Curs zero d’Informàtica</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Jordi Mateo Fornés
-</div>
-</div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Jordi Vilaplana Mayoral
+Josep Alòs
 </div>
 </div>
 </div>
 
 </section>
-<section id="el-problema-de-les-versions" class="slide level2">
-<h2>El problema de les versions 💾</h2>
-<p><strong>Quantes vegades us ha passat que heu perdut un document o heu treballat sobre una versió antiga?</strong></p>
+<section>
+<section id="perquè-necessitem-control-de-versions" class="title-slide slide level1 center">
+<h1>Perquè necessitem control de versions?</h1>
+
+</section>
+<section id="història-dun-fitxer" class="slide level2">
+<h2>Història d’un fitxer</h2>
+<p>Habitualment gestionem múltiples versions d’un document de forma manual.</p>
+<ul>
+<li class="fragment"><code>projecte.docx</code></li>
+<li class="fragment"><code>projecte_v1.docx</code></li>
+<li class="fragment"><code>projecte_abans_revisió.docx</code></li>
+<li class="fragment"><code>projecte_final_definitiu_ara_si.docx</code></li>
+<li class="fragment"><code>...</code></li>
+</ul>
+</section>
+<section id="història-dun-fitxer-una-mica-millor" class="slide level2">
+<h2>Història d’un fitxer (una mica millor)</h2>
+<p>Habitualment gestionem múltiples versions d’un document de forma manual.</p>
+<ul>
+<li class="fragment"><code>20260727_projecte.docx</code></li>
+<li class="fragment"><code>20260728_projecte.docx</code></li>
+<li class="fragment"><code>20260810_projecte.docx</code></li>
+<li class="fragment"><code>20260915_projecte.docx</code></li>
+<li class="fragment"><code>...</code></li>
+</ul>
+</section>
+<section id="perquè-necessitem-control-de-versions-1" class="slide level2">
+<h2>Perquè necessitem control de versions?</h2>
+<p>Imaginem aquesta situació:</p>
+<p>Hem estat treballant en un projecte durant dues hores.</p>
+<p>Després d’aquestes dues hores, el nostre projecte no funciona, i volem recuperar com estava abans dels canvis.</p>
+<p><strong>Quin dels fitxers que teniem és el correcte a recuperar?</strong></p>
 <div class="fragment">
-<ul>
-<li class="fragment"><code>projecte_final.docx</code></li>
-<li class="fragment"><code>projecte_final_v1.docx</code></li>
-<li class="fragment"><code>projecte_final_definitiu.docx</code></li>
-</ul>
-</div>
-<div class="fragment" style="text-align: center;">
-<p>És difícil saber quin és l’arxiu correcte, quins canvis s’hi han fet i per què. I si vull recuperar parts d’una versió anterior?</p>
+<p>No necessitem còpies dels fitxers, <strong>necessitem la seva història</strong>.</p>
 </div>
 </section>
-<section id="la-solució-control-de-versions" class="slide level2">
-<h2>La solució: Control de Versions</h2>
-<p>Imagina’t que cada vegada que fas un canvi important en el teu document:</p>
+<section id="sistemes-de-control-de-versions" class="slide level2 smaller">
+<h2>Sistemes de control de versions</h2>
+
+<img data-src="../figures/git/snapshots.png" class="r-stretch quarto-figure-center"><p class="caption">Control de versions</p><p>Un sistema de control de versions guarda la història d’un projecte.</p>
+<p>Aquesta història permet:</p>
+<ul>
+<li class="fragment">Consultar la seva evolució</li>
+<li class="fragment">Visualitzar les diferències entre dues versions</li>
+<li class="fragment">Navegar entre versions sense perdre informació</li>
+<li class="fragment">Consultar qui ha fet/quan s’ha fet/perquè s’ha fet un canvi concret.</li>
+<li class="fragment">Permeten la col·laboració de múltiples desenvolupadors <em>(pròxima sessió)</em></li>
+<li class="fragment">Permeten treballar en paral·lel <em>(pròxima sessió)</em></li>
+</ul>
+</section>
+<section id="git" class="slide level2">
+<h2>Git</h2>
+<p>Git és un sistema de control de versions (VCS).</p>
+<p>Ens permet guardar la història d’un projecte i consultar-la posteriorment.</p>
+<p>Es crea l’any 2005 per donar suport al desenvolupament del <em>kernel</em> de Linux.</p>
+</section>
+<section id="git-què-és-una-versió" class="slide level2">
+<h2>Git: Què és una versió?</h2>
+<p>En Git, cada versió guardada s’anomena <strong>commit</strong>.</p>
+<p>Un <strong>commit</strong> té associat:</p>
+<ul>
+<li class="fragment">l’estat dels fitxers del projecte en un moment concret</li>
+<li class="fragment">metadades dels canvis: autor, data, missatge…</li>
+</ul>
+<div class="fragment">
+<p>Podem imaginar un commit com una <strong>fotografia de l’estat del projecte</strong>.</p>
+</div>
+</section>
+<section id="git-què-és-una-versió-1" class="slide level2">
+<h2>Git: Què és una versió?</h2>
+
+<img data-src="../figures/git/snapshots.png" class="r-stretch"></section></section>
+<section>
+<section id="model-mental-de-git" class="title-slide slide level1 center">
+<h1>Model mental de Git</h1>
+<p>Tenim un projecte controlat per Git.</p>
+<p>Modifiquem <code>README.md</code>.</p>
+<p><strong>El canvi ja forma part de la història de Git?</strong></p>
+<div class="fragment">
+<p>La resposta és que <strong>no</strong>.</p>
+</div>
+</section>
+<section id="estat-dels-fitxers" class="slide level2">
+<h2>Estat dels fitxers</h2>
+<p>En Git, els fitxers poden estar en diferents estats:</p>
+<ul>
+<li class="fragment">Sense seguir (<em>untracked</em>): Git encara no controla aquest fitxer.</li>
+<li class="fragment">Modificat (<em>modified</em>): El fitxer conté canvis respecte respecte al <em>commit</em> anterior.</li>
+<li class="fragment">Preparat (<em>staged</em>): els canvis del fitxer s’han seleccionat per formar part del pròxim <em>commit</em>.</li>
+<li class="fragment">Guardat (<em>commited</em>): l’estat actual del fitxer forma part de la història del repositori.</li>
+</ul>
+</section>
+<section id="tres-àrees" class="slide level2">
+<h2>Tres àrees</h2>
+<p>Quan treballem amb Git, podem distingir tres àrees:</p>
+
+<img data-src="../figures/git/areas.png" class="r-stretch quarto-figure-center"><p class="caption">Àrees de Git</p><ul>
+<li class="fragment">Working directory: els fitxers amb què estem treballant.</li>
+<li class="fragment">Staging area: els canvis que hem seleccionat per incloure en el pròxim commit.</li>
+<li class="fragment">Repository: la història del projecte, formada pels commits.</li>
+</ul>
+</section></section>
+<section>
+<section id="hands-on" class="title-slide slide level1 center">
+<h1>Hands-On</h1>
+
+</section>
+<section id="hands-on-installació" class="slide level2">
+<h2>Hands-On: Instal·lació</h2>
+<p><a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></p>
+<p>Verificar amb la línia de comandes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a aria-label="1"></a>git --version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="hands-on-configuració" class="slide level2">
+<h2>Hands-On: Configuració</h2>
+<p>Configurem el nostre nom i el correu:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a aria-label="1"></a>git config --global user.name "Mr Potato"</span>
+<span id="cb2-2"><a aria-label="2"></a>git config --global user.email "mr@potato.com"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>--global</code> indica que s’aplicarà a tots els projectes.</p>
+
+<aside><div>
+<p>Més informació a: <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup" class="uri">https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup</a></p>
+</div></aside></section></section>
+<section>
+<section id="comandes-bàsiques" class="title-slide slide level1 center">
+<h1>Comandes bàsiques</h1>
+
+</section>
+<section id="comandes-bàsiques-ajuda" class="slide level2">
+<h2>Comandes bàsiques: ajuda</h2>
+<p>Les comandes de Git tenen el següent format:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a aria-label="1"></a>git &lt;verb&gt; &lt;opcions&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Podem obtenir informació sobre una comanda concreta amb qualsevol de les següents opcions:</p>
+<ul>
+<li class="fragment"><code>git help &lt;verb&gt;</code></li>
+<li class="fragment"><code>git &lt;verb&gt; --help</code></li>
+<li class="fragment"><code>man git-&lt;verb&gt;</code></li>
+</ul>
+</section>
+<section id="comandes-bàsiques-git-init" class="slide level2">
+<h2>Comandes bàsiques: <code>git init</code></h2>
+<p>Per crear un repositori nou, naveguem al directori del projecte<sup>1</sup> i executem:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a aria-label="1"></a>git init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Aquesta comanda crea el directori <code>.git</code><sup>2</sup> on es guardarà tota la informació del repositori.</p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Per navegar, podem fer servir <code>cd</code>, i per crear un directori nou <code>mkdir</code></p></li><li id="fn2"><p>Per tant els canvis s’afegiran a la següent versió.</p></li></ol></aside></section>
+<section id="comandes-bàsiques-git-status" class="slide level2 smaller">
+<h2>Comandes bàsiques: <code>git status</code></h2>
+<p>La comanda <code>git status</code> ens mostra en quin estat/àrea estan els fitxers/canvis:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a aria-label="1"></a>On branch main</span>
+<span id="cb5-2"><a aria-label="2"></a>Your branch is up to date with 'origin/main'.</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a>Changes to be committed:</span>
+<span id="cb5-5"><a aria-label="5"></a>  (use "git restore --staged &lt;file&gt;..." to unstage)</span>
+<span id="cb5-6"><a aria-label="6"></a>        new file:   README.md</span>
+<span id="cb5-7"><a aria-label="7"></a></span>
+<span id="cb5-8"><a aria-label="8"></a>Changes not staged for commit:</span>
+<span id="cb5-9"><a aria-label="9"></a>  (use "git add &lt;file&gt;..." to update what will be committed)</span>
+<span id="cb5-10"><a aria-label="10"></a>  (use "git restore &lt;file&gt;..." to discard changes in working directory)</span>
+<span id="cb5-11"><a aria-label="11"></a>        modified:   LICENSE.txt</span>
+<span id="cb5-12"><a aria-label="12"></a></span>
+<span id="cb5-13"><a aria-label="13"></a>Untracked files:</span>
+<span id="cb5-14"><a aria-label="14"></a>  (use "git add &lt;file&gt;..." to include in what will be committed)</span>
+<span id="cb5-15"><a aria-label="15"></a>        Notes.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comandes-bàsiques-git-status-1" class="slide level2 smaller">
+<h2>Comandes bàsiques: <code>git status</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a aria-label="1"></a>[...]</span>
+<span id="cb6-2"><a aria-label="2"></a>Changes to be committed:</span>
+<span id="cb6-3"><a aria-label="3"></a>  (use "git restore --staged &lt;file&gt;..." to unstage)</span>
+<span id="cb6-4"><a aria-label="4"></a>        new file:   README.md</span>
+<span id="cb6-5"><a aria-label="5"></a>[...]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Els canvis indicats estan dins de l’àrea d’staging. S’afegiran a la següent versió.</p>
+</section>
+<section id="comandes-bàsiques-git-status-2" class="slide level2 smaller">
+<h2>Comandes bàsiques: <code>git status</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a aria-label="1"></a>[...]</span>
+<span id="cb7-2"><a aria-label="2"></a>Changes not staged for commit:</span>
+<span id="cb7-3"><a aria-label="3"></a>  (use "git add &lt;file&gt;..." to update what will be committed)</span>
+<span id="cb7-4"><a aria-label="4"></a>  (use "git restore &lt;file&gt;..." to discard changes in working directory)</span>
+<span id="cb7-5"><a aria-label="5"></a>        modified:   LICENSE.txt</span>
+<span id="cb7-6"><a aria-label="6"></a>[...]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Els canvis indicats estan dins de l’àrea de treball. Git coneix els fitxers, ha detectat que hi ha canvis, però no s’afegiran a la següent versió.</p>
+</section>
+<section id="comandes-bàsiques-git-status-3" class="slide level2 smaller">
+<h2>Comandes bàsiques: <code>git status</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a aria-label="1"></a>[...]</span>
+<span id="cb8-2"><a aria-label="2"></a>Untracked files:</span>
+<span id="cb8-3"><a aria-label="3"></a>  (use "git add &lt;file&gt;..." to include in what will be committed)</span>
+<span id="cb8-4"><a aria-label="4"></a>        Notes.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Git ha detectat que hi ha fitxers que no havia vist anteriorment. No estan en cap àrea.</p>
+</section>
+<section id="comandes-bàsiques-git-status-4" class="slide level2 smaller">
+<h2>Comandes bàsiques: <code>git status</code></h2>
+<p>També podem veure la sortida simplificada fent <code>git status -s</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a aria-label="1"></a>$ git status -s</span>
+<span id="cb9-2"><a aria-label="2"></a>A  README.md</span>
+<span id="cb9-3"><a aria-label="3"></a> M LICENSE.txt</span>
+<span id="cb9-4"><a aria-label="4"></a>?? Notes.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comandes-bàsiques-git-add" class="slide level2">
+<h2>Comandes bàsiques: <code>git add</code></h2>
+<p>La comanda <code>git add &lt;file&gt;</code> ens permet moure un fitxer des de l’àrea de treball a l’àrea d’<em>staging</em><sup>1</sup>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a aria-label="1"></a>$ git status</span>
+<span id="cb10-2"><a aria-label="2"></a>[...]</span>
+<span id="cb10-3"><a aria-label="3"></a>Changes not staged for commit:</span>
+<span id="cb10-4"><a aria-label="4"></a>  [...]</span>
+<span id="cb10-5"><a aria-label="5"></a>        modified:   LICENSE.txt</span>
+<span id="cb10-6"><a aria-label="6"></a>[...]</span>
+<span id="cb10-7"><a aria-label="7"></a>$ git add LICENSE.txt</span>
+<span id="cb10-8"><a aria-label="8"></a>$ git status</span>
+<span id="cb10-9"><a aria-label="9"></a>[...]</span>
+<span id="cb10-10"><a aria-label="10"></a>Changes to be committed:</span>
+<span id="cb10-11"><a aria-label="11"></a>  [...]</span>
+<span id="cb10-12"><a aria-label="12"></a>        modified:   LICENSE.txt</span>
+<span id="cb10-13"><a aria-label="13"></a>[...]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>També ens serveix per afegir fitxers nous.</p>
+
+</div>
+<aside><div>
+<p><code>git add .</code> afegeix tots els fitxers del directori.</p>
+</div><ol class="aside-footnotes"><li id="fn3"><p>Per tant els canvis s’afegiran a la següent versió.</p></li></ol></aside></section>
+<section id="comandes-bàsiques-git-diff" class="slide level2">
+<h2>Comandes bàsiques: <code>git diff</code></h2>
+<ul>
+<li class="fragment"><code>git diff</code></li>
+<li class="fragment"><code>git diff --staged</code></li>
+</ul>
+</section>
+<section id="comandes-bàsiques-git-commit" class="slide level2">
+<h2>Comandes bàsiques: <code>git commit</code></h2>
+<p>La comanda <code>git commit</code> ens permet crear una nova versió (anomenada <strong>commit</strong>) del repositori.</p>
+</section>
+<section id="comandes-bàsiques-git-restore" class="slide level2">
+<h2>Comandes bàsiques: <code>git restore</code></h2>
+<p><code>git restore</code> ens permet dues coses:</p>
+<ul>
+<li class="fragment"><code>git restore &lt;file&gt;</code> elimina els canvis d’un fitxer en l’àrea de treball.</li>
+<li class="fragment"><code>git restore --staged &lt;file&gt;</code> mou els canvis d’un fitxer de l’àrea <em>staging</em> a l’àrea de treball.</li>
+</ul>
+</section>
+<section id="comandes-bàsiques-git-rm" class="slide level2">
+<h2>Comandes bàsiques: <code>git rm</code></h2>
+<ul>
+<li class="fragment"><code>git rm</code></li>
+<li class="fragment"><code>git rm --cached</code></li>
+</ul>
+</section>
+<section id="quiz" class="slide level2">
+<h2>Quiz</h2>
+
+<img data-src="../figures/git/lifecycle.png" class="r-stretch quarto-figure-center"><p class="caption">Quina comanda fa cada acció?</p></section></section>
+<section id="hands-on-comandes-bàsiques-de-git" class="title-slide slide level1 center">
+<h1>Hands-On: Comandes bàsiques de Git</h1>
+<div class="fragment" style="text-align: center;">
+<p><a href="../laboratori/lab-git-1.html#prepare">📄 Laboratori 3: Comandes bàsiques de Git</a></p>
+</div>
+</section>
+
+<section>
+<section id="visualitzant-la-història" class="title-slide slide level1 center">
+<h1>Visualitzant la història</h1>
+<p>Fins ara hem après com crear commits, i tenim una història.</p>
+<p><strong>Com podem consultar-la?</strong></p>
+</section>
+<section id="visualitzant-la-història-git-log" class="slide level2">
+<h2>Visualitzant la història: <code>git log</code></h2>
+<p>La comanda <code>git log</code> mostra els commits del repositori.</p>
+<p>Cada commit conté informació com:</p>
+<ul>
+<li class="fragment">identificador</li>
+<li class="fragment">autor</li>
+<li class="fragment">data</li>
+<li class="fragment">missatge</li>
+</ul>
+</section>
+<section id="visualitzant-la-història-git-log-1" class="slide level2">
+<h2>Visualitzant la història: <code>git log</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a aria-label="1"></a>$ git log</span>
+<span id="cb11-2"><a aria-label="2"></a>commit bc2c21477b82b61d797d3774017b4e6d001ed977 (HEAD -&gt; main)</span>
+<span id="cb11-3"><a aria-label="3"></a>Author: Mr Potato &lt;mr@potato.com&gt;</span>
+<span id="cb11-4"><a aria-label="4"></a>Date:   ...</span>
+<span id="cb11-5"><a aria-label="5"></a></span>
+<span id="cb11-6"><a aria-label="6"></a>    updated files</span>
+<span id="cb11-7"><a aria-label="7"></a></span>
+<span id="cb11-8"><a aria-label="8"></a>commit d680b727d6a7291f8b3ddb99a6c0bc65eaf6ca24</span>
+<span id="cb11-9"><a aria-label="9"></a>Author: Mr Potato &lt;mr@potato.com&gt;</span>
+<span id="cb11-10"><a aria-label="10"></a>Date:   ...</span>
+<span id="cb11-11"><a aria-label="11"></a></span>
+<span id="cb11-12"><a aria-label="12"></a>    added license</span>
+<span id="cb11-13"><a aria-label="13"></a></span>
+<span id="cb11-14"><a aria-label="14"></a>commit efb97ff19b232ca54878f5ae1368a436606c9b77</span>
+<span id="cb11-15"><a aria-label="15"></a>Author: Mr Potato &lt;mr@potato.com&gt;</span>
+<span id="cb11-16"><a aria-label="16"></a>Date:   ...</span>
+<span id="cb11-17"><a aria-label="17"></a></span>
+<span id="cb11-18"><a aria-label="18"></a>    added readme</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="visualitzant-la-història-git-log-2" class="slide level2">
+<h2>Visualitzant la història: <code>git log</code></h2>
+<p>Podem simplificar la sortida fent servir <code>--oneline</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a aria-label="1"></a>$ git log --oneline</span>
+<span id="cb12-2"><a aria-label="2"></a>bc2c214 (HEAD -&gt; main) updated files</span>
+<span id="cb12-3"><a aria-label="3"></a>d680b72 added license</span>
+<span id="cb12-4"><a aria-label="4"></a>efb97ff added readme</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+<aside><div>
+<p>El primer valor és l’identificador del commit abreviat.</p>
+</div></aside></section>
+<section id="visualitzant-la-història-git-log-3" class="slide level2">
+<h2>Visualitzant la història: <code>git log</code></h2>
+<p>També podem veure des d’un commit concret amb <code>git log &lt;c1&gt;..&lt;c2&gt;</code>, on <code>c1</code> i <code>c2</code> són dos identificadors de commit.</p>
+<p>Podem fer servir l’identificador especial <code>HEAD</code> per indicar el commit on ens trobem.</p>
+</section>
+<section id="visualitzant-la-història-git-show" class="slide level2">
+<h2>Visualitzant la història: <code>git show</code></h2>
+<p>Amb <code>git show</code> podem consultar quins canvis introdueix un commit concret:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a aria-label="1"></a>$ git show d680b72</span>
+<span id="cb13-2"><a aria-label="2"></a>commit d680b727d6a7291f8b3ddb99a6c0bc65eaf6ca24</span>
+<span id="cb13-3"><a aria-label="3"></a>Author: Mr Potato &lt;mr@potato.com&gt;</span>
+<span id="cb13-4"><a aria-label="4"></a>Date:   ...</span>
+<span id="cb13-5"><a aria-label="5"></a></span>
+<span id="cb13-6"><a aria-label="6"></a>    added license</span>
+<span id="cb13-7"><a aria-label="7"></a></span>
+<span id="cb13-8"><a aria-label="8"></a>diff --git a/LICENSE.txt b/LICENSE.txt</span>
+<span id="cb13-9"><a aria-label="9"></a>new file mode 100644</span>
+<span id="cb13-10"><a aria-label="10"></a>index 0000000..e69de29</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="visualitzant-la-història-git-diff-c1..c2" class="slide level2">
+<h2>Visualitzant la història: <code>git diff &lt;c1&gt;..&lt;c2&gt;</code></h2>
+<p>Per comparar dues versions (no necessàriament consecutives), podem fer servir <code>git diff &lt;c1&gt;..&lt;c2&gt;</code>, on <code>c1</code> i <code>c2</code> són dos identificadors de commit.</p>
+<p>Per exemple:</p>
+<p>Versió <code>efb97ff</code>: <code>README.md</code> té:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a aria-label="1"></a>Hola</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Versió <code>bc2c214</code>: <code>README.md</code> té:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a aria-label="1"></a>Hola que tal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="visualitzant-la-història-git-diff-c1..c2-1" class="slide level2">
+<h2>Visualitzant la història: <code>git diff &lt;c1&gt;..&lt;c2&gt;</code></h2>
+<pre><code>$ git diff efb97ff..bc2c214
+[...]
+diff --git a/README.md b/README.md
+index a19abfe..a111ef1 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-Hola
++Hola que tal</code></pre>
+</section></section>
+<section>
+<section id="recuperar-versions-antigues" class="title-slide slide level1 center">
+<h1>Recuperar versions antigues</h1>
+<p>Hem vist com consultar la història del projecte.</p>
+<p>Un dels punts forts dels VCS és poder recuperar versions anteriors.</p>
+<p><strong>Com podem recuperar una versió anterior amb Git?</strong></p>
+</section>
+<section id="recuperar-un-fitxer" class="slide level2">
+<h2>Recuperar un fitxer</h2>
+<p>Podem recuperar un fitxer tal com estava en un commit anterior amb:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a aria-label="1"></a>git restore --source=&lt;commit&gt; &lt;fitxer&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Per exemple:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource console number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a aria-label="1"></a>git restore --source=efb97ff README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El fitxer <code>README.md</code> tornarà a tenir el contingut que tenia en aquell commit.</p>
+<div class="fragment">
+<p><strong>Això només modifica el working directory, no crea automàticament un commit</strong>.</p>
+<p>Hem recuperat el contingut anterior, però la història de Git no ha canviat.</p>
+</div>
+</section>
+<section id="consultar-una-versió-antiga" class="slide level2">
+<h2>Consultar una versió antiga</h2>
+<p>També podem situar-nos temporalment en un commit anterior:</p>
+<p>En aquest punt estem consultant una versió antiga. No estem creant un nou commit ni modificant la història.</p>
+<p>git checkout main o master per tornar on estavem.</p>
+</section></section>
+<section id="hands-on-navegant-la-història" class="title-slide slide level1 center">
+<h1>Hands-On: Navegant la història</h1>
+<div class="fragment" style="text-align: center;">
+<p><a href="../laboratori/lab-git-2.html#prepare">📄 Laboratori 4: Navegant la història</a></p>
+</div>
+</section>
+
+<section>
+<section id="recap" class="title-slide slide level1 center">
+<h1>Recap</h1>
+
+</section>
+<section id="recap-conceptes" class="slide level2">
+<h2>Recap: Conceptes</h2>
 <ol type="1">
-<li class="fragment">Guardes una <strong>foto</strong> del document en aquell moment, amb una descripció dels canvis que has fet.</li>
-<li class="fragment">Aconsegueixes tenir un <strong>historial</strong> de totes les versions del document.</li>
+<li class="fragment">Git guarda la història d’un projecte.</li>
+<li class="fragment">Cada versió és un <strong>commit</strong>.</li>
+<li class="fragment">Podem consultar, comparar, i recuperar versions antigues.</li>
+<li class="fragment">3 àrees: Working / staging / repository</li>
 </ol>
-<div class="fragment" style="text-align: center;">
-<p><strong>Seria com tenir una màquina del temps per als teus documents!</strong></p>
-</div>
 </section>
-<section id="control-de-versions-amb-git" class="slide level2">
-<h2>Control de Versions amb <em>Git</em> 🕰️</h2>
-
-<img data-src="../figures/git/git.png" style="display: block; margin-left: auto; margin-right:auto;" class="r-stretch"></section>
-<section id="el-túnel-del-temps-de-git" class="slide level2">
-<h2>El túnel del temps de <em>Git</em> ⏳</h2>
-
-<img data-src="../figures/git/linia-temporal.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"></section>
-<section id="el-multivers-de-git" class="slide level2">
-<h2>El multivers de <em>Git</em> 🌌</h2>
-
-<img data-src="../figures/git/multivers.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"></section>
-<section id="laboratori-4-objectiu" class="slide level2">
-<h2>Laboratori 4: Objectiu</h2>
+<section id="recap-comandes" class="slide level2">
+<h2>Recap: Comandes</h2>
+<ol type="1">
+<li class="fragment">git init</li>
+<li class="fragment">git add</li>
+<li class="fragment">git commit</li>
+<li class="fragment">git log</li>
+<li class="fragment">git show</li>
+<li class="fragment">git diff</li>
+<li class="fragment">git restore</li>
+</ol>
+</section></section>
+<section id="material-addicional" class="title-slide slide level1 center">
+<h1>Material addicional</h1>
 <ul>
-<li class="fragment"><p>Instal·lar i configurar el vostre entorn de desenvolupament (IDE) per connectar-vos a la màquina virtual mitjançant SSH i utilitzar Git per al control de versions dels vostres projectes.</p></li>
-<li class="fragment"><p>Replicarem l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git.</p></li>
+<li class="fragment">Llibre de Git: <a href="https://git-scm.com/book/en/v2" class="uri">https://git-scm.com/book/en/v2</a></li>
+<li class="fragment">The Missing Semester: <a href="https://missing.csail.mit.edu/2020/version-control/" class="uri">https://missing.csail.mit.edu/2020/version-control/</a></li>
 </ul>
-<div class="fragment" style="text-align: center;">
-<p><a href="../laboratori/lab04.html#prepare">📄 Laboratori 4: Git</a></p>
-</div>
-</section>
-<section id="collaboració-en-equip" class="slide level2">
-<h2>Col·laboració en equip 🤝</h2>
-<p>En la vostra vida professional, és molt probable que treballeu en equips on diverses persones col·laboren en els mateixos projectes. Necessitareu que tots els membres de l’equip puguin sincronitzar els seus controls de versions i compartir els canvis de manera eficient.</p>
-<div class="fragment" style="text-align: center;">
-<p><strong>Seria com quan feu fotos amb el vostre mòbil i es guarden automàticament al núvol i les podeu veure en qualsevol moment i des de qualsevol dispositiu i les podeu compartir fàcilment.</strong></p>
-</div>
-</section>
-<section id="control-de-versions-amb-github" class="slide level2">
-<h2>Control de Versions amb <em>GitHub</em> 🐙</h2>
-<p><em>GitHub</em> és una plataforma en línia que facilita aquesta col·laboració, us permet mantenir una còpia als seus servidors i compartir els vostres projectes amb altres persones o tenir una còpia de seguretat al núvol per si perdeu la vostra còpia local.</p>
-</section>
-<section id="esquema-de-collaboració-amb-github" class="slide level2">
-<h2>Esquema de col·laboració amb <em>GitHub</em></h2>
-
-<img data-src="../figures/git/github.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"></section>
-<section id="laboratori-5-objectiu" class="slide level2">
-<h2>Laboratori 5: Objectiu</h2>
-<ul>
-<li class="fragment">Crear una calculadora col·laborativa utilitzant <em>Git</em> i <em>GitHub</em>.</li>
-<li class="fragment">Aprendre a treballar amb branques i fer <em>merge</em> de canvis.</li>
-<li class="fragment">Practicar la resolució de conflictes en un entorn de col·laboració.</li>
-</ul>
-<div class="fragment" style="text-align: center;">
-<p><a href="../laboratori/lab05.html#prepare">📄 Laboratori 5: Calculadora col·laborativa</a></p>
-</div>
-</section>
-<section id="forks" class="slide level2">
-<h2>Forks 🍴</h2>
-<p>Un <strong>fork</strong> és una còpia d’un repositori públic que un altre usuari ha creat.</p>
-<ul>
-<li class="fragment">És una manera de contribuir a projectes d’altres persones sense afectar l’original.</li>
-<li class="fragment">Quan fas un <em>fork</em>, crees una còpia independent del repositori original al teu compte.</li>
-<li class="fragment">Aquesta còpia és totalment teva i pots fer-hi canvis lliurement respectant sempre la llicència del projecte original.</li>
-</ul>
-</section>
-<section id="clone-vs-fork" class="slide level2">
-<h2>Clone 📋 vs Fork 🍴</h2>
-
-<img data-src="../figures/git/fork-clone.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"></section>
-<section id="laboratori-6-objectiu" class="slide level2">
-<h2>Laboratori 6: Objectiu</h2>
-<ul>
-<li class="fragment">Crear un lloc web personal utilitzant Jekyll i GitHub Pages.</li>
-<li class="fragment">Realitzar un <em>fork</em> d’una plantilla de lloc web i personalitzar-la.</li>
-<li class="fragment">Desplegar el lloc web al vostre compte de GitHub.</li>
-</ul>
-<div class="fragment" style="text-align: center;">
-<p><a href="../laboratori/lab06.html#prepare">📄 Laboratori 6: GitHub Pages</a></p>
-</div>
 
 
 </section>
+
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../figures/corporative/institute.png" class="slide-logo"></p>

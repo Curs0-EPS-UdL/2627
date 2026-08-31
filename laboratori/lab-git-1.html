@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode – Curs zero d’Informàtica</title>
+<title>Laboratori 3: Comandes bàsiques de Git – Curs zero d’Informàtica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -193,17 +193,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#objectius" id="toc-objectius" class="nav-link active" data-scroll-target="#objectius">Objectius</a></li>
   <li><a href="#requisits-previs" id="toc-requisits-previs" class="nav-link" data-scroll-target="#requisits-previs">Requisits previs</a></li>
-  <li><a href="#configurant-vscode-per-connectar-se-a-la-màquina-virtual" id="toc-configurant-vscode-per-connectar-se-a-la-màquina-virtual" class="nav-link" data-scroll-target="#configurant-vscode-per-connectar-se-a-la-màquina-virtual">Configurant VSCode per connectar-se a la màquina virtual</a></li>
-  <li><a href="#exercicis" id="toc-exercicis" class="nav-link" data-scroll-target="#exercicis">Exercicis</a></li>
+  <li><a href="#inicialització-del-repositori" id="toc-inicialització-del-repositori" class="nav-link" data-scroll-target="#inicialització-del-repositori">Inicialització del repositori</a></li>
+  <li><a href="#estat-inicial" id="toc-estat-inicial" class="nav-link" data-scroll-target="#estat-inicial">Estat inicial</a></li>
+  <li><a href="#afegim-el-nostre-primer-fitxer" id="toc-afegim-el-nostre-primer-fitxer" class="nav-link" data-scroll-target="#afegim-el-nostre-primer-fitxer">Afegim el nostre primer fitxer</a></li>
+  <li><a href="#afegim-el-fitxer-a-lstaging" id="toc-afegim-el-fitxer-a-lstaging" class="nav-link" data-scroll-target="#afegim-el-fitxer-a-lstaging">Afegim el fitxer a l’staging</a></li>
+  <li><a href="#creem-el-primer-commit" id="toc-creem-el-primer-commit" class="nav-link" data-scroll-target="#creem-el-primer-commit">Creem el primer commit</a></li>
+  <li><a href="#modifiquem-el-projecte" id="toc-modifiquem-el-projecte" class="nav-link" data-scroll-target="#modifiquem-el-projecte">Modifiquem el projecte</a></li>
+  <li><a href="#un-últim-canvi-abans-del-commit" id="toc-un-últim-canvi-abans-del-commit" class="nav-link" data-scroll-target="#un-últim-canvi-abans-del-commit">Un últim canvi abans del commit</a></li>
+  <li><a href="#ignorant-fitxers" id="toc-ignorant-fitxers" class="nav-link" data-scroll-target="#ignorant-fitxers">Ignorant fitxers</a></li>
+  <li><a href="#fitxers-que-no-són-de-text" id="toc-fitxers-que-no-són-de-text" class="nav-link" data-scroll-target="#fitxers-que-no-són-de-text">Fitxers que no són de text</a></li>
+  <li><a href="#exercici-practicant-el-cicle-de-git" id="toc-exercici-practicant-el-cicle-de-git" class="nav-link" data-scroll-target="#exercici-practicant-el-cicle-de-git">Exercici: practicant el cicle de Git</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode</h1>
+<h1 class="title">Laboratori 3: Comandes bàsiques de Git</h1>
 </div>
 
 
@@ -223,19 +231,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="objectius" class="level2">
 <h2 class="anchored" data-anchor-id="objectius">Objectius</h2>
 <ul>
-<li>Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH.</li>
+<li>Aprendre a utilitzar les comandes bàsiques de GIT</li>
+<li>Entendre el cicle de vida dels fitxers: <em>untracked</em>, <em>modified</em>, <em>staged</em> i <em>committed</em>.</li>
 </ul>
 </section>
 <section id="requisits-previs" class="level2">
 <h2 class="anchored" data-anchor-id="requisits-previs">Requisits previs</h2>
 <ul>
-<li>Màquina virtual en funcionament (vegeu <a href="lab02.md">Laboratori 2</a>).</li>
-<li>Visual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>.</li>
-<li>Obtenir la IP de la màquina virtual. Per fer-ho, podeu:
-<ul>
-<li>Consultar la informació a VMWare: <img src="../figures/vmware/vmware-vm-ip.png" class="img-fluid"></li>
-<li>O bé, iniciar sessió a la màquina virtual i executar la comanda <code>ip a</code> per obtenir la IP: <img src="../figures/debian12/vm-ip.png" class="img-fluid"></li>
+<li>Coneixements bàsics de la línia de comandes de Linux.</li>
+<li>Git està instal·lat al sistema.</li>
 </ul>
+</section>
+<section id="inicialització-del-repositori" class="level2">
+<h2 class="anchored" data-anchor-id="inicialització-del-repositori">Inicialització del repositori</h2>
+<p>Primer de tot, creem un nou repositori de Git:</p>
+<pre class="console"><code>mkdir hands-on-1
+cd hands-on-1
+git init</code></pre>
+<p>O, en un sol pas:</p>
+<pre class="console"><code>git init hands-on-1</code></pre>
+</section>
+<section id="estat-inicial" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="estat-inicial">Estat inicial</h2>
+<p>Si fem <code>git status</code> <strong>des de dins del directori <code>hands-on-1</code></strong>, hauríem de veure que el repositori està <em>net</em>:</p>
+<pre class="console"><code>$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)</code></pre>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Depenent de la configuració, veurem <em>master</em> enlloc de <em>main</em>.</p>
+</div></div></section>
+<section id="afegim-el-nostre-primer-fitxer" class="level2">
+<h2 class="anchored" data-anchor-id="afegim-el-nostre-primer-fitxer">Afegim el nostre primer fitxer</h2>
+<p>Crea un fitxer anomenat <code>README.md</code> dins del directori amb el següent contingut:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Hello, World!</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Consulta l’estat del repositori amb <code>git status</code>.</p>
+<p>El fitxer apareixerà com a <em>untracked</em>.</p>
+<p>Git detecta que existeix un fitxer que encara no forma part de cap commit, però no l’inclourà automàticament en el pròxim commit.</p>
+</section>
+<section id="afegim-el-fitxer-a-lstaging" class="level2">
+<h2 class="anchored" data-anchor-id="afegim-el-fitxer-a-lstaging">Afegim el fitxer a l’staging</h2>
+<p>Per indicar a Git que volem incloure <code>README.md</code> en el pròxim commit:</p>
+<pre class="console"><code>git add README.md</code></pre>
+<p>Consulta de nou l’estat:</p>
+<pre class="console"><code>git status</code></pre>
+<p>Ara <code>README.md</code> apareixerà sota:</p>
+<pre><code>Changes to be committed:</code></pre>
+<p>El fitxer està <em>staged</em>.</p>
+</section>
+<section id="creem-el-primer-commit" class="level2">
+<h2 class="anchored" data-anchor-id="creem-el-primer-commit">Creem el primer commit</h2>
+<p>Ara podem crear una nova versió del projecte:</p>
+<pre class="console"><code>git commit -m "Afegeix README"</code></pre>
+<p>Consulta l’estat:</p>
+<pre class="console"><code>git status</code></pre>
+<p>El repositori hauria d’estar net:</p>
+<pre><code>On branch main
+nothing to commit, working tree clean</code></pre>
+<p>Acabem de crear el nostre primer commit.</p>
+</section>
+<section id="modifiquem-el-projecte" class="level2">
+<h2 class="anchored" data-anchor-id="modifiquem-el-projecte">Modifiquem el projecte</h2>
+<p>Modifica <code>README.md</code> i afegeix-hi, per exemple:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Aquest és el meu primer repositori de Git.</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Consulta l’estat del repositori:</p>
+<pre class="console"><code>git status</code></pre>
+<p>Ara <code>README.md</code> apareixerà com a <em>modified</em>.</p>
+<p>Git ha detectat que el fitxer és diferent del que hi havia en l’últim commit.</p>
+<p>Per veure els canvis que s’han fet al projecte, podem executar:</p>
+<pre class="console"><code>git diff</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Interpretant la sortida de <code>git diff</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les línies que comencen amb <code>-</code> indiquen contingut que s’ha eliminat.</p>
+<p>Les línies que comencen amb <code>+</code> indiquen contingut que s’ha afegit.</p>
+<p>Per exemple:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="st">-Hello, World!</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="va">+Hola, món!</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>significa que la primera línia ha estat substituïda per la segona.</p>
+</div>
+</div>
+<p>Un cop estem segurs de voler incorporar els canvis al pròxim commit, fem</p>
+<pre class="console"><code>git add README.md</code></pre>
+<p><strong>Que passa si tornem a executar <code>git diff</code>?</strong></p>
+<p>Per defecte, <code>git diff</code> només mostra els canvis en l’àrea <em>working</em>, però després de fer <code>git add</code> el fitxer <code>README.md</code> es troba en l’àrea <em>staging</em>. Per veure els canvis de l’àrea <em>staging</em> hem de fer:</p>
+<pre class="console"><code>git diff --staged</code></pre>
+</section>
+<section id="un-últim-canvi-abans-del-commit" class="level2">
+<h2 class="anchored" data-anchor-id="un-últim-canvi-abans-del-commit">Un últim canvi abans del commit</h2>
+<p>Anem a canviar el títol del fitxer <code>README.md</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -246,41 +340,83 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En els dos casos, la IP de la màquina virtual és <strong>172.16.10.223</strong>.</p>
+<p>En un fitxer markdown, una línea que comença amb <code># &lt;XXXX&gt;</code> és un títol.</p>
 </div>
-</div></li>
-</ul>
+</div>
+<p>Canvia la línea</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Hello, World!</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>per</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Hola, món!</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Què veus quan fas <code>git status</code>? I <code>git diff</code>? I <code>git diff --staged</code>?</strong></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quan hem fet <code>git add</code> abans, hem incorporat els canvis fins aquell moment a l’àrea <em>staging</em>, però els nous canvis no s’han afegit automàticament. Git ens permet tenir canvis d’un fitxer en l’àrea <em>staging</em> i <em>working</em> a la vegada, per tenir més control sobre el contingut dels commits.</p>
+<p>En el pròxim commit, <strong>els canvis que no s’hagin afegit a <em>staging</em> no s’inclouran</strong>.</p>
+</div>
+</div>
+<p>Anem a fer un commit sense el canvi del títol:</p>
+<pre class="console"><code>git commit -m "Canviant el contingut de README.md"</code></pre>
+<p>Si fem <code>git status</code> i <code>git diff</code>, veurem que ara només queda pendent el canvi del títol. Per exemple, la sortida de <code>git diff</code> serà similar a:</p>
+<pre><code>--- a/README.md
++++ b/README.md
+@@ -1,4 +1,4 @@
+-# Hello, World!
++# Hola, món!
+ Hello from my new git repository
+
+ Aquest és el meu primer repositori de Git.</code></pre>
+<p>Afegeix el fitxer un altre cop, i fes un nou commit.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Per afegir tots els fitxers a la vegada, pots fer: - <code>git add -A</code>: afegeix a l’àrea <em>staging</em> els canvis a tots els fitxers, <em>tracked</em> i <em>untracked</em>. - <code>git add -u</code>: afegeix a l’àrea <em>staging</em> els canvis només als fitxers <em>tracked</em>.</p>
+</div>
+</div>
 </section>
-<section id="configurant-vscode-per-connectar-se-a-la-màquina-virtual" class="level2">
-<h2 class="anchored" data-anchor-id="configurant-vscode-per-connectar-se-a-la-màquina-virtual">Configurant VSCode per connectar-se a la màquina virtual</h2>
-<p>Un cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: <strong>remote-ssh</strong>. Primer, feu clic a <strong>Marketplace (1)</strong>, després cerqueu <em>remote-ssh</em> i, finalment, feu clic a <strong>(3)</strong> per instal·lar la extensió. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/remote-ssh.png" class="img-fluid"></p>
-<p>Un cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra <strong>(1)</strong> i seleccioneu l’opció <strong>Remote-SSH: Connect to Host… (2)</strong>. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/remote-ssh2.png" class="img-fluid"></p>
-<p>Ara apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció <strong>Add a New SSH Host</strong>. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/add_new_host.png" class="img-fluid"></p>
-<p>Seleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a <strong>Add</strong>. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/select_config.png" class="img-fluid"></p>
-<p>i comproveu que l’amfitrió s’ha afegit correctament.</p>
-<p><img src="../figures/vscode/host_added.png" class="img-fluid"></p>
-<p>Ara feu clic a <strong>Open Config</strong> i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> 172.16.10.223</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> 172.16.10.223</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> jordi</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Us recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per <strong>vm-curs0-debian12</strong> :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> vm-curs0-debian12</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> 172.16.10.202</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> jordi</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Un cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual <strong>vm-curs0-debian12</strong>. Per fer-ho:</p>
+<section id="ignorant-fitxers" class="level2">
+<h2 class="anchored" data-anchor-id="ignorant-fitxers">Ignorant fitxers</h2>
+<p>A vegades podem tenir fitxers que son temporals, o que son artefactes d’un procès automàtic (p.e. de compilar un projecte, fitxers autogenerats…). Habitualment no volem que Git gestioni aquests fitxers. Tenim dues opcions:</p>
 <ol type="1">
-<li>Feu clic a la icona de la part inferior esquerra.</li>
-<li>Seleccioneu <strong>Remote-SSH: Connect to Host…</strong>.</li>
-<li>Seleccioneu <strong>vm-curs0-debian12</strong>:</li>
+<li>Vigilar cada vegada que fem un commit, per no introduïr aquests fitxers a Git.</li>
+<li>Indicar a Git que els ignori.</li>
 </ol>
-<ul>
-<li>Us apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a <strong>Continue</strong>. <img src="../figures/vscode/trust_host.png" class="img-fluid"></li>
-<li>Us apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari <strong>jordi</strong>. <img src="../figures/vscode/enter_password.png" class="img-fluid"></li>
-</ul>
+<p>La primera opció és propensa a errors, per tant farem la segona.</p>
+<p>Primer de tot, anem a crear un fitxer que no vulguem al repositori, per exemple un fitxer on escriurem notes per nosaltres:</p>
+<pre class="console"><code>touch notes.tmp</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>touch</code> crea un fitxer buit a la ruta especificada.</p>
+</div>
+</div>
+<p>Si ara fem <code>git status</code>, veurem aquest fitxer com a <em>untracked</em>. Si ara fessim <code>git add -A</code> o <code>git add .</code>, s’afegiria a l’àrea <em>staging</em>. Per evitar-ho, crearem un nou fitxer que es diu <code>.gitignore</code> amb el següent contingut:</p>
+<pre class="text"><code>*.tmp</code></pre>
+<p>Consulta l’estat:</p>
+<pre class="console"><code>git status</code></pre>
+<p>Ara notes.tmp ja no apareix com a <em>untracked</em>.</p>
+<p>El fitxer <code>.gitignore</code> sí que apareix com a <em>untracked</em>, perquè és un fitxer normal del projecte i encara no l’hem afegit.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -291,21 +427,57 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.</p>
+<p>.gitignore permet indicar patrons de fitxers que Git no ha de mostrar com a fitxers untracked. És habitual utilitzar-lo per fitxers temporals, fitxers generats automàticament o altres fitxers que no volem guardar al repositori.</p>
+<p>En el nostre cas, el patró és <code>*.tmp</code>, que significa “qualsevol fitxer que el seu nom acabi amb <code>.tmp</code>”</p>
 </div>
 </div>
-<p>Un cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió <strong>vm-curs0-debian12</strong>.</p>
-<p><img src="../figures/vscode/connected.png" class="img-fluid"></p>
-<p>Per comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda <code>uname -a</code> per veure la informació del sistema i comprovar que esteu a la màquina virtual.</p>
-<p><img src="../figures/vscode/terminal-linux.png" class="img-fluid"></p>
+<p>Afegim el fitxer <code>.gitignore</code> al repositori amb <code>git add .gitignore</code>, i podem fer un nou commit amb <code>git commit -m "Afegeix gitignore"</code>.</p>
 </section>
-<section id="exercicis" class="level2">
-<h2 class="anchored" data-anchor-id="exercicis">Exercicis</h2>
-<ol type="1">
-<li>Creeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.</li>
-<li>Editeu fitxers utilitzant l’editor de VSCode.</li>
-<li>Podeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop.</li>
-</ol>
+<section id="fitxers-que-no-són-de-text" class="level2">
+<h2 class="anchored" data-anchor-id="fitxers-que-no-són-de-text">Fitxers que no són de text</h2>
+<p>Git no només pot gestionar fitxers de text.</p>
+<p>També podem afegir fitxers binaris al repositori, com ara imatges.</p>
+<p>Podem afegir-los a l’àrea <em>staging</em> de la mateixa manera:</p>
+<pre class="console"><code>git add foto.png</code></pre>
+<p>I crear un commit:</p>
+<pre class="console"><code>git commit -m "Afegeix imatge"</code></pre>
+<p>Git guardarà el fitxer com a part del commit.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Els fitxers de text permeten a Git calcular i mostrar fàcilment les diferències entre versions. Amb fitxers binaris, com una imatge, Git no pot mostrar aquestes diferències de la mateixa manera.</p>
+<p>Si editessim la imatge, <code>git diff</code> no ens mostraria que ha canviat.</p>
+</div>
+</div>
+</section>
+<section id="exercici-practicant-el-cicle-de-git" class="level2">
+<h2 class="anchored" data-anchor-id="exercici-practicant-el-cicle-de-git">Exercici: practicant el cicle de Git</h2>
+<p>Ara fes els següents canvis sense seguir instruccions pas a pas:</p>
+<ul>
+<li>Crea un fitxer anomenat projecte.txt.</li>
+<li>Afegeix-hi algunes línies de text.</li>
+<li>Consulta l’estat del repositori.</li>
+<li>Afegeix el fitxer a l’àrea <em>staging</em>.</li>
+<li>Consulta de nou l’estat.</li>
+<li>Crea un commit amb un missatge descriptiu.</li>
+<li>Afegeix una imatge al repositori, i fes un commit que l’afegeixi.</li>
+<li>Modifica projecte.txt.</li>
+<li>Consulta els canvis amb <code>git diff</code>.</li>
+<li>Afegeix els canvis a l’staging.</li>
+<li>Consulta els canvis amb <code>git diff --staged</code>.</li>
+<li>Crea un altre commit.</li>
+</ul>
+<p>Finalment, comprova que el repositori està net amb:</p>
+<ul>
+<li><code>git status</code></li>
+</ul>
 
 
 </section>

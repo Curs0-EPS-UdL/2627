@@ -1,143 +1,38 @@
 [
   {
-    "objectID": "teoria/03-version-control.html#el-problema-de-les-versions",
-    "href": "teoria/03-version-control.html#el-problema-de-les-versions",
-    "title": "Control de Versions Git · GitHub",
-    "section": "El problema de les versions 💾",
-    "text": "El problema de les versions 💾\nQuantes vegades us ha passat que heu perdut un document o heu treballat sobre una versió antiga?\n\n\nprojecte_final.docx\nprojecte_final_v1.docx\nprojecte_final_definitiu.docx\n\n\n\nÉs difícil saber quin és l’arxiu correcte, quins canvis s’hi han fet i per què. I si vull recuperar parts d’una versió anterior?"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#la-solució-control-de-versions",
-    "href": "teoria/03-version-control.html#la-solució-control-de-versions",
-    "title": "Control de Versions Git · GitHub",
-    "section": "La solució: Control de Versions",
-    "text": "La solució: Control de Versions\nImagina’t que cada vegada que fas un canvi important en el teu document:\n\nGuardes una foto del document en aquell moment, amb una descripció dels canvis que has fet.\nAconsegueixes tenir un historial de totes les versions del document.\n\n\nSeria com tenir una màquina del temps per als teus documents!"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#control-de-versions-amb-git",
-    "href": "teoria/03-version-control.html#control-de-versions-amb-git",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Control de Versions amb Git 🕰️",
-    "text": "Control de Versions amb Git 🕰️"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#el-túnel-del-temps-de-git",
-    "href": "teoria/03-version-control.html#el-túnel-del-temps-de-git",
-    "title": "Control de Versions Git · GitHub",
-    "section": "El túnel del temps de Git ⏳",
-    "text": "El túnel del temps de Git ⏳"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#el-multivers-de-git",
-    "href": "teoria/03-version-control.html#el-multivers-de-git",
-    "title": "Control de Versions Git · GitHub",
-    "section": "El multivers de Git 🌌",
-    "text": "El multivers de Git 🌌"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#laboratori-4-objectiu",
-    "href": "teoria/03-version-control.html#laboratori-4-objectiu",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Laboratori 4: Objectiu",
-    "text": "Laboratori 4: Objectiu\n\nInstal·lar i configurar el vostre entorn de desenvolupament (IDE) per connectar-vos a la màquina virtual mitjançant SSH i utilitzar Git per al control de versions dels vostres projectes.\nReplicarem l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git.\n\n\n📄 Laboratori 4: Git"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#collaboració-en-equip",
-    "href": "teoria/03-version-control.html#collaboració-en-equip",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Col·laboració en equip 🤝",
-    "text": "Col·laboració en equip 🤝\nEn la vostra vida professional, és molt probable que treballeu en equips on diverses persones col·laboren en els mateixos projectes. Necessitareu que tots els membres de l’equip puguin sincronitzar els seus controls de versions i compartir els canvis de manera eficient.\n\nSeria com quan feu fotos amb el vostre mòbil i es guarden automàticament al núvol i les podeu veure en qualsevol moment i des de qualsevol dispositiu i les podeu compartir fàcilment."
-  },
-  {
-    "objectID": "teoria/03-version-control.html#control-de-versions-amb-github",
-    "href": "teoria/03-version-control.html#control-de-versions-amb-github",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Control de Versions amb GitHub 🐙",
-    "text": "Control de Versions amb GitHub 🐙\nGitHub és una plataforma en línia que facilita aquesta col·laboració, us permet mantenir una còpia als seus servidors i compartir els vostres projectes amb altres persones o tenir una còpia de seguretat al núvol per si perdeu la vostra còpia local."
-  },
-  {
-    "objectID": "teoria/03-version-control.html#esquema-de-collaboració-amb-github",
-    "href": "teoria/03-version-control.html#esquema-de-collaboració-amb-github",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Esquema de col·laboració amb GitHub",
-    "text": "Esquema de col·laboració amb GitHub"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#laboratori-5-objectiu",
-    "href": "teoria/03-version-control.html#laboratori-5-objectiu",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Laboratori 5: Objectiu",
-    "text": "Laboratori 5: Objectiu\n\nCrear una calculadora col·laborativa utilitzant Git i GitHub.\nAprendre a treballar amb branques i fer merge de canvis.\nPracticar la resolució de conflictes en un entorn de col·laboració.\n\n\n📄 Laboratori 5: Calculadora col·laborativa"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#forks",
-    "href": "teoria/03-version-control.html#forks",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Forks 🍴",
-    "text": "Forks 🍴\nUn fork és una còpia d’un repositori públic que un altre usuari ha creat.\n\nÉs una manera de contribuir a projectes d’altres persones sense afectar l’original.\nQuan fas un fork, crees una còpia independent del repositori original al teu compte.\nAquesta còpia és totalment teva i pots fer-hi canvis lliurement respectant sempre la llicència del projecte original."
-  },
-  {
-    "objectID": "teoria/03-version-control.html#clone-vs-fork",
-    "href": "teoria/03-version-control.html#clone-vs-fork",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Clone 📋 vs Fork 🍴",
-    "text": "Clone 📋 vs Fork 🍴"
-  },
-  {
-    "objectID": "teoria/03-version-control.html#laboratori-6-objectiu",
-    "href": "teoria/03-version-control.html#laboratori-6-objectiu",
-    "title": "Control de Versions Git · GitHub",
-    "section": "Laboratori 6: Objectiu",
-    "text": "Laboratori 6: Objectiu\n\nCrear un lloc web personal utilitzant Jekyll i GitHub Pages.\nRealitzar un fork d’una plantilla de lloc web i personalitzar-la.\nDesplegar el lloc web al vostre compte de GitHub.\n\n\n📄 Laboratori 6: GitHub Pages"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Curs zero d’Informàtica",
+    "objectID": "laboratori/lab03.html",
+    "href": "laboratori/lab03.html",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
     "section": "",
-    "text": "El curs s’organitza en sessions diàries de 2 hores. L’enfoc és eminentment pràctic. En cadascuna de les sessions s’abordarà un dels temes del programa, presentant primer, i breument, els coneixements teòrics bàsics, per abordar tot seguit el plantejament i resolució de problemes a l’aula. L’estudiantat ha de portar el seu propi portàtil."
+    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
   },
   {
-    "objectID": "index.html#planificació",
-    "href": "index.html#planificació",
-    "title": "Curs zero d’Informàtica",
-    "section": "Planificació",
-    "text": "Planificació\n\n\n\nSessió\nData\nTema\nDiapositives\nLaboratori\n\n\n\n\n1\n04/09/2024\nIntroducció i entorns de programació\n\n\n\n\n2\n05/09/2024\nVirtualització\n📖\n📄 📄\n\n\n3\n08/09/2024\nIntroducció al control de versions\n📖\n📄 📄 📄"
-  },
-  {
-    "objectID": "laboratori/lab05.html",
-    "href": "laboratori/lab05.html",
-    "title": "Laboratori 5: Calculadora col·laborativa",
+    "objectID": "laboratori/lab03.html#objectius",
+    "href": "laboratori/lab03.html#objectius",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
     "section": "",
-    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
+    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
   },
   {
-    "objectID": "laboratori/lab05.html#configurant-github",
-    "href": "laboratori/lab05.html#configurant-github",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "",
-    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
+    "objectID": "laboratori/lab03.html#requisits-previs",
+    "href": "laboratori/lab03.html#requisits-previs",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "Requisits previs",
+    "text": "Requisits previs\n\nMàquina virtual en funcionament (vegeu Laboratori 2).\nVisual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de https://code.visualstudio.com/.\nObtenir la IP de la màquina virtual. Per fer-ho, podeu:\n\nConsultar la informació a VMWare: \nO bé, iniciar sessió a la màquina virtual i executar la comanda ip a per obtenir la IP: \n\n\n\n\n\n\n\nNota\n\n\n\nEn els dos casos, la IP de la màquina virtual és 172.16.10.223."
   },
   {
-    "objectID": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
-    "href": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "Configuració de l’accés a GitHub des de la màquina virtual",
-    "text": "Configuració de l’accés a GitHub des de la màquina virtual\n\nInicia una sessió a la terminal de la màquina virtual com a usuari normal.\nConfigura Git per utilitzar el token de GitHub executant la següent comanda:\ngit config --global github.token TOKEN\n\n🔑 Actualitza:\nReemplaça TOKEN pel token d’accés que has generat al pas anterior.\n\nAixò emmagatzemarà el token de GitHub en la configuració global de Git al teu sistema Debian.\nVerifica que el token s’hagi configurat correctament executant:\ngit config --global --get github.token\nSi tot ha anat bé, veuràs el token que has configurat."
+    "objectID": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
+    "href": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "Configurant VSCode per connectar-se a la màquina virtual",
+    "text": "Configurant VSCode per connectar-se a la màquina virtual\nUn cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: remote-ssh. Primer, feu clic a Marketplace (1), després cerqueu remote-ssh i, finalment, feu clic a (3) per instal·lar la extensió. Consulteu la imatge:\n\nUn cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra (1) i seleccioneu l’opció Remote-SSH: Connect to Host… (2). Consulteu la imatge:\n\nAra apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció Add a New SSH Host. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:\n\nSeleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a Add. Consulteu la imatge:\n\ni comproveu que l’amfitrió s’ha afegit correctament.\n\nAra feu clic a Open Config i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:\nHost 172.16.10.223\n  HostName 172.16.10.223\n  User jordi\nUs recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per vm-curs0-debian12 :\nHost vm-curs0-debian12\n  HostName 172.16.10.202\n  User jordi\nUn cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual vm-curs0-debian12. Per fer-ho:\n\nFeu clic a la icona de la part inferior esquerra.\nSeleccioneu Remote-SSH: Connect to Host….\nSeleccioneu vm-curs0-debian12:\n\n\nUs apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a Continue. \nUs apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari jordi. \n\n\n\n\n\n\n\nNota\n\n\n\nLa primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.\n\n\nUn cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió vm-curs0-debian12.\n\nPer comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda uname -a per veure la informació del sistema i comprovar que esteu a la màquina virtual."
   },
   {
-    "objectID": "laboratori/lab05.html#tasques",
-    "href": "laboratori/lab05.html#tasques",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "Tasques",
-    "text": "Tasques\n\nCreació d’equips\n\nFormeu equips de 3 persones. Cada grup haurà d’escollir un líder, que serà el responsable de coordinar el treball, gestionar el repositori i fer el seguiment del projecte.\nTrieu un nom d’equip original.\n\n\n\nPreparació del projecte\nEnllaç de la tasca a GitHub Classroom: https://classroom.github.com/a/HZQmHzs-)\n\nEl líder de l’equip haurà d’iniciar el grup a través de GitHub Classroom.\n\nIntrodueix el nom de l’equip.\n\nAccepta la tasca.\n\nUn cop acceptada la tasca, es crearà un repositori per a l’equip.\n\n\nLa resta de membres s’hi podran unir seleccionant el nom de l’equip al mateix enllaç https://classroom.github.com/a/HZQmHzs-.\nEl repositori base contindrà el codi inicial necessari i la seva estructura.\n\nEl líder és responsable d’assignar les tasques a cada membre mitjançant issues a GitHub.\nPer fer-ho:\n\nFer clic a la pestanya Issues.\n\nFer clic a New issue, i seleccionar Feature request.\n\nUs he preparat una plantilla per a les issues. Feu clic a Get started.\n\nOmplir el títol i la descripció de la tasca.\nAssignar la tasca a un membre de l’equip. Click a Assignees i seleccionar el membre.\nUn cop assignada la tasca, fer clic a Submit new issue.\n\nLlista de tasques i assignació:\n\n\n\nTasca\nAssignat a\n\n\n\n\nImplementació de la funció de suma\nlíder\n\n\nImplementació de la funció de resta\nlíder\n\n\nImplementació de la funció de multiplicació\nmembre1\n\n\nImplementació de la funció de divisió\nmembre1\n\n\nImplementació de la funció de potència\nmembre2\n\n\nImplementació de la funció de arrels quadrades\nmembre2\n\n\n\n\n\n\nTreball individual\nInstal·la el paquet build-essential, que inclou les eines i llibreries necessàries per compilar i construir programes en C. Aquest paquet inclou el compilador GCC, que és comunament utilitzat per programar en C.\n```sh\napt install build-essential -y\n```\n\nCada membre de l’equip haurà de clonar el repositori al seu ordinador i crear una branca develop per les seves tasques.\ngit clone URL_DEL_REPOSITORI\ncd NOM_DEL_REPOSITORI\n\nℹ️ Informació\nSi feu clic a Code al repositori, podreu copiar la URL del repositori.\n\n\n\n🚀 Recomanació\nTanqueu la sessió de VSCode i torneu-la a obrir però indicant la ruta a la carpeta del projecte. En el meu cas, seria /home/jordi/test/projecte-0-calculadora-teacher. D’aquesta manera, podreu utilitzar les eines de VSCode per a desenvolupar el projecte.\n\n\n\nPer cada tasca assignada, el membre haurà de crear una branca amb el nom de la tasca. Per exemple, si la tasca és implementar la funció de suma, la branca es podria anomenar feature-suma.\ngit checkout -b feature-suma\nObserveu que VSCode us mostra la branca actual a la part inferior esquerra.\n\nEl codi de la funció suma podria ser:\n// calc.c\nint suma(int a, int b) {\n    return a + b;\n}\n// calc.h\nint suma(int a, int b);\nCompileu el codi i comproveu que funciona correctament.\nmake\n./calc\n\nSi tot funciona correctament, el codi s’executarà i mostrarà el resultat de la suma.\nUn cop finalitzada la tasca, fer un commit amb els canvis realitzats indicant la tasca realitzada.\nHo podeu fer amb les eines de VSCode o amb la terminal.\nSi feu servir la terminal, la comanda seria:\ngit add src/calc.c src/calc.h src/main.c\ngit commit -m \"@feat: Implementació de la funció de suma\"\n\n\n⚠️ Compte!\nSi no feu git add abans de fer el commit, no es pujaran els canvis al repositori. Així que assegureu-vos de fer git add abans de fer el commit.\n\n\n\n💡 TIP:\nUtilitza els missatges de commit per tancar les issues relacionades amb la tasca. Per exemple, si la tasca és implementar la funció de suma, el missatge de commit podria ser: git commit -m \"@feat: Implementació de la funció de suma. Closes #1\". Si la tasca 1 és la implementació de la funció de suma.\n\nPer fer-ho amb VSCode, feu clic a la icona de la branca a la part inferior esquerra i seleccioneu Commit. Després, introduïu el missatge de commit i confirmeu-lo.\n\nRepeteix els passos 2 i 3 per a cada tasca assignada. Sempre creant la branca des de main. Per tornar a la branca main, feu git checkout main. O bé, click a la branca a la part inferior esquerra de VSCode i seleccioneu main.\nUn cop finalitzades les seves tasques ajuntarem totes les branques a la nostra branca local main.\n\nPer fer-ho, amb la terminal, farem:\ngit checkout -b main\ngit merge feature-suma \n\n\n⚠️ Compte!\nSi hi ha conflictes, caldrà resoldre’ls abans de fer el commit.\n\nPer fer-ho amb VSCode, farem clic a la icona de la branca a la part inferior esquerra i seleccionarem Merge branch into current.\n\nSeleccioneu la branca a ajuntar.\n\nQuan integreu la segona funcionalitat (resta, multiplicació, etc.), caldrà fer un merge ja que es detectaran conflictes.\n\nUn dels conflictes es el fitxer calc.c. Cada branca ha modificat aquest fitxer i caldrà resoldre els conflictes. Acceptant els canvis de les dues branques. Podeu fer-ho manualment o amb el resolutor de conflictes de VSCode.\n\nRepetiu el mateix procediment per tots els conflictes que apareguin.\nUn cop resolts els conflictes, feu un commit amb el missatge @feat: Merge branch feature-resta.\n\n\n\n\nAjuntar les tasques\n\nUn cop totes les tasques estiguin implementades i ajuntades a la branca main, caldrà testar que el codi funciona correctament.\nAquestes tasques estaràn en la branca main del repositori local. Ara caldrà pujar aquestes tasques al repositori remot.\n\nCrea a GitHub una branca remota anomenada develop-&lt;nom-usuari&gt; i la vincularem amb la branca main local.\n\n\n\n\nBranca develop\n\n\nPrimer, caldrà actualitzar les branques remotes del repositori.\ngit fetch origin\n\nUn cop actualitzades les branques remotes, caldrà fer un push de la branca main a la branca develop-&lt;nom-usuari&gt;.\ngit push origin main:develop-&lt;nom-usuari&gt;\nUn cop pujades totes les tasques al repositori remot, el líder actualitzarà les branques remotes de tots els membres de l’equip.\ngit fetch origin\nFara un merge de totes les tasques a la seva branca main.\nFinalment, testeu que el codi funciona correctament.\nUn cop testejat, caldrà pujar la branca main al repositori remot.\ngit push origin main"
-  },
-  {
-    "objectID": "laboratori/lab05.html#exercici-extra-opcional",
-    "href": "laboratori/lab05.html#exercici-extra-opcional",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "Exercici Extra (opcional)",
-    "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis REMOTE."
+    "objectID": "laboratori/lab03.html#exercicis",
+    "href": "laboratori/lab03.html#exercicis",
+    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "section": "Exercicis",
+    "text": "Exercicis\n\nCreeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.\nEditeu fitxers utilitzant l’editor de VSCode.\nPodeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop."
   },
   {
     "objectID": "laboratori/lab04.html",
@@ -189,144 +84,340 @@
     "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis MAIN."
   },
   {
-    "objectID": "laboratori/lab06.html",
-    "href": "laboratori/lab06.html",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "objectID": "laboratori/lab05.html",
+    "href": "laboratori/lab05.html",
+    "title": "Laboratori 5: Calculadora col·laborativa",
     "section": "",
-    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
   },
   {
-    "objectID": "laboratori/lab06.html#objectius",
-    "href": "laboratori/lab06.html#objectius",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "objectID": "laboratori/lab05.html#configurant-github",
+    "href": "laboratori/lab05.html#configurant-github",
+    "title": "Laboratori 5: Calculadora col·laborativa",
     "section": "",
-    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
   },
   {
-    "objectID": "laboratori/lab06.html#introducció",
-    "href": "laboratori/lab06.html#introducció",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Introducció",
-    "text": "Introducció\nGitHub Pages amaga la complexitat de configurar un servidor web i et permet allotjar un lloc web de manera gratuïta. Aquesta eina et permetrà allotjar llocs web estàtics directament des del teu repositori de GitHub. Tu ets responsable de crear el lloc web i de pujar-lo al teu repositori, i GitHub s’encarrega de la resta.\nUtilitzarem una plantilla de lloc web creada per Dean Attali, les seves instruccions sobre com utilitzar la plantilla es troben aquí, però no et preocupis per això, utilitzarem una simplificació per a fer les coses més fàcils."
+    "objectID": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
+    "href": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "Configuració de l’accés a GitHub des de la màquina virtual",
+    "text": "Configuració de l’accés a GitHub des de la màquina virtual\n\nInicia una sessió a la terminal de la màquina virtual com a usuari normal.\nConfigura Git per utilitzar el token de GitHub executant la següent comanda:\ngit config --global github.token TOKEN\n\n🔑 Actualitza:\nReemplaça TOKEN pel token d’accés que has generat al pas anterior.\n\nAixò emmagatzemarà el token de GitHub en la configuració global de Git al teu sistema Debian.\nVerifica que el token s’hagi configurat correctament executant:\ngit config --global --get github.token\nSi tot ha anat bé, veuràs el token que has configurat."
   },
   {
-    "objectID": "laboratori/lab06.html#prerequisits",
-    "href": "laboratori/lab06.html#prerequisits",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Prerequisits",
-    "text": "Prerequisits\n\nCompte de GitHub (crea’n un a https://github.com si no en tens un)"
+    "objectID": "laboratori/lab05.html#tasques",
+    "href": "laboratori/lab05.html#tasques",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "Tasques",
+    "text": "Tasques\n\nCreació d’equips\n\nFormeu equips de 3 persones. Cada grup haurà d’escollir un líder, que serà el responsable de coordinar el treball, gestionar el repositori i fer el seguiment del projecte.\nTrieu un nom d’equip original.\n\n\n\nPreparació del projecte\nEnllaç de la tasca a GitHub Classroom: https://classroom.github.com/a/HZQmHzs-)\n\nEl líder de l’equip haurà d’iniciar el grup a través de GitHub Classroom.\n\nIntrodueix el nom de l’equip.\n\nAccepta la tasca.\n\nUn cop acceptada la tasca, es crearà un repositori per a l’equip.\n\n\nLa resta de membres s’hi podran unir seleccionant el nom de l’equip al mateix enllaç https://classroom.github.com/a/HZQmHzs-.\nEl repositori base contindrà el codi inicial necessari i la seva estructura.\n\nEl líder és responsable d’assignar les tasques a cada membre mitjançant issues a GitHub.\nPer fer-ho:\n\nFer clic a la pestanya Issues.\n\nFer clic a New issue, i seleccionar Feature request.\n\nUs he preparat una plantilla per a les issues. Feu clic a Get started.\n\nOmplir el títol i la descripció de la tasca.\nAssignar la tasca a un membre de l’equip. Click a Assignees i seleccionar el membre.\nUn cop assignada la tasca, fer clic a Submit new issue.\n\nLlista de tasques i assignació:\n\n\n\nTasca\nAssignat a\n\n\n\n\nImplementació de la funció de suma\nlíder\n\n\nImplementació de la funció de resta\nlíder\n\n\nImplementació de la funció de multiplicació\nmembre1\n\n\nImplementació de la funció de divisió\nmembre1\n\n\nImplementació de la funció de potència\nmembre2\n\n\nImplementació de la funció de arrels quadrades\nmembre2\n\n\n\n\n\n\nTreball individual\nInstal·la el paquet build-essential, que inclou les eines i llibreries necessàries per compilar i construir programes en C. Aquest paquet inclou el compilador GCC, que és comunament utilitzat per programar en C.\n```sh\napt install build-essential -y\n```\n\nCada membre de l’equip haurà de clonar el repositori al seu ordinador i crear una branca develop per les seves tasques.\ngit clone URL_DEL_REPOSITORI\ncd NOM_DEL_REPOSITORI\n\nℹ️ Informació\nSi feu clic a Code al repositori, podreu copiar la URL del repositori.\n\n\n\n🚀 Recomanació\nTanqueu la sessió de VSCode i torneu-la a obrir però indicant la ruta a la carpeta del projecte. En el meu cas, seria /home/jordi/test/projecte-0-calculadora-teacher. D’aquesta manera, podreu utilitzar les eines de VSCode per a desenvolupar el projecte.\n\n\n\nPer cada tasca assignada, el membre haurà de crear una branca amb el nom de la tasca. Per exemple, si la tasca és implementar la funció de suma, la branca es podria anomenar feature-suma.\ngit checkout -b feature-suma\nObserveu que VSCode us mostra la branca actual a la part inferior esquerra.\n\nEl codi de la funció suma podria ser:\n// calc.c\nint suma(int a, int b) {\n    return a + b;\n}\n// calc.h\nint suma(int a, int b);\nCompileu el codi i comproveu que funciona correctament.\nmake\n./calc\n\nSi tot funciona correctament, el codi s’executarà i mostrarà el resultat de la suma.\nUn cop finalitzada la tasca, fer un commit amb els canvis realitzats indicant la tasca realitzada.\nHo podeu fer amb les eines de VSCode o amb la terminal.\nSi feu servir la terminal, la comanda seria:\ngit add src/calc.c src/calc.h src/main.c\ngit commit -m \"@feat: Implementació de la funció de suma\"\n\n\n⚠️ Compte!\nSi no feu git add abans de fer el commit, no es pujaran els canvis al repositori. Així que assegureu-vos de fer git add abans de fer el commit.\n\n\n\n💡 TIP:\nUtilitza els missatges de commit per tancar les issues relacionades amb la tasca. Per exemple, si la tasca és implementar la funció de suma, el missatge de commit podria ser: git commit -m \"@feat: Implementació de la funció de suma. Closes #1\". Si la tasca 1 és la implementació de la funció de suma.\n\nPer fer-ho amb VSCode, feu clic a la icona de la branca a la part inferior esquerra i seleccioneu Commit. Després, introduïu el missatge de commit i confirmeu-lo.\n\nRepeteix els passos 2 i 3 per a cada tasca assignada. Sempre creant la branca des de main. Per tornar a la branca main, feu git checkout main. O bé, click a la branca a la part inferior esquerra de VSCode i seleccioneu main.\nUn cop finalitzades les seves tasques ajuntarem totes les branques a la nostra branca local main.\n\nPer fer-ho, amb la terminal, farem:\ngit checkout -b main\ngit merge feature-suma \n\n\n⚠️ Compte!\nSi hi ha conflictes, caldrà resoldre’ls abans de fer el commit.\n\nPer fer-ho amb VSCode, farem clic a la icona de la branca a la part inferior esquerra i seleccionarem Merge branch into current.\n\nSeleccioneu la branca a ajuntar.\n\nQuan integreu la segona funcionalitat (resta, multiplicació, etc.), caldrà fer un merge ja que es detectaran conflictes.\n\nUn dels conflictes es el fitxer calc.c. Cada branca ha modificat aquest fitxer i caldrà resoldre els conflictes. Acceptant els canvis de les dues branques. Podeu fer-ho manualment o amb el resolutor de conflictes de VSCode.\n\nRepetiu el mateix procediment per tots els conflictes que apareguin.\nUn cop resolts els conflictes, feu un commit amb el missatge @feat: Merge branch feature-resta.\n\n\n\n\nAjuntar les tasques\n\nUn cop totes les tasques estiguin implementades i ajuntades a la branca main, caldrà testar que el codi funciona correctament.\nAquestes tasques estaràn en la branca main del repositori local. Ara caldrà pujar aquestes tasques al repositori remot.\n\nCrea a GitHub una branca remota anomenada develop-&lt;nom-usuari&gt; i la vincularem amb la branca main local.\n\n\n\n\nBranca develop\n\n\nPrimer, caldrà actualitzar les branques remotes del repositori.\ngit fetch origin\n\nUn cop actualitzades les branques remotes, caldrà fer un push de la branca main a la branca develop-&lt;nom-usuari&gt;.\ngit push origin main:develop-&lt;nom-usuari&gt;\nUn cop pujades totes les tasques al repositori remot, el líder actualitzarà les branques remotes de tots els membres de l’equip.\ngit fetch origin\nFara un merge de totes les tasques a la seva branca main.\nFinalment, testeu que el codi funciona correctament.\nUn cop testejat, caldrà pujar la branca main al repositori remot.\ngit push origin main"
   },
   {
-    "objectID": "laboratori/lab06.html#eines",
-    "href": "laboratori/lab06.html#eines",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Eines",
-    "text": "Eines\n\nJekyll (un generador de llocs estàtics) - https://jekyllrb.com\nGitHub Pages (un servei d’allotjament de llocs estàtics) - https://pages.github.com"
+    "objectID": "laboratori/lab05.html#exercici-extra-opcional",
+    "href": "laboratori/lab05.html#exercici-extra-opcional",
+    "title": "Laboratori 5: Calculadora col·laborativa",
+    "section": "Exercici Extra (opcional)",
+    "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis REMOTE."
   },
   {
-    "objectID": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
-    "href": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Tasca 1: Configuració del teu lloc web personal",
-    "text": "Tasca 1: Configuració del teu lloc web personal\n\nFes un fork de https://github.com/ferranad/website-template al teu compte de GitHub fent clic al botó “Fork” a la part superior dreta d’aquesta pàgina.\n\nCanvia el nom del repositori a username.github.io, on username és el teu nom d’usuari de GitHub.\n\nVes a la configuració del repositori i troba la secció GitHub Pages.\n\nHabilita GitHub Pages seleccionant la branca main com a origen. Fes clic al botó “Save” i torna a la pàgina principal del teu repositori.\n\nEspera un parell de minuts fins que el teu lloc web es desplegui. Quan el desplegament s’hagi completat, veuràs una marca verda al costat del teu darrer commit. Veuràs un punt taronja mentre el desplegament està en curs (intenta actualitzar la pàgina si no veus la marca verda després d’uns minuts).\n\n&lt;div style=“display: flex; justify-content: center; gap: 10px;”&gt; &lt;img src=“figures/pages/ci-waiting.png” width=“35%”&gt; &lt;img src=“figures/pages/ci-done.png” width=“35%”&gt; &lt;/div&gt;\n\nOpcionalment, pots editar la descripció del repositori perquè contingui l’URL del teu lloc web. Això et facilitarà a tu i als altres l’accés al teu lloc web des de la pàgina del repositori de GitHub.\n\nProva el teu lloc web visitant https://username.github.io al teu navegador web (substitueix username pel teu nom d’usuari de GitHub). Notaràs que el lloc web ja està ple de contingut d’exemple."
-  },
-  {
-    "objectID": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
-    "href": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Tasca 2: Personalització del teu lloc web personal",
-    "text": "Tasca 2: Personalització del teu lloc web personal\n\nEdita el fitxer _config.yml per personalitzar el teu lloc web. Pots utilitzar la interfície web de GitHub per editar el fitxer directament, tal com es mostra al vídeo següent. Un cop hagis confirmat els canvis a la branca principal, el desplegament del lloc web s’activarà automàticament de nou i en un parell de minuts tindràs el teu lloc web actualitzat.\n\n\n\n\n\n\n\nNota\n\n\n\nEn lloc d’editar el fitxer utilitzant la interfície web de GitHub, pots clonar el repositori a la teva màquina local i editar el fitxer amb un editor de text si et sents més còmode.\n\n\nEdita el fitxer aboutme.md per afegir la teva informació personal, sent lliure d’escriure el que vulguis. Repeteix el mateix procés que a l’apartat anterior, però ara editant el fitxer aboutme.md.\nCanvia la imatge de l’avatar editant _config.yml i reemplaçant la ruta. Observa que és només una cadena amb la ruta a un fitxer present al repositori, en aquest cas, el fitxer images/ferran.jpeg. Pots pujar qualsevol imatge que vulguis al repositori navegant al directori images i fent clic al botó “Add file -&gt; Upload files”. Si, per exemple, has pujat un fitxer anomenat myavatar.jpg, hauries de canviar la ruta a _config.yml a images/myavatar.jpg. Si no vols utilitzar una imatge d’avatar, pots eliminar la línia avatar: \"/images/ferran.jpeg del fitxer _config.yml."
-  },
-  {
-    "objectID": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
-    "href": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Tasca 3: Escriptura d’una entrada de blog",
-    "text": "Tasca 3: Escriptura d’una entrada de blog\nAra que tenim el lloc web a punt, escrivim una entrada de blog. Potser ja has notat que a la pàgina d’inici del lloc web hi ha una publicació de blog anomenada Sample blog post... en la qual pots fer clic per llegir-la completament. Aquesta és una publicació de blog de plantilla que pots utilitzar per aprendre les diferents sintaxis i estils que pots fer servir per escriure la teva pròpia publicació. Aquest fitxer es troba a _posts/2020-02-26-example-post.md. Sempre pots consultar aquest fitxer per veure com escriure una publicació de blog. En cas que no vulguis que es mostri al teu lloc web, només has d’eliminar-lo i consultar el que hi ha al repositori que has fet un fork.\nPer escriure una nova entrada de blog, només has de crear un nou fitxer dins del directori _posts amb el següent format de nom: YYYY-MM-DD-títol.md. Si no segueixes aquest format, la publicació de blog no es mostrarà al teu lloc web. Pots crear un nou fitxer navegant al directori _posts i fent clic al botó “Add file -&gt; Create a new file”. Ara que ja sabem com crear una nova publicació de blog, escrivim-ne una!"
-  },
-  {
-    "objectID": "laboratori/lab02.html",
-    "href": "laboratori/lab02.html",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "objectID": "laboratori/lab-git-3.html",
+    "href": "laboratori/lab-git-3.html",
+    "title": "Laboratori 5: Branques i conflictes",
     "section": "",
-    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+    "text": "Aprendre a crear i canviar entre branques.\nEntendre el merge.\nResoldre conflictes de merge."
   },
   {
-    "objectID": "laboratori/lab02.html#objectius",
-    "href": "laboratori/lab02.html#objectius",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "objectID": "laboratori/lab-git-3.html#objectius",
+    "href": "laboratori/lab-git-3.html#objectius",
+    "title": "Laboratori 5: Branques i conflictes",
     "section": "",
-    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+    "text": "Aprendre a crear i canviar entre branques.\nEntendre el merge.\nResoldre conflictes de merge."
   },
   {
-    "objectID": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
-    "href": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)",
-    "text": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)\nAquestes instruccions et guiaran a través del procés per crear un compte a Broadcom i descarregar una de les versions gratuïtes de VMware Workstation Pro (per a Windows) o VMware Fusion (per a macOS).\n\nRegistra’t per a un compte gratuït a Broadcom: Per accedir a les descàrregues de programari de VMware, necessites un compte a la plataforma de Broadcom.\n\nDirigeix-te a la pàgina de registre de Broadcom: https://profile.broadcom.com/web/registration\nIntrodueix la teva adreça de correu electrònic, realitza la verificació de seguretat i fes clic a Next \nIntrodueix el codi de verificació que has rebut al teu correu electrònic. Fes clic a Verify per continuar. \nCompleta el formulari de registre amb la teva informació personal i crea una contrasenya. Fes clic a Create Account per completar el registre. \nUn cop completat el registre, visualitzaràs un missatge de registre correcte. I us demanarà si voleu completar el perfil. Seleccioneu, I will do it later per continuar. \n\nAccedeix a les descàrregues gratuïtes de VMware:\n\nVes a la pàgina de login de Broadcom: https://profile.broadcom.com/web/login\nInicia sessió amb el teu correu electrònic i la contrasenya que has creat.\nVes directament a la secció de descàrregues a (https://support.broadcom.com/group/ecx/free-downloads). \nSelecciona VMware Workstation Pro o VMware Fusion segons el teu sistema operatiu (Windows o macOS). En el meu cas, utiltizo Mac, així que seleccionaré VMware Fusion.\nSeleccioneu la versió que voleu descarregar. En aquest cas, podem seleccionar la versió més recent. \nEn la pàgina següent:\n\nFes clic a l’enllaç de termes i condicions per que s’activi el checkbox de l’acceptació.\nAcceptar els termes i condicions.\nFes clic a descàrrega per començar a descarregar el fitxer d’instal·lació. \n\n\nInstal·la VMware Workstation Pro o VMware Fusion."
-  },
-  {
-    "objectID": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
-    "href": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Descarrega de la imatge ISO de Debian 12.5.0",
-    "text": "Descarrega de la imatge ISO de Debian 12.5.0\n\nVes a la pàgina de descàrrega de Debian 12.5.0: https://get.debian.org/images/archive/12.5.0/\nSelecciona la imatge ISO per a la teva arquitectura (amd64 o arm64). La majoria dels vostres ordinadors tenen processadors amd64 (Intel o AMD). Els processadors ARM són més comuns en dispositius mòbils i en els nous Mac amb xips M.\nSeleccioneu la carpeta iso-cd.\nSeleccioneu el fitxer debian-12.5.0-x-netinst.iso. On x és l’arquitectura del vostre sistema (amd64 o arm64).\n\n💡 Nota:\nLa imatge netinst és una imatge d’instal·lació mínima que descarrega els paquets necessaris durant la instal·lació. Això permet personalitzar la instal·lació i seleccionar els paquets que voleu instal·lar."
-  },
-  {
-    "objectID": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
-    "href": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Configuració de la màquina virtual amb VMWare",
-    "text": "Configuració de la màquina virtual amb VMWare\n\nSelecciona l’opció Create a New Virtual Machine a VMWare Workstation Pro o VMWare Fusion.\nSelecciona Install from disc or image. \nSelecciona la imatge ISO de Debian 12. \nConfigura els recursos de la màquina virtual. \nAnomena la màquina virtual i selecciona la ubicació on es guardarà. Per exemple, podeu posar el nom vm-curs0-debian12 i seleccionar una ubicació al vostre directori d’usuari."
-  },
-  {
-    "objectID": "laboratori/lab02.html#installació-del-sistema-operatiu",
-    "href": "laboratori/lab02.html#installació-del-sistema-operatiu",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Instal·lació del sistema operatiu",
-    "text": "Instal·lació del sistema operatiu\n\nUn cop iniciada la màquina virtual, podeu seleccionar la opció Install o bé Graphical install. \nEn aquest tutoriral, seleccionarem la opció Graphical install per a una instal·lació més amigable. La principal diferència entre les dues opcions és l’entorn gràfic.\nSelecciona l’idioma d’instal·lació. \nPodeu seleccionar l’idioma que vulgueu per a la instal·lació. En aquest cas, seleccionarem l’idioma Català.\nSelecciona la ubicació geogràfica. \nEn aquest cas, seleccionarem la ubicació Espanya.\nSelecciona la disposició del teclat. \nEn aquest cas, seleccionarem la disposició de teclat Català. Això ens asegurarà un mapeig correcte del teclat.\nEspereu que el sistema carregui els components necessaris. \nConfigura la xarxa.\n\nEl primer pas és configurar el nom d’amfitrió o hostname. Aquest nom permet identificar de forma única el vostre sistema. Podeu deixar el nom per defecte o canviar-lo al vostre gust.\n\n\nEn aquest cas, hem canviat el nom d’amfitrió a vm-curs0-debian12, però podeu posar el nom que vulgeu com debianlab, etc.\n\nEl segon pas és configurar el domini de la xarxa. Aquest pas el podeu deixar en blanc si no teniu un domini específic. O bé, podem utilitzar .local com a domini local per identicar que el servidor pertany a la xarxa local.\n\n\nConfigura l’usuari administrador.\n\nEn aquest punt, heu de tenir en compte que si no poseu cap contrasenya, es crearà l’usuari normal amb permisos de sudo i això us permetra executar comandes amb privilegis d’administrador.\nSi poseu una contrasenya, aquesta serà la contrasenya de l’usuari root i no es crearà un usuari normal amb permisos de sudo. I tampoc s’instal·larà el paquet sudo.\n\n⚠️ Compte\nCom utilitzarem les màquines virtuals com a laboratoris de pràctiques, no cal que poseu una contrasenya molt segura. Podeu utilitzar una com a 1234. Però, recordeu que en un entorn real, la seguretat és molt important i cal utilitzar contrasenyes segures.\n\nConfigura un usuari normal.\n\nNom complet: Podeu posar el vostre nom complet o el que vulgueu.\n\n\n\nNom d’usuari: Podeu posar el vostre nom d’usuari o el que vulgueu.\n\n\n\nContrasenya: El mateix que per l’usuari root.\n\n\nConfigura la zona horària.\n\nEn aquest cas, seleccionarem la zona horària de Madrid.\nConfigura el disc dur.\n\nParticionament: En aquest curs, el tema del particionament no és molt important. Per tant, podeu fer servir la configuració per defecte més senzilla (Guiat - utilitzar el disc sencer). Aquesta configuració crearà les particions necessàries per a l’instal·lació del sistema.\n\n\n\nSelecciona el disc on instal·lar el sistema. En el meu cas, només tinc un disc virtual amb l’etiqueta /dev/nvme0n1. L’etiqueta indica el tipus de disc (NVMe) i el número de disc (1). Es possible tenir altres etiquetes com /dev/sda per discos SATA o /dev/vda per discos virtuals.\n\n\n\nParticions: Podeu seleccionar (Tots els fitxers en una partició) per simplificar la gestió i evitar problemes podeu seleccionar aquesta opció. Aquesta opció crearà una sola partició per a tot el sistema.\n\n\n\nConfirmeu els canvis. En aquest punt, el sistema crearà les particions necessàries:\n\nLa primera partició serà la partició /boot on es guardaran els fitxers per arrancar el sistema.\nLa segona partició serà la partició / on es guardaran els fitxers del sistema.\nLa tercera partició serà la partició de swap on es guardaran les dades de la memòria virtual.\n\n\n\nℹ️ Què és la partició swap?\nLa swap és una partició especial que s’utilitza com a memòria virtual quan la memòria RAM s’omple. Aquesta partició permet alliberar memòria RAM i evitar que el sistema es bloquegi.\n\n\n\nEscriu els canvis al disc.\n\n\nEspera que s’instal·li el sistema.\n\nConfigura el gestor de paquets.\n\nAnalitzar els discos de la instal·lació. Aquest pas permet seleccionar els discos on es troben els paquets d’instal·lació. Normalment, aquest pas no cal modificar-lo.\n\n\n\nConfigura el gestor de paquets. En aquest cas, seleccionarem el servidor de paquets més proper a la nostra ubicació.\n\nFiltrar els servidors de paquets per ubicació. \nSeleccionar el servidor de paquets. \n\n\n👀 Nota:\nA vegades, els servidors de paquets poden estar saturats o no funcionar correctament. En aquest cas, podeu seleccionar un servidor alternatiu o provar més tard.\n\nConfigura el proxy. Si esteu darrere d’un proxy, podeu configurar-lo en aquest pas.\n\n\nℹ️ Què és un proxy?\nUn proxy és un servidor intermediari entre el vostre sistema i Internet. Aquest servidor pot ser utilitzat per controlar l’accés a Internet, per protegir la vostra privacitat o per accelerar la connexió a Internet. Les peticions de connexió a Internet es fan a través del servidor proxy, que actua com a intermediari i reenvia les peticions al servidor de destinació. Per exemple, en una empresa, el proxy pot ser utilitzat per controlar l’accés a Internet dels empleats i protegir la xarxa interna de possibles amenaces.\n\n\nEspera que s’instal·lin els paquets.\n\nConfigura el paquet popularity-contest.\n\nAquest paquet permet enviar informació anònima sobre els paquets instal·lats al servidor de Debian per millorar la selecció de paquets i la qualitat dels paquets. Podeu seleccionar si voleu participar en aquest programa o no.\n\n\nSelecció de programari. En aquest punt podeu seleccionar si voleu un servidor en mode text o amb interfície gràfica. També us permet seleccionar si voleu instal·lar els serveis web i ssh al servidor i finalment si voleu les utilitats estàndard del sistema. Seleccionarem el servidor en mode text, el servei SSH activat i les utilitats estàndard del sistema.\n\n\nℹ️ Què és un servidor en mode text?\nUn servidor en mode text és un servidor que no té una interfície gràfica. Això significa que tota la interacció amb el servidor es fa a través de la línia de comandes. Aquest tipus de servidor és molt comú en entorns de producció, ja que consumeix menys recursos i és més segur que un servidor amb interfície gràfica.\n\n\n\nℹ️ Què és el servei SSH?\nEl servei SSH (Secure Shell) és un protocol de xifratament que permet connectar-se de forma segura a un servidor remot. Aquest servei és molt utilitzat per administrar servidors a distància, ja que permet accedir al servidor de forma segura i xifratada.\n\nEspera que s’instal·li el programari.\n\nInstal·la el gestor d’arrancada GRUB. \nInstal·lació acabada. Un cop finalitzada la instal·lació, el sistema es reiniciarà i podreu accedir al GRUB per seleccionar el sistema operatiu. \nEl GRUB us permet accedir al sistema operatiu. En aquest cas, seleccionarem Debian GNU/Linux. La resta d’opcions les veurem més endavant en el curs.\n\n\nℹ️ Què és el GRUB?\nEl GRUB és un gestor d’arrencada que permet seleccionar el sistema operatiu que volem iniciar. Aquest gestor és molt útil en sistemes amb múltiples sistemes operatius o múltiples versions del mateix sistema operatiu.\n\nInicieu sessió amb l’usuari i la contrasenya que heu configurat durant la instal·lació.\n\n\n\n\n\n\n\nAlerta\n\n\n\nQuan escriviu la contrasenya, no es mostrarà cap caràcter a la pantalla. Això és normal en sistemes Unix/Linux per motius de seguretat. Simplement escriviu la contrasenya i premeu Enter.\n\n\nTanqueu la sessió amb la comanda exit.\nInicieu sessió amb l’usuari root i la contrasenya que heu configurat durant la instal·lació."
-  },
-  {
-    "objectID": "laboratori/lab02.html#exercicis-adicionals",
-    "href": "laboratori/lab02.html#exercicis-adicionals",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Exercicis adicionals",
-    "text": "Exercicis adicionals\n\nInstal·leu altres màquines virtuals amb altres sistemes operatius en mode gràfic com:\n\nUbuntu 24.04 LTS\nFedora 39"
-  },
-  {
-    "objectID": "laboratori/lab03.html",
-    "href": "laboratori/lab03.html",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
-    "section": "",
-    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
-  },
-  {
-    "objectID": "laboratori/lab03.html#objectius",
-    "href": "laboratori/lab03.html#objectius",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
-    "section": "",
-    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
-  },
-  {
-    "objectID": "laboratori/lab03.html#requisits-previs",
-    "href": "laboratori/lab03.html#requisits-previs",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "objectID": "laboratori/lab-git-3.html#requisits-previs",
+    "href": "laboratori/lab-git-3.html#requisits-previs",
+    "title": "Laboratori 5: Branques i conflictes",
     "section": "Requisits previs",
-    "text": "Requisits previs\n\nMàquina virtual en funcionament (vegeu Laboratori 2).\nVisual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de https://code.visualstudio.com/.\nObtenir la IP de la màquina virtual. Per fer-ho, podeu:\n\nConsultar la informació a VMWare: \nO bé, iniciar sessió a la màquina virtual i executar la comanda ip a per obtenir la IP: \n\n\n\n\n\n\n\nNota\n\n\n\nEn els dos casos, la IP de la màquina virtual és 172.16.10.223."
+    "text": "Requisits previs\n\nHaver completat els laboratoris anteriors (fins al Lab 4).\nDisposar d’un repositori amb diversos commits.\nGit instal·lat al sistema."
   },
   {
-    "objectID": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
-    "href": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
-    "section": "Configurant VSCode per connectar-se a la màquina virtual",
-    "text": "Configurant VSCode per connectar-se a la màquina virtual\nUn cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: remote-ssh. Primer, feu clic a Marketplace (1), després cerqueu remote-ssh i, finalment, feu clic a (3) per instal·lar la extensió. Consulteu la imatge:\n\nUn cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra (1) i seleccioneu l’opció Remote-SSH: Connect to Host… (2). Consulteu la imatge:\n\nAra apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció Add a New SSH Host. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:\n\nSeleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a Add. Consulteu la imatge:\n\ni comproveu que l’amfitrió s’ha afegit correctament.\n\nAra feu clic a Open Config i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:\nHost 172.16.10.223\n  HostName 172.16.10.223\n  User jordi\nUs recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per vm-curs0-debian12 :\nHost vm-curs0-debian12\n  HostName 172.16.10.202\n  User jordi\nUn cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual vm-curs0-debian12. Per fer-ho:\n\nFeu clic a la icona de la part inferior esquerra.\nSeleccioneu Remote-SSH: Connect to Host….\nSeleccioneu vm-curs0-debian12:\n\n\nUs apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a Continue. \nUs apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari jordi. \n\n\n\n\n\n\n\nNota\n\n\n\nLa primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.\n\n\nUn cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió vm-curs0-debian12.\n\nPer comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda uname -a per veure la informació del sistema i comprovar que esteu a la màquina virtual."
+    "objectID": "laboratori/lab-git-3.html#crear-una-nova-branca",
+    "href": "laboratori/lab-git-3.html#crear-una-nova-branca",
+    "title": "Laboratori 5: Branques i conflictes",
+    "section": "Crear una nova branca",
+    "text": "Crear una nova branca\nCrearem una branca anomenada nou-contingut per treballar en modificacions separades:\ngit branch nou-contingut\nComprova que la nova branca apareix quan fas git branch. L’asterisc indica la branca actual.\n\n\n\n\n\n\nNota\n\n\n\nRecorda que git branch només crea la branca, però no canvia quina és la branca actual.\n\n\nCanvia a la nova branca fent servir:\ngit switch nou-contingut\nVerifica que ets a la branca que toca fent servir git branch.\nAra crea un nou fitxer que es digui contingut.md, amb el següent text:\nAquest és un contingut nou.\nFes un commit amb aquest nou fitxer.\nTorna a la branca main i comprova que contingut.md no existeix:\ngit switch main\nls -la"
   },
   {
-    "objectID": "laboratori/lab03.html#exercicis",
-    "href": "laboratori/lab03.html#exercicis",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
-    "section": "Exercicis",
-    "text": "Exercicis\n\nCreeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.\nEditeu fitxers utilitzant l’editor de VSCode.\nPodeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop."
+    "objectID": "laboratori/lab-git-3.html#merge-de-branques-fast-forward",
+    "href": "laboratori/lab-git-3.html#merge-de-branques-fast-forward",
+    "title": "Laboratori 5: Branques i conflictes",
+    "section": "Merge de branques (fast-forward)",
+    "text": "Merge de branques (fast-forward)\nUn cop acabats els canvis a nou-contingut, podem fer merge cap a main.\nPrimer de tot, visualitza la història en forma de graf:\ngit log --all --graph --oneline --decorate\nCom que main no ha avançat des de que vam crear nou-contingut, podem fer un fast-forward merge (és a dir, no ens cal crear un commit de merge):\n\n\n\n\n\n\nImportant\n\n\n\nAssegura’t que estas a la branca main.\n\n\ngit merge nou-contingut\nSi visualitzes el graf de commits, veuras que no s’ha creat cap commit nou sinó que s’ha mogut main cap al mateix commit que nou-contingut.\n\n\n\n\n\n\nConsell\n\n\n\nPodem forçar un commit de merge fent git merge --no-ff &lt;branca&gt;\nProva de crear una nova branca b1, modifica algun fitxer a la nova branca, i fes merge cap a main utilitzant no-ff.\n\n\nUn cop hem enllestit la feina, podem borrar les branques que ja no necessitem amb:\ngit branch -d nou-contingut\n# opcionalment si has creat la branca b1, també la pots eliminar"
+  },
+  {
+    "objectID": "laboratori/lab-git-3.html#merge-de-branques-3-way",
+    "href": "laboratori/lab-git-3.html#merge-de-branques-3-way",
+    "title": "Laboratori 5: Branques i conflictes",
+    "section": "Merge de branques (3-way)",
+    "text": "Merge de branques (3-way)\nCrea una nova branca proves. Canvia a aquesta branca i modifica el fitxer contingut.md (fent el commit corresponent).\nTorna a main i fes un canvi al fitxer README.md\nEn aquest punt tens dues branques que han avançat de forma independent, i cada una té commits que no té l’altra.\nVisualitza el graf de commits per comprovar que, efectivament, cada una té commits addicionals.\nAra prova d’unificar les dues branques fent un merge des de proves cap a main.\nT’ha generat algun conflicte? Perquè creus que és així?\nComprova que main ara té els canvis de README.md i contingut.md.\n\n\n\n\n\n\nConsell\n\n\n\nAquest tipus de merge s’anomena 3-way perquè Git utilitza tres commits per fer la fusió: el més recent de la branca actual, el més recent de la branca que fusionem, i l’ancestre comú (el punt on es van separar les branques).\n\n\nFes un fast-forward merge des de main cap a proves per a que estiguin al mateix punt."
+  },
+  {
+    "objectID": "laboratori/lab-git-3.html#merge-de-branques-amb-conflictes",
+    "href": "laboratori/lab-git-3.html#merge-de-branques-amb-conflictes",
+    "title": "Laboratori 5: Branques i conflictes",
+    "section": "Merge de branques (amb conflictes)",
+    "text": "Merge de branques (amb conflictes)\nAra veurem què passa quan dues branques modifiquen el mateix fitxer.\nSitua’t a la branca proves i modifica contingut.md perquè contingui:\nAquest és un contingut nou.\nContingut des de proves\nModifica README.md i canvia la primera línea a majúscules.\nFes commit:\ngit add contingut.md README.md\ngit commit -m \"Canvis des de proves\"\nTorna a main i modifica contingut.md perquè contingui:\nAquest és un contingut nou.\nContingut des de main\nModifica README.md i afegeix una nova línea al final.\nFes commit:\ngit add contingut.md README.md\ngit commit -m \"Canvis des de main\"\nAbans de fer un merge, analitzem la situació:\nLa situació actual és:\n\nproves ha modificat el fitxer README.md i contingut.md\nmain ha modificat el fitxer README.md i contingut.md\nLes dues branques han modificat tot el contingut de contingut.md.\nLes dues branques han modificat línies diferents de README.md.\n\nEn aquesta situació, Git hauria de generar un conflicte a contingut.md però no a README.md. Això és degut a que, per defecte, Git interpreta els fitxers de text línea a línea i pot gestionar els canvis en diferents parts del fitxer automàticament.\nAra sí, fes un merge des de proves cap a main.\nQuins conflictes s’han generat? És coherent amb el que hem analitzat previament?\nAbans de resoldre el conflicte, executa git diff --staged. Quins canvis veus a README.md?\n\n\n\n\n\n\nNota\n\n\n\nGit automàticament ha afegit tots els fitxers sense conflicte a l’àrea staging, llestos pel futur commit de merge.\n\n\nResol el conflicte i acaba el merge:\n\nEdita el fitxer i deixa el contingut desitjat. Recorda eliminar les marques de merge (&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD, =======, i &gt;&gt;&gt;&gt;&gt;&gt;&gt; proves).\nMarca el conflicte com a resolt fent git add contingut.md.\nAcaba el merge fent git commit.\n\n\n\n\n\n\n\nConsell\n\n\n\nSi en qualsevol moment vols avortar el merge, pots fer git merge --abort.\n\n\nComprova el resultat fent:\ngit log --all --graph --oneline --decorate\nPer confirmar que README.md s’ha fusionat automàticament, executa cat README.md i comprova que conté ambdues modificacions: la primera línia en majúscules i la nova línia al final. En canvi, contingut.md conté només el text que has escollit durant la resolució del conflicte."
+  },
+  {
+    "objectID": "laboratori/lab-git-3.html#exercici",
+    "href": "laboratori/lab-git-3.html#exercici",
+    "title": "Laboratori 5: Branques i conflictes",
+    "section": "Exercici",
+    "text": "Exercici\nFes els següents passos i respon a les preguntes.\n\nCrea una branca exercici des de main.\nEn aquesta branca, crea un fitxer exercici.md amb el text # Exercici\\nContingut inicial.\nFes un commit a exercici.\nTorna a main i modifica README.md afegint Main ha canviat.\nFes un commit a main.\nTorna a exercici i fes un merge de main a exercici (per actualitzar la branca). Aquest merge no hauria de generar conflictes.\nTorna a main i fes un merge de la branca exercici. Hauries de veure que no es crea un commit de merge.\nTorna a la branca exercici.\nModifica exercici.md perquè contingui # Exercici\\nContingut des de exercici.\nFes commit a exercici.\nTorna a main i modifica exercici.md perquè contingui # Exercici\\nContingut des de main.\nFes commit a main.\nFes un merge de la branca exercici a main i resol el conflicte (el text final ha de ser # Exercici\\nContingut resolt finalment).\nUn cop resolt, finalitza el merge.\nElimina les branques que ja no necessites.\nComprova que el repositori està net amb git status."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#història-dun-fitxer",
+    "href": "teoria/03-version-control.html#història-dun-fitxer",
+    "title": "Control de Versions Git",
+    "section": "Història d’un fitxer",
+    "text": "Història d’un fitxer\nHabitualment gestionem múltiples versions d’un document de forma manual.\n\nprojecte.docx\nprojecte_v1.docx\nprojecte_abans_revisió.docx\nprojecte_final_definitiu_ara_si.docx\n..."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#història-dun-fitxer-una-mica-millor",
+    "href": "teoria/03-version-control.html#història-dun-fitxer-una-mica-millor",
+    "title": "Control de Versions Git",
+    "section": "Història d’un fitxer (una mica millor)",
+    "text": "Història d’un fitxer (una mica millor)\nHabitualment gestionem múltiples versions d’un document de forma manual.\n\n20260727_projecte.docx\n20260728_projecte.docx\n20260810_projecte.docx\n20260915_projecte.docx\n..."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#perquè-necessitem-control-de-versions-1",
+    "href": "teoria/03-version-control.html#perquè-necessitem-control-de-versions-1",
+    "title": "Control de Versions Git",
+    "section": "Perquè necessitem control de versions?",
+    "text": "Perquè necessitem control de versions?\nImaginem aquesta situació:\nHem estat treballant en un projecte durant dues hores.\nDesprés d’aquestes dues hores, el nostre projecte no funciona, i volem recuperar com estava abans dels canvis.\nQuin dels fitxers que teniem és el correcte a recuperar?\n\nNo necessitem còpies dels fitxers, necessitem la seva història."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#sistemes-de-control-de-versions",
+    "href": "teoria/03-version-control.html#sistemes-de-control-de-versions",
+    "title": "Control de Versions Git",
+    "section": "Sistemes de control de versions",
+    "text": "Sistemes de control de versions\n\nControl de versionsUn sistema de control de versions guarda la història d’un projecte.\nAquesta història permet:\n\nConsultar la seva evolució\nVisualitzar les diferències entre dues versions\nNavegar entre versions sense perdre informació\nConsultar qui ha fet/quan s’ha fet/perquè s’ha fet un canvi concret.\nPermeten la col·laboració de múltiples desenvolupadors (pròxima sessió)\nPermeten treballar en paral·lel (pròxima sessió)"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#git",
+    "href": "teoria/03-version-control.html#git",
+    "title": "Control de Versions Git",
+    "section": "Git",
+    "text": "Git\nGit és un sistema de control de versions (VCS).\nEns permet guardar la història d’un projecte i consultar-la posteriorment.\nEs crea l’any 2005 per donar suport al desenvolupament del kernel de Linux."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#git-què-és-una-versió",
+    "href": "teoria/03-version-control.html#git-què-és-una-versió",
+    "title": "Control de Versions Git",
+    "section": "Git: Què és una versió?",
+    "text": "Git: Què és una versió?\nEn Git, cada versió guardada s’anomena commit.\nUn commit té associat:\n\nl’estat dels fitxers del projecte en un moment concret\nmetadades dels canvis: autor, data, missatge…\n\n\nPodem imaginar un commit com una fotografia de l’estat del projecte."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#git-què-és-una-versió-1",
+    "href": "teoria/03-version-control.html#git-què-és-una-versió-1",
+    "title": "Control de Versions Git",
+    "section": "Git: Què és una versió?",
+    "text": "Git: Què és una versió?"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#estat-dels-fitxers",
+    "href": "teoria/03-version-control.html#estat-dels-fitxers",
+    "title": "Control de Versions Git",
+    "section": "Estat dels fitxers",
+    "text": "Estat dels fitxers\nEn Git, els fitxers poden estar en diferents estats:\n\nSense seguir (untracked): Git encara no controla aquest fitxer.\nModificat (modified): El fitxer conté canvis respecte respecte al commit anterior.\nPreparat (staged): els canvis del fitxer s’han seleccionat per formar part del pròxim commit.\nGuardat (commited): l’estat actual del fitxer forma part de la història del repositori."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#tres-àrees",
+    "href": "teoria/03-version-control.html#tres-àrees",
+    "title": "Control de Versions Git",
+    "section": "Tres àrees",
+    "text": "Tres àrees\nQuan treballem amb Git, podem distingir tres àrees:\n\nÀrees de Git\nWorking directory: els fitxers amb què estem treballant.\nStaging area: els canvis que hem seleccionat per incloure en el pròxim commit.\nRepository: la història del projecte, formada pels commits."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#hands-on-installació",
+    "href": "teoria/03-version-control.html#hands-on-installació",
+    "title": "Control de Versions Git",
+    "section": "Hands-On: Instal·lació",
+    "text": "Hands-On: Instal·lació\nhttps://git-scm.com/\nVerificar amb la línia de comandes:\ngit --version"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#hands-on-configuració",
+    "href": "teoria/03-version-control.html#hands-on-configuració",
+    "title": "Control de Versions Git",
+    "section": "Hands-On: Configuració",
+    "text": "Hands-On: Configuració\nConfigurem el nostre nom i el correu:\ngit config --global user.name \"Mr Potato\"\ngit config --global user.email \"mr@potato.com\"\n--global indica que s’aplicarà a tots els projectes.\n\n\nMés informació a: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-ajuda",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-ajuda",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: ajuda",
+    "text": "Comandes bàsiques: ajuda\nLes comandes de Git tenen el següent format:\ngit &lt;verb&gt; &lt;opcions&gt;\nPodem obtenir informació sobre una comanda concreta amb qualsevol de les següents opcions:\n\ngit help &lt;verb&gt;\ngit &lt;verb&gt; --help\nman git-&lt;verb&gt;"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-init",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-init",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git init",
+    "text": "Comandes bàsiques: git init\nPer crear un repositori nou, naveguem al directori del projecte1 i executem:\ngit init\nAquesta comanda crea el directori .git2 on es guardarà tota la informació del repositori.\nPer navegar, podem fer servir cd, i per crear un directori nou mkdirPer tant els canvis s’afegiran a la següent versió."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-status",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-status",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git status",
+    "text": "Comandes bàsiques: git status\nLa comanda git status ens mostra en quin estat/àrea estan els fitxers/canvis:\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nChanges to be committed:\n  (use \"git restore --staged &lt;file&gt;...\" to unstage)\n        new file:   README.md\n\nChanges not staged for commit:\n  (use \"git add &lt;file&gt;...\" to update what will be committed)\n  (use \"git restore &lt;file&gt;...\" to discard changes in working directory)\n        modified:   LICENSE.txt\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        Notes.txt"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-status-1",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-status-1",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git status",
+    "text": "Comandes bàsiques: git status\n[...]\nChanges to be committed:\n  (use \"git restore --staged &lt;file&gt;...\" to unstage)\n        new file:   README.md\n[...]\nEls canvis indicats estan dins de l’àrea d’staging. S’afegiran a la següent versió."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-status-2",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-status-2",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git status",
+    "text": "Comandes bàsiques: git status\n[...]\nChanges not staged for commit:\n  (use \"git add &lt;file&gt;...\" to update what will be committed)\n  (use \"git restore &lt;file&gt;...\" to discard changes in working directory)\n        modified:   LICENSE.txt\n[...]\nEls canvis indicats estan dins de l’àrea de treball. Git coneix els fitxers, ha detectat que hi ha canvis, però no s’afegiran a la següent versió."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-status-3",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-status-3",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git status",
+    "text": "Comandes bàsiques: git status\n[...]\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        Notes.txt\nGit ha detectat que hi ha fitxers que no havia vist anteriorment. No estan en cap àrea."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-status-4",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-status-4",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git status",
+    "text": "Comandes bàsiques: git status\nTambé podem veure la sortida simplificada fent git status -s:\n$ git status -s\nA  README.md\n M LICENSE.txt\n?? Notes.txt"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-add",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-add",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git add",
+    "text": "Comandes bàsiques: git add\nLa comanda git add &lt;file&gt; ens permet moure un fitxer des de l’àrea de treball a l’àrea d’staging1.\n$ git status\n[...]\nChanges not staged for commit:\n  [...]\n        modified:   LICENSE.txt\n[...]\n$ git add LICENSE.txt\n$ git status\n[...]\nChanges to be committed:\n  [...]\n        modified:   LICENSE.txt\n[...]\n\nTambé ens serveix per afegir fitxers nous.\n\n\n\ngit add . afegeix tots els fitxers del directori.\nPer tant els canvis s’afegiran a la següent versió."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-diff",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-diff",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git diff",
+    "text": "Comandes bàsiques: git diff\n\ngit diff\ngit diff --staged"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-commit",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-commit",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git commit",
+    "text": "Comandes bàsiques: git commit\nLa comanda git commit ens permet crear una nova versió (anomenada commit) del repositori."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-restore",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-restore",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git restore",
+    "text": "Comandes bàsiques: git restore\ngit restore ens permet dues coses:\n\ngit restore &lt;file&gt; elimina els canvis d’un fitxer en l’àrea de treball.\ngit restore --staged &lt;file&gt; mou els canvis d’un fitxer de l’àrea staging a l’àrea de treball."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#comandes-bàsiques-git-rm",
+    "href": "teoria/03-version-control.html#comandes-bàsiques-git-rm",
+    "title": "Control de Versions Git",
+    "section": "Comandes bàsiques: git rm",
+    "text": "Comandes bàsiques: git rm\n\ngit rm\ngit rm --cached"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#quiz",
+    "href": "teoria/03-version-control.html#quiz",
+    "title": "Control de Versions Git",
+    "section": "Quiz",
+    "text": "Quiz\n\nQuina comanda fa cada acció?"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-log",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-log",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git log",
+    "text": "Visualitzant la història: git log\nLa comanda git log mostra els commits del repositori.\nCada commit conté informació com:\n\nidentificador\nautor\ndata\nmissatge"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-log-1",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-log-1",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git log",
+    "text": "Visualitzant la història: git log\n$ git log\ncommit bc2c21477b82b61d797d3774017b4e6d001ed977 (HEAD -&gt; main)\nAuthor: Mr Potato &lt;mr@potato.com&gt;\nDate:   ...\n\n    updated files\n\ncommit d680b727d6a7291f8b3ddb99a6c0bc65eaf6ca24\nAuthor: Mr Potato &lt;mr@potato.com&gt;\nDate:   ...\n\n    added license\n\ncommit efb97ff19b232ca54878f5ae1368a436606c9b77\nAuthor: Mr Potato &lt;mr@potato.com&gt;\nDate:   ...\n\n    added readme"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-log-2",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-log-2",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git log",
+    "text": "Visualitzant la història: git log\nPodem simplificar la sortida fent servir --oneline:\n$ git log --oneline\nbc2c214 (HEAD -&gt; main) updated files\nd680b72 added license\nefb97ff added readme\n\n\nEl primer valor és l’identificador del commit abreviat."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-log-3",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-log-3",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git log",
+    "text": "Visualitzant la història: git log\nTambé podem veure des d’un commit concret amb git log &lt;c1&gt;..&lt;c2&gt;, on c1 i c2 són dos identificadors de commit.\nPodem fer servir l’identificador especial HEAD per indicar el commit on ens trobem."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-show",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-show",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git show",
+    "text": "Visualitzant la història: git show\nAmb git show podem consultar quins canvis introdueix un commit concret:\n$ git show d680b72\ncommit d680b727d6a7291f8b3ddb99a6c0bc65eaf6ca24\nAuthor: Mr Potato &lt;mr@potato.com&gt;\nDate:   ...\n\n    added license\n\ndiff --git a/LICENSE.txt b/LICENSE.txt\nnew file mode 100644\nindex 0000000..e69de29"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-diff-c1..c2",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-diff-c1..c2",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git diff <c1>..<c2>",
+    "text": "Visualitzant la història: git diff &lt;c1&gt;..&lt;c2&gt;\nPer comparar dues versions (no necessàriament consecutives), podem fer servir git diff &lt;c1&gt;..&lt;c2&gt;, on c1 i c2 són dos identificadors de commit.\nPer exemple:\nVersió efb97ff: README.md té:\nHola\nVersió bc2c214: README.md té:\nHola que tal"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#visualitzant-la-història-git-diff-c1..c2-1",
+    "href": "teoria/03-version-control.html#visualitzant-la-història-git-diff-c1..c2-1",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant la història: git diff <c1>..<c2>",
+    "text": "Visualitzant la història: git diff &lt;c1&gt;..&lt;c2&gt;\n$ git diff efb97ff..bc2c214\n[...]\ndiff --git a/README.md b/README.md\nindex a19abfe..a111ef1 100644\n--- a/README.md\n+++ b/README.md\n@@ -1 +1 @@\n-Hola\n+Hola que tal"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#recuperar-un-fitxer",
+    "href": "teoria/03-version-control.html#recuperar-un-fitxer",
+    "title": "Control de Versions Git",
+    "section": "Recuperar un fitxer",
+    "text": "Recuperar un fitxer\nPodem recuperar un fitxer tal com estava en un commit anterior amb:\ngit restore --source=&lt;commit&gt; &lt;fitxer&gt;\nPer exemple:\ngit restore --source=efb97ff README.md\nEl fitxer README.md tornarà a tenir el contingut que tenia en aquell commit.\n\nAixò només modifica el working directory, no crea automàticament un commit.\nHem recuperat el contingut anterior, però la història de Git no ha canviat."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#consultar-una-versió-antiga",
+    "href": "teoria/03-version-control.html#consultar-una-versió-antiga",
+    "title": "Control de Versions Git",
+    "section": "Consultar una versió antiga",
+    "text": "Consultar una versió antiga\nTambé podem situar-nos temporalment en un commit anterior:\nEn aquest punt estem consultant una versió antiga. No estem creant un nou commit ni modificant la història.\ngit checkout main o master per tornar on estavem."
+  },
+  {
+    "objectID": "teoria/03-version-control.html#recap-conceptes",
+    "href": "teoria/03-version-control.html#recap-conceptes",
+    "title": "Control de Versions Git",
+    "section": "Recap: Conceptes",
+    "text": "Recap: Conceptes\n\nGit guarda la història d’un projecte.\nCada versió és un commit.\nPodem consultar, comparar, i recuperar versions antigues.\n3 àrees: Working / staging / repository"
+  },
+  {
+    "objectID": "teoria/03-version-control.html#recap-comandes",
+    "href": "teoria/03-version-control.html#recap-comandes",
+    "title": "Control de Versions Git",
+    "section": "Recap: Comandes",
+    "text": "Recap: Comandes\n\ngit init\ngit add\ngit commit\ngit log\ngit show\ngit diff\ngit restore"
   },
   {
     "objectID": "teoria/02-virtualitzation.html#una-analogia-amb-el-bus-escolar",
@@ -397,5 +488,607 @@
     "title": "Virtualització",
     "section": "Laboratori 3: Tasques",
     "text": "Laboratori 3: Tasques\n\nConfigurar VSCode per connectar-se a la màquina virtual via SSH.\nProvar la connexió i executar ordres a la màquina virtual des de VSCode\n\n\n📄 Laboratori 3: Connexió via SSH"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Curs zero d’Informàtica",
+    "section": "",
+    "text": "El curs s’organitza en sessions diàries de 2 hores. L’enfoc és eminentment pràctic. En cadascuna de les sessions s’abordarà un dels temes del programa, presentant primer, i breument, els coneixements teòrics bàsics, per abordar tot seguit el plantejament i resolució de problemes a l’aula. L’estudiantat ha de portar el seu propi portàtil."
+  },
+  {
+    "objectID": "index.html#planificació",
+    "href": "index.html#planificació",
+    "title": "Curs zero d’Informàtica",
+    "section": "Planificació",
+    "text": "Planificació\n\n\n\nSessió\nData\nTema\nDiapositives\nLaboratori\n\n\n\n\n1\n04/09/2024\nIntroducció i entorns de programació\n\n\n\n\n2\n05/09/2024\nVirtualització\n📖\n📄 📄\n\n\n3\n08/09/2024\nIntroducció al control de versions\n📖\n📄 📄\n\n\n4\n08/09/2024\nIntroducció al control de versions\n📖\n📄"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#commits",
+    "href": "teoria/04-version-control.html#commits",
+    "title": "Control de Versions Git",
+    "section": "Commits",
+    "text": "Commits\nRecordatori:\nCada commit té un identificador únic.\ngit log --oneline\na31f42c Afegeix README\n8b7291a Afegeix dades\nf42c812 Crea projecte\nHEAD és una referència al commit que estem consultant actualment"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#tags",
+    "href": "teoria/04-version-control.html#tags",
+    "title": "Control de Versions Git",
+    "section": "Tags",
+    "text": "Tags\nGit ens permet marcar certs commits amb noms fàcils de recordar. Aquests noms s’anomenen tags.\nPer exemple:\ngit tag v1.0\n\nRarament modificarem a quin commit fa referència un tag.\nÉs habitual utilitzar-los per marcar versions importants."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#tags-1",
+    "href": "teoria/04-version-control.html#tags-1",
+    "title": "Control de Versions Git",
+    "section": "Tags",
+    "text": "Tags\nAra podem utilitzar v1.0 enlloc de l’ID del commit:\ngit show v1.0\ngit diff v1.0..HEAD\nPodem veure els tags amb git tag1.\nO explícitament amb git tag --list o git tag -l"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#branques",
+    "href": "teoria/04-version-control.html#branques",
+    "title": "Control de Versions Git",
+    "section": "Branques",
+    "text": "Branques\nFins ara hem tingut una única línia d’història.\nImaginem que estem treballant en una nova versió del projecte i algú troba un error en una versió anterior.\nPodem treballar per arreglar aquest error sense interferir amb el desenvolupament actual?"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#branques-1",
+    "href": "teoria/04-version-control.html#branques-1",
+    "title": "Control de Versions Git",
+    "section": "Branques",
+    "text": "Branques\nGit ens permet crear diferents camins dins de la història del projecte.\n\nLes dues branques comparteixen la història fins al punt on se separen.\nA partir d’aquest punt, podem fer commits diferents en cadascuna."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#branques-2",
+    "href": "teoria/04-version-control.html#branques-2",
+    "title": "Control de Versions Git",
+    "section": "Branques",
+    "text": "Branques\nUna branca és un nom que utilitzem per seguir una línia de la història del projecte.\nS’assembla a un tag, però es va actualitzant cada commit que fem.\nPer defecte, Git crea una branca anomenada master o main1.\n\nNo és especial, simplement es crea automàticament."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#branques-3",
+    "href": "teoria/04-version-control.html#branques-3",
+    "title": "Control de Versions Git",
+    "section": "Branques",
+    "text": "Branques\nPodem veure les branques del repositori amb:\ngit branch\nPodem crear una nova branca (e.g. fix-error) amb:\ngit branch fix-error\ni començar a treballar sobre aquesta branca amb:\ngit switch fix-error\nNota podem fer la nova branca i canviar-hi amb una sola comanda fent servir git switch -c fix-error.\nPer tornar a la branca main fem git switch main."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#branques-el-multivers-de-git",
+    "href": "teoria/04-version-control.html#branques-el-multivers-de-git",
+    "title": "Control de Versions Git",
+    "section": "Branques: el multivers de Git",
+    "text": "Branques: el multivers de Git\nUna branca no és una còpia sencera del projecte.\nÉs una manera de continuar la història del projecte per un camí diferent.\n\nLes dues branques tenen en comú els commits anteriors a la separació.\nEls commits posteriors poden ser diferents."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#commits-tags-i-branques",
+    "href": "teoria/04-version-control.html#commits-tags-i-branques",
+    "title": "Control de Versions Git",
+    "section": "Commits, tags, i branques",
+    "text": "Commits, tags, i branques\nPodem veure aquests conceptes com diferents maneres de referir-nos a la història\n\n\nCommit: un punt concret en la història.\nTag: un nom a un commit concret.\nBranca: un nom que va avançant per una línia de la història.\n\n\nPodem veure el graf fent servir:\ngit log --all --graph --oneline --decorate"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques",
+    "href": "teoria/04-version-control.html#merge-de-branques",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques",
+    "text": "Merge de branques\n\nEn aquest punt, tenim l’error arreglat i volem unificar main amb fix-error.\nPodem fer dues coses:\n\nPortar els canvis de fix-error cap a main\nPortar els canvis de main cap a fix-error\n\n\nEl merge sempre es fa des de la branca que volem actualitzar."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-1",
+    "href": "teoria/04-version-control.html#merge-de-branques-1",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques",
+    "text": "Merge de branques\n\nPortarem els canvis de fix-error cap a main:\n\nEns situem a la branca main\nCreem un commit de merge que té dos antecessors:\n\nEl commit al que fa referència main\nEl commit al que fa referència fix-error\n\nActualitzem main per a que faci referència al commit de merge\n\n\nEl primer pas el fem amb git switch main, i els passos 2 i 3 els fem amb git merge fix-error."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-2",
+    "href": "teoria/04-version-control.html#merge-de-branques-2",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques",
+    "text": "Merge de branques\ngit switch main ens situa a:"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-3",
+    "href": "teoria/04-version-control.html#merge-de-branques-3",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques",
+    "text": "Merge de branques\ngit merge fix-error ens situa a:\n\n\n\nH és el commit de merge."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-4",
+    "href": "teoria/04-version-control.html#merge-de-branques-4",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques",
+    "text": "Merge de branques\nQuiz Si fem git log main, quins commits veurem? I git log fix-error?"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-fast-forward",
+    "href": "teoria/04-version-control.html#merge-de-branques-fast-forward",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques: fast-forward",
+    "text": "Merge de branques: fast-forward\n\nImaginem que volem actualitzar fix-error per incorporar la història de main.\nQue passa si fem un merge en aquesta direcció?\ngit switch fix-error\ngit merge main"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-fast-forward-1",
+    "href": "teoria/04-version-control.html#merge-de-branques-fast-forward-1",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques: fast-forward",
+    "text": "Merge de branques: fast-forward\n\ngit switch fix-error\ngit merge main\nLa branca fix-error no té cap commit que no tingui main. En aquest cas, diem que fix-error està endarrere (behind) main.\nNo té sentit crear un commit de merge, no estariem unificant res!"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-de-branques-fast-forward-2",
+    "href": "teoria/04-version-control.html#merge-de-branques-fast-forward-2",
+    "title": "Control de Versions Git",
+    "section": "Merge de branques: fast-forward",
+    "text": "Merge de branques: fast-forward\nGit ens permet avançar la branca fix-error fins on fa referència main. D’això se’n diu fast-forward merge."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#rebase-de-branques",
+    "href": "teoria/04-version-control.html#rebase-de-branques",
+    "title": "Control de Versions Git",
+    "section": "Rebase de branques",
+    "text": "Rebase de branques\nFins ara hem vist com unificar dues branques amb merge.\nPerò hi ha una altra manera d’incorporar els canvis d’una branca:\nrebase"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#rebase-de-branques-1",
+    "href": "teoria/04-version-control.html#rebase-de-branques-1",
+    "title": "Control de Versions Git",
+    "section": "Rebase de branques",
+    "text": "Rebase de branques\nTornem a una situació en què tenim dues branques:\n\nmain ha avançat mentre nosaltres treballàvem a fix-error.\nCom podem actualitzar fix-error amb els canvis de main?"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#rebase-de-branques-2",
+    "href": "teoria/04-version-control.html#rebase-de-branques-2",
+    "title": "Control de Versions Git",
+    "section": "Rebase de branques",
+    "text": "Rebase de branques\nObjectiu: Passar de:\n\na:\n\n\n“Apliquem” els commits de fix-error sobre els commits de main."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#rebase-de-branques-3",
+    "href": "teoria/04-version-control.html#rebase-de-branques-3",
+    "title": "Control de Versions Git",
+    "section": "Rebase de branques",
+    "text": "Rebase de branques\ngit rebase main\nGit agafa els commits de fix-error que no formen part de main i els torna a aplicar, un a un, sobre l’últim commit de main."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#rebase-els-commits-canvien",
+    "href": "teoria/04-version-control.html#rebase-els-commits-canvien",
+    "title": "Control de Versions Git",
+    "section": "Rebase: els commits canvien",
+    "text": "Rebase: els commits canvien\nEls commits de fix-error s’han recreat a partir de main.\nPer tant, no són els mateixos commits (tenen un ID diferent):\n\n\nAbans:\n\n\nDesprés:"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#merge-o-rebase",
+    "href": "teoria/04-version-control.html#merge-o-rebase",
+    "title": "Control de Versions Git",
+    "section": "Merge o rebase?",
+    "text": "Merge o rebase?\nPodem incorporar els canvis de main a fix-error de dues maneres.\n\n\nMerge:\n\n\nRebase:\n\n\nEl merge conserva la història tal com ha succeït.\nEl rebase recrea els commits de la branca sobre una nova base i produeix una història lineal."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#conflictes",
+    "href": "teoria/04-version-control.html#conflictes",
+    "title": "Control de Versions Git",
+    "section": "Conflictes",
+    "text": "Conflictes\nImaginem que tenim el fitxer README.md:\nHola!\nCreem una branca b1 i modifiquem el fitxer (amb el seu commit corresponent):\nHola des de b1!\nTornem a main i també modifiquem el fitxer:\nHola des de main!\nEl graf de commits ara és:\n\nI ara procedim a unificar-ho fent un merge des de b1 cap a main."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#conflictes-1",
+    "href": "teoria/04-version-control.html#conflictes-1",
+    "title": "Control de Versions Git",
+    "section": "Conflictes",
+    "text": "Conflictes\nQuan fem el merge:\ngit switch main\ngit merge b1\n\nGit detecta que hi ha un conflicte!\nLes dues històries han modificat la mateixa part del fitxer.\nCONFLICT (content): Merge conflict in README.md\n[...]\n\n\nGit no fa assumpcions sobre el contingut del fitxer, i per tant no pren la decisió per nosaltres.\nCONFLICT (content): Merge conflict in README.md\nAutomatic merge failed; fix conflicts and then commit the result."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#conflictes-2",
+    "href": "teoria/04-version-control.html#conflictes-2",
+    "title": "Control de Versions Git",
+    "section": "Conflictes",
+    "text": "Conflictes\nSi executem git status veurem que Git ens indica que hi ha fitxers amb conflictes pendents de resoldre:\n$ git status\nOn branch main\nYou have unmerged paths.\n  (fix conflicts and run \"git commit\")\n\nUnmerged paths:\n  (use \"git add &lt;file&gt;...\" to mark resolution)\n\n    both modified:      README.md\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#conflictes-3",
+    "href": "teoria/04-version-control.html#conflictes-3",
+    "title": "Control de Versions Git",
+    "section": "Conflictes",
+    "text": "Conflictes\nGit modifica el fitxer per indicar-nos on és el conflicte.\nPer exemple, README.md ara conté:\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nHola des de main!\n=======\nHola des de b1!\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; b1\nLes marques indiquen:\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\ncanvis de la branca actual (en el exemple: main)\n=======\ncanvis de l'altra branca (en el nostre exemple: b1)\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; b1"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#resolent-el-conflicte",
+    "href": "teoria/04-version-control.html#resolent-el-conflicte",
+    "title": "Control de Versions Git",
+    "section": "Resolent el conflicte",
+    "text": "Resolent el conflicte\nPer resoldre el conflicte hem de decidir quin contingut volem.\nPodem decidir conservar una versió o l’altra, o una combinació de les dues.\nEditem el fitxer eliminant les marques &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD, =======, i &gt;&gt;&gt;&gt;&gt;&gt;&gt; b1 i deixant el contingut desitjat.\nPer exemple, editem README.md per a que contingui:\nHola des de main i b1!"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#resolent-el-conflicte-1",
+    "href": "teoria/04-version-control.html#resolent-el-conflicte-1",
+    "title": "Control de Versions Git",
+    "section": "Resolent el conflicte",
+    "text": "Resolent el conflicte\nUn cop hem resolt tots els conflictes del fitxer (no hi ha les marques), podem indicar a Git que aquest fitxer està llest.\nPer fer-ho, executem git add &lt;file&gt;. En el nostre cas, fariem git add README.md.\nALERTA Git no comprova que, efectivament, haguem resolt el conflicte. Confia en el nostre criteri! Abans de fer git add, ens hem d’assegurar que el fitxer és correcte."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#acabant-el-merge",
+    "href": "teoria/04-version-control.html#acabant-el-merge",
+    "title": "Control de Versions Git",
+    "section": "Acabant el merge",
+    "text": "Acabant el merge\nUn cop hem resolt tots els conflictes de tots els fitxers, podem continuar amb el nostre merge:\n$ git status\nOn branch main\nAll conflicts fixed but you are still merging.\n  (use \"git commit\" to conclude merge)\n\nChanges to be committed:\n\n    modified:   README.md\nSeguint les instruccions que ens dona Git, fem git commit per acabar el merge correctament.\n\n\nSi alguna cosa no ens quadra, sempre podem abortar el merge fent servir git merge --abort"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#conflictes-durant-un-rebase",
+    "href": "teoria/04-version-control.html#conflictes-durant-un-rebase",
+    "title": "Control de Versions Git",
+    "section": "Conflictes durant un rebase",
+    "text": "Conflictes durant un rebase\nEls conflictes també poden aparèixer quan fem un rebase.\ngit rebase main\nSi Git no pot aplicar automàticament un dels commits, el rebase s’atura i ens demana que resolguem el conflicte.\nEl procés és:\n\ngit rebase\nresolem el conflicte\ngit add &lt;file&gt;\ngit rebase --continue\n\n\nSempre podem cancel·lar el rebase fent git rebase --abort"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#visualitzant-branques-del-repositori",
+    "href": "teoria/04-version-control.html#visualitzant-branques-del-repositori",
+    "title": "Control de Versions Git",
+    "section": "Visualitzant branques del repositori",
+    "text": "Visualitzant branques del repositori\nA mesura que un projecte evoluciona, tindrem branques que ja no fem servir (p.e. perquè ja hem fet el merge).\nGit ens proporciona eines per visualitzar branques:\n\ngit branch: mostra la llista de totes les branques (l’asterisc mostra la branca actual)\ngit branch -v: mostra totes les branques i el seu últim commit (amb el missatge)\ngit branch --merged: mostra les branques que s’ha fet merge cap a la branca actual (també hi ha --no-merged)"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#eliminant-branques",
+    "href": "teoria/04-version-control.html#eliminant-branques",
+    "title": "Control de Versions Git",
+    "section": "Eliminant branques",
+    "text": "Eliminant branques\ngit branch -d &lt;branca&gt;: elimina la branca &lt;branca&gt;del repositori\nNota sobre eliminar branques: Si intentem eliminar una branca sense que s’hagi fet un merge previ cap a la branca actual, Git ens donarà un error. Si estem segurs d’eliminar la branca, potencialment perdent la feina feta, podem fer servir git branch -D &lt;branca&gt;."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#renombrant-branques",
+    "href": "teoria/04-version-control.html#renombrant-branques",
+    "title": "Control de Versions Git",
+    "section": "Renombrant branques",
+    "text": "Renombrant branques\ngit branch --move &lt;nom vell&gt; &lt;nom nou&gt;: canvia el nom de la branca.\nNota: a continuació veurem que Git ens permet col·laborar amb altres persones. No renombreu branques que s’estiguin fent servir per altres persones.\nNota 2: tampoc és recomanable renombrar la branca principal (main/master) sense haver llegit: https://git-scm.com/book/en/v2/Git-Branching-Branch-Management#_changing_master"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#repositori-locals-i-remots",
+    "href": "teoria/04-version-control.html#repositori-locals-i-remots",
+    "title": "Control de Versions Git",
+    "section": "Repositori locals i remots",
+    "text": "Repositori locals i remots\nGit no estableix cap repositori com a “central”, sinó que els canvis es poden intercanviar entre ells.\n\n\n\n\n\nflowchart LR\n    A[\"Repositori d'Alice\"]:::wide\n    B[\"Repositori de Bob\"]:::wide\n    C[\"Nostre repositori\"]:::wide\n\n    A &lt;--&gt; B\n    A &lt;--&gt; C\n    B &lt;--&gt; C\n\n    classDef wide padding:100px\n\n\n\n\n\n\nEl nostre repositori s’anomena local, i els que es troben en altres sistemes remots.\n\nDurant la vida del projecte, anirem sincronitzant la història del repositori local amb la història dels repositoris remots."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#repositoris-locals-i-remots",
+    "href": "teoria/04-version-control.html#repositoris-locals-i-remots",
+    "title": "Control de Versions Git",
+    "section": "Repositoris locals i remots",
+    "text": "Repositoris locals i remots\nAlternativament, podem tenir un repositori que utilitzem com a punt de trobada entre diferents persones.\n\n\n\n\n\nflowchart LR\n    A[\"Repositori local&lt;br/&gt;Alice\"]:::wide\n    B[\"Repositori remot\"]:::wide\n    C[\"Repositori local&lt;br/&gt;Bob\"]:::wide\n\n    A &lt;--&gt; B\n    B &lt;--&gt; C\n\n    classDef wide padding:100px\n\n\n\n\n\n\nAquest repositori remot és un repositori Git normal, que li donem un ús especial.\n\n\nPodriem arribar a tenir múltiples repositoris remots, per exemple GitHub i GitLab a la vegada."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#repositoris-remots",
+    "href": "teoria/04-version-control.html#repositoris-remots",
+    "title": "Control de Versions Git",
+    "section": "Repositoris remots",
+    "text": "Repositoris remots\nPer fer referència a un repositori remot, Git ens permet associar-hi noms.\nPer convenció, el repositori remot “principal” (p.e. GitHub, GitLab…) s’anomena origin.\n\nDonat el nom, podem referir-nos a les branques del repositori remot."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#main-i-originmain",
+    "href": "teoria/04-version-control.html#main-i-originmain",
+    "title": "Control de Versions Git",
+    "section": "main i origin/main",
+    "text": "main i origin/main\nSuposem que tenim un repositori local amb una branca main i un repositori remot anomenat origin.\n\n\nRepositori local:\n\n\nRepositori remot:"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#main-i-originmain-1",
+    "href": "teoria/04-version-control.html#main-i-originmain-1",
+    "title": "Control de Versions Git",
+    "section": "main i origin/main",
+    "text": "main i origin/main\nUn cop hem sincronitzat el repositori remot amb el local, des del repositori local veiem això:\n\nTenim dues branques:\n\nmain: fa referència a la branca local\norigin/main: fa referència a l’estat conegut de la branca main al repositori remot origin"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#main-i-originmain-2",
+    "href": "teoria/04-version-control.html#main-i-originmain-2",
+    "title": "Control de Versions Git",
+    "section": "main i origin/main",
+    "text": "main i origin/main\n\nPodem fer merge, rebase, reset… fent servir la branca remota per incorporar els seus canvis al nostre repositori local.\n\nPerò consultar o utilitzar origin/main no implica una connexió amb el servidor remot.\norigin/main és una referència que tenim dins del nostre repositori local. Per sincronitzar el nostre repositori amb el repositori remot necessitarem comandes noves."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#git-clone",
+    "href": "teoria/04-version-control.html#git-clone",
+    "title": "Control de Versions Git",
+    "section": "git clone",
+    "text": "git clone\nPer començar a treballar amb un projecte que ja existeix en un repositori remot:\ngit clone &lt;url&gt;\nPer exemple:\ngit clone https://example.com/projecte.git\nGit crea un nou directori amb:\n\nels fitxers del projecte\ntota la història del repositori\nla configuració necessària per interactuar amb el repositori remot\n\n\n\nEl directori creat té el nom del projecte. Podem canviar-lo fent servir git clone &lt;url&gt; &lt;directori&gt;."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#git-push",
+    "href": "teoria/04-version-control.html#git-push",
+    "title": "Control de Versions Git",
+    "section": "git push",
+    "text": "git push\nImaginem que hem fet nous commits al nostre repositori local:\n\n\nLocal:\n\n\nRemot:\n\n\nPodem publicar els nostres commits al repositori remot amb git push:\n\n\nLocal:\n\n\nRemot:\n\n\npush envia els nostres commits al repositori remot."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#git-fetch",
+    "href": "teoria/04-version-control.html#git-fetch",
+    "title": "Control de Versions Git",
+    "section": "git fetch",
+    "text": "git fetch\nAra imaginem la situació contrària: algú ha publicat nous commits al repositori remot:\n\n\nLocal:\n\n\nRemot:\n\n\nPodem descarregar aquests nous commits amb git fetch:\n\n\nLocal:\n\n\nRemot:\n\n\nfetch descarrega els canvis, però no modifica la nostra branca actual."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#git-pull",
+    "href": "teoria/04-version-control.html#git-pull",
+    "title": "Control de Versions Git",
+    "section": "git pull",
+    "text": "git pull\nHem vist que git fetch descarrega els nous commits del repositori remot, però no modifica la nostra branca actual.\nSi volem descarregar els canvis i integrar-los directament a la nostra branca actual, podem fer servir git pull\n\ngit pull combina dues operacions:\n\ngit fetch\ngit merge\n\nPer exemple, si estem a main, git pull seria equivalent conceptualment a: 1. git fetch 2. git merge origin/main"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#git-pull-1",
+    "href": "teoria/04-version-control.html#git-pull-1",
+    "title": "Control de Versions Git",
+    "section": "git pull",
+    "text": "git pull\n\n\nLocal:\n\n\nRemot:\n\n\ngit pull\n\n\nLocal:\n\n\nRemot:"
+  },
+  {
+    "objectID": "teoria/04-version-control.html#conflictes-amb-remots",
+    "href": "teoria/04-version-control.html#conflictes-amb-remots",
+    "title": "Control de Versions Git",
+    "section": "Conflictes amb remots",
+    "text": "Conflictes amb remots\nDegut a que la història del repositori remot pot divergir de la nostra, podem trobar-nos amb aquestes situacions:\n\nQuan fem push, el repositori remot ens pot rebutjar l’operació perquè la branca remota té commits que nosaltres no tenim.\nQuan fem pull, els canvis remots i locals poden haver divergit. En aquest cas, la integració pot requerir un merge o un rebase i, si hi ha conflictes, Git aturarà l’operació perquè els solucionem.\n\n\nPer evitar sorpreses, és recomanable actualitzar sovint la informació del nostre repositori sobre els remots amb git fetch i integrar els canvis remots regularment."
+  },
+  {
+    "objectID": "teoria/04-version-control.html#recap-1",
+    "href": "teoria/04-version-control.html#recap-1",
+    "title": "Control de Versions Git",
+    "section": "Recap",
+    "text": "Recap\nGit és distribuït: cada repositori té la seva pròpia còpia de la història.\n\n\n\n\n\nflowchart LR\n    A[\"Repositori local\"] &lt;--&gt; B[\"Repositori remot\"]\n\n\n\n\n\n\nPodem sincronitzar els repositoris amb:\n\ngit fetch\ngit pull\ngit push\n\nI quan les històries divergeixen, Git ens pot demanar que integrem els canvis o que resolguem conflictes."
+  },
+  {
+    "objectID": "laboratori/lab02.html",
+    "href": "laboratori/lab02.html",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "",
+    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+  },
+  {
+    "objectID": "laboratori/lab02.html#objectius",
+    "href": "laboratori/lab02.html#objectius",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "",
+    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+  },
+  {
+    "objectID": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
+    "href": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)",
+    "text": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)\nAquestes instruccions et guiaran a través del procés per crear un compte a Broadcom i descarregar una de les versions gratuïtes de VMware Workstation Pro (per a Windows) o VMware Fusion (per a macOS).\n\nRegistra’t per a un compte gratuït a Broadcom: Per accedir a les descàrregues de programari de VMware, necessites un compte a la plataforma de Broadcom.\n\nDirigeix-te a la pàgina de registre de Broadcom: https://profile.broadcom.com/web/registration\nIntrodueix la teva adreça de correu electrònic, realitza la verificació de seguretat i fes clic a Next \nIntrodueix el codi de verificació que has rebut al teu correu electrònic. Fes clic a Verify per continuar. \nCompleta el formulari de registre amb la teva informació personal i crea una contrasenya. Fes clic a Create Account per completar el registre. \nUn cop completat el registre, visualitzaràs un missatge de registre correcte. I us demanarà si voleu completar el perfil. Seleccioneu, I will do it later per continuar. \n\nAccedeix a les descàrregues gratuïtes de VMware:\n\nVes a la pàgina de login de Broadcom: https://profile.broadcom.com/web/login\nInicia sessió amb el teu correu electrònic i la contrasenya que has creat.\nVes directament a la secció de descàrregues a (https://support.broadcom.com/group/ecx/free-downloads). \nSelecciona VMware Workstation Pro o VMware Fusion segons el teu sistema operatiu (Windows o macOS). En el meu cas, utiltizo Mac, així que seleccionaré VMware Fusion.\nSeleccioneu la versió que voleu descarregar. En aquest cas, podem seleccionar la versió més recent. \nEn la pàgina següent:\n\nFes clic a l’enllaç de termes i condicions per que s’activi el checkbox de l’acceptació.\nAcceptar els termes i condicions.\nFes clic a descàrrega per començar a descarregar el fitxer d’instal·lació. \n\n\nInstal·la VMware Workstation Pro o VMware Fusion."
+  },
+  {
+    "objectID": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
+    "href": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Descarrega de la imatge ISO de Debian 12.5.0",
+    "text": "Descarrega de la imatge ISO de Debian 12.5.0\n\nVes a la pàgina de descàrrega de Debian 12.5.0: https://get.debian.org/images/archive/12.5.0/\nSelecciona la imatge ISO per a la teva arquitectura (amd64 o arm64). La majoria dels vostres ordinadors tenen processadors amd64 (Intel o AMD). Els processadors ARM són més comuns en dispositius mòbils i en els nous Mac amb xips M.\nSeleccioneu la carpeta iso-cd.\nSeleccioneu el fitxer debian-12.5.0-x-netinst.iso. On x és l’arquitectura del vostre sistema (amd64 o arm64).\n\n💡 Nota:\nLa imatge netinst és una imatge d’instal·lació mínima que descarrega els paquets necessaris durant la instal·lació. Això permet personalitzar la instal·lació i seleccionar els paquets que voleu instal·lar."
+  },
+  {
+    "objectID": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
+    "href": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Configuració de la màquina virtual amb VMWare",
+    "text": "Configuració de la màquina virtual amb VMWare\n\nSelecciona l’opció Create a New Virtual Machine a VMWare Workstation Pro o VMWare Fusion.\nSelecciona Install from disc or image. \nSelecciona la imatge ISO de Debian 12. \nConfigura els recursos de la màquina virtual. \nAnomena la màquina virtual i selecciona la ubicació on es guardarà. Per exemple, podeu posar el nom vm-curs0-debian12 i seleccionar una ubicació al vostre directori d’usuari."
+  },
+  {
+    "objectID": "laboratori/lab02.html#installació-del-sistema-operatiu",
+    "href": "laboratori/lab02.html#installació-del-sistema-operatiu",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Instal·lació del sistema operatiu",
+    "text": "Instal·lació del sistema operatiu\n\nUn cop iniciada la màquina virtual, podeu seleccionar la opció Install o bé Graphical install. \nEn aquest tutoriral, seleccionarem la opció Graphical install per a una instal·lació més amigable. La principal diferència entre les dues opcions és l’entorn gràfic.\nSelecciona l’idioma d’instal·lació. \nPodeu seleccionar l’idioma que vulgueu per a la instal·lació. En aquest cas, seleccionarem l’idioma Català.\nSelecciona la ubicació geogràfica. \nEn aquest cas, seleccionarem la ubicació Espanya.\nSelecciona la disposició del teclat. \nEn aquest cas, seleccionarem la disposició de teclat Català. Això ens asegurarà un mapeig correcte del teclat.\nEspereu que el sistema carregui els components necessaris. \nConfigura la xarxa.\n\nEl primer pas és configurar el nom d’amfitrió o hostname. Aquest nom permet identificar de forma única el vostre sistema. Podeu deixar el nom per defecte o canviar-lo al vostre gust.\n\n\nEn aquest cas, hem canviat el nom d’amfitrió a vm-curs0-debian12, però podeu posar el nom que vulgeu com debianlab, etc.\n\nEl segon pas és configurar el domini de la xarxa. Aquest pas el podeu deixar en blanc si no teniu un domini específic. O bé, podem utilitzar .local com a domini local per identicar que el servidor pertany a la xarxa local.\n\n\nConfigura l’usuari administrador.\n\nEn aquest punt, heu de tenir en compte que si no poseu cap contrasenya, es crearà l’usuari normal amb permisos de sudo i això us permetra executar comandes amb privilegis d’administrador.\nSi poseu una contrasenya, aquesta serà la contrasenya de l’usuari root i no es crearà un usuari normal amb permisos de sudo. I tampoc s’instal·larà el paquet sudo.\n\n⚠️ Compte\nCom utilitzarem les màquines virtuals com a laboratoris de pràctiques, no cal que poseu una contrasenya molt segura. Podeu utilitzar una com a 1234. Però, recordeu que en un entorn real, la seguretat és molt important i cal utilitzar contrasenyes segures.\n\nConfigura un usuari normal.\n\nNom complet: Podeu posar el vostre nom complet o el que vulgueu.\n\n\n\nNom d’usuari: Podeu posar el vostre nom d’usuari o el que vulgueu.\n\n\n\nContrasenya: El mateix que per l’usuari root.\n\n\nConfigura la zona horària.\n\nEn aquest cas, seleccionarem la zona horària de Madrid.\nConfigura el disc dur.\n\nParticionament: En aquest curs, el tema del particionament no és molt important. Per tant, podeu fer servir la configuració per defecte més senzilla (Guiat - utilitzar el disc sencer). Aquesta configuració crearà les particions necessàries per a l’instal·lació del sistema.\n\n\n\nSelecciona el disc on instal·lar el sistema. En el meu cas, només tinc un disc virtual amb l’etiqueta /dev/nvme0n1. L’etiqueta indica el tipus de disc (NVMe) i el número de disc (1). Es possible tenir altres etiquetes com /dev/sda per discos SATA o /dev/vda per discos virtuals.\n\n\n\nParticions: Podeu seleccionar (Tots els fitxers en una partició) per simplificar la gestió i evitar problemes podeu seleccionar aquesta opció. Aquesta opció crearà una sola partició per a tot el sistema.\n\n\n\nConfirmeu els canvis. En aquest punt, el sistema crearà les particions necessàries:\n\nLa primera partició serà la partició /boot on es guardaran els fitxers per arrancar el sistema.\nLa segona partició serà la partició / on es guardaran els fitxers del sistema.\nLa tercera partició serà la partició de swap on es guardaran les dades de la memòria virtual.\n\n\n\nℹ️ Què és la partició swap?\nLa swap és una partició especial que s’utilitza com a memòria virtual quan la memòria RAM s’omple. Aquesta partició permet alliberar memòria RAM i evitar que el sistema es bloquegi.\n\n\n\nEscriu els canvis al disc.\n\n\nEspera que s’instal·li el sistema.\n\nConfigura el gestor de paquets.\n\nAnalitzar els discos de la instal·lació. Aquest pas permet seleccionar els discos on es troben els paquets d’instal·lació. Normalment, aquest pas no cal modificar-lo.\n\n\n\nConfigura el gestor de paquets. En aquest cas, seleccionarem el servidor de paquets més proper a la nostra ubicació.\n\nFiltrar els servidors de paquets per ubicació. \nSeleccionar el servidor de paquets. \n\n\n👀 Nota:\nA vegades, els servidors de paquets poden estar saturats o no funcionar correctament. En aquest cas, podeu seleccionar un servidor alternatiu o provar més tard.\n\nConfigura el proxy. Si esteu darrere d’un proxy, podeu configurar-lo en aquest pas.\n\n\nℹ️ Què és un proxy?\nUn proxy és un servidor intermediari entre el vostre sistema i Internet. Aquest servidor pot ser utilitzat per controlar l’accés a Internet, per protegir la vostra privacitat o per accelerar la connexió a Internet. Les peticions de connexió a Internet es fan a través del servidor proxy, que actua com a intermediari i reenvia les peticions al servidor de destinació. Per exemple, en una empresa, el proxy pot ser utilitzat per controlar l’accés a Internet dels empleats i protegir la xarxa interna de possibles amenaces.\n\n\nEspera que s’instal·lin els paquets.\n\nConfigura el paquet popularity-contest.\n\nAquest paquet permet enviar informació anònima sobre els paquets instal·lats al servidor de Debian per millorar la selecció de paquets i la qualitat dels paquets. Podeu seleccionar si voleu participar en aquest programa o no.\n\n\nSelecció de programari. En aquest punt podeu seleccionar si voleu un servidor en mode text o amb interfície gràfica. També us permet seleccionar si voleu instal·lar els serveis web i ssh al servidor i finalment si voleu les utilitats estàndard del sistema. Seleccionarem el servidor en mode text, el servei SSH activat i les utilitats estàndard del sistema.\n\n\nℹ️ Què és un servidor en mode text?\nUn servidor en mode text és un servidor que no té una interfície gràfica. Això significa que tota la interacció amb el servidor es fa a través de la línia de comandes. Aquest tipus de servidor és molt comú en entorns de producció, ja que consumeix menys recursos i és més segur que un servidor amb interfície gràfica.\n\n\n\nℹ️ Què és el servei SSH?\nEl servei SSH (Secure Shell) és un protocol de xifratament que permet connectar-se de forma segura a un servidor remot. Aquest servei és molt utilitzat per administrar servidors a distància, ja que permet accedir al servidor de forma segura i xifratada.\n\nEspera que s’instal·li el programari.\n\nInstal·la el gestor d’arrancada GRUB. \nInstal·lació acabada. Un cop finalitzada la instal·lació, el sistema es reiniciarà i podreu accedir al GRUB per seleccionar el sistema operatiu. \nEl GRUB us permet accedir al sistema operatiu. En aquest cas, seleccionarem Debian GNU/Linux. La resta d’opcions les veurem més endavant en el curs.\n\n\nℹ️ Què és el GRUB?\nEl GRUB és un gestor d’arrencada que permet seleccionar el sistema operatiu que volem iniciar. Aquest gestor és molt útil en sistemes amb múltiples sistemes operatius o múltiples versions del mateix sistema operatiu.\n\nInicieu sessió amb l’usuari i la contrasenya que heu configurat durant la instal·lació.\n\n\n\n\n\n\n\nAlerta\n\n\n\nQuan escriviu la contrasenya, no es mostrarà cap caràcter a la pantalla. Això és normal en sistemes Unix/Linux per motius de seguretat. Simplement escriviu la contrasenya i premeu Enter.\n\n\nTanqueu la sessió amb la comanda exit.\nInicieu sessió amb l’usuari root i la contrasenya que heu configurat durant la instal·lació."
+  },
+  {
+    "objectID": "laboratori/lab02.html#exercicis-adicionals",
+    "href": "laboratori/lab02.html#exercicis-adicionals",
+    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "section": "Exercicis adicionals",
+    "text": "Exercicis adicionals\n\nInstal·leu altres màquines virtuals amb altres sistemes operatius en mode gràfic com:\n\nUbuntu 24.04 LTS\nFedora 39"
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html",
+    "href": "laboratori/lab-git-1.html",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "",
+    "text": "Aprendre a utilitzar les comandes bàsiques de GIT\nEntendre el cicle de vida dels fitxers: untracked, modified, staged i committed."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#objectius",
+    "href": "laboratori/lab-git-1.html#objectius",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "",
+    "text": "Aprendre a utilitzar les comandes bàsiques de GIT\nEntendre el cicle de vida dels fitxers: untracked, modified, staged i committed."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#requisits-previs",
+    "href": "laboratori/lab-git-1.html#requisits-previs",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Requisits previs",
+    "text": "Requisits previs\n\nConeixements bàsics de la línia de comandes de Linux.\nGit està instal·lat al sistema."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#inicialització-del-repositori",
+    "href": "laboratori/lab-git-1.html#inicialització-del-repositori",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Inicialització del repositori",
+    "text": "Inicialització del repositori\nPrimer de tot, creem un nou repositori de Git:\nmkdir hands-on-1\ncd hands-on-1\ngit init\nO, en un sol pas:\ngit init hands-on-1"
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#estat-inicial",
+    "href": "laboratori/lab-git-1.html#estat-inicial",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Estat inicial",
+    "text": "Estat inicial\nSi fem git status des de dins del directori hands-on-1, hauríem de veure que el repositori està net:\n$ git status\nOn branch main\n\nNo commits yet\n\nnothing to commit (create/copy files and use \"git add\" to track)\n\n\nDepenent de la configuració, veurem master enlloc de main."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#afegim-el-nostre-primer-fitxer",
+    "href": "laboratori/lab-git-1.html#afegim-el-nostre-primer-fitxer",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Afegim el nostre primer fitxer",
+    "text": "Afegim el nostre primer fitxer\nCrea un fitxer anomenat README.md dins del directori amb el següent contingut:\n# Hello, World!\nConsulta l’estat del repositori amb git status.\nEl fitxer apareixerà com a untracked.\nGit detecta que existeix un fitxer que encara no forma part de cap commit, però no l’inclourà automàticament en el pròxim commit."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#afegim-el-fitxer-a-lstaging",
+    "href": "laboratori/lab-git-1.html#afegim-el-fitxer-a-lstaging",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Afegim el fitxer a l’staging",
+    "text": "Afegim el fitxer a l’staging\nPer indicar a Git que volem incloure README.md en el pròxim commit:\ngit add README.md\nConsulta de nou l’estat:\ngit status\nAra README.md apareixerà sota:\nChanges to be committed:\nEl fitxer està staged."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#creem-el-primer-commit",
+    "href": "laboratori/lab-git-1.html#creem-el-primer-commit",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Creem el primer commit",
+    "text": "Creem el primer commit\nAra podem crear una nova versió del projecte:\ngit commit -m \"Afegeix README\"\nConsulta l’estat:\ngit status\nEl repositori hauria d’estar net:\nOn branch main\nnothing to commit, working tree clean\nAcabem de crear el nostre primer commit."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#modifiquem-el-projecte",
+    "href": "laboratori/lab-git-1.html#modifiquem-el-projecte",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Modifiquem el projecte",
+    "text": "Modifiquem el projecte\nModifica README.md i afegeix-hi, per exemple:\nAquest és el meu primer repositori de Git.\nConsulta l’estat del repositori:\ngit status\nAra README.md apareixerà com a modified.\nGit ha detectat que el fitxer és diferent del que hi havia en l’últim commit.\nPer veure els canvis que s’han fet al projecte, podem executar:\ngit diff\n\n\n\n\n\n\nConsellInterpretant la sortida de git diff\n\n\n\nLes línies que comencen amb - indiquen contingut que s’ha eliminat.\nLes línies que comencen amb + indiquen contingut que s’ha afegit.\nPer exemple:\n-Hello, World!\n+Hola, món!\nsignifica que la primera línia ha estat substituïda per la segona.\n\n\nUn cop estem segurs de voler incorporar els canvis al pròxim commit, fem\ngit add README.md\nQue passa si tornem a executar git diff?\nPer defecte, git diff només mostra els canvis en l’àrea working, però després de fer git add el fitxer README.md es troba en l’àrea staging. Per veure els canvis de l’àrea staging hem de fer:\ngit diff --staged"
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#un-últim-canvi-abans-del-commit",
+    "href": "laboratori/lab-git-1.html#un-últim-canvi-abans-del-commit",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Un últim canvi abans del commit",
+    "text": "Un últim canvi abans del commit\nAnem a canviar el títol del fitxer README.md.\n\n\n\n\n\n\nNota\n\n\n\nEn un fitxer markdown, una línea que comença amb # &lt;XXXX&gt; és un títol.\n\n\nCanvia la línea\n# Hello, World!\nper\n# Hola, món!\nQuè veus quan fas git status? I git diff? I git diff --staged?\n\n\n\n\n\n\nImportant\n\n\n\nQuan hem fet git add abans, hem incorporat els canvis fins aquell moment a l’àrea staging, però els nous canvis no s’han afegit automàticament. Git ens permet tenir canvis d’un fitxer en l’àrea staging i working a la vegada, per tenir més control sobre el contingut dels commits.\nEn el pròxim commit, els canvis que no s’hagin afegit a staging no s’inclouran.\n\n\nAnem a fer un commit sense el canvi del títol:\ngit commit -m \"Canviant el contingut de README.md\"\nSi fem git status i git diff, veurem que ara només queda pendent el canvi del títol. Per exemple, la sortida de git diff serà similar a:\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# Hello, World!\n+# Hola, món!\n Hello from my new git repository\n\n Aquest és el meu primer repositori de Git.\nAfegeix el fitxer un altre cop, i fes un nou commit.\n\n\n\n\n\n\nConsell\n\n\n\nPer afegir tots els fitxers a la vegada, pots fer: - git add -A: afegeix a l’àrea staging els canvis a tots els fitxers, tracked i untracked. - git add -u: afegeix a l’àrea staging els canvis només als fitxers tracked."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#ignorant-fitxers",
+    "href": "laboratori/lab-git-1.html#ignorant-fitxers",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Ignorant fitxers",
+    "text": "Ignorant fitxers\nA vegades podem tenir fitxers que son temporals, o que son artefactes d’un procès automàtic (p.e. de compilar un projecte, fitxers autogenerats…). Habitualment no volem que Git gestioni aquests fitxers. Tenim dues opcions:\n\nVigilar cada vegada que fem un commit, per no introduïr aquests fitxers a Git.\nIndicar a Git que els ignori.\n\nLa primera opció és propensa a errors, per tant farem la segona.\nPrimer de tot, anem a crear un fitxer que no vulguem al repositori, per exemple un fitxer on escriurem notes per nosaltres:\ntouch notes.tmp\n\n\n\n\n\n\nConsell\n\n\n\ntouch crea un fitxer buit a la ruta especificada.\n\n\nSi ara fem git status, veurem aquest fitxer com a untracked. Si ara fessim git add -A o git add ., s’afegiria a l’àrea staging. Per evitar-ho, crearem un nou fitxer que es diu .gitignore amb el següent contingut:\n*.tmp\nConsulta l’estat:\ngit status\nAra notes.tmp ja no apareix com a untracked.\nEl fitxer .gitignore sí que apareix com a untracked, perquè és un fitxer normal del projecte i encara no l’hem afegit.\n\n\n\n\n\n\nNota\n\n\n\n.gitignore permet indicar patrons de fitxers que Git no ha de mostrar com a fitxers untracked. És habitual utilitzar-lo per fitxers temporals, fitxers generats automàticament o altres fitxers que no volem guardar al repositori.\nEn el nostre cas, el patró és *.tmp, que significa “qualsevol fitxer que el seu nom acabi amb .tmp”\n\n\nAfegim el fitxer .gitignore al repositori amb git add .gitignore, i podem fer un nou commit amb git commit -m \"Afegeix gitignore\"."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#fitxers-que-no-són-de-text",
+    "href": "laboratori/lab-git-1.html#fitxers-que-no-són-de-text",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Fitxers que no són de text",
+    "text": "Fitxers que no són de text\nGit no només pot gestionar fitxers de text.\nTambé podem afegir fitxers binaris al repositori, com ara imatges.\nPodem afegir-los a l’àrea staging de la mateixa manera:\ngit add foto.png\nI crear un commit:\ngit commit -m \"Afegeix imatge\"\nGit guardarà el fitxer com a part del commit.\n\n\n\n\n\n\nImportant\n\n\n\nEls fitxers de text permeten a Git calcular i mostrar fàcilment les diferències entre versions. Amb fitxers binaris, com una imatge, Git no pot mostrar aquestes diferències de la mateixa manera.\nSi editessim la imatge, git diff no ens mostraria que ha canviat."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#exercici-practicant-el-cicle-de-git",
+    "href": "laboratori/lab-git-1.html#exercici-practicant-el-cicle-de-git",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Exercici: practicant el cicle de Git",
+    "text": "Exercici: practicant el cicle de Git\nAra fes els següents canvis sense seguir instruccions pas a pas:\n\nCrea un fitxer anomenat projecte.txt.\nAfegeix-hi algunes línies de text.\nConsulta l’estat del repositori.\nAfegeix el fitxer a l’àrea staging.\nConsulta de nou l’estat.\nCrea un commit amb un missatge descriptiu.\nAfegeix una imatge al repositori, i fes un commit que l’afegeixi.\nModifica projecte.txt.\nConsulta els canvis amb git diff.\nAfegeix els canvis a l’staging.\nConsulta els canvis amb git diff --staged.\nCrea un altre commit.\n\nFinalment, comprova que el repositori està net amb:\n\ngit status"
+  },
+  {
+    "objectID": "laboratori/lab06.html",
+    "href": "laboratori/lab06.html",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "",
+    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+  },
+  {
+    "objectID": "laboratori/lab06.html#objectius",
+    "href": "laboratori/lab06.html#objectius",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "",
+    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+  },
+  {
+    "objectID": "laboratori/lab06.html#introducció",
+    "href": "laboratori/lab06.html#introducció",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Introducció",
+    "text": "Introducció\nGitHub Pages amaga la complexitat de configurar un servidor web i et permet allotjar un lloc web de manera gratuïta. Aquesta eina et permetrà allotjar llocs web estàtics directament des del teu repositori de GitHub. Tu ets responsable de crear el lloc web i de pujar-lo al teu repositori, i GitHub s’encarrega de la resta.\nUtilitzarem una plantilla de lloc web creada per Dean Attali, les seves instruccions sobre com utilitzar la plantilla es troben aquí, però no et preocupis per això, utilitzarem una simplificació per a fer les coses més fàcils."
+  },
+  {
+    "objectID": "laboratori/lab06.html#prerequisits",
+    "href": "laboratori/lab06.html#prerequisits",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Prerequisits",
+    "text": "Prerequisits\n\nCompte de GitHub (crea’n un a https://github.com si no en tens un)"
+  },
+  {
+    "objectID": "laboratori/lab06.html#eines",
+    "href": "laboratori/lab06.html#eines",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Eines",
+    "text": "Eines\n\nJekyll (un generador de llocs estàtics) - https://jekyllrb.com\nGitHub Pages (un servei d’allotjament de llocs estàtics) - https://pages.github.com"
+  },
+  {
+    "objectID": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
+    "href": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Tasca 1: Configuració del teu lloc web personal",
+    "text": "Tasca 1: Configuració del teu lloc web personal\n\nFes un fork de https://github.com/ferranad/website-template al teu compte de GitHub fent clic al botó “Fork” a la part superior dreta d’aquesta pàgina.\n\nCanvia el nom del repositori a username.github.io, on username és el teu nom d’usuari de GitHub.\n\nVes a la configuració del repositori i troba la secció GitHub Pages.\n\nHabilita GitHub Pages seleccionant la branca main com a origen. Fes clic al botó “Save” i torna a la pàgina principal del teu repositori.\n\nEspera un parell de minuts fins que el teu lloc web es desplegui. Quan el desplegament s’hagi completat, veuràs una marca verda al costat del teu darrer commit. Veuràs un punt taronja mentre el desplegament està en curs (intenta actualitzar la pàgina si no veus la marca verda després d’uns minuts).\n\n&lt;div style=“display: flex; justify-content: center; gap: 10px;”&gt; &lt;img src=“figures/pages/ci-waiting.png” width=“35%”&gt; &lt;img src=“figures/pages/ci-done.png” width=“35%”&gt; &lt;/div&gt;\n\nOpcionalment, pots editar la descripció del repositori perquè contingui l’URL del teu lloc web. Això et facilitarà a tu i als altres l’accés al teu lloc web des de la pàgina del repositori de GitHub.\n\nProva el teu lloc web visitant https://username.github.io al teu navegador web (substitueix username pel teu nom d’usuari de GitHub). Notaràs que el lloc web ja està ple de contingut d’exemple."
+  },
+  {
+    "objectID": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
+    "href": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Tasca 2: Personalització del teu lloc web personal",
+    "text": "Tasca 2: Personalització del teu lloc web personal\n\nEdita el fitxer _config.yml per personalitzar el teu lloc web. Pots utilitzar la interfície web de GitHub per editar el fitxer directament, tal com es mostra al vídeo següent. Un cop hagis confirmat els canvis a la branca principal, el desplegament del lloc web s’activarà automàticament de nou i en un parell de minuts tindràs el teu lloc web actualitzat.\n\n\n\n\n\n\n\nNota\n\n\n\nEn lloc d’editar el fitxer utilitzant la interfície web de GitHub, pots clonar el repositori a la teva màquina local i editar el fitxer amb un editor de text si et sents més còmode.\n\n\nEdita el fitxer aboutme.md per afegir la teva informació personal, sent lliure d’escriure el que vulguis. Repeteix el mateix procés que a l’apartat anterior, però ara editant el fitxer aboutme.md.\nCanvia la imatge de l’avatar editant _config.yml i reemplaçant la ruta. Observa que és només una cadena amb la ruta a un fitxer present al repositori, en aquest cas, el fitxer images/ferran.jpeg. Pots pujar qualsevol imatge que vulguis al repositori navegant al directori images i fent clic al botó “Add file -&gt; Upload files”. Si, per exemple, has pujat un fitxer anomenat myavatar.jpg, hauries de canviar la ruta a _config.yml a images/myavatar.jpg. Si no vols utilitzar una imatge d’avatar, pots eliminar la línia avatar: \"/images/ferran.jpeg del fitxer _config.yml."
+  },
+  {
+    "objectID": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
+    "href": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
+    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "section": "Tasca 3: Escriptura d’una entrada de blog",
+    "text": "Tasca 3: Escriptura d’una entrada de blog\nAra que tenim el lloc web a punt, escrivim una entrada de blog. Potser ja has notat que a la pàgina d’inici del lloc web hi ha una publicació de blog anomenada Sample blog post... en la qual pots fer clic per llegir-la completament. Aquesta és una publicació de blog de plantilla que pots utilitzar per aprendre les diferents sintaxis i estils que pots fer servir per escriure la teva pròpia publicació. Aquest fitxer es troba a _posts/2020-02-26-example-post.md. Sempre pots consultar aquest fitxer per veure com escriure una publicació de blog. En cas que no vulguis que es mostri al teu lloc web, només has d’eliminar-lo i consultar el que hi ha al repositori que has fet un fork.\nPer escriure una nova entrada de blog, només has de crear un nou fitxer dins del directori _posts amb el següent format de nom: YYYY-MM-DD-títol.md. Si no segueixes aquest format, la publicació de blog no es mostrarà al teu lloc web. Pots crear un nou fitxer navegant al directori _posts i fent clic al botó “Add file -&gt; Create a new file”. Ara que ja sabem com crear una nova publicació de blog, escrivim-ne una!"
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html",
+    "href": "laboratori/lab-git-2.html",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "",
+    "text": "Aprendre a consultar la història d’un repositori Git."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#objectius",
+    "href": "laboratori/lab-git-2.html#objectius",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "",
+    "text": "Aprendre a consultar la història d’un repositori Git."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#requisits-previs",
+    "href": "laboratori/lab-git-2.html#requisits-previs",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Requisits previs",
+    "text": "Requisits previs\n\nHaver completat el laboratori anterior.\nTenir un repositori Git amb més de 4 commits.\nGit està instal·lat al sistema."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#preparant-el-repositori",
+    "href": "laboratori/lab-git-2.html#preparant-el-repositori",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Preparant el repositori",
+    "text": "Preparant el repositori\nContinuarem treballant amb el repositori creat al laboratori anterior.\nComprova que el repositori està net:\ngit status\nConsulta també la història:\ngit log --oneline\nHauries de veure diversos commits. Anota els 5 primers caràcters dels tres últims commits. Els necessitaràs més endavant.\n\n\n\n\n\n\nConsell\n\n\n\nNo cal escriure l’identificador complet d’un commit. Habitualment podem utilitzar la seva forma abreviada, sempre que sigui prou llarga per identificar-lo de manera inequívoca."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#consultant-la-història",
+    "href": "laboratori/lab-git-2.html#consultant-la-història",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Consultant la història",
+    "text": "Consultant la història\nExecuta git log per veure els commits en el projecte. Per veure una versió més compacta:\ngit log --oneline\nUtilitza git log --stat per veure quins fitxers es van modificar en cada commit i quantes línies. Identifica un commit on es canviés README.md i fixa’t en el nombre d’insercions i supressions.\n\n\n\n\n\n\nNota\n\n\n\nPots veure tots els canvis de la història amb git log --patch (o git log -p). Això pot ser molt extens, però. NO és recomanable fer-ho servir excepte en casos molt concrets."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#examina-els-canvis-del-commit",
+    "href": "laboratori/lab-git-2.html#examina-els-canvis-del-commit",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Examina els canvis del commit",
+    "text": "Examina els canvis del commit\nUtilitza git show &lt;id&gt; per veure els canvis del commit identificat en el pas anterior, que modificava README.md, i busca la següent informació:\n\nQui va fer el commit?\nQuina data?\nQuins fitxers van canviar?\nQuantes línies es van afegir o eliminar?"
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#compara-dos-commits",
+    "href": "laboratori/lab-git-2.html#compara-dos-commits",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Compara dos commits",
+    "text": "Compara dos commits\nTria dos commits que tinguin diferències en el fitxer README.md (o en qualsevol altre).\ngit diff &lt;commit1&gt;..&lt;commit2&gt;\nObserva el resultat. Ara compara el primer commit amb l’estat actual (HEAD):\ngit diff &lt;commit1&gt;..HEAD\n\n\n\n\n\n\nConsell\n\n\n\nPots ometre HEAD i escriure simplement git diff &lt;commit1&gt; per comparar amb l’estat actual."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#recupera-una-versió-antiga-dun-fitxer",
+    "href": "laboratori/lab-git-2.html#recupera-una-versió-antiga-dun-fitxer",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Recupera una versió antiga d’un fitxer",
+    "text": "Recupera una versió antiga d’un fitxer\nPrimer de tot, consulta el contingut actual del fitxer README.md:\ncat README.md\nBusca l’identificador del commit anterior a canviar el títol, i recupera el fitxer. Per veure la història d’un fitxer concret, utilitza:\ngit log --oneline README.md\nUn cop tinguis l’identificador, utilitza:\ngit restore --source=&lt;id&gt; README.md\nQuin és el contingut del fitxer? En quin estat està el fitxer README.md?\nHauries de veure README.md com a modified. Això és perquè has modificat l’àrea working, però no la història.\nDescarta els canvis de l’àrea working fent servir:\ngit restore README.md\nI comprova que el repositori està net i el contingut és el mateix que teniem abans de fer el primer restore.\n\n\n\n\n\n\nNota\n\n\n\nSi volguessim conservar el contingut que hem recuperat amb restore --source=&lt;id&gt;, hauriem d’afegir el fitxer i fer un nou commit."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#exercici-final-posat-a-prova",
+    "href": "laboratori/lab-git-2.html#exercici-final-posat-a-prova",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Exercici final: posa’t a prova",
+    "text": "Exercici final: posa’t a prova\nFes els següents passos i respon a les preguntes.\n\nCrea un nou fitxer prova.txt amb el text “Primera línia”.\nAfegeix-lo i fes un commit amb missatge “Afegeix prova”.\nModifica prova.txt perquè contingui dues línies de contingut.\nAfegeix els canvis a l’àrea staging.\nModifica prova.txt de nou, ara afegeix “Tercera línia” sense fer git add.\nExecuta git status i descriu què veus.\nExecuta git diff i git diff --staged. Quina diferència hi ha?\nFes un commit amb el canvis que tenies a staging. Quin missatge posaries?\nDesprés del commit, executa git log --oneline. Quants commits tens ara?\nRecupera prova.txt tal com era en el commit anterior al que acabes de fer (sense perdre la història). Fes servir git restore --source i comprova el contingut.\nCrea un nou commit amb el contingut anterior."
   }
 ]

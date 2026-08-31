@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode – Curs zero d’Informàtica</title>
+<title>Laboratori 4: Navegant la història – Curs zero d’Informàtica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -193,8 +158,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#objectius" id="toc-objectius" class="nav-link active" data-scroll-target="#objectius">Objectius</a></li>
   <li><a href="#requisits-previs" id="toc-requisits-previs" class="nav-link" data-scroll-target="#requisits-previs">Requisits previs</a></li>
-  <li><a href="#configurant-vscode-per-connectar-se-a-la-màquina-virtual" id="toc-configurant-vscode-per-connectar-se-a-la-màquina-virtual" class="nav-link" data-scroll-target="#configurant-vscode-per-connectar-se-a-la-màquina-virtual">Configurant VSCode per connectar-se a la màquina virtual</a></li>
-  <li><a href="#exercicis" id="toc-exercicis" class="nav-link" data-scroll-target="#exercicis">Exercicis</a></li>
+  <li><a href="#preparant-el-repositori" id="toc-preparant-el-repositori" class="nav-link" data-scroll-target="#preparant-el-repositori">Preparant el repositori</a></li>
+  <li><a href="#consultant-la-història" id="toc-consultant-la-història" class="nav-link" data-scroll-target="#consultant-la-història">Consultant la història</a></li>
+  <li><a href="#examina-els-canvis-del-commit" id="toc-examina-els-canvis-del-commit" class="nav-link" data-scroll-target="#examina-els-canvis-del-commit">Examina els canvis del commit</a></li>
+  <li><a href="#compara-dos-commits" id="toc-compara-dos-commits" class="nav-link" data-scroll-target="#compara-dos-commits">Compara dos commits</a></li>
+  <li><a href="#recupera-una-versió-antiga-dun-fitxer" id="toc-recupera-una-versió-antiga-dun-fitxer" class="nav-link" data-scroll-target="#recupera-una-versió-antiga-dun-fitxer">Recupera una versió antiga d’un fitxer</a></li>
+  <li><a href="#exercici-final-posat-a-prova" id="toc-exercici-final-posat-a-prova" class="nav-link" data-scroll-target="#exercici-final-posat-a-prova">Exercici final: posa’t a prova</a></li>
   </ul>
 </nav>
     </div>
@@ -203,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode</h1>
+<h1 class="title">Laboratori 4: Navegant la història</h1>
 </div>
 
 
@@ -223,19 +192,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="objectius" class="level2">
 <h2 class="anchored" data-anchor-id="objectius">Objectius</h2>
 <ul>
-<li>Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH.</li>
+<li>Aprendre a consultar la història d’un repositori Git.</li>
 </ul>
 </section>
 <section id="requisits-previs" class="level2">
 <h2 class="anchored" data-anchor-id="requisits-previs">Requisits previs</h2>
 <ul>
-<li>Màquina virtual en funcionament (vegeu <a href="lab02.md">Laboratori 2</a>).</li>
-<li>Visual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>.</li>
-<li>Obtenir la IP de la màquina virtual. Per fer-ho, podeu:
-<ul>
-<li>Consultar la informació a VMWare: <img src="../figures/vmware/vmware-vm-ip.png" class="img-fluid"></li>
-<li>O bé, iniciar sessió a la màquina virtual i executar la comanda <code>ip a</code> per obtenir la IP: <img src="../figures/debian12/vm-ip.png" class="img-fluid"></li>
+<li>Haver completat el laboratori anterior.</li>
+<li>Tenir un repositori Git amb més de 4 commits.</li>
+<li>Git està instal·lat al sistema.</li>
 </ul>
+</section>
+<section id="preparant-el-repositori" class="level2">
+<h2 class="anchored" data-anchor-id="preparant-el-repositori">Preparant el repositori</h2>
+<p>Continuarem treballant amb el repositori creat al laboratori anterior.</p>
+<p>Comprova que el repositori està net:</p>
+<pre class="console"><code>git status</code></pre>
+<p>Consulta també la història:</p>
+<pre class="console"><code>git log --oneline</code></pre>
+<p>Hauries de veure diversos commits. Anota els 5 primers caràcters dels tres últims commits. Els necessitaràs més endavant.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No cal escriure l’identificador complet d’un commit. Habitualment podem utilitzar la seva forma abreviada, sempre que sigui prou llarga per identificar-lo de manera inequívoca.</p>
+</div>
+</div>
+</section>
+<section id="consultant-la-història" class="level2">
+<h2 class="anchored" data-anchor-id="consultant-la-història">Consultant la història</h2>
+<p>Executa <code>git log</code> per veure els commits en el projecte. Per veure una versió més compacta:</p>
+<pre class="console"><code>git log --oneline</code></pre>
+<p>Utilitza <code>git log --stat</code> per veure quins fitxers es van modificar en cada commit i quantes línies. Identifica un commit on es canviés <code>README.md</code> i fixa’t en el nombre d’insercions i supressions.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -246,41 +240,53 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En els dos casos, la IP de la màquina virtual és <strong>172.16.10.223</strong>.</p>
+<p>Pots veure tots els canvis de la història amb <code>git log --patch</code> (o <code>git log -p</code>). Això pot ser molt extens, però. <strong>NO</strong> és recomanable fer-ho servir excepte en casos molt concrets.</p>
 </div>
-</div></li>
+</div>
+</section>
+<section id="examina-els-canvis-del-commit" class="level2">
+<h2 class="anchored" data-anchor-id="examina-els-canvis-del-commit">Examina els canvis del commit</h2>
+<p>Utilitza <code>git show &lt;id&gt;</code> per veure els canvis del commit identificat en el pas anterior, que modificava <code>README.md</code>, i busca la següent informació:</p>
+<ul>
+<li>Qui va fer el commit?</li>
+<li>Quina data?</li>
+<li>Quins fitxers van canviar?</li>
+<li>Quantes línies es van afegir o eliminar?</li>
 </ul>
 </section>
-<section id="configurant-vscode-per-connectar-se-a-la-màquina-virtual" class="level2">
-<h2 class="anchored" data-anchor-id="configurant-vscode-per-connectar-se-a-la-màquina-virtual">Configurant VSCode per connectar-se a la màquina virtual</h2>
-<p>Un cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: <strong>remote-ssh</strong>. Primer, feu clic a <strong>Marketplace (1)</strong>, després cerqueu <em>remote-ssh</em> i, finalment, feu clic a <strong>(3)</strong> per instal·lar la extensió. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/remote-ssh.png" class="img-fluid"></p>
-<p>Un cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra <strong>(1)</strong> i seleccioneu l’opció <strong>Remote-SSH: Connect to Host… (2)</strong>. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/remote-ssh2.png" class="img-fluid"></p>
-<p>Ara apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció <strong>Add a New SSH Host</strong>. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/add_new_host.png" class="img-fluid"></p>
-<p>Seleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a <strong>Add</strong>. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/select_config.png" class="img-fluid"></p>
-<p>i comproveu que l’amfitrió s’ha afegit correctament.</p>
-<p><img src="../figures/vscode/host_added.png" class="img-fluid"></p>
-<p>Ara feu clic a <strong>Open Config</strong> i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> 172.16.10.223</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> 172.16.10.223</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> jordi</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Us recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per <strong>vm-curs0-debian12</strong> :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> vm-curs0-debian12</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> 172.16.10.202</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> jordi</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Un cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual <strong>vm-curs0-debian12</strong>. Per fer-ho:</p>
-<ol type="1">
-<li>Feu clic a la icona de la part inferior esquerra.</li>
-<li>Seleccioneu <strong>Remote-SSH: Connect to Host…</strong>.</li>
-<li>Seleccioneu <strong>vm-curs0-debian12</strong>:</li>
-</ol>
-<ul>
-<li>Us apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a <strong>Continue</strong>. <img src="../figures/vscode/trust_host.png" class="img-fluid"></li>
-<li>Us apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari <strong>jordi</strong>. <img src="../figures/vscode/enter_password.png" class="img-fluid"></li>
-</ul>
+<section id="compara-dos-commits" class="level2">
+<h2 class="anchored" data-anchor-id="compara-dos-commits">Compara dos commits</h2>
+<p>Tria dos commits que tinguin diferències en el fitxer <code>README.md</code> (o en qualsevol altre).</p>
+<pre class="console"><code>git diff &lt;commit1&gt;..&lt;commit2&gt;</code></pre>
+<p>Observa el resultat. Ara compara el primer commit amb l’estat actual (HEAD):</p>
+<pre class="console"><code>git diff &lt;commit1&gt;..HEAD</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pots ometre HEAD i escriure simplement <code>git diff &lt;commit1&gt;</code> per comparar amb l’estat actual.</p>
+</div>
+</div>
+</section>
+<section id="recupera-una-versió-antiga-dun-fitxer" class="level2">
+<h2 class="anchored" data-anchor-id="recupera-una-versió-antiga-dun-fitxer">Recupera una versió antiga d’un fitxer</h2>
+<p>Primer de tot, consulta el contingut actual del fitxer <code>README.md</code>:</p>
+<pre class="console"><code>cat README.md</code></pre>
+<p>Busca l’identificador del commit anterior a canviar el títol, i recupera el fitxer. Per veure la història d’un fitxer concret, utilitza:</p>
+<pre class="console"><code>git log --oneline README.md</code></pre>
+<p>Un cop tinguis l’identificador, utilitza:</p>
+<pre class="console"><code>git restore --source=&lt;id&gt; README.md</code></pre>
+<p>Quin és el contingut del fitxer? En quin estat està el fitxer <code>README.md</code>?</p>
+<p>Hauries de veure <code>README.md</code> com a modified. Això és perquè has modificat l’àrea <em>working</em>, però no la història.</p>
+<p>Descarta els canvis de l’àrea <em>working</em> fent servir:</p>
+<pre class="console"><code>git restore README.md</code></pre>
+<p>I comprova que el repositori està net i el contingut és el mateix que teniem abans de fer el primer <em>restore</em>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -291,21 +297,26 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.</p>
+<p>Si volguessim conservar el contingut que hem recuperat amb <code>restore --source=&lt;id&gt;</code>, hauriem d’afegir el fitxer i fer un nou commit.</p>
 </div>
 </div>
-<p>Un cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió <strong>vm-curs0-debian12</strong>.</p>
-<p><img src="../figures/vscode/connected.png" class="img-fluid"></p>
-<p>Per comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda <code>uname -a</code> per veure la informació del sistema i comprovar que esteu a la màquina virtual.</p>
-<p><img src="../figures/vscode/terminal-linux.png" class="img-fluid"></p>
 </section>
-<section id="exercicis" class="level2">
-<h2 class="anchored" data-anchor-id="exercicis">Exercicis</h2>
-<ol type="1">
-<li>Creeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.</li>
-<li>Editeu fitxers utilitzant l’editor de VSCode.</li>
-<li>Podeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop.</li>
-</ol>
+<section id="exercici-final-posat-a-prova" class="level2">
+<h2 class="anchored" data-anchor-id="exercici-final-posat-a-prova">Exercici final: posa’t a prova</h2>
+<p>Fes els següents passos i respon a les preguntes.</p>
+<ul>
+<li>Crea un nou fitxer <code>prova.txt</code> amb el text “Primera línia”.</li>
+<li>Afegeix-lo i fes un commit amb missatge “Afegeix prova”.</li>
+<li>Modifica <code>prova.txt</code> perquè contingui dues línies de contingut.</li>
+<li>Afegeix els canvis a l’àrea <em>staging</em>.</li>
+<li>Modifica <code>prova.txt</code> de nou, ara afegeix “Tercera línia” sense fer <code>git add</code>.</li>
+<li>Executa <code>git status</code> i descriu què veus.</li>
+<li>Executa <code>git diff</code> i <code>git diff --staged</code>. Quina diferència hi ha?</li>
+<li>Fes un commit amb el canvis que tenies a <em>staging</em>. Quin missatge posaries?</li>
+<li>Després del commit, executa <code>git log --oneline</code>. Quants commits tens ara?</li>
+<li>Recupera <code>prova.txt</code> tal com era en el commit anterior al que acabes de fer (sense perdre la història). Fes servir <code>git restore --source</code> i comprova el contingut.</li>
+<li>Crea un nou commit amb el contingut anterior.</li>
+</ul>
 
 
 </section>

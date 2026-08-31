@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode – Curs zero d’Informàtica</title>
+<title>Laboratori 5: Branques i conflictes – Curs zero d’Informàtica</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -193,8 +158,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#objectius" id="toc-objectius" class="nav-link active" data-scroll-target="#objectius">Objectius</a></li>
   <li><a href="#requisits-previs" id="toc-requisits-previs" class="nav-link" data-scroll-target="#requisits-previs">Requisits previs</a></li>
-  <li><a href="#configurant-vscode-per-connectar-se-a-la-màquina-virtual" id="toc-configurant-vscode-per-connectar-se-a-la-màquina-virtual" class="nav-link" data-scroll-target="#configurant-vscode-per-connectar-se-a-la-màquina-virtual">Configurant VSCode per connectar-se a la màquina virtual</a></li>
-  <li><a href="#exercicis" id="toc-exercicis" class="nav-link" data-scroll-target="#exercicis">Exercicis</a></li>
+  <li><a href="#crear-una-nova-branca" id="toc-crear-una-nova-branca" class="nav-link" data-scroll-target="#crear-una-nova-branca">Crear una nova branca</a></li>
+  <li><a href="#merge-de-branques-fast-forward" id="toc-merge-de-branques-fast-forward" class="nav-link" data-scroll-target="#merge-de-branques-fast-forward">Merge de branques (<em>fast-forward</em>)</a></li>
+  <li><a href="#merge-de-branques-3-way" id="toc-merge-de-branques-3-way" class="nav-link" data-scroll-target="#merge-de-branques-3-way">Merge de branques (<em>3-way</em>)</a></li>
+  <li><a href="#merge-de-branques-amb-conflictes" id="toc-merge-de-branques-amb-conflictes" class="nav-link" data-scroll-target="#merge-de-branques-amb-conflictes">Merge de branques (amb conflictes)</a></li>
+  <li><a href="#exercici" id="toc-exercici" class="nav-link" data-scroll-target="#exercici">Exercici</a></li>
   </ul>
 </nav>
     </div>
@@ -203,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode</h1>
+<h1 class="title">Laboratori 5: Branques i conflictes</h1>
 </div>
 
 
@@ -223,19 +191,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="objectius" class="level2">
 <h2 class="anchored" data-anchor-id="objectius">Objectius</h2>
 <ul>
-<li>Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH.</li>
+<li>Aprendre a crear i canviar entre branques.</li>
+<li>Entendre el <em>merge</em>.</li>
+<li>Resoldre conflictes de <em>merge</em>.</li>
 </ul>
 </section>
 <section id="requisits-previs" class="level2">
 <h2 class="anchored" data-anchor-id="requisits-previs">Requisits previs</h2>
 <ul>
-<li>Màquina virtual en funcionament (vegeu <a href="lab02.md">Laboratori 2</a>).</li>
-<li>Visual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>.</li>
-<li>Obtenir la IP de la màquina virtual. Per fer-ho, podeu:
-<ul>
-<li>Consultar la informació a VMWare: <img src="../figures/vmware/vmware-vm-ip.png" class="img-fluid"></li>
-<li>O bé, iniciar sessió a la màquina virtual i executar la comanda <code>ip a</code> per obtenir la IP: <img src="../figures/debian12/vm-ip.png" class="img-fluid"></li>
+<li>Haver completat els laboratoris anteriors (fins al Lab 4).</li>
+<li>Disposar d’un repositori amb diversos commits.</li>
+<li>Git instal·lat al sistema.</li>
 </ul>
+</section>
+<section id="crear-una-nova-branca" class="level2">
+<h2 class="anchored" data-anchor-id="crear-una-nova-branca">Crear una nova branca</h2>
+<p>Crearem una branca anomenada <code>nou-contingut</code> per treballar en modificacions separades:</p>
+<pre class="console"><code>git branch nou-contingut</code></pre>
+<p>Comprova que la nova branca apareix quan fas <code>git branch</code>. <strong>L’asterisc indica la branca actual</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -246,41 +219,111 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En els dos casos, la IP de la màquina virtual és <strong>172.16.10.223</strong>.</p>
+<p>Recorda que <code>git branch</code> només crea la branca, però no canvia quina és la branca actual.</p>
 </div>
-</div></li>
-</ul>
+</div>
+<p>Canvia a la nova branca fent servir:</p>
+<pre class="console"><code>git switch nou-contingut</code></pre>
+<p>Verifica que ets a la branca que toca fent servir <code>git branch</code>.</p>
+<p>Ara crea un nou fitxer que es digui <code>contingut.md</code>, amb el següent text:</p>
+<pre class="text"><code>Aquest és un contingut nou.</code></pre>
+<p>Fes un commit amb aquest nou fitxer.</p>
+<p>Torna a la branca <code>main</code> i comprova que <code>contingut.md</code> no existeix:</p>
+<pre class="console"><code>git switch main
+ls -la</code></pre>
 </section>
-<section id="configurant-vscode-per-connectar-se-a-la-màquina-virtual" class="level2">
-<h2 class="anchored" data-anchor-id="configurant-vscode-per-connectar-se-a-la-màquina-virtual">Configurant VSCode per connectar-se a la màquina virtual</h2>
-<p>Un cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: <strong>remote-ssh</strong>. Primer, feu clic a <strong>Marketplace (1)</strong>, després cerqueu <em>remote-ssh</em> i, finalment, feu clic a <strong>(3)</strong> per instal·lar la extensió. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/remote-ssh.png" class="img-fluid"></p>
-<p>Un cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra <strong>(1)</strong> i seleccioneu l’opció <strong>Remote-SSH: Connect to Host… (2)</strong>. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/remote-ssh2.png" class="img-fluid"></p>
-<p>Ara apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció <strong>Add a New SSH Host</strong>. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/add_new_host.png" class="img-fluid"></p>
-<p>Seleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a <strong>Add</strong>. Consulteu la imatge:</p>
-<p><img src="../figures/vscode/select_config.png" class="img-fluid"></p>
-<p>i comproveu que l’amfitrió s’ha afegit correctament.</p>
-<p><img src="../figures/vscode/host_added.png" class="img-fluid"></p>
-<p>Ara feu clic a <strong>Open Config</strong> i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> 172.16.10.223</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> 172.16.10.223</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> jordi</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Us recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per <strong>vm-curs0-debian12</strong> :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> vm-curs0-debian12</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> 172.16.10.202</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> jordi</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Un cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual <strong>vm-curs0-debian12</strong>. Per fer-ho:</p>
-<ol type="1">
-<li>Feu clic a la icona de la part inferior esquerra.</li>
-<li>Seleccioneu <strong>Remote-SSH: Connect to Host…</strong>.</li>
-<li>Seleccioneu <strong>vm-curs0-debian12</strong>:</li>
-</ol>
+<section id="merge-de-branques-fast-forward" class="level2">
+<h2 class="anchored" data-anchor-id="merge-de-branques-fast-forward">Merge de branques (<em>fast-forward</em>)</h2>
+<p>Un cop acabats els canvis a <code>nou-contingut</code>, podem fer merge cap a <code>main</code>.</p>
+<p>Primer de tot, visualitza la història en forma de graf:</p>
+<pre class="console"><code>git log --all --graph --oneline --decorate</code></pre>
+<p>Com que <code>main</code> no ha avançat des de que vam crear <code>nou-contingut</code>, podem fer un <strong>fast-forward</strong> merge (és a dir, no ens cal crear un commit de merge):</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assegura’t que estas a la branca <code>main</code>.</p>
+</div>
+</div>
+<pre class="console"><code>git merge nou-contingut</code></pre>
+<p>Si visualitzes el graf de commits, veuras que no s’ha creat cap commit nou sinó que s’ha mogut <code>main</code> cap al mateix commit que <code>nou-contingut</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Podem forçar un commit de merge fent <code>git merge --no-ff &lt;branca&gt;</code></p>
+<p>Prova de crear una nova branca <code>b1</code>, modifica algun fitxer a la nova branca, i fes merge cap a <code>main</code> utilitzant <code>no-ff</code>.</p>
+</div>
+</div>
+<p>Un cop hem enllestit la feina, podem borrar les branques que ja no necessitem amb:</p>
+<pre class="console"><code>git branch -d nou-contingut
+# opcionalment si has creat la branca b1, també la pots eliminar</code></pre>
+</section>
+<section id="merge-de-branques-3-way" class="level2">
+<h2 class="anchored" data-anchor-id="merge-de-branques-3-way">Merge de branques (<em>3-way</em>)</h2>
+<p>Crea una nova branca <code>proves</code>. Canvia a aquesta branca i modifica el fitxer <code>contingut.md</code> (fent el commit corresponent).</p>
+<p>Torna a <code>main</code> i fes un canvi al fitxer <code>README.md</code></p>
+<p>En aquest punt tens dues branques que han avançat de forma independent, i cada una té commits que no té l’altra.</p>
+<p>Visualitza el graf de commits per comprovar que, efectivament, cada una té commits addicionals.</p>
+<p>Ara prova d’unificar les dues branques fent un <em>merge</em> des de <code>proves</code> cap a <code>main</code>.</p>
+<p><strong>T’ha generat algun conflicte? Perquè creus que és així?</strong></p>
+<p>Comprova que <code>main</code> ara té els canvis de <code>README.md</code> i <code>contingut.md</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aquest tipus de <em>merge</em> s’anomena 3-way perquè Git utilitza tres commits per fer la fusió: el més recent de la branca actual, el més recent de la branca que fusionem, i l’ancestre comú (el punt on es van separar les branques).</p>
+</div>
+</div>
+<p>Fes un <em>fast-forward merge</em> des de <code>main</code> cap a <code>proves</code> per a que estiguin al mateix punt.</p>
+</section>
+<section id="merge-de-branques-amb-conflictes" class="level2">
+<h2 class="anchored" data-anchor-id="merge-de-branques-amb-conflictes">Merge de branques (amb conflictes)</h2>
+<p>Ara veurem què passa quan dues branques modifiquen el mateix fitxer.</p>
+<p>Situa’t a la branca <code>proves</code> i modifica <code>contingut.md</code> perquè contingui:</p>
+<pre class="text"><code>Aquest és un contingut nou.
+Contingut des de proves</code></pre>
+<p>Modifica <code>README.md</code> i canvia la primera línea a majúscules.</p>
+<p>Fes commit:</p>
+<pre class="console"><code>git add contingut.md README.md
+git commit -m "Canvis des de proves"</code></pre>
+<p>Torna a <code>main</code> i modifica <code>contingut.md</code> perquè contingui:</p>
+<pre class="text"><code>Aquest és un contingut nou.
+Contingut des de main</code></pre>
+<p>Modifica <code>README.md</code> i afegeix una nova línea al final.</p>
+<p>Fes commit:</p>
+<pre class="console"><code>git add contingut.md README.md
+git commit -m "Canvis des de main"</code></pre>
+<p>Abans de fer un merge, analitzem la situació:</p>
+<p>La situació actual és:</p>
 <ul>
-<li>Us apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a <strong>Continue</strong>. <img src="../figures/vscode/trust_host.png" class="img-fluid"></li>
-<li>Us apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari <strong>jordi</strong>. <img src="../figures/vscode/enter_password.png" class="img-fluid"></li>
+<li><code>proves</code> ha modificat el fitxer <code>README.md</code> i <code>contingut.md</code></li>
+<li><code>main</code> ha modificat el fitxer <code>README.md</code> i <code>contingut.md</code></li>
+<li>Les dues branques han modificat tot el contingut de <code>contingut.md</code>.</li>
+<li>Les dues branques han modificat línies diferents de <code>README.md</code>.</li>
 </ul>
+<p>En aquesta situació, Git hauria de generar un conflicte a <code>contingut.md</code> però no a <code>README.md</code>. Això és degut a que, per defecte, Git interpreta els fitxers de text línea a línea i pot gestionar els canvis en diferents parts del fitxer automàticament.</p>
+<p>Ara sí, fes un <em>merge</em> des de <code>proves</code> cap a <code>main</code>.</p>
+<p><strong>Quins conflictes s’han generat? És coherent amb el que hem analitzat previament?</strong></p>
+<p>Abans de resoldre el conflicte, executa <code>git diff --staged</code>. Quins canvis veus a <code>README.md</code>?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -291,21 +334,53 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.</p>
+<p>Git automàticament ha afegit tots els fitxers sense conflicte a l’àrea <em>staging</em>, llestos pel futur commit de merge.</p>
 </div>
 </div>
-<p>Un cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió <strong>vm-curs0-debian12</strong>.</p>
-<p><img src="../figures/vscode/connected.png" class="img-fluid"></p>
-<p>Per comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda <code>uname -a</code> per veure la informació del sistema i comprovar que esteu a la màquina virtual.</p>
-<p><img src="../figures/vscode/terminal-linux.png" class="img-fluid"></p>
-</section>
-<section id="exercicis" class="level2">
-<h2 class="anchored" data-anchor-id="exercicis">Exercicis</h2>
+<p>Resol el conflicte i acaba el merge:</p>
 <ol type="1">
-<li>Creeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.</li>
-<li>Editeu fitxers utilitzant l’editor de VSCode.</li>
-<li>Podeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop.</li>
+<li>Edita el fitxer i deixa el contingut desitjat. <strong>Recorda eliminar les marques de merge (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>, <code>=======</code>, i <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; proves</code>)</strong>.</li>
+<li>Marca el conflicte com a resolt fent <code>git add contingut.md</code>.</li>
+<li>Acaba el merge fent <code>git commit</code>.</li>
 </ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si en qualsevol moment vols avortar el merge, pots fer <code>git merge --abort</code>.</p>
+</div>
+</div>
+<p>Comprova el resultat fent:</p>
+<pre><code>git log --all --graph --oneline --decorate</code></pre>
+<p>Per confirmar que <code>README.md</code> s’ha fusionat automàticament, executa <code>cat README.md</code> i comprova que conté <strong>ambdues</strong> modificacions: la primera línia en majúscules <strong>i</strong> la nova línia al final. En canvi, <code>contingut.md</code> conté només el text que has escollit durant la resolució del conflicte.</p>
+</section>
+<section id="exercici" class="level2">
+<h2 class="anchored" data-anchor-id="exercici">Exercici</h2>
+<p>Fes els següents passos i respon a les preguntes.</p>
+<ul>
+<li>Crea una branca <code>exercici</code> des de <code>main</code>.</li>
+<li>En aquesta branca, crea un fitxer <code>exercici.md</code> amb el text <code># Exercici\nContingut inicial</code>.</li>
+<li>Fes un commit a <code>exercici</code>.</li>
+<li>Torna a <code>main</code> i modifica <code>README.md</code> afegint <code>Main ha canviat</code>.</li>
+<li>Fes un commit a <code>main</code>.</li>
+<li>Torna a <code>exercici</code> i fes un merge de <code>main</code> a <code>exercici</code> (per actualitzar la branca). Aquest <em>merge</em> no hauria de generar conflictes.</li>
+<li>Torna a <code>main</code> i fes un merge de la branca <code>exercici</code>. Hauries de veure que no es crea un commit de <em>merge</em>.</li>
+<li>Torna a la branca <code>exercici</code>.</li>
+<li>Modifica <code>exercici.md</code> perquè contingui <code># Exercici\nContingut des de exercici</code>.</li>
+<li>Fes commit a <code>exercici</code>.</li>
+<li>Torna a <code>main</code> i modifica <code>exercici.md</code> perquè contingui <code># Exercici\nContingut des de main</code>.</li>
+<li>Fes commit a <code>main</code>.</li>
+<li>Fes un merge de la branca <code>exercici</code> a <code>main</code> i resol el conflicte (el text final ha de ser <code># Exercici\nContingut resolt finalment</code>).</li>
+<li>Un cop resolt, finalitza el <em>merge</em>.</li>
+<li>Elimina les branques que ja no necessites.</li>
+<li>Comprova que el repositori està net amb <code>git status</code>.</li>
+</ul>
 
 
 </section>
