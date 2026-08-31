@@ -1,0 +1,475 @@
+---
+title: "Laboratori 3 · Navegació i sistema de fitxers"
+subtitle: "Introducció a Linux · Curs zero d'Informàtica"
+author:
+  - name: Jordi Mateo Fornés
+lang: ca
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false
+execute:
+  freeze: auto
+  echo: false
+---
+
+# Objectius
+
+En aquesta pràctica aprendrem a:
+
+- Moure'ns pel sistema de fitxers amb `pwd`, `ls` i `cd`.
+- Consultar la documentació incorporada de Linux amb `man`.
+- Distingir entre **rutes absolutes** i **rutes relatives**.
+- Reconèixer l'estructura de directoris d'un sistema Linux i identificar les carpetes més importants.
+- Crear, copiar, moure i eliminar fitxers i directoris.
+- Comprimir i descomprimir fitxers amb `tar`.
+- Instal·lar i eliminar programari amb `apt`.
+
+::: {.callout-tip}
+Aquesta pràctica es fa dins de la màquina virtual **Debian** que vam instal·lar al **Laboratori 2**. Arrenca-la i inicia sessió amb el teu usuari normal.
+:::
+
+# La sintaxi d'una comanda
+
+Totes les comandes que farem servir avui segueixen el mateix patró:
+
+```text
+comanda [opcions] [arguments]
+```
+
+- **comanda**: el nom de l'ordre (`ls`, `cd`, `cp`...).
+- **opcions**: modifiquen el comportament de la comanda, normalment precedides d'un guionet (`-l`, `-a`) o dos (`--help`).
+- **arguments**: allò sobre què actua la comanda (un fitxer, un directori...).
+
+::: {.callout-note}
+Pots escriure diverses comandes en una sola línia separant-les amb `;`. Ho farem servir més endavant per estalviar temps.
+:::
+
+::: {.callout-tip}
+### Dues eines útils des del primer moment
+
+```bash
+clear
+```
+
+Neteja la pantalla del terminal, sense esborrar res del que has fet.
+
+```bash
+history
+```
+
+Mostra la llista de comandes que has executat anteriorment.
+
+També pots utilitzar les tecles **↑** i **↓** per recuperar i tornar a executar comandes anteriors sense haver de reescriure-les.
+:::
+
+# On sóc? (`pwd`)
+
+Quan obres una terminal, sempre estàs situat en un directori concret: el **directori de treball actual**.
+
+Executa:
+
+```bash
+pwd
+```
+
+**Quin directori ha mostrat?** __________________
+
+::: {.callout-note}
+`pwd` són les inicials de *print working directory*. Normalment, en iniciar sessió, et trobaràs al teu directori personal (`/home/el_teu_usuari`).
+:::
+
+# Què hi ha aquí? (`ls`)
+
+Per veure el contingut del directori actual:
+
+```bash
+ls
+```
+
+Prova també aquestes variants:
+
+```bash
+ls -l
+ls -a
+ls -la
+```
+
+::: {.callout-tip}
+**Abans d'executar `ls -a`, fes una predicció:** `ls`, sense opcions, no mostra tots els fitxers. Quins fitxers creus que apareixeran amb `ls -a` que no apareixien amb `ls` sol?
+
+____________________________________________________________
+:::
+
+**Quants fitxers ocults (que comencen per `.`) has trobat?** __________________
+
+::: {.callout-note}
+- `ls -l` mostra la llista en format **llarg**: permisos, propietari, mida, data...
+- `ls -a` mostra també els fitxers **ocults** (els que comencen per `.`).
+- `ls -la` combina totes dues opcions alhora.
+:::
+
+## Com sé què fa una comanda que no conec?
+
+No cal memoritzar totes les opcions de totes les comandes: **Linux té documentació incorporada**.
+
+```bash
+man ls
+```
+
+Desplaça't amb les fletxes o `Enter`, i surt prement `q`.
+
+Prova-ho també amb una comanda que ja coneixes:
+
+```bash
+man pwd
+```
+
+::: {.callout-note}
+`man` mostra el **manual** d'una comanda: què fa, quines opcions accepta i exemples d'ús. És una de les eines més importants per aprendre Linux pel teu compte.
+
+Una alternativa més ràpida i resumida és `ls --help`.
+:::
+
+# Movent-nos pel sistema (`cd`)
+
+Per canviar de directori utilitzem `cd`:
+
+```bash
+cd /etc
+pwd
+cd
+pwd
+```
+
+**Què ha passat quan has executat `cd` sense cap argument?** __________________
+
+::: {.callout-note}
+`cd` sense arguments et porta sempre al teu directori personal (`$HOME`), sigui quin sigui el directori on estiguessis.
+:::
+
+Hi ha dues rutes especials molt útils:
+
+| Ruta | Significat |
+|---|---|
+| `.` | El directori actual |
+| `..` | El directori pare (un nivell amunt) |
+
+Crea un directori de prova per experimentar-hi:
+
+```bash
+cd
+mkdir practica
+cd practica
+pwd
+```
+
+::: {.callout-tip}
+### Exercici
+
+Estàs a `/home/el_teu_usuari/practica`.
+
+**Com tornaries a `/home/el_teu_usuari` fent servir una ruta relativa?**
+
+____________________________________________________________
+
+Comprova-ho:
+
+```bash
+cd ..
+pwd
+```
+
+**I com aniries directament a `/etc`, des d'on siguis, amb una ruta absoluta?**
+
+____________________________________________________________
+
+Comprova-ho:
+
+```bash
+cd /etc
+pwd
+```
+:::
+
+## Rutes absolutes vs. rutes relatives
+
+- **Ruta absoluta**: comença sempre des de l'arrel (`/`). És independent d'on estiguis situat.
+- **Ruta relativa**: es descriu des del directori **actual**.
+
+::: {.callout-tip}
+### Un pas més
+
+Torna al teu directori personal amb `cd`, i des d'allà entra a `practica`.
+
+**Escriu ara una ruta relativa (fent servir `..`) que et porti fins a `/etc` des de `practica`:**
+
+____________________________________________________________
+:::
+
+Comprova-ho:
+
+```bash
+cd ~/practica
+cd ../../etc
+pwd
+```
+
+::: {.callout-note}
+Una ruta relativa depèn d'on estiguis; si canvies de directori, la mateixa ruta relativa et portarà a un lloc diferent. Una ruta absoluta sempre et porta al mateix lloc, des d'on sigui que l'executis.
+:::
+
+# L'arbre de directoris de Linux
+
+Un sistema Linux organitza tots els fitxers i directoris en una única estructura en forma d'arbre, amb un sol node arrel: `/`.
+
+A diferència de Windows, **no hi ha "discos" com `C:` o `D:`**: tot penja d'aquest mateix arrel, encara que físicament hi hagi diversos discos o particions.
+
+## Carpetes importants
+
+| Directori | Contingut |
+|---|---|
+| `/` | Directori arrel: conté tot l'arbre de fitxers |
+| `/home` | Directoris personals dels usuaris normals |
+| `/root` | Directori personal de l'usuari `root` (no confondre amb `/`) |
+| `/bin` | Ordres bàsiques del sistema (`ls`, `cat`, `cp`...) |
+| `/etc` | Fitxers de configuració del sistema |
+| `/var` | Dades que canvien (registres, cues, etc.) |
+| `/tmp` | Fitxers temporals, s'esborren en reiniciar |
+| `/dev` | Fitxers que representen dispositius (discos, terminals...) |
+| `/usr` | Programes i biblioteques instal·lades a l'usuari |
+
+::: {.callout-note}
+No cal memoritzar-los tots avui. Torna a aquesta taula sempre que et trobis un directori que no reconeguis.
+:::
+
+::: {.callout-tip}
+**Predicció:** si el teu usuari es diu `jordi`, quina serà la ruta absoluta del seu directori personal?
+
+__________________
+:::
+
+# Instal·lar i eliminar programari amb `apt`
+
+Per veure aquesta estructura d'una manera més visual, instal·larem una eina anomenada `tree`.
+
+Encara no hem vist en detall com funcionen els usuaris i els permisos d'administració (ho farem a la propera sessió), però necessitem "elevar privilegis" per instal·lar programari. De moment, quan vegis `sudo` davant d'una comanda, entén que estem demanant permisos d'administrador temporalment.
+
+## Instal·lar `tree`
+
+```bash
+sudo apt update
+sudo apt install tree -y
+```
+
+::: {.callout-note}
+`apt` és el gestor de paquets de Debian. `apt update` actualitza la llista de paquets disponibles, i `apt install <paquet>` n'instal·la un.
+:::
+
+Ara mira l'arbre de directoris des de l'arrel, limitat a un sol nivell de profunditat:
+
+```bash
+tree -L 1 -d /
+```
+
+**Quins dels directoris de la taula anterior reconeixes a la sortida?** __________________
+
+## Eliminar `tree`
+
+Ara que ja l'hem fet servir, l'eliminarem:
+
+```bash
+sudo apt remove tree
+```
+
+Torna a intentar executar-lo:
+
+```bash
+tree
+```
+
+**Què ha passat?** __________________
+
+::: {.callout-tip}
+### Pensa-hi
+
+Hem eliminat el programa `tree`. **Hem eliminat també el directori `practica` que vam crear abans?**
+
+Comprova-ho:
+
+```bash
+ls ~/practica
+```
+:::
+
+::: {.callout-note}
+Eliminar un **programa** amb `apt remove` no afecta els **fitxers personals** que hagis creat tu mateix. Un gestor de paquets com `apt` només gestiona el programari instal·lat al sistema, no els teus documents.
+:::
+
+# Crear i escriure fitxers
+
+## `mkdir` i `touch`
+
+```bash
+cd ~/practica
+touch nota.txt
+ls -l
+```
+
+`mkdir` crea un directori nou; `touch` crea un fitxer buit (o actualitza la seva data si ja existeix).
+
+## `echo`, la redirecció i `cat`
+
+`echo` mostra text per pantalla. Combinat amb el símbol `>`, podem enviar aquest text a un fitxer en lloc de mostrar-lo:
+
+```bash
+echo "Hola món" > nota.txt
+cat nota.txt
+```
+
+::: {.callout-note}
+`cat` mostra el contingut d'un fitxer directament al terminal. És una de les comandes que faràs servir més sovint, sobretot més endavant quan comencem a consultar fitxers de configuració.
+:::
+
+::: {.callout-warning}
+`>` **sobreescriu** tot el contingut del fitxer. Si el fitxer ja tenia contingut, es perd.
+:::
+
+Per **afegir** contingut sense esborrar l'anterior, fem servir `>>`:
+
+```bash
+echo "Segona línia" >> nota.txt
+cat nota.txt
+```
+
+**Quantes línies té ara `nota.txt`?** __________________
+
+::: {.callout-tip}
+**Predicció:** si ara executes `echo "Adéu" > nota.txt`, què creus que contindrà el fitxer després?
+
+- [ ] Les tres línies (Hola món, Segona línia, Adéu)
+- [ ] Només "Adéu"
+- [ ] No ho sé
+:::
+
+Comprova-ho:
+
+```bash
+echo "Adéu" > nota.txt
+cat nota.txt
+```
+
+# Copiar, moure i eliminar
+
+## `cp`
+
+```bash
+cp nota.txt copia.txt
+ls -l
+```
+
+`cp origen destinació` crea una còpia. L'arxiu original es manté intacte.
+
+## `mv`
+
+`mv` serveix tant per **moure** com per **reanomenar** un fitxer (a Linux són la mateixa operació).
+
+```bash
+mv copia.txt copia2.txt
+ls -l
+```
+
+```bash
+mkdir ../altre
+mv copia2.txt ../altre/
+ls ../altre
+```
+
+## `rm`
+
+```bash
+rm copia.txt
+```
+
+Per eliminar un **directori** amb contingut, cal l'opció `-r` (recursiu):
+
+```bash
+rm -r ../altre
+```
+
+::: {.callout-warning}
+`rm -rf` elimina de manera **recursiva** (`-r`) i **forçada** (`-f`, sense demanar confirmació). No hi ha paperera de reciclatge: un cop executat, **no es pot desfer**.
+
+Vés amb molt de compte, sobretot amb rutes absolutes com `/` o `$HOME`. No l'executis mai sense estar segur del que estàs eliminant.
+:::
+
+# Comprimir i descomprimir amb `tar`
+
+`tar` permet agrupar diversos fitxers en un de sol, opcionalment comprimit.
+
+Primer crea alguns fitxers d'exemple:
+
+```bash
+cd
+mkdir exemple
+cd exemple
+echo "fitxer u" > f1.txt
+echo "fitxer dos" > f2.txt
+```
+
+## Crear un arxiu `.tar`
+
+```bash
+cd
+tar cf exemple.tar exemple
+ls -l exemple.tar
+```
+
+- `c` = *create* (crear)
+- `f` = indica que a continuació ve el nom del fitxer
+
+## Comprimir amb Gzip
+
+```bash
+tar czf exemple.tar.gz exemple
+ls -l exemple.tar.gz
+```
+
+La `z` afegeix compressió Gzip. Compara la mida amb la de `exemple.tar`:
+
+**`exemple.tar.gz` és més petit que `exemple.tar`?** __________________
+
+## Extreure un arxiu
+
+```bash
+mkdir prova_extraccio
+cd prova_extraccio
+tar xzf ../exemple.tar.gz
+ls -l
+```
+
+- `x` = *extract* (extreure)
+
+::: {.callout-note}
+Truc mnemotècnic: **c**rear, e**x**treure, **f**itxer, com**z**imir (gzip). Les lletres es poden combinar en qualsevol ordre (`tar xzf` o `tar zxf` funcionen igual).
+:::
+
+# Comprovació final
+
+Completa la taula amb el que acabes de fer:
+
+| Acció | Comanda utilitzada |
+|---|---|
+| Veure el directori actual | |
+| Llistar fitxers ocults | |
+| Consultar el manual d'una comanda | |
+| Anar al directori personal sense escriure la ruta | |
+| Crear un directori nou | |
+| Afegir una línia a un fitxer sense esborrar l'anterior | |
+| Copiar un fitxer | |
+| Eliminar un directori amb contingut | |
+| Comprimir una carpeta amb Gzip | |
+| Instal·lar un programa nou | |
+| Eliminar un programa | |
+

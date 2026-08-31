@@ -8,24 +8,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: Teoria
-        menu:
-          - href: teoria/02-virtualitzation.qmd
-            text: Sessió 2 · Virtualització
-          - href: teoria/03-version-control.qmd
-            text: Sessió 3 · Control de versions
-      - text: Laboratori
-        menu:
-          - href: laboratori/lab02.qmd
-            text: Instal·lació de Debian 12
-          - href: laboratori/lab03.qmd
-            text: Configurant el meu entorn de desenvolupament amb VSCode
-          - href: laboratori/lab-git-1.qmd
-            text: Comandes bàsiques de Git
-          - href: laboratori/lab-git-2.qmd
-            text: Navegant la història
-          - href: laboratori/lab06.qmd
-            text: Github Pages
+
         
 format:
   html:

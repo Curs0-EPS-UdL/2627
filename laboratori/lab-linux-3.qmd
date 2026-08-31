@@ -1,0 +1,474 @@
+---
+title: "Laboratori 5 · Introducció a vi/vim"
+subtitle: "Introducció a Linux · Curs zero d'Informàtica"
+author:
+  - name: Jordi Mateo Fornés
+lang: ca
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false
+execute:
+  freeze: auto
+  echo: false
+---
+
+# Objectius
+
+En aquesta pràctica aprendrem a:
+
+- Instal·lar `vim` des de la terminal.
+- Obrir i crear fitxers de text amb `vim`.
+- Entendre els dos modes bàsics de `vim`.
+- Escriure i modificar text.
+- Guardar i sortir de l'editor.
+- Moure'ns pel text i eliminar text.
+- Copiar i enganxar línies.
+- Buscar text dins d'un fitxer.
+- Utilitzar `vim` per editar un fitxer real des de la terminal.
+
+::: {.callout-tip}
+Objectiu de la pràctica: al final hauríeu de ser capaços d'obrir un fitxer amb `vim`, modificar-lo, guardar els canvis i sortir de l'editor sense ajuda.
+:::
+
+# Per què un editor dins del terminal?
+
+Fins ara hem treballat principalment amb comandes com:
+
+```bash
+ls
+cd
+mkdir
+touch
+cat
+cp
+mv
+rm
+```
+
+Però aquestes comandes no són suficients quan volem editar el **contingut** d'un fitxer.
+
+En un entorn gràfic podem utilitzar un editor com VSCode, però a Linux és molt habitual trobar-nos en un terminal sense interfície gràfica. Per exemple, podem tenir un fitxer `configuracio.txt` i necessitar modificar-lo directament des del terminal.
+
+Per això existeixen editors com `vi` i `vim`.
+
+::: {.callout-note}
+`vi` és l'editor tradicional disponible en molts sistemes Unix/Linux. `vim` (*Vi IMproved*) és una versió més completa de `vi`.
+
+En aquesta pràctica utilitzarem `vim`.
+:::
+
+# Instal·lar Vim
+
+Primer actualitza la informació dels paquets:
+
+```bash
+sudo apt update
+```
+
+I instal·la `vim`:
+
+```bash
+sudo apt install vim
+```
+
+Quan pregunti si vols continuar, respon `Y`.
+
+Comprova que s'ha instal·lat:
+
+```bash
+vim --version
+```
+
+També pots consultar on està instal·lat:
+
+```bash
+which vim
+```
+
+Hauries d'obtenir una ruta semblant a `/usr/bin/vim`.
+
+::: {.callout-tip}
+**Pregunta:** per què hem necessitat `sudo` per instal·lar Vim?
+
+Recorda el que vam veure al laboratori d'usuaris, privilegis i permisos.
+
+__________________________________________________
+:::
+
+# El primer fitxer amb Vim
+
+Anem al directori de pràctiques:
+
+```bash
+cd ~/practica
+```
+
+Ara crea i obre un fitxer amb:
+
+```bash
+vim primer.txt
+```
+
+Apareixerà l'editor Vim. És possible que al principi sembli que no pots escriure. **No és cap error**: és una de les característiques més importants de Vim.
+
+# Els dos modes de Vim
+
+Vim treballa principalment amb dos modes que ens interessen en aquesta pràctica:
+
+**Mode normal**
+: És el mode inicial. En aquest mode les tecles no serveixen principalment per escriure text, sinó per executar accions i comandes.
+
+**Mode inserció**
+: És el mode que utilitzem per escriure text.
+
+Podem passar del mode normal al mode inserció prement `i`, i tornar al mode normal prement `Esc`.
+
+```text
+              i
+    ┌──────────────────┐
+    │                  ▼
+┌─────────┐       ┌─────────┐
+│  NORMAL │       │ INSERT  │
+│         │       │         │
+│comandes │       │ escriure│
+└────┬────┘       └────┬────┘
+     │                 │
+     └────── Esc ──────┘
+```
+
+::: {.callout-warning}
+Recorda: si no pots escriure perquè les tecles no introdueixen text, probablement estàs en mode normal. Prem `i`.
+:::
+
+## Més maneres d'entrar en mode inserció
+
+`i` no és l'única manera d'entrar en mode inserció. Aquestes tres són les més habituals:
+
+| Tecla | Efecte |
+|---|---|
+| `i` | Insereix **abans** del cursor |
+| `a` | Insereix **després** del cursor (*append*) |
+| `o` | Obre una **línia nova a sota** i entra en mode inserció |
+| `O` | Obre una **línia nova a sobre** i entra en mode inserció |
+
+::: {.callout-note}
+`o` és probablement la que faràs servir més sovint: en comptes d'anar manualment fins al final d'una línia per prémer Enter, `o` ho fa directament en un sol pas.
+:::
+
+# Primer exercici: escriure i guardar
+
+Si encara tens obert `primer.txt`:
+
+1. Prem `i`.
+2. Escriu:
+
+   > Hola, estic aprenent a utilitzar Vim.
+   >
+   > Aquesta és la meva primera pràctica amb un editor de terminal.
+
+3. Prem `Esc`.
+
+Ara estàs de nou en mode normal.
+
+## Guardar
+
+En mode normal, escriu:
+
+```text
+:w
+```
+
+i prem Enter. La comanda significa `w` (*write*) → guardar.
+
+Ara surt de Vim:
+
+```text
+:q
+```
+
+::: {.callout-note}
+Les comandes que comencen amb `:` s'escriuen des del mode normal.
+:::
+
+Comprova que el fitxer existeix i mostra'n el contingut:
+
+```bash
+ls -l primer.txt
+cat primer.txt
+```
+
+## Una altra manera: `:wq`
+
+En lloc de fer `:w` i després `:q`, pots fer directament:
+
+```text
+:wq
+```
+
+Això significa *write* + *quit* → guardar i sortir, tot en un sol pas.
+
+# Obrir un fitxer existent i sortir sense guardar
+
+Torna a obrir el fitxer:
+
+```bash
+vim primer.txt
+```
+
+Comprova que el text que havies escrit continua allà. Ara situa't al final del text, prem `o` per obrir una línia nova, i afegeix:
+
+> Vim funciona directament dins del terminal.
+
+Torna al mode normal amb `Esc`, i guarda i surt:
+
+```text
+:wq
+```
+
+Comprova el resultat:
+
+```bash
+cat primer.txt
+```
+
+::: {.callout-tip}
+### Comprova-ho
+
+Has de ser capaç de fer tot el procés sense mirar els passos: obrir → escriure → `Esc` → guardar → sortir.
+:::
+
+## Sortir sense guardar
+
+Ara obre de nou el fitxer, modifica alguna cosa (per exemple, afegeix una línia que digui "Aquesta línia no la guardarem."), i torna al mode normal amb `Esc`.
+
+Aquest cop, en comptes de `:wq`, prova de sortir amb:
+
+```text
+:q
+```
+
+**Què passa?** __________________
+
+::: {.callout-note}
+Vim no et deixa sortir amb `:q` sol si hi ha canvis sense guardar — és una protecció perquè no perdis feina per error. Si realment vols **descartar** els canvis i sortir igualment, cal **forçar-ho** afegint `!`:
+
+```text
+:q!
+```
+
+Fes servir `:q!` només quan estiguis segur que vols perdre els canvis. Si el fitxer ja està guardat i no hi ha res pendent, `:q` sol ja funciona sense necessitat del `!`.
+:::
+
+Comprova el fitxer:
+
+```bash
+cat primer.txt
+```
+
+::: {.callout-tip}
+**Ha aparegut la línia que havies afegit?**
+
+- [ ] Sí
+- [ ] No
+:::
+
+# Moure's pel text
+
+En mode normal, pots utilitzar les tecles de cursor (`↑ ↓ ← →`), o les tecles `h` `j` `k` `l`:
+
+| Tecla | Moviment |
+|---|---|
+| `h` | esquerra |
+| `j` | avall |
+| `k` | amunt |
+| `l` | dreta |
+
+::: {.callout-note}
+En aquesta pràctica pots utilitzar les fletxes. Les tecles `h`, `j`, `k` i `l` són especialment útils quan treballes habitualment amb Vim, perquè permeten moure's sense abandonar la zona principal del teclat.
+:::
+
+## Moviments ràpids
+
+Per a fitxers amb diverses línies, aquests moviments estalvien molt de temps:
+
+| Tecla | Et porta a... |
+|---|---|
+| `0` | l'inici de la línia actual |
+| `$` | el final de la línia actual |
+| `gg` | l'inici del fitxer |
+| `G` | el final del fitxer |
+
+::: {.callout-tip}
+### Exercici
+
+Amb el fitxer `primer.txt` obert, prova `gg` per anar a l'inici, `G` per anar al final, i `0`/`$` per moure't dins d'una línia.
+:::
+
+# Eliminar text
+
+## Eliminar un caràcter: `x`
+
+Situa el cursor sobre un caràcter i prem `x` en mode normal. El caràcter desapareix.
+
+`x` és útil per a correccions petites; si necessites eliminar tota una línia, fas servir `dd`.
+
+## Eliminar una línia: `dd`
+
+Obre el fitxer, situa el cursor sobre una línia que vulguis eliminar, i en mode normal prem:
+
+```text
+dd
+```
+
+La línia desapareix. `dd` significa, de manera simplificada, *delete line*.
+
+Ara desfés l'operació amb:
+
+```text
+u
+```
+
+`u` significa *undo*.
+
+::: {.callout-tip}
+### Exercici
+
+1. Elimina una línia amb `dd`.
+2. Comprova que ha desaparegut.
+3. Recupera-la amb `u`.
+4. Guarda el fitxer amb `:w`.
+5. Surt amb `:q`.
+:::
+
+# Copiar i enganxar
+
+En mode normal, `yy` copia la línia actual. Després, `p` enganxa la línia.
+
+Per exemple: situa't sobre una línia, prem `yy`, i després `p`. Ara tindràs la línia dues vegades.
+
+::: {.callout-tip}
+### Exercici
+
+Copia una línia del teu fitxer i enganxa-la dues vegades. Després elimina una de les còpies amb `dd`.
+:::
+
+# Buscar text
+
+Quan el fitxer és gran, buscar manualment una paraula no és gaire pràctic.
+
+En mode normal, escriu `/paraula` i prem Enter. Per exemple:
+
+```text
+/Linux
+```
+
+Vim buscarà la paraula "Linux" dins del fitxer. Per anar a la coincidència següent, prem `n`.
+
+::: {.callout-tip}
+### Exercici
+
+Afegeix al fitxer diverses línies que continguin la paraula "Linux". Després utilitza `/Linux` per buscar-les, i `n` per saltar a la coincidència següent.
+:::
+
+# La nostra "xuleta" de Vim
+
+Aquest és el conjunt de comandes que ens interessa recordar:
+
+| Comanda | Funció |
+|---|---|
+| `i` | Entrar en mode inserció (abans del cursor) |
+| `a` | Entrar en mode inserció (després del cursor) |
+| `o` / `O` | Obrir línia nova a sota / a sobre |
+| `Esc` | Tornar al mode normal |
+| `:w` | Guardar |
+| `:q` | Sortir |
+| `:wq` | Guardar i sortir |
+| `:q!` | Forçar la sortida sense guardar |
+| `0` / `$` | Anar a l'inici / final de línia |
+| `gg` / `G` | Anar a l'inici / final del fitxer |
+| `x` | Eliminar un caràcter |
+| `dd` | Eliminar una línia |
+| `u` | Desfer l'última acció |
+| `yy` | Copiar una línia |
+| `p` | Enganxar |
+| `/text` | Buscar text |
+| `n` | Següent coincidència |
+
+::: {.callout-tip}
+Amb aquestes comandes ja pots treballar mínimament amb Vim. No cal intentar memoritzar centenars de comandes.
+:::
+
+# Exercici final · Un informe sobre la teva màquina
+
+Ara farem una activitat que recupera coses que ja hem après en els laboratoris anteriors.
+
+Crea un directori nou:
+
+```bash
+mkdir ~/lab5
+cd ~/lab5
+```
+
+Obre:
+
+```bash
+vim informe.txt
+```
+
+Crea un petit informe amb aquesta estructura:
+
+```text
+INFORME DE LA MEVA MÀQUINA VIRTUAL
+
+Nom de la màquina:
+Usuari:
+Sistema operatiu:
+Kernel:
+CPU:
+Memòria:
+
+Una cosa que he après sobre Linux:
+```
+
+Ara surt de Vim i obtén la informació que necessites amb les comandes que ja coneixes:
+
+```bash
+hostname
+whoami
+cat /etc/os-release
+uname -r
+lscpu
+free -h
+```
+
+Torna a obrir l'informe i completa'l utilitzant Vim:
+
+```bash
+vim informe.txt
+```
+
+Comprova el resultat:
+
+```bash
+cat informe.txt
+ls -l informe.txt
+```
+
+::: {.callout-tip}
+### Exercici final
+
+Sense mirar la taula anterior, intenta fer tot el procés:
+
+1. Obrir `informe.txt`
+2. Entrar en mode inserció
+3. Escriure/modificar informació
+4. Tornar al mode normal
+5. Eliminar una línia
+6. Desfer l'eliminació
+7. Copiar una línia
+8. Enganxar-la
+9. Buscar una paraula
+10. Guardar i sortir
+:::

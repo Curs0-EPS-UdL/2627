@@ -1,0 +1,347 @@
+---
+title: "Laboratori 4 · Usuaris, privilegis i permisos"
+subtitle: "Introducció a Linux · Curs zero d'Informàtica"
+author:
+  - name: Jordi Mateo Fornés
+lang: ca
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false
+execute:
+  freeze: auto
+  echo: false
+---
+
+# Objectius
+
+En aquesta pràctica aprendrem a:
+
+- Identificar l'usuari i els grups amb què treballem (`id`, `whoami`).
+- Entendre la diferència entre l'usuari `root` i un usuari normal.
+- Elevar privilegis temporalment amb `sudo`.
+- Interpretar els permisos d'un fitxer i d'un directori (lectura, escriptura, execució).
+- Modificar permisos amb `chmod`.
+- Canviar el propietari d'un fitxer amb `chown`.
+
+::: {.callout-tip}
+Aquesta pràctica continua directament la **Sessió 1** (navegació i sistema de fitxers). Arrenca la teva màquina virtual Debian i inicia sessió amb el teu usuari normal.
+:::
+
+# Qui ets? Identitat i grups
+
+Cada usuari d'un sistema Linux té un identificador numèric (**uid**) i pertany a un o més grups, cadascun també amb el seu identificador (**gid**).
+
+Comprova qui ets:
+
+```bash
+whoami
+id
+```
+
+**Quin és el teu `uid`?** __________________
+
+**A quants grups pertanys?** __________________
+
+::: {.callout-note}
+`id`, sense arguments, mostra la informació de l'usuari amb qui has iniciat sessió. També pots consultar un altre usuari amb `id nom_usuari`.
+
+Sortida típica:
+
+```text
+uid=1000(jordi) gid=1000(jordi) grups=1000(jordi),24(cdrom),27(sudo),...
+```
+
+Cada usuari té un **grup principal** (normalment amb el seu mateix nom) i pot pertànyer a **grups addicionals**, que li donen accés a recursos concrets del sistema (dispositius, xarxa...).
+
+Els grups permeten donar els mateixos permisos a diversos usuaris alhora, sense haver de configurar-los un per un. Ho veurem amb més detall quan treballem amb fitxers compartits entre diversos usuaris.
+:::
+
+::: {.callout-tip}
+**Predicció:** al Laboratori 2 vas triar si volies configurar una contrasenya per a `root`. Si no en vas posar cap, creus que el teu usuari pertany al grup **`sudo`**?
+
+- [ ] Sí
+- [ ] No
+- [ ] No ho sé
+
+Comprova-ho mirant la llista de grups que t'ha mostrat `id`.
+:::
+
+# `root` vs. usuari normal
+
+Un sistema Linux distingeix sempre entre dos tipus d'usuaris:
+
+- **`root`**: té tots els privilegis. Pot crear, modificar o eliminar qualsevol fitxer del sistema, sense restriccions.
+- **Usuari normal**: només pot gestionar els recursos que té assignats (el seu directori personal, els fitxers que li pertanyen...).
+
+Comprova-ho intentant crear un fitxer fora del teu directori personal:
+
+```bash
+touch /etc/prova.txt
+```
+
+**Què ha passat?** __________________
+
+::: {.callout-note}
+Com a usuari normal, no tens permisos per escriure dins de `/etc`, perquè és un directori de configuració del sistema que només `root` pot modificar directament.
+:::
+
+## Elevar privilegis amb `sudo`
+
+`sudo` permet executar **una sola comanda** amb privilegis de `root`, demanant la teva pròpia contrasenya (no la de `root`).
+
+```bash
+sudo touch /etc/prova.txt
+ls -l /etc/prova.txt
+```
+
+**Ha funcionat aquest cop?** __________________
+
+Elimina el fitxer de prova:
+
+```bash
+sudo rm /etc/prova.txt
+```
+
+::: {.callout-note}
+`sudo` només afecta la comanda que hi ha immediatament després. Un cop executada, tornes a ser el teu usuari normal.
+
+Recorda del Laboratori 2: en la configuració habitual de Debian en què no s'estableix una contrasenya per a `root`, el primer usuari creat disposa de privilegis administratius mitjançant `sudo`.
+:::
+
+# Permisos de fitxers i directoris
+
+Cada fitxer i directori té definits tres tipus de permisos, aplicats a tres categories d'usuaris:
+
+| Permís | Significat sobre un fitxer |
+|---|---|
+| **r** (lectura) | Veure el contingut del fitxer |
+| **w** (escriptura) | Modificar el contingut del fitxer |
+| **x** (execució) | Executar el fitxer com a programa |
+
+| Categoria | A qui afecta |
+|---|---|
+| **u** (*user*, propietari) | L'usuari que ha creat el fitxer |
+| **g** (*group*) | Els usuaris que pertanyen al grup del fitxer |
+| **o** (*others*) | La resta d'usuaris del sistema |
+
+::: {.callout-note}
+En un **directori**, aquests permisos tenen un significat una mica diferent: `r` permet veure el contingut (llistar-lo amb `ls`), `w` permet crear o eliminar entrades dins seu, i `x` permet accedir-hi i travessar-lo (per exemple, per fer `cd` cap a dins).
+:::
+
+## Llegint els permisos amb `ls -la`
+
+Crea un fitxer nou i mira'n els permisos:
+
+```bash
+cd ~/practica
+touch document.txt
+ls -l document.txt
+```
+
+Hauries de veure una línia semblant a:
+
+```text
+-rw-r--r-- 1 jordi jordi 0 ago 31 10:00 document.txt
+```
+
+Els primers 10 caràcters es llegeixen en 4 blocs:
+
+```text
+-   rw-   r--   r--
+│    │     │     │
+tipus  u     g     o
+```
+
+**Quins permisos té el propietari (`u`)?** __________________
+
+**Quins permisos té "others" (`o`)?** __________________
+
+::: {.callout-note}
+El primer caràcter indica el **tipus** de fitxer: `-` per a un fitxer normal, `d` per a un directori.
+
+Per defecte, un fitxer nou sol tenir permisos `rw-r--r--`: el propietari pot llegir i escriure, mentre que el grup i la resta només poden llegir.
+:::
+
+# Modificar permisos: `chmod`
+
+Abans de canviar res, val la pena tenir ben clar aquest esquema:
+
+```text
+ r w x
+ │ │ │
+ │ │ └── executar
+ │ └──── escriure
+ └────── llegir
+
+ u g o
+ │ │ │
+ │ │ └── altres
+ │ └──── grup
+ └────── propietari
+```
+
+`chmod` permet combinar aquestes dues lletres per canviar els permisos d'un fitxer. La sintaxi bàsica és:
+
+```text
+chmod [qui][operació][permís] fitxer
+```
+
+- **qui**: `u`, `g`, `o`, o `a` (*all*, tots tres alhora)
+- **operació**: `+` (afegir), `-` (treure)
+- **permís**: `r`, `w`, `x`
+
+::: {.callout-tip}
+**Predicció:** `document.txt` té ara permisos `rw-r--r--`. Si executes `chmod u+x document.txt`, quins permisos tindrà el propietari després?
+
+__________________
+:::
+
+Comprova-ho:
+
+```bash
+chmod u+x document.txt
+ls -l document.txt
+```
+
+**Coincideix amb la teva predicció?**
+
+- [ ] Sí
+- [ ] No
+
+Prova ara aquesta seqüència, predient el resultat abans de cada pas:
+
+```bash
+chmod o-r document.txt
+ls -l document.txt
+```
+
+**Qui ha perdut el permís de lectura?** __________________
+
+```bash
+chmod g+w document.txt
+ls -l document.txt
+```
+
+**Qui ha guanyat el permís d'escriptura?** __________________
+
+::: {.callout-warning}
+### Comprova-ho amb un cas real
+
+Elimina tots els permisos de lectura del fitxer:
+
+```bash
+chmod a-r document.txt
+```
+
+Ara intenta llegir-lo:
+
+```bash
+cat document.txt
+```
+
+**Què ha passat?** __________________
+
+Torna a deixar-lo com abans:
+
+```bash
+chmod u+rw,g+r,o+r document.txt
+ls -l document.txt
+```
+:::
+
+::: {.callout-note}
+Pots combinar diverses categories i operacions en una sola comanda separant-les amb comes, com a l'últim exemple. També existeix la notació numèrica (`chmod 644 document.txt`), que veureu amb més detall en properes sessions, un cop tinguis ben interioritzat aquest esquema de `rwx` i `ugo`.
+:::
+
+# Canviar el propietari: `chown`
+
+`chown` permet canviar **qui és el propietari** (i opcionalment el grup) d'un fitxer. A diferència de `chmod`, gairebé sempre necessita `sudo`, perquè només `root` pot cedir la propietat d'un fitxer a un altre usuari.
+
+```text
+chown propietari:grup fitxer
+```
+
+Comprova qui és el propietari actual:
+
+```bash
+ls -l document.txt
+```
+
+::: {.callout-tip}
+**Predicció:** si canvies el propietari de `document.txt` a `root`, creus que encara podràs escriure-hi com el teu usuari normal?
+
+- [ ] Sí
+- [ ] No
+- [ ] No ho sé
+:::
+
+Canvia'l:
+
+```bash
+sudo chown root:root document.txt
+ls -l document.txt
+```
+
+Ara intenta escriure-hi:
+
+```bash
+echo "prova" >> document.txt
+```
+
+**Què ha passat? Coincideix amb la teva predicció?** __________________
+
+::: {.callout-note}
+Encara que `document.txt` mantingui els mateixos permisos (`rw-r--r--`), ara el propietari és `root`. Els permisos de propietari (`u`) només beneficien qui **és** el propietari — i ara ja no ets tu.
+:::
+
+Torna a fer-te'n propietari:
+
+```bash
+sudo chown $USER:$USER document.txt
+ls -l document.txt
+```
+
+```bash
+echo "prova" >> document.txt
+cat document.txt
+```
+
+**Pots tornar a escriure-hi?** __________________
+
+::: {.callout-note}
+`$USER` és una variable que conté el nom del teu usuari actual. `chown $USER:$USER fitxer` és una manera ràpida de tornar-te'n propietari sense haver d'escriure el teu nom d'usuari a mà.
+:::
+
+# Exercici pràctic
+
+Sense executar cap comanda, observa aquesta línia (com la que mostraria `ls -l`):
+
+```text
+-rw-r----- 1 anna alumnes 0 informe.txt
+```
+
+Respon:
+
+1. **`anna` pot llegir el fitxer?** __________
+2. **`anna` pot modificar-lo?** __________
+3. **Un membre del grup `alumnes` pot llegir-lo?** __________
+4. **Un membre del grup `alumnes` pot modificar-lo?** __________
+5. **Un usuari que no pertany al grup `alumnes` pot llegir-lo?** __________
+6. **Qui és el propietari del fitxer?** __________
+7. **Quin és el grup del fitxer?** __________
+
+**Quina comanda utilitzaries per donar permís d'escriptura al grup `alumnes`?**
+
+____________________________________________________________
+
+::: {.callout-note}
+Comprova la teva resposta:
+
+```bash
+chmod g+w informe.txt
+```
+:::
+
+
