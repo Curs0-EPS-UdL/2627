@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jordi Mateo Fornés">
+
+<title>Laboratori 1 · Alpine Linux · Primera màquina virtual – Curs zero d’Informàtica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f83c246346592b24d02aa84ae3974412.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Cap resultat",
+    "search-matching-documents-text": "documents que coincideixen",
+    "search-copy-link-title": "Copia l'enllaç a la cerca",
+    "search-hide-matches-text": "Amaga les coincidències addicionals",
+    "search-more-match-text": "altra coincidència en aquest document",
+    "search-more-matches-text": "altres coincidències en aquest document",
+    "search-clear-button-title": "Neteja",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel·la",
+    "search-submit-button-title": "Envia",
+    "search-label": "Cerca"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Curs zero d’Informàtica</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Cerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Commuta la navegació" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En aquesta pàgina</h2>
+   
+  <ul>
+  <li><a href="#objectius" id="toc-objectius" class="nav-link active" data-scroll-target="#objectius">Objectius</a></li>
+  <li><a href="#preparem-lordinador" id="toc-preparem-lordinador" class="nav-link" data-scroll-target="#preparem-lordinador">Preparem l’ordinador</a>
+  <ul class="collapse">
+  <li><a href="#comprova-la-virtualització-per-maquinari" id="toc-comprova-la-virtualització-per-maquinari" class="nav-link" data-scroll-target="#comprova-la-virtualització-per-maquinari">Comprova la virtualització per maquinari</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">macOS</a></li>
+  </ul></li>
+  <li><a href="#quina-arquitectura-té-el-teu-ordinador" id="toc-quina-arquitectura-té-el-teu-ordinador" class="nav-link" data-scroll-target="#quina-arquitectura-té-el-teu-ordinador">Quina arquitectura té el teu ordinador?</a></li>
+  </ul></li>
+  <li><a href="#installació-del-hypervisor" id="toc-installació-del-hypervisor" class="nav-link" data-scroll-target="#installació-del-hypervisor">Instal·lació del Hypervisor</a>
+  <ul class="collapse">
+  <li><a href="#creació-dun-compte-a-broadcom-i-descàrrega-de-vmware" id="toc-creació-dun-compte-a-broadcom-i-descàrrega-de-vmware" class="nav-link" data-scroll-target="#creació-dun-compte-a-broadcom-i-descàrrega-de-vmware">Creació d’un compte a Broadcom i descàrrega de VMware</a></li>
+  <li><a href="#descarrega-alpine-linux" id="toc-descarrega-alpine-linux" class="nav-link" data-scroll-target="#descarrega-alpine-linux">Descarrega Alpine Linux</a></li>
+  </ul></li>
+  <li><a href="#alpine-la-nostra-primera-màquina-virtual" id="toc-alpine-la-nostra-primera-màquina-virtual" class="nav-link" data-scroll-target="#alpine-la-nostra-primera-màquina-virtual">Alpine: La nostra primera màquina virtual</a>
+  <ul class="collapse">
+  <li><a href="#creació-de-la-màquina-virtual" id="toc-creació-de-la-màquina-virtual" class="nav-link" data-scroll-target="#creació-de-la-màquina-virtual">Creació de la màquina virtual</a></li>
+  <li><a href="#connectar-alpine-i-arrencar-la-vm" id="toc-connectar-alpine-i-arrencar-la-vm" class="nav-link" data-scroll-target="#connectar-alpine-i-arrencar-la-vm">Connectar Alpine i arrencar la VM</a></li>
+  <li><a href="#entrar-a-alpine-linux" id="toc-entrar-a-alpine-linux" class="nav-link" data-scroll-target="#entrar-a-alpine-linux">Entrar a Alpine Linux</a></li>
+  <li><a href="#què-veu-la-màquina-virtual" id="toc-què-veu-la-màquina-virtual" class="nav-link" data-scroll-target="#què-veu-la-màquina-virtual">Què veu la màquina virtual?</a>
+  <ul class="collapse">
+  <li><a href="#quantes-cpu-veu" id="toc-quantes-cpu-veu" class="nav-link" data-scroll-target="#quantes-cpu-veu">Quantes CPU veu?</a></li>
+  <li><a href="#quanta-ram-veu" id="toc-quanta-ram-veu" class="nav-link" data-scroll-target="#quanta-ram-veu">Quanta RAM veu?</a></li>
+  <li><a href="#quina-arquitectura-veu-alpine" id="toc-quina-arquitectura-veu-alpine" class="nav-link" data-scroll-target="#quina-arquitectura-veu-alpine">Quina arquitectura veu Alpine?</a></li>
+  <li><a href="#i-la-xarxa" id="toc-i-la-xarxa" class="nav-link" data-scroll-target="#i-la-xarxa">I la xarxa?</a></li>
+  <li><a href="#i-el-disc" id="toc-i-el-disc" class="nav-link" data-scroll-target="#i-el-disc">I el disc?</a></li>
+  </ul></li>
+  <li><a href="#experiment-canviem-la-ram" id="toc-experiment-canviem-la-ram" class="nav-link" data-scroll-target="#experiment-canviem-la-ram">Experiment: canviem la RAM</a></li>
+  <li><a href="#experiment-canviem-la-cpu" id="toc-experiment-canviem-la-cpu" class="nav-link" data-scroll-target="#experiment-canviem-la-cpu">Experiment: canviem la CPU</a></li>
+  <li><a href="#experiment-fem-treballar-la-cpu" id="toc-experiment-fem-treballar-la-cpu" class="nav-link" data-scroll-target="#experiment-fem-treballar-la-cpu">Experiment: fem treballar la CPU</a>
+  <ul class="collapse">
+  <li><a href="#genera-treball-de-cpu-dins-la-vm" id="toc-genera-treball-de-cpu-dins-la-vm" class="nav-link" data-scroll-target="#genera-treball-de-cpu-dins-la-vm">Genera treball de CPU dins la VM</a></li>
+  <li><a href="#comprova-ho-també-al-host" id="toc-comprova-ho-també-al-host" class="nav-link" data-scroll-target="#comprova-ho-també-al-host">Comprova-ho també al host</a></li>
+  <li><a href="#atura-el-procés" id="toc-atura-el-procés" class="nav-link" data-scroll-target="#atura-el-procés">Atura el procés</a></li>
+  </ul></li>
+  <li><a href="#dues-vms-alhora" id="toc-dues-vms-alhora" class="nav-link" data-scroll-target="#dues-vms-alhora">Dues VMs alhora</a>
+  <ul class="collapse">
+  <li><a href="#prepara-una-segona-vm" id="toc-prepara-una-segona-vm" class="nav-link" data-scroll-target="#prepara-una-segona-vm">Prepara una segona VM</a></li>
+  <li><a href="#fes-treballar-una-vm" id="toc-fes-treballar-una-vm" class="nav-link" data-scroll-target="#fes-treballar-una-vm">Fes treballar una VM</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#resum-els-recursos-són-finits" id="toc-resum-els-recursos-són-finits" class="nav-link" data-scroll-target="#resum-els-recursos-són-finits">Resum: Els recursos són finits</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Laboratori 1 · Alpine Linux · Primera màquina virtual</h1>
+<p class="subtitle lead">Virtualització · Curs zero d’Informàtica</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jordi Mateo Fornés </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objectius" class="level1">
+<h1>Objectius</h1>
+<p>En aquesta pràctica aprendrem a:</p>
+<ul>
+<li>Comprovar que l’ordinador està preparat per executar màquines virtuals.</li>
+<li>Utilitzar <strong>VMware Workstation Pro</strong> o <strong>VMware Fusion</strong>.</li>
+<li>Crear i arrencar una màquina virtual amb <strong>Alpine Linux</strong>.</li>
+<li>Comprovar quin <strong>maquinari virtual</strong> veu la màquina.</li>
+<li>Comprovar experimentalment que la VM està <strong>aïllada</strong> del host (teclat, ratolí, porta-retalls).</li>
+<li>Modificar la <strong>CPU i la RAM</strong> assignades i observar-ne l’efecte.</li>
+<li>Comprovar que el treball fet dins la VM <strong>consumeix recursos físics reals</strong> del host.</li>
+<li>Executar dues VMs simultàniament i observar que <strong>comparteixen recursos físics</strong>.</li>
+</ul>
+</section>
+<section id="preparem-lordinador" class="level1">
+<h1>Preparem l’ordinador</h1>
+<section id="comprova-la-virtualització-per-maquinari" class="level2">
+<h2 class="anchored" data-anchor-id="comprova-la-virtualització-per-maquinari">Comprova la virtualització per maquinari</h2>
+<p>Les màquines virtuals necessiten que l’ordinador pugui executar instruccions de virtualització de manera eficient.</p>
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<p>Obre:</p>
+<p><strong>Gestor de tasques → Rendiment → CPU</strong></p>
+<p>Busca:</p>
+<blockquote class="blockquote">
+<p><strong>Virtualització: Activada</strong></p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si el teu Windows està en anglès, l’opció apareix com <strong>Task Manager → Performance → CPU → Virtualization: Enabled</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si apareix <strong>Desactivada</strong>, avisa el professor abans de continuar. En alguns ordinadors cal activar <strong>Intel VT-x</strong> o <strong>AMD-V</strong> des de la BIOS/UEFI.</p>
+</div>
+</div>
+</section>
+<section id="macos" class="level3">
+<h3 class="anchored" data-anchor-id="macos">macOS</h3>
+<p>En els Mac amb <strong>Apple Silicon</strong>, VMware Fusion utilitza les funcions de virtualització proporcionades per Apple. No cal buscar una opció VT-x a la BIOS. La virtualització acostuma a estar disponible per defecte.</p>
+</section>
+</section>
+<section id="quina-arquitectura-té-el-teu-ordinador" class="level2">
+<h2 class="anchored" data-anchor-id="quina-arquitectura-té-el-teu-ordinador">Quina arquitectura té el teu ordinador?</h2>
+<p>Anota:</p>
+<p><strong>Sistema operatiu:</strong> ______________________________________</p>
+<p><strong>Arquitectura del processador:</strong> ___________________________</p>
+<p>Instruccions per comprovar l’arquitectura:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">macOS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ol type="1">
+<li>Prem <strong>Windows + I</strong> per obrir <strong>Configuració</strong>.</li>
+<li>Ves a <strong>Sistema → Quant al dispositiu</strong>.</li>
+<li>Anota el valor de <strong>Tipus de sistema</strong>.</li>
+</ol>
+<p>Alternativament, des del <strong>Símbol del sistema</strong> (cmd):</p>
+<pre class="text"><code>echo %PROCESSOR_ARCHITECTURE%</code></pre>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li>Obre <strong>Terminal</strong>.</li>
+<li>Executa:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-m</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Els ordinadors amb processadors Intel/AMD utilitzen habitualment <strong>x86-64</strong>, mentre que els Mac amb Apple Silicon utilitzen <strong>ARM64</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="installació-del-hypervisor" class="level1">
+<h1>Instal·lació del Hypervisor</h1>
+<section id="creació-dun-compte-a-broadcom-i-descàrrega-de-vmware" class="level2">
+<h2 class="anchored" data-anchor-id="creació-dun-compte-a-broadcom-i-descàrrega-de-vmware">Creació d’un compte a Broadcom i descàrrega de VMware</h2>
+<p>Aquestes instruccions et guiaran a través del procés per crear un compte a Broadcom i descarregar una de les versions gratuïtes de VMware Workstation Pro (per a Windows) o VMware Fusion (per a macOS).</p>
+<ol type="1">
+<li>Registra’t per a un compte gratuït a Broadcom: per accedir a les descàrregues de programari de VMware, necessites un compte a la plataforma de Broadcom.
+<ul>
+<li><p>Dirigeix-te a la pàgina de registre de Broadcom: <a href="https://profile.broadcom.com/web/registration">https://profile.broadcom.com/web/registration</a></p></li>
+<li><p>Introdueix la teva adreça de correu electrònic, realitza la verificació de seguretat i fes clic a <em>Next</em> <img src="../figures/vmware/broadcom-registration.png" class="img-fluid"></p></li>
+<li><p>Introdueix el codi de verificació que has rebut al teu correu electrònic. Fes clic a <strong>Verify</strong> per continuar. <img src="../figures/vmware/broadcom-registration-email.png" class="img-fluid"></p></li>
+<li><p>Completa el formulari de registre amb la teva informació personal i crea una contrasenya. Fes clic a <strong>Create Account</strong> per completar el registre. <img src="../figures/vmware/broadcom-registration-form.png" class="img-fluid"></p></li>
+<li><p>Un cop completat el registre, visualitzaràs un missatge de registre correcte i et demanarà si vols completar el perfil. Selecciona <strong>I will do it later</strong> per continuar. <img src="../figures/vmware/broadcom-registration-complete.png" class="img-fluid"></p></li>
+</ul></li>
+<li>Accedeix a les descàrregues gratuïtes de VMware:
+<ul>
+<li>Ves a la pàgina de login de Broadcom: <a href="https://profile.broadcom.com/web/login">https://profile.broadcom.com/web/login</a></li>
+<li>Inicia sessió amb el teu correu electrònic i la contrasenya que has creat.</li>
+<li>Ves directament a la secció de descàrregues a <a href="https://support.broadcom.com/group/ecx/free-downloads">https://support.broadcom.com/group/ecx/free-downloads</a>. <img src="../figures/vmware/broadcom-downloads.png" class="img-fluid"></li>
+<li>Selecciona <strong>VMware Workstation Pro</strong> (Windows) o <strong>VMware Fusion</strong> (macOS) segons el teu sistema operatiu.</li>
+<li>Selecciona la versió <strong>26H1</strong>, tant si tries Windows com macOS.</li>
+<li>En la pàgina següent:
+<ol type="1">
+<li>Fes clic a l’enllaç de termes i condicions perquè s’activi el checkbox de l’acceptació.</li>
+<li>Accepta els termes i condicions.</li>
+<li>Fes clic a descàrrega per començar a descarregar el fitxer d’instal·lació. <img src="../figures/vmware/broadcom-vmware-fusion-download.png" class="img-fluid"></li>
+</ol></li>
+</ul></li>
+<li>Instal·la VMware Workstation Pro o VMware Fusion.</li>
+</ol>
+</section>
+<section id="descarrega-alpine-linux" class="level2">
+<h2 class="anchored" data-anchor-id="descarrega-alpine-linux">Descarrega Alpine Linux</h2>
+<p>Navega a la pàgina oficial d’Alpine Linux: <a href="https://alpinelinux.org/downloads/">https://alpinelinux.org/downloads/</a> i selecciona la imatge <strong>VIRTUAL</strong> que correspon a l’arquitectura del teu ordinador.</p>
+</section>
+</section>
+<section id="alpine-la-nostra-primera-màquina-virtual" class="level1">
+<h1>Alpine: La nostra primera màquina virtual</h1>
+<section id="creació-de-la-màquina-virtual" class="level2">
+<h2 class="anchored" data-anchor-id="creació-de-la-màquina-virtual">Creació de la màquina virtual</h2>
+<p>Crearem una màquina virtual anomenada: <em>vm-curs0-alpine</em>, amb les característiques següents:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Recurs</th>
+<th style="text-align: right;">Configuració</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU</td>
+<td style="text-align: right;"><strong>1 processador, 1 core per processador</strong></td>
+</tr>
+<tr class="even">
+<td>RAM</td>
+<td style="text-align: right;"><strong>512 MB</strong></td>
+</tr>
+<tr class="odd">
+<td>Disc</td>
+<td style="text-align: right;"><strong>No necessari</strong></td>
+</tr>
+<tr class="even">
+<td>Xarxa</td>
+<td style="text-align: right;"><strong>NAT</strong></td>
+</tr>
+<tr class="odd">
+<td>Sistema operatiu convidat</td>
+<td style="text-align: right;"><strong>Other Linux 5.x kernel 64-bit</strong> (Alpine no hi apareix llistat)</td>
+</tr>
+</tbody>
+</table>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Windows (VMware Workstation Pro)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">macOS (VMware Fusion)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<ol type="1">
+<li>Obre VMware Workstation Pro i selecciona <strong>Create a New Virtual Machine</strong>.</li>
+<li>Tria <strong>Custom (advanced)</strong> i deixa la compatibilitat per defecte.</li>
+<li>Selecciona <strong>I will install the operating system later</strong>.</li>
+<li>Com a sistema convidat: <strong>Linux → Other Linux 5.x kernel 64-bit</strong>.</li>
+<li>Anomena la VM <strong>vm-curs0-alpine</strong>.</li>
+<li>A processadors: <strong>Number of processors = 1</strong>, <strong>Number of cores per processor = 1</strong>.</li>
+<li>A memòria: <strong>512 MB</strong>.</li>
+<li>A xarxa: <strong>Use network address translation (NAT)</strong>.</li>
+<li>Acaba l’assistent (<strong>Finish</strong>) sense preocupar-te encara pel disc.</li>
+<li>Obre <strong>Edit virtual machine settings</strong>, selecciona el disc dur i fes <strong>Remove</strong> — no el necessitem.</li>
+</ol>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<ol type="1">
+<li>Obre VMware Fusion i fes <strong>File → New…</strong></li>
+<li>Selecciona <strong>Create a custom virtual machine</strong> (no “Install from disc or image”).</li>
+<li>Com a sistema convidat: <strong>Linux → Other Linux 5.x kernel 64-bit</strong>.</li>
+<li>Deixa <strong>Legacy BIOS</strong> o <strong>UEFI</strong> per defecte.</li>
+<li>Marca <strong>Customize Settings</strong> abans de crear-la i anomena-la <strong>vm-curs0-alpine</strong>.</li>
+<li>A <strong>Settings</strong>:
+<ul>
+<li><strong>Processors &amp; Memory</strong>: 1 processador, 512 MB.</li>
+<li><strong>Network Adapter</strong>: <strong>Share with my Mac (NAT)</strong>.</li>
+<li><strong>Hard Disk</strong>: elimina’l amb el botó <strong>–</strong>.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alpine no apareix a la llista de distribucions convidades a cap dels dos programes. No passa res: l’opció genèrica <strong>Other Linux 5.x kernel 64-bit</strong> és suficient.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Creus que Alpine Linux funcionarà amb només 512 MB de RAM?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+<li><label><input type="checkbox">No ho sé</label></li>
+</ul>
+<p><strong>Per què?</strong></p>
+<hr>
+</div>
+</div>
+</section>
+<section id="connectar-alpine-i-arrencar-la-vm" class="level2">
+<h2 class="anchored" data-anchor-id="connectar-alpine-i-arrencar-la-vm">Connectar Alpine i arrencar la VM</h2>
+<p>Obre la configuració de maquinari de la VM (<strong>Edit virtual machine settings</strong> a Windows, o l’engranatge de <strong>Settings</strong> a Mac).</p>
+<p>Busca l’apartat del <strong>CD/DVD</strong> i indica que utilitzi un fitxer ISO (<strong>Use ISO image file</strong> / <strong>Choose a disc or disc image</strong>).</p>
+<p>Selecciona la ISO d’Alpine i fes <strong>Power on</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Acabes de crear un ordinador virtual
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>VMware està proporcionant a Alpine: una CPU virtual, memòria RAM virtual, una interfície de xarxa virtual, i els altres dispositius virtuals necessaris per arrencar.</p>
+</div>
+</div>
+</section>
+<section id="entrar-a-alpine-linux" class="level2">
+<h2 class="anchored" data-anchor-id="entrar-a-alpine-linux">Entrar a Alpine Linux</h2>
+<p>Quan Alpine arrenqui, apareixerà una consola.</p>
+<p>Inicia sessió com:</p>
+<pre class="text"><code>root</code></pre>
+<p>En aquesta imatge d’Alpine no cal introduir cap contrasenya per iniciar aquesta sessió temporal.</p>
+<p>Hauries d’arribar a un prompt semblant a:</p>
+<pre class="text"><code>localhost:~#</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En aquesta pràctica l’utilitzarem en mode <strong>live</strong>, arrencant des de la ISO. No farem cap instal·lació permanent. Això vol dir que qualsevol canvi que fem a la VM <strong>no es conservarà</strong> quan l’apaguem. No tenim cap disc virtual assignat a la VM, així que Alpine s’executa completament a la memòria RAM.</p>
+</div>
+</div>
+</section>
+<section id="què-veu-la-màquina-virtual" class="level2">
+<h2 class="anchored" data-anchor-id="què-veu-la-màquina-virtual">Què veu la màquina virtual?</h2>
+<p>Ara comprovarem experimentalment una de les idees principals de la teoria:</p>
+<blockquote class="blockquote">
+<p><strong>La VM té el seu propi maquinari virtual.</strong></p>
+</blockquote>
+<p>Observa que, mentre la VM té el focus, el teclat i el ratolí responen al guest i no al host. Per alliberar el control del ratolí, prem la combinació de tecles: <strong>Ctrl + Alt</strong> (Windows) o <strong>Ctrl + Cmd</strong> (Mac).</p>
+<p>Si no fem cap configuració especial, les funcions de copiar i enganxar entre el host i la VM no funcionen. Això és una altra prova que la VM està aïllada del host. Pots intentar copiar text de la VM i enganxar-lo al host, o viceversa: no funcionarà.</p>
+<p>Aquesta VM té el teclat configurat amb el layout <strong>US</strong>. Intenta escriure <code>ls -la</code> i veuràs que la tecla <code>-</code> no té el mateix comportament que al teu ordinador. Per modificar el layout del teclat, executa <code>setup-keymap</code> i selecciona <strong>es</strong> a les dues preguntes que et farà (layout i variant).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>setup-keymap</code> et demanarà el layout i després la variant. Escriu <strong>es</strong> a totes dues.</p>
+<p>Truc: escriu <em>setup</em> i prem <strong>Tab</strong> per autocompletar el nom del comandament i així no cal escriure el guionet.</p>
+</div>
+</div>
+<section id="quantes-cpu-veu" class="level3">
+<h3 class="anchored" data-anchor-id="quantes-cpu-veu">Quantes CPU veu?</h3>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^processor'</span> /proc/cpuinfo</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>CPU que veu Alpine:</strong> __________________</p>
+<p><strong>CPU que havíem assignat a la VM:</strong> __________________</p>
+<p><strong>Coincideixen?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+</section>
+<section id="quanta-ram-veu" class="level3">
+<h3 class="anchored" data-anchor-id="quanta-ram-veu">Quanta RAM veu?</h3>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Busca la línia:</p>
+<pre class="text"><code>Mem:</code></pre>
+<p><strong>RAM que veu Alpine:</strong> __________________</p>
+<p><strong>RAM assignada a la VM:</strong> 512 MB</p>
+<p><strong>És aproximadament el que esperaves?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+<p>Ara executa <code>dmesg | grep -i memory</code> i observa el missatge que apareix. Aquest missatge és generat pel kernel d’Alpine quan arrenca i indica quanta memòria RAM veu.</p>
+</section>
+<section id="quina-arquitectura-veu-alpine" class="level3">
+<h3 class="anchored" data-anchor-id="quina-arquitectura-veu-alpine">Quina arquitectura veu Alpine?</h3>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-m</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Arquitectura que veu Alpine:</strong> __________________</p>
+<p>Ara compara-la amb l’arquitectura que has anotat a l’inici de la pràctica, a l’apartat <strong>“Quina arquitectura té el teu ordinador?”</strong>.</p>
+<p><strong>Són iguals?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Pregunta de reflexió">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Pregunta de reflexió
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>La VM sempre ha de veure exactament la mateixa arquitectura que l’ordinador físic?</strong></p>
+<hr>
+<hr>
+</div>
+</div>
+</section>
+<section id="i-la-xarxa" class="level3">
+<h3 class="anchored" data-anchor-id="i-la-xarxa">I la xarxa?</h3>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> addr</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Observa les interfícies que apareixen.</p>
+<p><strong>Quantes interfícies observes?</strong> __________________</p>
+<p><strong>Hi ha alguna interfície que representi la xarxa de la VM?</strong></p>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La interfície que veu Alpine és una <strong>interfície de xarxa virtual</strong>. VMware s’encarrega de connectar-la amb la xarxa física de l’ordinador. Si <code>eth0</code> apareix sense adreça IP o en estat <code>DOWN</code>, és normal en mode live; no cal solucionar-ho.</p>
+</div>
+</div>
+</section>
+<section id="i-el-disc" class="level3">
+<h3 class="anchored" data-anchor-id="i-el-disc">I el disc?</h3>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Observa els sistemes de fitxers.</p>
+<p><strong>Has creat algun disc virtual per a aquesta VM?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+<p><strong>Com pot funcionar Alpine si no hem creat cap disc virtual?</strong></p>
+<hr>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alpine, en mode <strong>live</strong>, s’executa a partir de la ISO i utilitza la memòria RAM. No necessita un disc persistent per a aquesta pràctica.</p>
+<p>Quan instal·lem un sistema operatiu que volem conservar, com farem en una pràctica posterior, sí que necessitarem un disc virtual persistent.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Què acabem de comprovar?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La VM <strong>no veu directament tot el maquinari físic</strong>. Està veient una <strong>representació virtual del maquinari</strong> que VMware li proporciona.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="experiment-canviem-la-ram" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-canviem-la-ram">Experiment: canviem la RAM</h2>
+<p>Ara farem exactament el que parlàvem a la teoria:</p>
+<blockquote class="blockquote">
+<p><strong>Canviar un recurs virtual i comprovar què passa dins de la VM.</strong></p>
+</blockquote>
+<p>La VM actual té:</p>
+<blockquote class="blockquote">
+<p><strong>512 MB de RAM</strong></p>
+</blockquote>
+<p>La canviarem a:</p>
+<blockquote class="blockquote">
+<p><strong>1 GB de RAM</strong></p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Quanta RAM creus que veurà Alpine després del canvi?</strong></p>
+<hr>
+</div>
+</div>
+<p>Primer apaga Alpine:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poweroff</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Espera que la VM s’apagui completament.</p>
+<p>A VMware:</p>
+<ol type="1">
+<li>Obre la configuració de la VM.</li>
+<li>Busca <strong>Memory</strong>.</li>
+<li>Canvia:</li>
+</ol>
+<pre class="text"><code>512 MB → 1 GB</code></pre>
+<ol start="4" type="1">
+<li>Torna a arrencar la VM.</li>
+<li>Inicia sessió com <code>root</code>.</li>
+<li>Executa:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>RAM que veu ara Alpine:</strong> __________________</p>
+<p><strong>Coincideix amb la teva predicció?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+<p><strong>Què ha canviat?</strong></p>
+<hr>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El que hem fet és modificar un <strong>recurs virtual</strong>. Però aquest recurs virtual necessita RAM <strong>física</strong> del host.</p>
+</div>
+</div>
+</section>
+<section id="experiment-canviem-la-cpu" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-canviem-la-cpu">Experiment: canviem la CPU</h2>
+<p>Ara farem el mateix experiment, però amb la CPU.</p>
+<p>La VM actual té:</p>
+<blockquote class="blockquote">
+<p><strong>1 core</strong></p>
+</blockquote>
+<p>La canviarem a:</p>
+<blockquote class="blockquote">
+<p><strong>2 cores</strong></p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Quants processadors creus que veurà Alpine després del canvi?</strong></p>
+<hr>
+</div>
+</div>
+<p>Primer apaga Alpine:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poweroff</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A VMware, obre la configuració de la VM i modifica:</p>
+<pre class="text"><code>Number of cores per processor: 1 → 2</code></pre>
+<p>Torna a arrencar la VM, inicia sessió com <code>root</code> i executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^processor'</span> /proc/cpuinfo</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>CPU que veu Alpine:</strong> __________________</p>
+<p><strong>Coincideix amb la teva predicció?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+<p><strong>Què ha canviat respecte a abans?</strong></p>
+<hr>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Deixa la VM configurada amb <strong>2 cores</strong>: la farem servir a l’experiment següent.</p>
+</div>
+</div>
+</section>
+<section id="experiment-fem-treballar-la-cpu" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-fem-treballar-la-cpu">Experiment: fem treballar la CPU</h2>
+<p>Fins ara hem comprovat que la CPU virtual <strong>existeix</strong>. Ara comprovarem que <strong>també fa treball real</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Abans de començar: fes una predicció
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Estem a punt d’executar dins la VM un procés que fa treballar la CPU al màxim de manera continuada.</p>
+<p><strong>Quin percentatge de CPU creus que consumirà, dins d’Alpine?</strong></p>
+<hr>
+<p><strong>I creus que el teu ordinador físic (el host) notarà aquest treball d’alguna manera?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+<li><label><input type="checkbox">No ho sé</label></li>
+</ul>
+</div>
+</div>
+<section id="genera-treball-de-cpu-dins-la-vm" class="level3">
+<h3 class="anchored" data-anchor-id="genera-treball-de-cpu-dins-la-vm">Genera treball de CPU dins la VM</h3>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">yes</span> <span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Aquest comandament llança un procés que repeteix una tasca sense parar, en segon pla (<code>&amp;</code>).</p>
+<p>Ara observa els processos actius:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Busca la línia corresponent al procés <code>yes</code> i fixa’t en la columna <strong>%CPU</strong>.</p>
+<p><strong>Quin percentatge de CPU consumeix <code>yes</code> dins d’Alpine?</strong> __________________</p>
+<p><strong>Coincideix amb la teva predicció?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Com que a l’experiment anterior has configurat la VM amb <strong>2 cores</strong>, pot ser que <code>yes</code> mostri un percentatge proper al 100%, ja que és un sol procés i només pot fer servir un core alhora.</p>
+</div>
+</div>
+</section>
+<section id="comprova-ho-també-al-host" class="level3">
+<h3 class="anchored" data-anchor-id="comprova-ho-també-al-host">Comprova-ho també al host</h3>
+<p>Sense tancar <code>top</code>, mira ara el <strong>teu ordinador físic</strong>:</p>
+<ul>
+<li><strong>Windows:</strong> obre el <strong>Gestor de tasques → Rendiment</strong>, o la pestanya <strong>Processos</strong> i busca <strong>VMware Workstation</strong> / <code>vmware-vmx.exe</code>.</li>
+<li><strong>macOS:</strong> obre el <strong>Monitor d’activitat</strong> i busca <strong>VMware Fusion</strong> o <code>vmware-vmx</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No busquis un procés anomenat <code>yes</code> al host: <strong>no hi apareixerà</strong>. El procés <code>yes</code> viu dins la VM; el que veurà el host és el propi procés de VMware (<code>vmware-vmx</code>) consumint més CPU física, perquè és ell qui executa realment la CPU virtual per compte de la VM.</p>
+</div>
+</div>
+<p><strong>Quant de CPU física consumeix el procés de VMware al host?</strong> __________________</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Connecta-ho amb la teoria
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La CPU que acaba de treballar dins la VM <strong>no és una CPU imaginària</strong>. El treball que hem generat amb <code>yes</code> s’ha traduït en consum real de CPU <strong>física</strong> del host, gestionat pel procés de VMware.</p>
+<p><strong>Virtual ≠ imaginari.</strong></p>
+</div>
+</div>
+</section>
+<section id="atura-el-procés" class="level3">
+<h3 class="anchored" data-anchor-id="atura-el-procés">Atura el procés</h3>
+<p>Surt de <code>top</code> prement:</p>
+<pre class="text"><code>q</code></pre>
+<p>Després atura el procés <code>yes</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> %1</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si <code>kill %1</code> respon amb un error com <code>no such job</code>, prova en canvi:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkill</span> yes</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>Comprova que el procés <code>yes</code> ha desaparegut executant <code>top</code> de nou, i que el consum de CPU del procés de VMware al host també ha baixat.</p>
+</section>
+</section>
+<section id="dues-vms-alhora" class="level2">
+<h2 class="anchored" data-anchor-id="dues-vms-alhora">Dues VMs alhora</h2>
+<p>L’objectiu és observar una altra idea de la teoria:</p>
+<blockquote class="blockquote">
+<p><strong>Les VMs estan aïllades, però comparteixen els recursos físics.</strong></p>
+</blockquote>
+<section id="prepara-una-segona-vm" class="level3">
+<h3 class="anchored" data-anchor-id="prepara-una-segona-vm">Prepara una segona VM</h3>
+<p>Crea una segona VM d’Alpine o clona l’actual.</p>
+<p>Anomena-la, per exemple:</p>
+<pre class="text"><code>vm-curs0-alpine-2</code></pre>
+<p>Configura-la amb:</p>
+<ul>
+<li><strong>1 processador, 1 core per processador</strong></li>
+<li><strong>512 MB o 1 GB de RAM</strong></li>
+</ul>
+<p>Arrenca les dues VMs alhora.</p>
+</section>
+<section id="fes-treballar-una-vm" class="level3">
+<h3 class="anchored" data-anchor-id="fes-treballar-una-vm">Fes treballar una VM</h3>
+<p>A la primera VM executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">yes</span> <span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>I observa amb:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A l’altra VM observa també el seu sistema.</p>
+<p><strong>Notes algun canvi de rendiment?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+<li><label><input type="checkbox">No ho sé notar</label></li>
+</ul>
+<p><strong>Per què creus que pot passar?</strong></p>
+<hr>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada VM té el seu propi entorn i els seus propis processos, però les dues comparteixen el <strong>mateix maquinari físic del host</strong>. Per això, una VM que consumeix molts recursos pot afectar el rendiment de les altres. <strong>Aïllament ≠ independència total de recursos.</strong></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="resum-els-recursos-són-finits" class="level1">
+<h1>Resum: Els recursos són finits</h1>
+<p>Tornem al problema de la teoria.</p>
+<p>Suposem un ordinador amb:</p>
+<blockquote class="blockquote">
+<p><strong>16 GB de RAM</strong></p>
+</blockquote>
+<p>I volem executar:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>VM</th>
+<th style="text-align: right;">RAM assignada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VM 1</td>
+<td style="text-align: right;">4 GB</td>
+</tr>
+<tr class="even">
+<td>VM 2</td>
+<td style="text-align: right;">4 GB</td>
+</tr>
+<tr class="odd">
+<td>VM 3</td>
+<td style="text-align: right;">4 GB</td>
+</tr>
+</tbody>
+</table>
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p><strong>Quanta RAM hem assignat en total a les VMs?</strong></p>
+<hr>
+</section>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p><strong>Quanta RAM queda teòricament?</strong></p>
+<hr>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>Podem assignar els 4 GB restants a una quarta VM?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí, sense cap problema.</label></li>
+<li><label><input type="checkbox">Sí, però cal tenir en compte el host.</label></li>
+<li><label><input type="checkbox">No, mai podem crear una quarta VM.</label></li>
+</ul>
+</section>
+<section id="pregunta-4" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
+<p><strong>Per què?</strong></p>
+<hr>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En un sistema real, el <strong>host també necessita recursos</strong> per funcionar i la virtualització té un cert cost. Per tant, no podem considerar tota la RAM física com a disponible per a les màquines virtuals. El mateix aplica a la CPU i a la resta de recursos. Sempre hem de deixar una part per al host.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Curs0-EPS-UdL\.github\.io\/2627\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

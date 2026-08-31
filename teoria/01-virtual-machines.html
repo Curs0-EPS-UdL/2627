@@ -10,7 +10,6 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Jordi Mateo Fornés">
-  <meta name="author" content="Jordi Vilaplana Mayoral">
   <title>Curs zero d’Informàtica – Virtualització</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -135,7 +134,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Virtualització</h1>
-  <p class="subtitle">Sessió 2 · Curs zero d’Informàtica</p>
+  <p class="subtitle">Sessió 1 · Curs zero d’Informàtica</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -143,84 +142,332 @@
 Jordi Mateo Fornés
 </div>
 </div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Jordi Vilaplana Mayoral
-</div>
-</div>
 </div>
 
 </section>
-<section id="una-analogia-amb-el-bus-escolar" class="slide level2">
-<h2>🚗 Una analogia amb el bus escolar</h2>
-<p>Imagineu un món sense bus escolar:</p>
+<section id="per-què-necessitem-virtualització" class="slide level2">
+<h2>Per què necessitem virtualització?</h2>
+<h3 id="imagineu-un-món-sense-bus-escolar">Imagineu un món sense bus escolar</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li class="fragment"><p>Per portar cada <strong>estudiant</strong> (<em>una aplicació o servei</em>) a l’escola, cada família utilitza el seu propi cotxe (<em>un servidor físic</em>).</p></li>
-<li class="fragment"><p>Cada cotxe malgasta molts recursos: <strong>un motor</strong> (<em>processador</em>), <strong>benzina</strong> (<em>energia</em>), <strong>rodes</strong> (<em>disc dur</em>) i un <strong>espai d’aparcament</strong> (<em>espai físic</em>), tot per a <strong>un sol passatger</strong>.</p></li>
+<li class="fragment">Cada <strong>estudiant</strong> necessita el seu propi cotxe.</li>
+<li class="fragment">Cada cotxe necessita <strong>recursos</strong>.</li>
+<li class="fragment">Però cada cotxe transporta només una persona.</li>
 </ul>
-<div class="fragment" style="text-align: center;">
-<p><strong>Això és extremadament ineficient.</strong></p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="../figures/virtual/fig1-virt.png"></p>
+</div><div class="fragment" style="text-align: center;">
+<p><strong>Molts recursos utilitzats per transportar molt poca gent.</strong></p>
+</div>
 </div>
 </section>
-<section id="larribada-del-bus-escolar-la-virtualització" class="slide level2">
-<h2>🚌 L’arribada del Bus Escolar (La Virtualització)</h2>
+<section id="la-solució-compartir-recursos" class="slide level2">
+<h2>La solució: compartir recursos</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="../figures/virtual/fig2-virt.png"></p>
+</div><div class="column" style="width:40%;">
 <ul>
-<li class="fragment"><p>En lloc de que cada estudiant vingui amb el seu cotxe, tots poden agafar un <strong>bus escolar</strong> (<em>un únic servidor físic amb virtualització</em>).</p></li>
-<li class="fragment"><p>El bus és un vehicle molt més gran i potent (un únic servidor físic). En lloc de <em>N cotxes</em>, només en necessitem un.</p></li>
-<li class="fragment"><p>El bus comparteix els seus recursos (<strong>motor, benzina, rodes, espai d’aparcament</strong>) entre tots els estudiants (<em>aplicacions o serveis</em>), fent un ús molt més eficient dels recursos.</p></li>
+<li class="fragment">Un únic vehicle <strong>compartit</strong>.</li>
+<li class="fragment">Diversos passatgers.</li>
+<li class="fragment">Els recursos es comparteixen.</li>
 </ul>
+</div></div>
+<div class="fragment" style="text-align: center;">
+<p><strong>Això és,…, la idea de la virtualització.</strong></p>
+</div>
 </section>
-<section id="les-cabines-del-bus-les-màquines-virtuals" class="slide level2">
-<h2>👩‍🎓 Les Cabines del Bus (Les Màquines Virtuals)</h2>
-<p>Imagineu un autobús futurista:</p>
-<ul>
-<li class="fragment"><p>Cada estudiant té el seu propi seient, que és com una petita cabina aïllada (una <strong>màquina virtual</strong>). Aquesta cabina té la seva pròpia pantalla, controls i espai personal, totalment independent de les altres.</p></li>
-<li class="fragment"><p>Si un estudiant mira una pel·lícula en veu alta, només afecta la seva cabina, no la resta del bus. Les accions d’un estudiant no interfereixen amb les dels altres.</p></li>
-</ul>
+<section id="definició" class="slide level2">
+<h2>Definició</h2>
+<div class="fragment">
+<h3 id="definició-formal">Definició formal</h3>
+<p>Tècnica que permet crear diversos entorns lògics independents sobre un mateix maquinari físic.</p>
+</div>
+<div class="fragment">
+<h3 id="en-poques-paraules">En poques paraules</h3>
+<p><strong>Un ordinador → es comporta com si fossin molts ordinadors.</strong></p>
+</div>
+<aside class="notes">
+<p>Llegir la definició formal ràpidament, sense aturar-s’hi gaire. La frase que ha de quedar és la segona. Es pot dir explícitament: “la frase que vull que us quedeu és aquesta.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="lhipervisor-el-conductor-del-bus" class="slide level2">
-<h2>👩‍✈️ L’hipervisor: El Conductor del Bus</h2>
+<section id="per-a-què-serveix-a-la-pràctica" class="slide level2">
+<h2>Per a què serveix, a la pràctica?</h2>
 <ul>
-<li class="fragment"><p>Ell és qui s’assegura que cada estudiant tingui el seu seient (<strong>recursos</strong>), arribi a la seva destinació (<strong>funcioni</strong>) i que no hi hagi problemes entre ells.</p></li>
-<li class="fragment"><p>Gestiona els seus <strong>recursos</strong> de manera que totes les cabines funcionin sense problemes, fins i tot si alguns estudiants necessiten més atenció o recursos en certs moments.</p></li>
+<li class="fragment">Provar un sistema operatiu diferent <strong>sense modificar el sistema operatiu principal</strong>.</li>
+<li class="fragment">Tenir un entorn de treball <strong>aïllat</strong>: si l’espatlles, no afecta el teu ordinador real.</li>
+<li class="fragment">Poder <strong>recuperar l’entorn fàcilment</strong> després d’un error.</li>
+<li class="fragment">Executar diversos serveis o projectes <strong>de manera separada en un sol servidor físic</strong>.</li>
 </ul>
+<aside class="notes">
+<p>Sobre “recuperar l’entorn fàcilment”: no anomenar encara “snapshots”; es pot dir “més endavant veurem com es fan còpies de les màquines virtuals.”</p>
+<p>EXEMPLE ORAL (no cal diapositiva nova): “Imagineu un servidor amb 64 GB de RAM. En lloc de tenir un sol sistema operatiu fent una sola tasca, hi podem crear: VM1 → servidor web, VM2 → base de dades, VM3 → servidor de proves. Totes comparteixen el mateix servidor físic, però cada una té el seu propi entorn.” Pregunta: “Quin és l’avantatge respecte a tenir tres servidors físics separats?” Connecta directament amb la motivació inicial del bus: compartir infraestructura.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="com-funciona" class="slide level2">
+<h2>Com funciona?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="../figures/virtual/fig3-virt.png"></p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment">Un únic ordinador físic.</li>
+<li class="fragment">Diversos entorns virtuals.</li>
+<li class="fragment">Els recursos es comparteixen.</li>
+</ul>
+</div></div>
+<div class="fragment" style="text-align: center;">
+<p><strong>Un ordinador físic → diversos ordinadors virtuals</strong></p>
+</div>
+</section>
+<section id="què-és-una-màquina-virtual" class="slide level2">
+<h2>Què és una màquina virtual?</h2>
+<div class="fragment" style="text-align: center;">
+<p><strong>Una VM té el seu propi maquinari virtual.</strong></p>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="../figures/virtual/fig4-virt.png"></p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment">Sistema Operatiu</li>
+<li class="fragment">CPU virtual</li>
+<li class="fragment">Memòria RAM virtual</li>
+<li class="fragment">Disc virtual</li>
+<li class="fragment">Interfície de xarxa virtual</li>
+</ul>
+</div></div>
+</section>
+<section id="host-i-guest" class="slide level2">
+<h2>Host i Guest</h2>
+<p>Quan treballem amb màquines virtuals utilitzarem dos conceptes:</p>
+<h3 id="host">Host</h3>
+<p>L’<strong>ordinador físic</strong> que proporciona els recursos.</p>
+<h3 id="guest">Guest</h3>
+<p>La <strong>màquina virtual</strong> que funciona sobre el host.</p>
+</section>
+<section id="compartir-interferir" class="slide level2">
+<h2>Compartir ≠ interferir</h2>
+<p>Les VMs <strong>comparteixen</strong> els recursos físics del host, però mantenen el seu propi entorn, funcionant de manera <strong>aïllada</strong> entre elles.</p>
+<ul>
+<li class="fragment">Cada VM té el seu propi: sistema de fitxers, processos, configuració…</li>
+<li class="fragment">Els processos d’una VM estan <strong>aïllats</strong> dels processos de les altres VM.</li>
+<li class="fragment">Un problema dins d’una VM queda, en general, <strong>aïllat</strong> de les altres VM i del host.</li>
+</ul>
+<aside class="notes">
+<p>“Aquí hi ha una aparent contradicció. Si comparteixen els recursos, com poden estar aïllades?” [pausa] “Comparteixen el maquinari físic, però cada VM té el seu propi entorn.”</p>
+<p>Aclariment: no són bombolles màgiques. Com que comparteixen recursos físics, una VM que consumeixi massa CPU o RAM pot afectar el rendiment de les altres i del host. Aïllament ≠ independència total de recursos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="esquema-sense-virtualització" class="slide level2">
 <h2>Esquema sense virtualització</h2>
 
-<img data-src="../figures/virtualitaztion/sense.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"></section>
+<img data-src="../figures/virtualitaztion/sense.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="esquema-amb-virtualització" class="slide level2">
 <h2>Esquema amb virtualització</h2>
 
-<img data-src="../figures/virtualitaztion/amb.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"></section>
-<section id="laboratori-2-objectiu" class="slide level2">
-<h2>Laboratori 2: Objectiu</h2>
+<img data-src="../figures/virtualitaztion/amb.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="hypervisor" class="slide level2">
+<h2>Hypervisor</h2>
 
-<img data-src="../figures/virtualitaztion/resultat.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"><p>Una màquina virtual amb Debian 12 comparint recursos amb el vostre ordinador físic.</p>
-</section>
-<section id="laboratori-2-tasques" class="slide level2">
-<h2>Laboratori 2: Tasques</h2>
-<ul>
-<li class="fragment">Instal·lar un <em>hypervisor</em>: VMWare Workstation Player o VMWare Fusion.</li>
-<li class="fragment">Desplegar una màquina virtual amb Linux dins de l’hypervisor.</li>
-</ul>
+<img data-src="../figures/virtual/fig5-virt.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="dos-tipus-dhipervisor" class="slide level2">
+<h2>Dos tipus d’hipervisor</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Tipus 1</th>
+<th>Tipus 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>On s’executa</strong></td>
+<td>Directament sobre el maquinari</td>
+<td>Sobre un sistema operatiu host</td>
+</tr>
+<tr class="even">
+<td><strong>Ús típic</strong></td>
+<td>Servidors</td>
+<td>Ordinadors personals</td>
+</tr>
+<tr class="odd">
+<td><strong>Exemple</strong></td>
+<td>VMware ESXi, Hyper-V</td>
+<td>VMware Workstation, VirtualBox</td>
+</tr>
+</tbody>
+</table>
 <div class="fragment" style="text-align: center;">
-<p><a href="../laboratori/lab02.html#prepare">📄 Laboratori 2: Instal·lació de Debian 12</a></p>
+<p><strong>Nosaltres utilitzarem VMware Workstation, un hipervisor de Tipus 2.</strong></p>
 </div>
 </section>
-<section id="laboratori-3-objectiu" class="slide level2">
-<h2>Laboratori 3: Objectiu</h2>
-
-<img data-src="../figures/virtualitaztion/lab03-ssh.png" style="display: block; margin-left: auto; margin-right: auto;" class="r-stretch"><p>Connectar VSCode que s’executa a la màquina real per executar i comunicar-se amb la màquina virtual via SSH.</p>
-</section>
-<section id="laboratori-3-tasques" class="slide level2">
-<h2>Laboratori 3: Tasques</h2>
-<ul>
-<li class="fragment">Configurar VSCode per connectar-se a la màquina virtual via SSH.</li>
-<li class="fragment">Provar la connexió i executar ordres a la màquina virtual des de VSCode</li>
-</ul>
+<section id="don-surten-els-recursos" class="slide level2">
+<h2>D’on surten els recursos?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="fragment" style="text-align: center;">
-<p><a href="../laboratori/lab03.html#prepare">📄 Laboratori 3: Connexió via SSH</a></p>
+<p><strong>ORDINADOR: 16 GB RAM</strong></p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p>↓</p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p><strong>VM: 4 GB RAM</strong></p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p>↓</p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p>D’on surten aquests 4 GB?</p>
+</div>
+<aside class="notes">
+<p>Pausa real: NO fer clic al següent fragment. Deixar que responguin abans de revelar-ho.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment" style="text-align: center;">
+<p><strong>De la RAM física de l’ordinador host.</strong></p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p>I si en creo <strong>dues</strong> VM de 4 GB?</p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p>I si en creo <strong>quatre</strong>?</p>
+</div>
+<aside class="notes">
+<p>Deixar que raonin en veu alta abans de tancar-ho. L’objectiu és que arribin sols a la conclusió: no podem assignar recursos il·limitadament, perquè les VM comparteixen els recursos físics reals del host.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div><div class="column" style="width:40%;">
+<div class="fragment" style="text-align: center;">
+<p><strong>No podem assignar recursos il·limitadament: els recursos físics del host són finits.</strong></p>
+</div>
+</div></div>
+</section>
+<section id="virtual-imaginari" class="slide level2">
+<h2>Virtual ≠ imaginari</h2>
+<p>Els recursos de la màquina virtual són <strong>virtuals</strong>, però utilitzen recursos físics reals.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Recurs virtual</th>
+<th>Recurs físic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU virtual</td>
+<td>CPU del host</td>
+</tr>
+<tr class="even">
+<td>RAM virtual</td>
+<td>RAM del host</td>
+</tr>
+<tr class="odd">
+<td>Disc virtual</td>
+<td>Emmagatzematge del host</td>
+</tr>
+<tr class="even">
+<td>Xarxa virtual</td>
+<td>Interfície de xarxa del host</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment" style="text-align: center;">
+<p><strong>La virtualització crea una abstracció del maquinari.</strong></p>
+</div>
+</section>
+<section id="un-últim-càlcul" class="slide level2">
+<h2>Un últim càlcul</h2>
+<p>Un host amb <strong>16 GB de RAM</strong> executa:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">VM 1 → 4 GB</li>
+<li class="fragment">VM 2 → 4 GB</li>
+<li class="fragment">VM 3 → 4 GB</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment" style="text-align: center;">
+<p><strong>Què li queda al host?</strong></p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p>16 − 4 − 4 − 4 = <strong>4 GB</strong></p>
+</div>
+</div></div>
+<aside class="notes">
+<p>Pausa oral aquí (no cal fragment nou): “Això vol dir que podem donar aquests 4 GB restants a una quarta VM?” Deixar que responguin (probablement diran que sí). “Teòricament encara hi ha 4 GB lliures, però no hauríem d’assignar tots els recursos del host a les VM: el propi host també en necessita per funcionar.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment" style="text-align: center;">
+<p>És exactament així de senzill en un sistema real?</p>
+</div>
+<div class="fragment" style="text-align: center;">
+<p><strong>No del tot: el sistema operatiu host i la virtualització també necessiten recursos.</strong></p>
 </div>
 
 
@@ -229,7 +476,7 @@ Jordi Vilaplana Mayoral
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../figures/corporative/institute.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Sessió 2 · Curs zero d’Informàtica <a href="../index.html">🏠</a></p>
+<p>Sessió 1 · Curs zero d’Informàtica · Campus Igualada <a href="../index.html">🏠</a></p>
 </div>
 </div></div>
 

@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jordi Mateo Fornés">
+
+<title>Laboratori 5 · Introducció a vi/vim – Curs zero d’Informàtica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Cap resultat",
+    "search-matching-documents-text": "documents que coincideixen",
+    "search-copy-link-title": "Copia l'enllaç a la cerca",
+    "search-hide-matches-text": "Amaga les coincidències addicionals",
+    "search-more-match-text": "altra coincidència en aquest document",
+    "search-more-matches-text": "altres coincidències en aquest document",
+    "search-clear-button-title": "Neteja",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel·la",
+    "search-submit-button-title": "Envia",
+    "search-label": "Cerca"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Curs zero d’Informàtica</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Cerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Commuta la navegació" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En aquesta pàgina</h2>
+   
+  <ul>
+  <li><a href="#objectius" id="toc-objectius" class="nav-link active" data-scroll-target="#objectius"><span class="header-section-number">1</span> Objectius</a></li>
+  <li><a href="#per-què-un-editor-dins-del-terminal" id="toc-per-què-un-editor-dins-del-terminal" class="nav-link" data-scroll-target="#per-què-un-editor-dins-del-terminal"><span class="header-section-number">2</span> Per què un editor dins del terminal?</a></li>
+  <li><a href="#installar-vim" id="toc-installar-vim" class="nav-link" data-scroll-target="#installar-vim"><span class="header-section-number">3</span> Instal·lar Vim</a></li>
+  <li><a href="#el-primer-fitxer-amb-vim" id="toc-el-primer-fitxer-amb-vim" class="nav-link" data-scroll-target="#el-primer-fitxer-amb-vim"><span class="header-section-number">4</span> El primer fitxer amb Vim</a></li>
+  <li><a href="#els-dos-modes-de-vim" id="toc-els-dos-modes-de-vim" class="nav-link" data-scroll-target="#els-dos-modes-de-vim"><span class="header-section-number">5</span> Els dos modes de Vim</a>
+  <ul class="collapse">
+  <li><a href="#més-maneres-dentrar-en-mode-inserció" id="toc-més-maneres-dentrar-en-mode-inserció" class="nav-link" data-scroll-target="#més-maneres-dentrar-en-mode-inserció"><span class="header-section-number">5.1</span> Més maneres d’entrar en mode inserció</a></li>
+  </ul></li>
+  <li><a href="#primer-exercici-escriure-i-guardar" id="toc-primer-exercici-escriure-i-guardar" class="nav-link" data-scroll-target="#primer-exercici-escriure-i-guardar"><span class="header-section-number">6</span> Primer exercici: escriure i guardar</a>
+  <ul class="collapse">
+  <li><a href="#guardar" id="toc-guardar" class="nav-link" data-scroll-target="#guardar"><span class="header-section-number">6.1</span> Guardar</a></li>
+  <li><a href="#una-altra-manera-wq" id="toc-una-altra-manera-wq" class="nav-link" data-scroll-target="#una-altra-manera-wq"><span class="header-section-number">6.2</span> Una altra manera: <code>:wq</code></a></li>
+  </ul></li>
+  <li><a href="#obrir-un-fitxer-existent-i-sortir-sense-guardar" id="toc-obrir-un-fitxer-existent-i-sortir-sense-guardar" class="nav-link" data-scroll-target="#obrir-un-fitxer-existent-i-sortir-sense-guardar"><span class="header-section-number">7</span> Obrir un fitxer existent i sortir sense guardar</a>
+  <ul class="collapse">
+  <li><a href="#sortir-sense-guardar" id="toc-sortir-sense-guardar" class="nav-link" data-scroll-target="#sortir-sense-guardar"><span class="header-section-number">7.1</span> Sortir sense guardar</a></li>
+  </ul></li>
+  <li><a href="#moures-pel-text" id="toc-moures-pel-text" class="nav-link" data-scroll-target="#moures-pel-text"><span class="header-section-number">8</span> Moure’s pel text</a>
+  <ul class="collapse">
+  <li><a href="#moviments-ràpids" id="toc-moviments-ràpids" class="nav-link" data-scroll-target="#moviments-ràpids"><span class="header-section-number">8.1</span> Moviments ràpids</a></li>
+  </ul></li>
+  <li><a href="#eliminar-text" id="toc-eliminar-text" class="nav-link" data-scroll-target="#eliminar-text"><span class="header-section-number">9</span> Eliminar text</a>
+  <ul class="collapse">
+  <li><a href="#eliminar-un-caràcter-x" id="toc-eliminar-un-caràcter-x" class="nav-link" data-scroll-target="#eliminar-un-caràcter-x"><span class="header-section-number">9.1</span> Eliminar un caràcter: <code>x</code></a></li>
+  <li><a href="#eliminar-una-línia-dd" id="toc-eliminar-una-línia-dd" class="nav-link" data-scroll-target="#eliminar-una-línia-dd"><span class="header-section-number">9.2</span> Eliminar una línia: <code>dd</code></a></li>
+  </ul></li>
+  <li><a href="#copiar-i-enganxar" id="toc-copiar-i-enganxar" class="nav-link" data-scroll-target="#copiar-i-enganxar"><span class="header-section-number">10</span> Copiar i enganxar</a></li>
+  <li><a href="#buscar-text" id="toc-buscar-text" class="nav-link" data-scroll-target="#buscar-text"><span class="header-section-number">11</span> Buscar text</a></li>
+  <li><a href="#la-nostra-xuleta-de-vim" id="toc-la-nostra-xuleta-de-vim" class="nav-link" data-scroll-target="#la-nostra-xuleta-de-vim"><span class="header-section-number">12</span> La nostra “xuleta” de Vim</a></li>
+  <li><a href="#exercici-final-un-informe-sobre-la-teva-màquina" id="toc-exercici-final-un-informe-sobre-la-teva-màquina" class="nav-link" data-scroll-target="#exercici-final-un-informe-sobre-la-teva-màquina"><span class="header-section-number">13</span> Exercici final · Un informe sobre la teva màquina</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Laboratori 5 · Introducció a vi/vim</h1>
+<p class="subtitle lead">Introducció a Linux · Curs zero d’Informàtica</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jordi Mateo Fornés </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objectius" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Objectius</h1>
+<p>En aquesta pràctica aprendrem a:</p>
+<ul>
+<li>Instal·lar <code>vim</code> des de la terminal.</li>
+<li>Obrir i crear fitxers de text amb <code>vim</code>.</li>
+<li>Entendre els dos modes bàsics de <code>vim</code>.</li>
+<li>Escriure i modificar text.</li>
+<li>Guardar i sortir de l’editor.</li>
+<li>Moure’ns pel text i eliminar text.</li>
+<li>Copiar i enganxar línies.</li>
+<li>Buscar text dins d’un fitxer.</li>
+<li>Utilitzar <code>vim</code> per editar un fitxer real des de la terminal.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Objectiu de la pràctica: al final hauríeu de ser capaços d’obrir un fitxer amb <code>vim</code>, modificar-lo, guardar els canvis i sortir de l’editor sense ajuda.</p>
+</div>
+</div>
+</section>
+<section id="per-què-un-editor-dins-del-terminal" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Per què un editor dins del terminal?</h1>
+<p>Fins ara hem treballat principalment amb comandes com:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Però aquestes comandes no són suficients quan volem editar el <strong>contingut</strong> d’un fitxer.</p>
+<p>En un entorn gràfic podem utilitzar un editor com VSCode, però a Linux és molt habitual trobar-nos en un terminal sense interfície gràfica. Per exemple, podem tenir un fitxer <code>configuracio.txt</code> i necessitar modificar-lo directament des del terminal.</p>
+<p>Per això existeixen editors com <code>vi</code> i <code>vim</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>vi</code> és l’editor tradicional disponible en molts sistemes Unix/Linux. <code>vim</code> (<em>Vi IMproved</em>) és una versió més completa de <code>vi</code>.</p>
+<p>En aquesta pràctica utilitzarem <code>vim</code>.</p>
+</div>
+</div>
+</section>
+<section id="installar-vim" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Instal·lar Vim</h1>
+<p>Primer actualitza la informació dels paquets:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>I instal·la <code>vim</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install vim</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Quan pregunti si vols continuar, respon <code>Y</code>.</p>
+<p>Comprova que s’ha instal·lat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> <span class="at">--version</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>També pots consultar on està instal·lat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> vim</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Hauries d’obtenir una ruta semblant a <code>/usr/bin/vim</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Pregunta:</strong> per què hem necessitat <code>sudo</code> per instal·lar Vim?</p>
+<p>Recorda el que vam veure al laboratori d’usuaris, privilegis i permisos.</p>
+<hr>
+</div>
+</div>
+</section>
+<section id="el-primer-fitxer-amb-vim" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> El primer fitxer amb Vim</h1>
+<p>Anem al directori de pràctiques:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/practica</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ara crea i obre un fitxer amb:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> primer.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Apareixerà l’editor Vim. És possible que al principi sembli que no pots escriure. <strong>No és cap error</strong>: és una de les característiques més importants de Vim.</p>
+</section>
+<section id="els-dos-modes-de-vim" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Els dos modes de Vim</h1>
+<p>Vim treballa principalment amb dos modes que ens interessen en aquesta pràctica:</p>
+<dl>
+<dt><strong>Mode normal</strong></dt>
+<dd>
+És el mode inicial. En aquest mode les tecles no serveixen principalment per escriure text, sinó per executar accions i comandes.
+</dd>
+<dt><strong>Mode inserció</strong></dt>
+<dd>
+És el mode que utilitzem per escriure text.
+</dd>
+</dl>
+<p>Podem passar del mode normal al mode inserció prement <code>i</code>, i tornar al mode normal prement <code>Esc</code>.</p>
+<pre class="text"><code>              i
+    ┌──────────────────┐
+    │                  ▼
+┌─────────┐       ┌─────────┐
+│  NORMAL │       │ INSERT  │
+│         │       │         │
+│comandes │       │ escriure│
+└────┬────┘       └────┬────┘
+     │                 │
+     └────── Esc ──────┘</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recorda: si no pots escriure perquè les tecles no introdueixen text, probablement estàs en mode normal. Prem <code>i</code>.</p>
+</div>
+</div>
+<section id="més-maneres-dentrar-en-mode-inserció" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="més-maneres-dentrar-en-mode-inserció"><span class="header-section-number">5.1</span> Més maneres d’entrar en mode inserció</h2>
+<p><code>i</code> no és l’única manera d’entrar en mode inserció. Aquestes tres són les més habituals:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tecla</th>
+<th>Efecte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>i</code></td>
+<td>Insereix <strong>abans</strong> del cursor</td>
+</tr>
+<tr class="even">
+<td><code>a</code></td>
+<td>Insereix <strong>després</strong> del cursor (<em>append</em>)</td>
+</tr>
+<tr class="odd">
+<td><code>o</code></td>
+<td>Obre una <strong>línia nova a sota</strong> i entra en mode inserció</td>
+</tr>
+<tr class="even">
+<td><code>O</code></td>
+<td>Obre una <strong>línia nova a sobre</strong> i entra en mode inserció</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>o</code> és probablement la que faràs servir més sovint: en comptes d’anar manualment fins al final d’una línia per prémer Enter, <code>o</code> ho fa directament en un sol pas.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="primer-exercici-escriure-i-guardar" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Primer exercici: escriure i guardar</h1>
+<p>Si encara tens obert <code>primer.txt</code>:</p>
+<ol type="1">
+<li><p>Prem <code>i</code>.</p></li>
+<li><p>Escriu:</p>
+<blockquote class="blockquote">
+<p>Hola, estic aprenent a utilitzar Vim.</p>
+<p>Aquesta és la meva primera pràctica amb un editor de terminal.</p>
+</blockquote></li>
+<li><p>Prem <code>Esc</code>.</p></li>
+</ol>
+<p>Ara estàs de nou en mode normal.</p>
+<section id="guardar" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="guardar"><span class="header-section-number">6.1</span> Guardar</h2>
+<p>En mode normal, escriu:</p>
+<pre class="text"><code>:w</code></pre>
+<p>i prem Enter. La comanda significa <code>w</code> (<em>write</em>) → guardar.</p>
+<p>Ara surt de Vim:</p>
+<pre class="text"><code>:q</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les comandes que comencen amb <code>:</code> s’escriuen des del mode normal.</p>
+</div>
+</div>
+<p>Comprova que el fitxer existeix i mostra’n el contingut:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> primer.txt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> primer.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="una-altra-manera-wq" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="una-altra-manera-wq"><span class="header-section-number">6.2</span> Una altra manera: <code>:wq</code></h2>
+<p>En lloc de fer <code>:w</code> i després <code>:q</code>, pots fer directament:</p>
+<pre class="text"><code>:wq</code></pre>
+<p>Això significa <em>write</em> + <em>quit</em> → guardar i sortir, tot en un sol pas.</p>
+</section>
+</section>
+<section id="obrir-un-fitxer-existent-i-sortir-sense-guardar" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Obrir un fitxer existent i sortir sense guardar</h1>
+<p>Torna a obrir el fitxer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> primer.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Comprova que el text que havies escrit continua allà. Ara situa’t al final del text, prem <code>o</code> per obrir una línia nova, i afegeix:</p>
+<blockquote class="blockquote">
+<p>Vim funciona directament dins del terminal.</p>
+</blockquote>
+<p>Torna al mode normal amb <code>Esc</code>, i guarda i surt:</p>
+<pre class="text"><code>:wq</code></pre>
+<p>Comprova el resultat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> primer.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Comprova-ho
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Has de ser capaç de fer tot el procés sense mirar els passos: obrir → escriure → <code>Esc</code> → guardar → sortir.</p>
+</div>
+</div>
+<section id="sortir-sense-guardar" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sortir-sense-guardar"><span class="header-section-number">7.1</span> Sortir sense guardar</h2>
+<p>Ara obre de nou el fitxer, modifica alguna cosa (per exemple, afegeix una línia que digui “Aquesta línia no la guardarem.”), i torna al mode normal amb <code>Esc</code>.</p>
+<p>Aquest cop, en comptes de <code>:wq</code>, prova de sortir amb:</p>
+<pre class="text"><code>:q</code></pre>
+<p><strong>Què passa?</strong> __________________</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vim no et deixa sortir amb <code>:q</code> sol si hi ha canvis sense guardar — és una protecció perquè no perdis feina per error. Si realment vols <strong>descartar</strong> els canvis i sortir igualment, cal <strong>forçar-ho</strong> afegint <code>!</code>:</p>
+<pre class="text"><code>:q!</code></pre>
+<p>Fes servir <code>:q!</code> només quan estiguis segur que vols perdre els canvis. Si el fitxer ja està guardat i no hi ha res pendent, <code>:q</code> sol ja funciona sense necessitat del <code>!</code>.</p>
+</div>
+</div>
+<p>Comprova el fitxer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> primer.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Ha aparegut la línia que havies afegit?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí</label></li>
+<li><label><input type="checkbox">No</label></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="moures-pel-text" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Moure’s pel text</h1>
+<p>En mode normal, pots utilitzar les tecles de cursor (<code>↑ ↓ ← →</code>), o les tecles <code>h</code> <code>j</code> <code>k</code> <code>l</code>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tecla</th>
+<th>Moviment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>h</code></td>
+<td>esquerra</td>
+</tr>
+<tr class="even">
+<td><code>j</code></td>
+<td>avall</td>
+</tr>
+<tr class="odd">
+<td><code>k</code></td>
+<td>amunt</td>
+</tr>
+<tr class="even">
+<td><code>l</code></td>
+<td>dreta</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En aquesta pràctica pots utilitzar les fletxes. Les tecles <code>h</code>, <code>j</code>, <code>k</code> i <code>l</code> són especialment útils quan treballes habitualment amb Vim, perquè permeten moure’s sense abandonar la zona principal del teclat.</p>
+</div>
+</div>
+<section id="moviments-ràpids" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="moviments-ràpids"><span class="header-section-number">8.1</span> Moviments ràpids</h2>
+<p>Per a fitxers amb diverses línies, aquests moviments estalvien molt de temps:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tecla</th>
+<th>Et porta a…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>0</code></td>
+<td>l’inici de la línia actual</td>
+</tr>
+<tr class="even">
+<td><code>$</code></td>
+<td>el final de la línia actual</td>
+</tr>
+<tr class="odd">
+<td><code>gg</code></td>
+<td>l’inici del fitxer</td>
+</tr>
+<tr class="even">
+<td><code>G</code></td>
+<td>el final del fitxer</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Exercici
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Amb el fitxer <code>primer.txt</code> obert, prova <code>gg</code> per anar a l’inici, <code>G</code> per anar al final, i <code>0</code>/<code>$</code> per moure’t dins d’una línia.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="eliminar-text" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Eliminar text</h1>
+<section id="eliminar-un-caràcter-x" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="eliminar-un-caràcter-x"><span class="header-section-number">9.1</span> Eliminar un caràcter: <code>x</code></h2>
+<p>Situa el cursor sobre un caràcter i prem <code>x</code> en mode normal. El caràcter desapareix.</p>
+<p><code>x</code> és útil per a correccions petites; si necessites eliminar tota una línia, fas servir <code>dd</code>.</p>
+</section>
+<section id="eliminar-una-línia-dd" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="eliminar-una-línia-dd"><span class="header-section-number">9.2</span> Eliminar una línia: <code>dd</code></h2>
+<p>Obre el fitxer, situa el cursor sobre una línia que vulguis eliminar, i en mode normal prem:</p>
+<pre class="text"><code>dd</code></pre>
+<p>La línia desapareix. <code>dd</code> significa, de manera simplificada, <em>delete line</em>.</p>
+<p>Ara desfés l’operació amb:</p>
+<pre class="text"><code>u</code></pre>
+<p><code>u</code> significa <em>undo</em>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Exercici
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Elimina una línia amb <code>dd</code>.</li>
+<li>Comprova que ha desaparegut.</li>
+<li>Recupera-la amb <code>u</code>.</li>
+<li>Guarda el fitxer amb <code>:w</code>.</li>
+<li>Surt amb <code>:q</code>.</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="copiar-i-enganxar" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Copiar i enganxar</h1>
+<p>En mode normal, <code>yy</code> copia la línia actual. Després, <code>p</code> enganxa la línia.</p>
+<p>Per exemple: situa’t sobre una línia, prem <code>yy</code>, i després <code>p</code>. Ara tindràs la línia dues vegades.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Exercici
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Copia una línia del teu fitxer i enganxa-la dues vegades. Després elimina una de les còpies amb <code>dd</code>.</p>
+</div>
+</div>
+</section>
+<section id="buscar-text" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Buscar text</h1>
+<p>Quan el fitxer és gran, buscar manualment una paraula no és gaire pràctic.</p>
+<p>En mode normal, escriu <code>/paraula</code> i prem Enter. Per exemple:</p>
+<pre class="text"><code>/Linux</code></pre>
+<p>Vim buscarà la paraula “Linux” dins del fitxer. Per anar a la coincidència següent, prem <code>n</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Exercici
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Afegeix al fitxer diverses línies que continguin la paraula “Linux”. Després utilitza <code>/Linux</code> per buscar-les, i <code>n</code> per saltar a la coincidència següent.</p>
+</div>
+</div>
+</section>
+<section id="la-nostra-xuleta-de-vim" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> La nostra “xuleta” de Vim</h1>
+<p>Aquest és el conjunt de comandes que ens interessa recordar:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Comanda</th>
+<th>Funció</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>i</code></td>
+<td>Entrar en mode inserció (abans del cursor)</td>
+</tr>
+<tr class="even">
+<td><code>a</code></td>
+<td>Entrar en mode inserció (després del cursor)</td>
+</tr>
+<tr class="odd">
+<td><code>o</code> / <code>O</code></td>
+<td>Obrir línia nova a sota / a sobre</td>
+</tr>
+<tr class="even">
+<td><code>Esc</code></td>
+<td>Tornar al mode normal</td>
+</tr>
+<tr class="odd">
+<td><code>:w</code></td>
+<td>Guardar</td>
+</tr>
+<tr class="even">
+<td><code>:q</code></td>
+<td>Sortir</td>
+</tr>
+<tr class="odd">
+<td><code>:wq</code></td>
+<td>Guardar i sortir</td>
+</tr>
+<tr class="even">
+<td><code>:q!</code></td>
+<td>Forçar la sortida sense guardar</td>
+</tr>
+<tr class="odd">
+<td><code>0</code> / <code>$</code></td>
+<td>Anar a l’inici / final de línia</td>
+</tr>
+<tr class="even">
+<td><code>gg</code> / <code>G</code></td>
+<td>Anar a l’inici / final del fitxer</td>
+</tr>
+<tr class="odd">
+<td><code>x</code></td>
+<td>Eliminar un caràcter</td>
+</tr>
+<tr class="even">
+<td><code>dd</code></td>
+<td>Eliminar una línia</td>
+</tr>
+<tr class="odd">
+<td><code>u</code></td>
+<td>Desfer l’última acció</td>
+</tr>
+<tr class="even">
+<td><code>yy</code></td>
+<td>Copiar una línia</td>
+</tr>
+<tr class="odd">
+<td><code>p</code></td>
+<td>Enganxar</td>
+</tr>
+<tr class="even">
+<td><code>/text</code></td>
+<td>Buscar text</td>
+</tr>
+<tr class="odd">
+<td><code>n</code></td>
+<td>Següent coincidència</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Amb aquestes comandes ja pots treballar mínimament amb Vim. No cal intentar memoritzar centenars de comandes.</p>
+</div>
+</div>
+</section>
+<section id="exercici-final-un-informe-sobre-la-teva-màquina" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Exercici final · Un informe sobre la teva màquina</h1>
+<p>Ara farem una activitat que recupera coses que ja hem après en els laboratoris anteriors.</p>
+<p>Crea un directori nou:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/lab5</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/lab5</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Obre:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> informe.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Crea un petit informe amb aquesta estructura:</p>
+<pre class="text"><code>INFORME DE LA MEVA MÀQUINA VIRTUAL
+
+Nom de la màquina:
+Usuari:
+Sistema operatiu:
+Kernel:
+CPU:
+Memòria:
+
+Una cosa que he après sobre Linux:</code></pre>
+<p>Ara surt de Vim i obtén la informació que necessites amb les comandes que ja coneixes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/os-release</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-r</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lscpu</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Torna a obrir l’informe i completa’l utilitzant Vim:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> informe.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Comprova el resultat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> informe.txt</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> informe.txt</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Exercici final
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sense mirar la taula anterior, intenta fer tot el procés:</p>
+<ol type="1">
+<li>Obrir <code>informe.txt</code></li>
+<li>Entrar en mode inserció</li>
+<li>Escriure/modificar informació</li>
+<li>Tornar al mode normal</li>
+<li>Eliminar una línia</li>
+<li>Desfer l’eliminació</li>
+<li>Copiar una línia</li>
+<li>Enganxar-la</li>
+<li>Buscar una paraula</li>
+<li>Guardar i sortir</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Curs0-EPS-UdL\.github\.io\/2627\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

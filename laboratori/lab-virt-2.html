@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jordi Mateo Fornés">
+
+<title>Laboratori 2 · Instal·lació de Debian 12 – Curs zero d’Informàtica</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e3adbaa939bcd423dddc8c8a834270b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Cap resultat",
+    "search-matching-documents-text": "documents que coincideixen",
+    "search-copy-link-title": "Copia l'enllaç a la cerca",
+    "search-hide-matches-text": "Amaga les coincidències addicionals",
+    "search-more-match-text": "altra coincidència en aquest document",
+    "search-more-matches-text": "altres coincidències en aquest document",
+    "search-clear-button-title": "Neteja",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel·la",
+    "search-submit-button-title": "Envia",
+    "search-label": "Cerca"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Curs zero d’Informàtica</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Cerca"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Commuta la navegació" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En aquesta pàgina</h2>
+   
+  <ul>
+  <li><a href="#objectius" id="toc-objectius" class="nav-link active" data-scroll-target="#objectius"><span class="header-section-number">1</span> Objectius</a></li>
+  <li><a href="#obtenir-la-iso-de-debian-12.5" id="toc-obtenir-la-iso-de-debian-12.5" class="nav-link" data-scroll-target="#obtenir-la-iso-de-debian-12.5"><span class="header-section-number">2</span> Obtenir la ISO de Debian 12.5</a></li>
+  <li><a href="#preparar-la-màquina-virtual" id="toc-preparar-la-màquina-virtual" class="nav-link" data-scroll-target="#preparar-la-màquina-virtual"><span class="header-section-number">3</span> Preparar la màquina virtual</a></li>
+  <li><a href="#arrencar-linstallador-de-debian" id="toc-arrencar-linstallador-de-debian" class="nav-link" data-scroll-target="#arrencar-linstallador-de-debian"><span class="header-section-number">4</span> Arrencar l’instal·lador de Debian</a></li>
+  <li><a href="#seleccionar-lidioma" id="toc-seleccionar-lidioma" class="nav-link" data-scroll-target="#seleccionar-lidioma"><span class="header-section-number">5</span> Seleccionar l’idioma</a></li>
+  <li><a href="#seleccionar-la-ubicació" id="toc-seleccionar-la-ubicació" class="nav-link" data-scroll-target="#seleccionar-la-ubicació"><span class="header-section-number">6</span> Seleccionar la ubicació</a></li>
+  <li><a href="#configurar-el-teclat" id="toc-configurar-el-teclat" class="nav-link" data-scroll-target="#configurar-el-teclat"><span class="header-section-number">7</span> Configurar el teclat</a></li>
+  <li><a href="#carregar-els-components-de-linstallador" id="toc-carregar-els-components-de-linstallador" class="nav-link" data-scroll-target="#carregar-els-components-de-linstallador"><span class="header-section-number">8</span> Carregar els components de l’instal·lador</a></li>
+  <li><a href="#configurar-la-xarxa" id="toc-configurar-la-xarxa" class="nav-link" data-scroll-target="#configurar-la-xarxa"><span class="header-section-number">9</span> Configurar la xarxa</a>
+  <ul class="collapse">
+  <li><a href="#nom-de-la-màquina" id="toc-nom-de-la-màquina" class="nav-link" data-scroll-target="#nom-de-la-màquina"><span class="header-section-number">9.1</span> Nom de la màquina</a></li>
+  <li><a href="#domini" id="toc-domini" class="nav-link" data-scroll-target="#domini"><span class="header-section-number">9.2</span> Domini</a></li>
+  </ul></li>
+  <li><a href="#configurar-els-usuaris" id="toc-configurar-els-usuaris" class="nav-link" data-scroll-target="#configurar-els-usuaris"><span class="header-section-number">10</span> Configurar els usuaris</a>
+  <ul class="collapse">
+  <li><a href="#lusuari-root" id="toc-lusuari-root" class="nav-link" data-scroll-target="#lusuari-root"><span class="header-section-number">10.1</span> L’usuari <code>root</code></a>
+  <ul class="collapse">
+  <li><a href="#una-decisió-important" id="toc-una-decisió-important" class="nav-link" data-scroll-target="#una-decisió-important"><span class="header-section-number">10.1.1</span> Una decisió important</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#crear-lusuari-normal" id="toc-crear-lusuari-normal" class="nav-link" data-scroll-target="#crear-lusuari-normal"><span class="header-section-number">11</span> Crear l’usuari normal</a>
+  <ul class="collapse">
+  <li><a href="#nom-complet" id="toc-nom-complet" class="nav-link" data-scroll-target="#nom-complet"><span class="header-section-number">11.1</span> Nom complet</a></li>
+  <li><a href="#nom-dusuari" id="toc-nom-dusuari" class="nav-link" data-scroll-target="#nom-dusuari"><span class="header-section-number">11.2</span> Nom d’usuari</a></li>
+  <li><a href="#contrasenya" id="toc-contrasenya" class="nav-link" data-scroll-target="#contrasenya"><span class="header-section-number">11.3</span> Contrasenya</a></li>
+  </ul></li>
+  <li><a href="#configurar-la-zona-horària" id="toc-configurar-la-zona-horària" class="nav-link" data-scroll-target="#configurar-la-zona-horària"><span class="header-section-number">12</span> Configurar la zona horària</a></li>
+  <li><a href="#configurar-el-disc" id="toc-configurar-el-disc" class="nav-link" data-scroll-target="#configurar-el-disc"><span class="header-section-number">13</span> Configurar el disc</a>
+  <ul class="collapse">
+  <li><a href="#particionament-guiat" id="toc-particionament-guiat" class="nav-link" data-scroll-target="#particionament-guiat"><span class="header-section-number">13.1</span> Particionament guiat</a></li>
+  <li><a href="#seleccionar-el-disc" id="toc-seleccionar-el-disc" class="nav-link" data-scroll-target="#seleccionar-el-disc"><span class="header-section-number">13.2</span> Seleccionar el disc</a></li>
+  <li><a href="#esquema-de-particions" id="toc-esquema-de-particions" class="nav-link" data-scroll-target="#esquema-de-particions"><span class="header-section-number">13.3</span> Esquema de particions</a></li>
+  <li><a href="#revisar-les-particions" id="toc-revisar-les-particions" class="nav-link" data-scroll-target="#revisar-les-particions"><span class="header-section-number">13.4</span> Revisar les particions</a>
+  <ul class="collapse">
+  <li><a href="#què-és-swap" id="toc-què-és-swap" class="nav-link" data-scroll-target="#què-és-swap"><span class="header-section-number">13.4.1</span> Què és <code>swap</code>?</a></li>
+  </ul></li>
+  <li><a href="#confirmar-els-canvis" id="toc-confirmar-els-canvis" class="nav-link" data-scroll-target="#confirmar-els-canvis"><span class="header-section-number">13.5</span> Confirmar els canvis</a></li>
+  </ul></li>
+  <li><a href="#installar-el-sistema-base" id="toc-installar-el-sistema-base" class="nav-link" data-scroll-target="#installar-el-sistema-base"><span class="header-section-number">14</span> Instal·lar el sistema base</a></li>
+  <li><a href="#configurar-el-gestor-de-paquets" id="toc-configurar-el-gestor-de-paquets" class="nav-link" data-scroll-target="#configurar-el-gestor-de-paquets"><span class="header-section-number">15</span> Configurar el gestor de paquets</a>
+  <ul class="collapse">
+  <li><a href="#analitzar-els-mitjans-dinstallació" id="toc-analitzar-els-mitjans-dinstallació" class="nav-link" data-scroll-target="#analitzar-els-mitjans-dinstallació"><span class="header-section-number">15.1</span> Analitzar els mitjans d’instal·lació</a></li>
+  <li><a href="#seleccionar-un-servidor-de-paquets" id="toc-seleccionar-un-servidor-de-paquets" class="nav-link" data-scroll-target="#seleccionar-un-servidor-de-paquets"><span class="header-section-number">15.2</span> Seleccionar un servidor de paquets</a></li>
+  <li><a href="#configurar-un-proxy" id="toc-configurar-un-proxy" class="nav-link" data-scroll-target="#configurar-un-proxy"><span class="header-section-number">15.3</span> Configurar un proxy</a>
+  <ul class="collapse">
+  <li><a href="#què-és-un-proxy" id="toc-què-és-un-proxy" class="nav-link" data-scroll-target="#què-és-un-proxy"><span class="header-section-number">15.3.1</span> Què és un proxy?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#installar-els-paquets" id="toc-installar-els-paquets" class="nav-link" data-scroll-target="#installar-els-paquets"><span class="header-section-number">16</span> Instal·lar els paquets</a></li>
+  <li><a href="#popularity-contest" id="toc-popularity-contest" class="nav-link" data-scroll-target="#popularity-contest"><span class="header-section-number">17</span> Popularity Contest</a></li>
+  <li><a href="#seleccionar-el-programari" id="toc-seleccionar-el-programari" class="nav-link" data-scroll-target="#seleccionar-el-programari"><span class="header-section-number">18</span> Seleccionar el programari</a>
+  <ul class="collapse">
+  <li><a href="#per-què-no-installem-una-interfície-gràfica" id="toc-per-què-no-installem-una-interfície-gràfica" class="nav-link" data-scroll-target="#per-què-no-installem-una-interfície-gràfica"><span class="header-section-number">18.1</span> Per què no instal·lem una interfície gràfica?</a></li>
+  <li><a href="#què-és-ssh" id="toc-què-és-ssh" class="nav-link" data-scroll-target="#què-és-ssh"><span class="header-section-number">18.2</span> Què és SSH?</a></li>
+  </ul></li>
+  <li><a href="#installar-el-programari-seleccionat" id="toc-installar-el-programari-seleccionat" class="nav-link" data-scroll-target="#installar-el-programari-seleccionat"><span class="header-section-number">19</span> Instal·lar el programari seleccionat</a></li>
+  <li><a href="#installar-grub" id="toc-installar-grub" class="nav-link" data-scroll-target="#installar-grub"><span class="header-section-number">20</span> Instal·lar GRUB</a></li>
+  <li><a href="#finalitzar-la-installació" id="toc-finalitzar-la-installació" class="nav-link" data-scroll-target="#finalitzar-la-installació"><span class="header-section-number">21</span> Finalitzar la instal·lació</a></li>
+  <li><a href="#arrencar-debian" id="toc-arrencar-debian" class="nav-link" data-scroll-target="#arrencar-debian"><span class="header-section-number">22</span> Arrencar Debian</a></li>
+  <li><a href="#iniciar-sessió" id="toc-iniciar-sessió" class="nav-link" data-scroll-target="#iniciar-sessió"><span class="header-section-number">23</span> Iniciar sessió</a></li>
+  <li><a href="#comprovar-el-sistema" id="toc-comprovar-el-sistema" class="nav-link" data-scroll-target="#comprovar-el-sistema"><span class="header-section-number">24</span> Comprovar el sistema</a>
+  <ul class="collapse">
+  <li><a href="#qui-sóc" id="toc-qui-sóc" class="nav-link" data-scroll-target="#qui-sóc"><span class="header-section-number">24.1</span> Qui sóc?</a></li>
+  </ul></li>
+  <li><a href="#tancar-la-sessió" id="toc-tancar-la-sessió" class="nav-link" data-scroll-target="#tancar-la-sessió"><span class="header-section-number">25</span> Tancar la sessió</a></li>
+  <li><a href="#entrar-com-a-root" id="toc-entrar-com-a-root" class="nav-link" data-scroll-target="#entrar-com-a-root"><span class="header-section-number">26</span> Entrar com a root</a>
+  <ul class="collapse">
+  <li><a href="#comprovació-final-què-veu-debian" id="toc-comprovació-final-què-veu-debian" class="nav-link" data-scroll-target="#comprovació-final-què-veu-debian"><span class="header-section-number">26.1</span> Comprovació final: què veu Debian?</a>
+  <ul class="collapse">
+  <li><a href="#el-disc-virtual-és-un-fitxer" id="toc-el-disc-virtual-és-un-fitxer" class="nav-link" data-scroll-target="#el-disc-virtual-és-un-fitxer"><span class="header-section-number">26.1.1</span> El disc virtual és un fitxer</a></li>
+  <li><a href="#quant-ocupa-realment-el-disc" id="toc-quant-ocupa-realment-el-disc" class="nav-link" data-scroll-target="#quant-ocupa-realment-el-disc"><span class="header-section-number">26.1.2</span> Quant ocupa realment el disc?</a></li>
+  <li><a href="#la-xarxa-també-és-virtual" id="toc-la-xarxa-també-és-virtual" class="nav-link" data-scroll-target="#la-xarxa-també-és-virtual"><span class="header-section-number">26.1.3</span> La xarxa també és virtual</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Laboratori 2 · Instal·lació de Debian 12</h1>
+<p class="subtitle lead">Virtualització · Curs zero d’Informàtica</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jordi Mateo Fornés </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objectius" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Objectius</h1>
+<p>En aquesta pràctica aprendrem a:</p>
+<ul>
+<li>Crear i configurar una màquina virtual preparada per instal·lar un sistema operatiu.</li>
+<li>Instal·lar <strong>Debian 12</strong> dins d’una màquina virtual.</li>
+<li>Entendre les principals decisions que prenem durant la instal·lació d’un sistema Linux.</li>
+<li>Configurar la xarxa, els usuaris i el sistema de fitxers.</li>
+<li>Instal·lar un sistema Debian en <strong>mode text</strong>, sense interfície gràfica.</li>
+<li>Accedir al sistema i començar a treballar amb la línia de comandes.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aquesta pràctica continua directament el que hem fet al <strong>Laboratori 1</strong>. Partim de VMware instal·lat i de la ISO de Debian disponible.</p>
+</div>
+</div>
+</section>
+<section id="obtenir-la-iso-de-debian-12.5" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Obtenir la ISO de Debian 12.5</h1>
+<ul>
+<li>Ves a la pàgina de descàrrega de Debian 12.5.0: https://get.debian.org/images/archive/12.5.0/</li>
+<li>Selecciona la imatge ISO per a la teva arquitectura (amd64 o arm64).</li>
+<li>Seleccioneu la carpeta <strong>iso-cd</strong>.</li>
+<li>Seleccioneu el fitxer <strong>debian-12.5.0-x-netinst.iso</strong>. On x és l’arquitectura del vostre sistema (amd64 o arm64).</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La imatge <strong>netinst</strong> és una imatge d’instal·lació mínima que descarrega els paquets necessaris durant la instal·lació. Això permet personalitzar la instal·lació i seleccionar els paquets que voleu instal·lar.</p>
+</div>
+</div>
+</section>
+<section id="preparar-la-màquina-virtual" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Preparar la màquina virtual</h1>
+<p>En el Laboratori 1 hem creat una màquina virtual senzilla per experimentar amb la virtualització.</p>
+<p>Ara crearem una nova màquina virtual que utilitzarem per instal·lar Debian.</p>
+<p>Els passos són similars als que vam seguir en el Laboratori 1.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En el Laboratori 1 vam utilitzar una màquina virtual amb Alpine Linux per experimentar amb els recursos. Ara farem una màquina virtual pensada per instal·lar-hi un sistema operatiu de manera permanent.</p>
+</div>
+</div>
+<p>VMware et preguntarà quin sistema operatiu instal·laràs.</p>
+<p>Selecciona:</p>
+<ul>
+<li><strong>Linux</strong></li>
+<li><strong>Debian 12.x 64-bit</strong>, si aquesta opció està disponible.</li>
+</ul>
+<p>Configurarem una màquina virtual amb uns recursos suficients per treballar amb Debian en mode text.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Recurs</th>
+<th style="text-align: right;">Configuració</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU</td>
+<td style="text-align: right;"><strong>2 cores</strong></td>
+</tr>
+<tr class="even">
+<td>RAM</td>
+<td style="text-align: right;"><strong>2 GB</strong></td>
+</tr>
+<tr class="odd">
+<td>Disc</td>
+<td style="text-align: right;"><strong>20 GB</strong></td>
+</tr>
+<tr class="even">
+<td>Xarxa</td>
+<td style="text-align: right;">NAT</td>
+</tr>
+<tr class="odd">
+<td>ISO</td>
+<td style="text-align: right;">Debian 12 netinst</td>
+</tr>
+</tbody>
+</table>
+<p>Pots anomenar la màquina virtual com vulguis, però és recomanable posar un nom que permeti identificar-la fàcilment: <code>vm-curs0-debian12</code>.</p>
+<p>Selecciona també una ubicació on tinguis prou espai lliure.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recorda que el disc virtual de la màquina virtual és un fitxer o conjunt de fitxers que es guarda al disc real de l’ordinador host.</p>
+</div>
+</div>
+<p>Connecta la ISO de Debian a la màquina virtual abans d’arrencar-la.</p>
+</section>
+<section id="arrencar-linstallador-de-debian" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Arrencar l’instal·lador de Debian</h1>
+<p>Inicia la màquina virtual amb:</p>
+<p><strong>Power on</strong></p>
+<p>La màquina virtual arrencarà des de la ISO i apareixerà el menú de l’instal·lador de Debian.</p>
+<p>Veurem diverses opcions.</p>
+<p><img src="../figures/debian12/install-04.png" class="img-fluid"></p>
+<p>Selecciona:</p>
+<p><strong>Graphical install</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>També existeix l’opció <strong>Install</strong>, que utilitza un instal·lador basat en text.</p>
+<p>En aquesta pràctica utilitzarem <strong>Graphical install</strong> perquè és més còmode per seguir els diferents passos de configuració.</p>
+<p>Això no significa que el Debian que instal·larem tingui interfície gràfica. L’entorn gràfic que veiem ara només és el de l’instal·lador.</p>
+</div>
+</div>
+</section>
+<section id="seleccionar-lidioma" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Seleccionar l’idioma</h1>
+<p>Selecciona l’idioma que vols utilitzar durant la instal·lació.</p>
+<p>En aquest curs utilitzarem:</p>
+<p><strong>Català</strong></p>
+<p><img src="../figures/debian12/install-05.png" class="img-fluid"></p>
+<p>L’idioma seleccionat afectarà les pantalles de configuració de l’instal·lador i algunes configuracions inicials del sistema.</p>
+</section>
+<section id="seleccionar-la-ubicació" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Seleccionar la ubicació</h1>
+<p>Selecciona:</p>
+<p><strong>Espanya</strong></p>
+<p><img src="../figures/debian12/install-06.png" class="img-fluid"></p>
+<p>La ubicació permet configurar alguns paràmetres regionals del sistema.</p>
+</section>
+<section id="configurar-el-teclat" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Configurar el teclat</h1>
+<p>Selecciona:</p>
+<p><strong>Català</strong></p>
+<p><img src="../figures/debian12/install-07.png" class="img-fluid"></p>
+<p>Això permet que el sistema interpreti correctament les tecles del teclat, especialment caràcters com:</p>
+<ul>
+<li><code>ç</code></li>
+<li>accents</li>
+<li><code>@</code></li>
+<li>símbols especials</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La configuració del teclat és independent de l’idioma del sistema. Podem tenir un sistema en català i utilitzar, per exemple, un teclat espanyol.</p>
+</div>
+</div>
+</section>
+<section id="carregar-els-components-de-linstallador" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Carregar els components de l’instal·lador</h1>
+<p>Debian carregarà els components necessaris per continuar la instal·lació.</p>
+<p><img src="../figures/debian12/install-08.png" class="img-fluid"></p>
+<p>En aquest punt no cal modificar res.</p>
+<p>Simplement espera que finalitzi el procés.</p>
+</section>
+<section id="configurar-la-xarxa" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Configurar la xarxa</h1>
+<p>Debian intentarà configurar automàticament la xarxa de la màquina virtual.</p>
+<p>A VMware, normalment utilitzarem una connexió de tipus <strong>NAT</strong>.</p>
+<p>Això permet que la màquina virtual tingui accés a Internet utilitzant la connexió de l’ordinador host.</p>
+<section id="nom-de-la-màquina" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="nom-de-la-màquina"><span class="header-section-number">9.1</span> Nom de la màquina</h2>
+<p>El primer pas és configurar el <strong>hostname</strong>.</p>
+<p><img src="../figures/debian12/install-09.png" class="img-fluid"></p>
+<p>El hostname és el nom que identifica la màquina dins de la xarxa.</p>
+<p>Podem utilitzar, per exemple:</p>
+<p><code>vm-curs0-debian12</code></p>
+<p>També pots utilitzar un altre nom.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Més endavant, quan treballem amb xarxes i servidors, el hostname serà especialment important perquè permetrà identificar diferents màquines.</p>
+</div>
+</div>
+</section>
+<section id="domini" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="domini"><span class="header-section-number">9.2</span> Domini</h2>
+<p>A continuació es demanarà el nom del domini.</p>
+<p><img src="../figures/debian12/install-10.png" class="img-fluid"></p>
+<p>En el nostre cas podem deixar aquest camp <strong>en blanc</strong>.</p>
+<p>No necessitem configurar cap domini per a aquesta pràctica.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un domini permet agrupar i identificar màquines dins d’una infraestructura de xarxa. En una xarxa domèstica o en aquesta pràctica no necessitem disposar d’un domini propi.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="configurar-els-usuaris" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Configurar els usuaris</h1>
+<p>A continuació Debian ens preguntarà com volem configurar els usuaris.</p>
+<p>Aquesta és una part important de la instal·lació perquè Linux diferencia entre usuaris normals i l’usuari administrador.</p>
+<section id="lusuari-root" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="lusuari-root"><span class="header-section-number">10.1</span> L’usuari <code>root</code></h2>
+<p>Debian ens permet configurar una contrasenya per a l’usuari <code>root</code>.</p>
+<p><img src="../figures/debian12/install-11.png" class="img-fluid"></p>
+<p><code>root</code> és l’usuari administrador del sistema.</p>
+<p>Té permisos per realitzar pràcticament qualsevol operació sobre el sistema.</p>
+<section id="una-decisió-important" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="una-decisió-important"><span class="header-section-number">10.1.1</span> Una decisió important</h3>
+<p>Si <strong>no introduïm cap contrasenya per a <code>root</code></strong>, Debian desactivarà l’accés directe de <code>root</code> mitjançant contrasenya i configurarà el primer usuari normal amb permisos administratius mitjançant <code>sudo</code>.</p>
+<p>Si, en canvi, configurem una contrasenya per a <code>root</code>, podrem iniciar sessió com a <code>root</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En aquesta pràctica treballarem principalment amb un usuari normal i utilitzarem <code>sudo</code> quan necessitem permisos d’administrador.</p>
+<p>Aquesta és una pràctica habitual en sistemes Linux perquè evita treballar constantment com a <code>root</code>.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="crear-lusuari-normal" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Crear l’usuari normal</h1>
+<p>Ara crearem el nostre usuari.</p>
+<section id="nom-complet" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="nom-complet"><span class="header-section-number">11.1</span> Nom complet</h2>
+<p><img src="../figures/debian12/install-12.png" class="img-fluid"></p>
+<p>Introdueix el teu nom complet.</p>
+<p>Per exemple:</p>
+<p><code>Jordi Mateo Fornés</code></p>
+</section>
+<section id="nom-dusuari" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="nom-dusuari"><span class="header-section-number">11.2</span> Nom d’usuari</h2>
+<p><img src="../figures/debian12/install-13.png" class="img-fluid"></p>
+<p>Introdueix el nom d’usuari que utilitzaràs per iniciar sessió.</p>
+<p>Per exemple:</p>
+<p><code>jordi</code></p>
+<p>Aquest nom serà el que utilitzarem posteriorment a la terminal.</p>
+</section>
+<section id="contrasenya" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="contrasenya"><span class="header-section-number">11.3</span> Contrasenya</h2>
+<p><img src="../figures/debian12/install-14.png" class="img-fluid"></p>
+<p>Defineix una contrasenya per a l’usuari.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Com que aquesta màquina virtual s’utilitzarà exclusivament per a pràctiques, pots utilitzar una contrasenya senzilla que recordis fàcilment.</p>
+<p><strong>No utilitzis aquesta contrasenya en sistemes reals o comptes personals.</strong></p>
+<p>En un sistema real, les contrasenyes han de ser prou robustes i no s’han de reutilitzar entre serveis.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="configurar-la-zona-horària" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Configurar la zona horària</h1>
+<p>Selecciona:</p>
+<p><strong>Madrid</strong></p>
+<p><img src="../figures/debian12/install-15.png" class="img-fluid"></p>
+<p>Això permet que Debian utilitzi correctament la zona horària local.</p>
+<p>La configuració de l’hora és important per a molts serveis del sistema, registres, certificats i aplicacions.</p>
+</section>
+<section id="configurar-el-disc" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Configurar el disc</h1>
+<p>Ara arribem a una de les parts més importants de la instal·lació:</p>
+<p><strong>el particionament del disc.</strong></p>
+<section id="particionament-guiat" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="particionament-guiat"><span class="header-section-number">13.1</span> Particionament guiat</h2>
+<p>Selecciona:</p>
+<p><strong>Guiat - utilitzar el disc sencer</strong></p>
+<p><img src="../figures/debian12/install-16.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aquí estem treballant amb el <strong>disc virtual de la màquina virtual</strong>, no amb el disc físic del teu ordinador.</p>
+<p>El disc que Debian veu dins de la VM és el disc virtual que hem creat anteriorment.</p>
+</div>
+</div>
+<p>Això és precisament un dels avantatges de treballar amb una màquina virtual: podem experimentar amb la instal·lació d’un sistema operatiu sense modificar directament el disc físic del nostre ordinador.</p>
+</section>
+<section id="seleccionar-el-disc" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="seleccionar-el-disc"><span class="header-section-number">13.2</span> Seleccionar el disc</h2>
+<p>Debian mostrarà els discs disponibles.</p>
+<p><img src="../figures/debian12/install-17.png" class="img-fluid"></p>
+<p>En el nostre cas només hauríem de veure el disc virtual que hem creat per a la màquina.</p>
+<p>Pot aparèixer amb un nom com:</p>
+<p><code>/dev/nvme0n1</code></p>
+<p>També podem trobar altres noms en diferents configuracions:</p>
+<ul>
+<li><code>/dev/sda</code></li>
+<li><code>/dev/vda</code></li>
+</ul>
+<p>El nom depèn del tipus de dispositiu que Debian detecta.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No cal memoritzar ara els noms dels dispositius.</p>
+<p>Més endavant, quan treballem amb Linux, aprendrem què significa aquesta nomenclatura.</p>
+</div>
+</div>
+</section>
+<section id="esquema-de-particions" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="esquema-de-particions"><span class="header-section-number">13.3</span> Esquema de particions</h2>
+<p>Selecciona:</p>
+<p><strong>Tots els fitxers en una partició</strong></p>
+<p><img src="../figures/debian12/install-18.png" class="img-fluid"></p>
+<p>Aquesta és l’opció més senzilla per a aquesta pràctica.</p>
+<p>Debian crearà automàticament les particions necessàries.</p>
+</section>
+<section id="revisar-les-particions" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="revisar-les-particions"><span class="header-section-number">13.4</span> Revisar les particions</h2>
+<p>Abans d’aplicar els canvis, Debian mostrarà el resum del particionament.</p>
+<p>En una instal·lació típica podem trobar particions com:</p>
+<ul>
+<li>una partició d’arrencada, com <code>/boot</code> o una partició EFI segons la configuració;</li>
+<li>la partició principal <code>/</code>, on es troba el sistema;</li>
+<li>una àrea de <code>swap</code>.</li>
+</ul>
+<p><img src="../figures/debian12/install-19.png" class="img-fluid"></p>
+<section id="què-és-swap" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="què-és-swap"><span class="header-section-number">13.4.1</span> Què és <code>swap</code>?</h3>
+<p>La <code>swap</code> és espai d’emmagatzematge que Linux pot utilitzar com a memòria virtual quan la RAM disponible no és suficient.</p>
+<p>No és equivalent a la RAM: és molt més lenta, perquè utilitza emmagatzematge.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aquesta és una primera aproximació al concepte de <code>swap</code>. Més endavant veurem amb més detall com Linux gestiona la memòria.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="confirmar-els-canvis" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="confirmar-els-canvis"><span class="header-section-number">13.5</span> Confirmar els canvis</h2>
+<p>Selecciona l’opció per finalitzar el particionament i escriure els canvis al disc.</p>
+<p><img src="../figures/debian12/install-20.png" class="img-fluid"></p>
+<p>Debian demanarà confirmació abans d’escriure els canvis.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En aquest punt estem modificant el <strong>disc virtual</strong> de Debian.</p>
+<p>Com que estem treballant dins d’una màquina virtual, no estem particionant directament el disc físic de l’ordinador host.</p>
+</div>
+</div>
+<p>Confirma els canvis.</p>
+</section>
+</section>
+<section id="installar-el-sistema-base" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Instal·lar el sistema base</h1>
+<p>Debian començarà a copiar i instal·lar els components necessaris.</p>
+<p><img src="../figures/debian12/install-21.png" class="img-fluid"></p>
+<p>Aquest procés pot trigar uns minuts.</p>
+<p>No cal intervenir mentre s’està instal·lant el sistema base.</p>
+</section>
+<section id="configurar-el-gestor-de-paquets" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Configurar el gestor de paquets</h1>
+<p>Un cop instal·lat el sistema base, Debian configurarà el seu sistema de paquets.</p>
+<section id="analitzar-els-mitjans-dinstallació" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="analitzar-els-mitjans-dinstallació"><span class="header-section-number">15.1</span> Analitzar els mitjans d’instal·lació</h2>
+<p>Debian pot preguntar si vols analitzar altres mitjans d’instal·lació.</p>
+<p><img src="../figures/debian12/install-22.png" class="img-fluid"></p>
+<p>En la nostra instal·lació només utilitzarem la ISO que ja hem connectat.</p>
+<p>Normalment no cal afegir cap altre mitjà.</p>
+</section>
+<section id="seleccionar-un-servidor-de-paquets" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="seleccionar-un-servidor-de-paquets"><span class="header-section-number">15.2</span> Seleccionar un servidor de paquets</h2>
+<p>Debian utilitza repositoris de programari per descarregar paquets.</p>
+<p>Primer seleccionarem la ubicació del servidor.</p>
+<p><img src="../figures/debian12/install-23.png" class="img-fluid"></p>
+<p>Selecciona:</p>
+<p><strong>Espanya</strong></p>
+<p>A continuació selecciona un servidor disponible.</p>
+<p><img src="../figures/debian12/install-24.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Els repositoris són servidors que proporcionen els paquets de programari de Debian.</p>
+<p>Més endavant, quan instal·lem programari amb <code>apt</code>, serà d’aquests repositoris d’on es descarregaran els paquets.</p>
+</div>
+</div>
+</section>
+<section id="configurar-un-proxy" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="configurar-un-proxy"><span class="header-section-number">15.3</span> Configurar un proxy</h2>
+<p>Debian preguntarà si necessitem configurar un proxy.</p>
+<p><img src="../figures/debian12/install-25.png" class="img-fluid"></p>
+<p>En la nostra situació normalment podem deixar aquest camp <strong>en blanc</strong>.</p>
+<section id="què-és-un-proxy" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="què-és-un-proxy"><span class="header-section-number">15.3.1</span> Què és un proxy?</h3>
+<p>Un <strong>proxy</strong> és un servidor intermediari entre un ordinador i altres servidors de la xarxa.</p>
+<p>Per exemple:</p>
+<pre class="text"><code>Ordinador → Proxy → Internet</code></pre>
+<p>En una xarxa corporativa o educativa, un proxy pot utilitzar-se per controlar l’accés a Internet, aplicar polítiques de seguretat o gestionar les connexions.</p>
+<p>En una xarxa domèstica normalment no és necessari configurar-ne un.</p>
+</section>
+</section>
+</section>
+<section id="installar-els-paquets" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Instal·lar els paquets</h1>
+<p>Debian descarregarà i instal·larà els paquets necessaris.</p>
+<p>Aquest procés pot trigar una mica depenent de la connexió de xarxa.</p>
+</section>
+<section id="popularity-contest" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Popularity Contest</h1>
+<p>Debian pot preguntar si vols participar en el programa:</p>
+<p><strong>popularity-contest</strong></p>
+<p>Aquest sistema recopila informació estadística sobre l’ús dels paquets de Debian per ajudar el projecte a conèixer quins paquets són més utilitzats.</p>
+<p>Pots seleccionar l’opció que prefereixis.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No és necessari participar en aquest programa per poder utilitzar Debian.</p>
+</div>
+</div>
+</section>
+<section id="seleccionar-el-programari" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Seleccionar el programari</h1>
+<p>Aquest és un dels punts més importants de la instal·lació.</p>
+<p>Debian ens permet seleccionar diferents tipus de programari.</p>
+<p>En aquesta pràctica seleccionarem:</p>
+<ul>
+<li><strong>Servidor SSH</strong></li>
+<li><strong>Utilitats estàndard del sistema</strong></li>
+</ul>
+<p>I no seleccionarem cap entorn d’escriptori gràfic.</p>
+<p>Per tant, treballarem amb un Debian en mode text.</p>
+<section id="per-què-no-installem-una-interfície-gràfica" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="per-què-no-installem-una-interfície-gràfica"><span class="header-section-number">18.1</span> Per què no instal·lem una interfície gràfica?</h2>
+<p>Un sistema Linux no necessita obligatòriament una interfície gràfica.</p>
+<p>Podem interactuar directament amb el sistema mitjançant una terminal.</p>
+<p>Per exemple:</p>
+<pre class="text"><code>usuari@debian:~$</code></pre>
+<p>Aquest tipus d’instal·lació és habitual en servidors.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un servidor no necessita necessàriament tenir una pantalla ni un entorn gràfic.</p>
+<p>Molts servidors Linux es gestionen completament des de la línia de comandes, sovint de manera remota mitjançant SSH.</p>
+</div>
+</div>
+</section>
+<section id="què-és-ssh" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="què-és-ssh"><span class="header-section-number">18.2</span> Què és SSH?</h2>
+<p>SSH (Secure Shell) és un protocol que permet connectar-se de manera segura a un altre ordinador a través de la xarxa.</p>
+<p>Conceptualment:</p>
+<pre class="text"><code>El teu ordinador
+       │
+       │ SSH
+       ↓
+Servidor Debian</code></pre>
+<p>Això permet administrar un servidor sense haver d’estar físicament davant de la seva pantalla.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No necessitem aprofundir ara en SSH. El més important és entendre que ens permetrà treballar amb un sistema Linux remot mitjançant la terminal.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="installar-el-programari-seleccionat" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> Instal·lar el programari seleccionat</h1>
+<p>Debian començarà a instal·lar els paquets seleccionats.</p>
+<p>Aquest procés pot trigar uns minuts.</p>
+</section>
+<section id="installar-grub" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> Instal·lar GRUB</h1>
+<p>A continuació Debian preguntarà si vols instal·lar el gestor d’arrencada GRUB.</p>
+<p>Selecciona que sí.</p>
+<p>Quan demani on instal·lar-lo, selecciona el disc virtual principal de la màquina.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GRUB és el programa que participa en el procés d’arrencada i permet carregar el sistema operatiu.</p>
+<p>En una màquina virtual amb un únic sistema operatiu, normalment no cal prendre cap decisió especial: l’instal·larem al disc virtual principal.</p>
+</div>
+</div>
+</section>
+<section id="finalitzar-la-installació" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> Finalitzar la instal·lació</h1>
+<p>Quan la instal·lació finalitzi apareixerà un missatge indicant que el procés s’ha completat.</p>
+<p>Debian reiniciarà la màquina virtual.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quan la màquina es reiniciï, és important que no torni a començar l’instal·lador des de la ISO.</p>
+<p>Si VMware manté la ISO connectada, pot ser necessari desconnectar-la de la unitat virtual de CD/DVD.</p>
+</div>
+</div>
+</section>
+<section id="arrencar-debian" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Arrencar Debian</h1>
+<p>Després del reinici apareixerà GRUB.</p>
+<p>Selecciona:</p>
+<p><strong>Debian GNU/Linux</strong></p>
+<p>Debian començarà el procés d’arrencada.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GRUB és especialment útil quan un ordinador té diversos sistemes operatius o diverses opcions d’arrencada.</p>
+<p>En la nostra màquina només tenim Debian, però GRUB continua sent necessari com a part del procés d’arrencada.</p>
+</div>
+</div>
+</section>
+<section id="iniciar-sessió" class="level1" data-number="23">
+<h1 data-number="23"><span class="header-section-number">23</span> Iniciar sessió</h1>
+<p>Quan Debian hagi acabat d’arrencar apareixerà la pantalla d’inici de sessió.</p>
+<p>Introdueix:</p>
+<ul>
+<li>el nom d’usuari que has creat;</li>
+<li>la contrasenya corresponent.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quan escriguis la contrasenya, no apareixerà cap caràcter a la pantalla.</p>
+<p>Això és normal en sistemes Unix/Linux.</p>
+<p>Escriu la contrasenya i prem Enter.</p>
+</div>
+</div>
+<p>Si tot ha anat bé, apareixerà una línia semblant a:</p>
+<pre class="text"><code>usuari@debian:~$</code></pre>
+<p>🎉 Ja tenim Debian funcionant dins de la nostra màquina virtual.</p>
+</section>
+<section id="comprovar-el-sistema" class="level1" data-number="24">
+<h1 data-number="24"><span class="header-section-number">24</span> Comprovar el sistema</h1>
+<p>Ara que tenim Debian funcionant, podem començar a observar el sistema des de dins.</p>
+<section id="qui-sóc" class="level2" data-number="24.1">
+<h2 data-number="24.1" class="anchored" data-anchor-id="qui-sóc"><span class="header-section-number">24.1</span> Qui sóc?</h2>
+<p>Executa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La comanda mostrarà el nom de l’usuari amb el qual has iniciat sessió.</p>
+</section>
+</section>
+<section id="tancar-la-sessió" class="level1" data-number="25">
+<h1 data-number="25"><span class="header-section-number">25</span> Tancar la sessió</h1>
+<p>Quan vulguis sortir de la sessió de l’usuari pots executar:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Això tanca la sessió actual.</p>
+</section>
+<section id="entrar-com-a-root" class="level1" data-number="26">
+<h1 data-number="26"><span class="header-section-number">26</span> Entrar com a root</h1>
+<p>Si durant la instal·lació has configurat una contrasenya per a root, pots iniciar una sessió com a administrador.</p>
+<p>Quan aparegui el login, introdueix:</p>
+<pre class="text"><code>root</code></pre>
+<p>i la contrasenya corresponent.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Treballar com a root significa tenir permisos molt amplis sobre el sistema.</p>
+<p>No és recomanable utilitzar root per treballar habitualment. En general, és preferible utilitzar un usuari normal i executar amb sudo només les comandes que necessitin permisos administratius.</p>
+</div>
+</div>
+<section id="comprovació-final-què-veu-debian" class="level2" data-number="26.1">
+<h2 data-number="26.1" class="anchored" data-anchor-id="comprovació-final-què-veu-debian"><span class="header-section-number">26.1</span> Comprovació final: què veu Debian?</h2>
+<p>Executa cada comandament dins de Debian i compara el resultat amb el que vam configurar durant la pràctica.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Recurs</th>
+<th>Comanda</th>
+<th>Què havíem configurat</th>
+<th>El teu resultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU</td>
+<td><code>lscpu</code></td>
+<td>2 cores (creació de la VM)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Memòria</td>
+<td><code>free -h</code></td>
+<td>2 GB de RAM (creació de la VM)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Disc (particions)</td>
+<td><code>lsblk</code></td>
+<td>Disc de 20 GB, particionament guiat</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Disc (ús)</td>
+<td><code>df -h</code></td>
+<td>Espai utilitzat pel sistema a <code>/</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Xarxa</td>
+<td><code>ip a</code></td>
+<td>Connexió NAT amb una IP assignada</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Nom de la màquina</td>
+<td><code>hostname</code></td>
+<td>El nom que vam triar durant la instal·lació</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Sistema</td>
+<td><code>uname -a</code></td>
+<td>Kernel Linux i arquitectura de la VM</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ara que sabem identificar els recursos de la màquina virtual, comprovarem què hi ha realment darrere.</p>
+<section id="el-disc-virtual-és-un-fitxer" class="level3" data-number="26.1.1">
+<h3 data-number="26.1.1" class="anchored" data-anchor-id="el-disc-virtual-és-un-fitxer"><span class="header-section-number">26.1.1</span> El disc virtual és un fitxer</h3>
+<p>Apaga la màquina virtual i ves a la carpeta on VMware ha creat la VM.</p>
+<p>Localitza els fitxers associats al disc virtual (normalment amb extensió <code>.vmdk</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Pregunta</strong></p>
+<p>Si el disc virtual de 20 GB és, en realitat, un fitxer del nostre ordinador físic, què creus que passarà si eliminem aquest fitxer?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alerta
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No cal eliminar-lo de debò!</p>
+</div>
+</div>
+<p><strong>El disc virtual conté les dades de la màquina virtual.</strong> Si l’eliminéssim, VMware ja no trobaria el disc necessari per arrencar Debian.</p>
+<blockquote class="blockquote">
+<p>La màquina virtual sembla tenir un disc propi, però aquest disc està emmagatzemat físicament al host, en forma d’un únic fitxer.</p>
+</blockquote>
+<pre class="text"><code>Host
+  → fitxer .vmdk
+  → VMware el presenta com un disc virtual
+Guest
+  → lsblk mostra el disc (p. ex. /dev/sda o /dev/nvme0n1)
+  → Debian el tracta com un disc normal</code></pre>
+</section>
+<section id="quant-ocupa-realment-el-disc" class="level3" data-number="26.1.2">
+<h3 data-number="26.1.2" class="anchored" data-anchor-id="quant-ocupa-realment-el-disc"><span class="header-section-number">26.1.2</span> Quant ocupa realment el disc?</h3>
+<p>Comprova el disc des de Debian:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lsblk</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Hauries de veure un disc d’aproximadament 20 GB.</p>
+<p>Ara compara-ho amb:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Els dos comandaments no mostren exactament el mateix.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Per què no coincideixen?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>lsblk</code> mostra els <strong>dispositius i les particions</strong> del disc.</p>
+<p><code>df -h</code> mostra l’<strong>espai dels sistemes de fitxers</strong> que estan muntats.</p>
+<p>Un disc virtual de 20 GB no significa que els 20 GB apareguin com a espai disponible per als fitxers: el disc conté particions i sistemes de fitxers, que ocupen espai propi.</p>
+</div>
+</div>
+</section>
+<section id="la-xarxa-també-és-virtual" class="level3" data-number="26.1.3">
+<h3 data-number="26.1.3" class="anchored" data-anchor-id="la-xarxa-també-és-virtual"><span class="header-section-number">26.1.3</span> La xarxa també és virtual</h3>
+<p>Comprova la configuració de xarxa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> a</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Localitza la interfície de xarxa i la seva adreça IP.</p>
+<p>Ara mira la ruta per defecte:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> route</span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Busca la línia que comença per <code>default via ...</code>. Aquesta adreça és la porta d’enllaç de la VM.</p>
+<p>Prova ara de fer ping <strong>des del host</strong> cap a la mateixa adreça de la porta d’enllaç:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Windows (PowerShell)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">macOS (Terminal)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> <span class="at">-n</span> 4 <span class="op">&lt;</span>adreça_de_la_porta_d<span class="st">'enllaç&gt;</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> <span class="at">-c</span> 4 <span class="op">&lt;</span>adreça_de_la_porta_d<span class="st">'enllaç&gt;</span></span></code></pre></div><button title="Copia al porta-retalls" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consell</span>Per què hauria de funcionar?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’adreça de la porta d’enllaç no és només una IP que veu la VM: correspon a una <strong>interfície de xarxa virtual real que VMware crea al teu propi ordinador</strong>. Per això el host també la pot veure i respondre-hi directament, sense passar per la VM.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si el ping no respon des del host, no vol dir necessàriament que hi hagi un problema: el tallafocs del teu sistema operatiu pot bloquejar les respostes ICMP (ping) per defecte. No cal solucionar-ho per a aquesta pràctica.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Què estem comprovant?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre class="text"><code>Host
+  → VMware NAT
+  → interfície de xarxa virtual
+Guest
+  → ip a
+  → Debian veu una targeta de xarxa normal</code></pre>
+
+
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/Curs0-EPS-UdL\.github\.io\/2627\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,122 +1,290 @@
 [
   {
-    "objectID": "laboratori/lab03.html",
-    "href": "laboratori/lab03.html",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "objectID": "laboratori/lab-git-2.html",
+    "href": "laboratori/lab-git-2.html",
+    "title": "Laboratori 4: Navegant la història",
     "section": "",
-    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
+    "text": "Aprendre a consultar la història d’un repositori Git."
   },
   {
-    "objectID": "laboratori/lab03.html#objectius",
-    "href": "laboratori/lab03.html#objectius",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "objectID": "laboratori/lab-git-2.html#objectius",
+    "href": "laboratori/lab-git-2.html#objectius",
+    "title": "Laboratori 4: Navegant la història",
     "section": "",
-    "text": "Configurar el Visual Studio Code (VSCode) per connectar-se a la màquina virtual mitjançant SSH."
+    "text": "Aprendre a consultar la història d’un repositori Git."
   },
   {
-    "objectID": "laboratori/lab03.html#requisits-previs",
-    "href": "laboratori/lab03.html#requisits-previs",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
+    "objectID": "laboratori/lab-git-2.html#requisits-previs",
+    "href": "laboratori/lab-git-2.html#requisits-previs",
+    "title": "Laboratori 4: Navegant la història",
     "section": "Requisits previs",
-    "text": "Requisits previs\n\nMàquina virtual en funcionament (vegeu Laboratori 2).\nVisual Studio Code (VSCode) instal·lat al vostre ordinador. Podeu descarregar-lo des de https://code.visualstudio.com/.\nObtenir la IP de la màquina virtual. Per fer-ho, podeu:\n\nConsultar la informació a VMWare: \nO bé, iniciar sessió a la màquina virtual i executar la comanda ip a per obtenir la IP: \n\n\n\n\n\n\n\nNota\n\n\n\nEn els dos casos, la IP de la màquina virtual és 172.16.10.223."
+    "text": "Requisits previs\n\nHaver completat el laboratori anterior.\nTenir un repositori Git amb més de 4 commits.\nGit està instal·lat al sistema."
   },
   {
-    "objectID": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
-    "href": "laboratori/lab03.html#configurant-vscode-per-connectar-se-a-la-màquina-virtual",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
-    "section": "Configurant VSCode per connectar-se a la màquina virtual",
-    "text": "Configurant VSCode per connectar-se a la màquina virtual\nUn cop hagueu instal·lat el vostre entorn de desenvolupament (IDE), podeu afegir les següents extensions utilitzant el marketplace de VSCode: remote-ssh. Primer, feu clic a Marketplace (1), després cerqueu remote-ssh i, finalment, feu clic a (3) per instal·lar la extensió. Consulteu la imatge:\n\nUn cop hagueu instal·lat la extensió, ja podeu connectar-vos a la màquina virtual. Per fer-ho, feu clic a la icona de la part inferior esquerra (1) i seleccioneu l’opció Remote-SSH: Connect to Host… (2). Consulteu la imatge:\n\nAra apareixerà una finestra on podreu escriure la connexió SSH. També veureu l’opció Add a New SSH Host. Feu clic en aquesta opció i introduïu la comanda SSH per connectar-vos a la màquina virtual. Consulteu la imatge:\n\nSeleccioneu la primera opció del menú desplegable amb la ruta del vostre usuari i feu clic a Add. Consulteu la imatge:\n\ni comproveu que l’amfitrió s’ha afegit correctament.\n\nAra feu clic a Open Config i observeu que s’ha creat una nova entrada amb el vostre usuari i la IP de la màquina virtual:\nHost 172.16.10.223\n  HostName 172.16.10.223\n  User jordi\nUs recomano que modifiqueu el fitxer de configuració perquè sigui més fàcil de recordar. Per exemple, podeu canviar el nom de l’amfitrió per vm-curs0-debian12 :\nHost vm-curs0-debian12\n  HostName 172.16.10.202\n  User jordi\nUn cop hagueu modificat el fitxer de configuració, guardem-lo i tanquem-lo. Ara ja podeu connectar-vos a la màquina virtual vm-curs0-debian12. Per fer-ho:\n\nFeu clic a la icona de la part inferior esquerra.\nSeleccioneu Remote-SSH: Connect to Host….\nSeleccioneu vm-curs0-debian12:\n\n\nUs apareixerà una finestra emergent que us demanarà si voleu confiar en l’amfitrió. Feu clic a Continue. \nUs apareixerà una altra finestra emergent que us demanarà la contrasenya de l’usuari jordi. \n\n\n\n\n\n\n\nNota\n\n\n\nLa primera vegada que us connecteu a la màquina virtual, VSCode instal·larà el servidor remot a la màquina virtual. Això pot trigar uns minuts.\n\n\nUn cop us hàgiu connectat, veureu que la finestra de VSCode ha canviat i que ara esteu treballant a la màquina virtual. Podeu comprovar-ho a la part inferior esquerra on apareix el nom de l’amfitrió vm-curs0-debian12.\n\nPer comprovar que tot funciona correctament, podeu obrir una terminal integrada a VSCode i executar la comanda uname -a per veure la informació del sistema i comprovar que esteu a la màquina virtual."
+    "objectID": "laboratori/lab-git-2.html#preparant-el-repositori",
+    "href": "laboratori/lab-git-2.html#preparant-el-repositori",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Preparant el repositori",
+    "text": "Preparant el repositori\nContinuarem treballant amb el repositori creat al laboratori anterior.\nComprova que el repositori està net:\ngit status\nConsulta també la història:\ngit log --oneline\nHauries de veure diversos commits. Anota els 5 primers caràcters dels tres últims commits. Els necessitaràs més endavant.\n\n\n\n\n\n\nConsell\n\n\n\nNo cal escriure l’identificador complet d’un commit. Habitualment podem utilitzar la seva forma abreviada, sempre que sigui prou llarga per identificar-lo de manera inequívoca."
   },
   {
-    "objectID": "laboratori/lab03.html#exercicis",
-    "href": "laboratori/lab03.html#exercicis",
-    "title": "Laboratori 3: Configurant el meu entorn de desenvolupament amb VSCode",
-    "section": "Exercicis",
-    "text": "Exercicis\n\nCreeu carpetes i fitxers a la màquina virtual utilitzant la terminal integrada de VSCode.\nEditeu fitxers utilitzant l’editor de VSCode.\nPodeu pujar i baixar fitxers entre la màquina local i la màquina virtual utilitzant drag and drop."
+    "objectID": "laboratori/lab-git-2.html#consultant-la-història",
+    "href": "laboratori/lab-git-2.html#consultant-la-història",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Consultant la història",
+    "text": "Consultant la història\nExecuta git log per veure els commits en el projecte. Per veure una versió més compacta:\ngit log --oneline\nUtilitza git log --stat per veure quins fitxers es van modificar en cada commit i quantes línies. Identifica un commit on es canviés README.md i fixa’t en el nombre d’insercions i supressions.\n\n\n\n\n\n\nNota\n\n\n\nPots veure tots els canvis de la història amb git log --patch (o git log -p). Això pot ser molt extens, però. NO és recomanable fer-ho servir excepte en casos molt concrets."
   },
   {
-    "objectID": "laboratori/lab04.html",
-    "href": "laboratori/lab04.html",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "objectID": "laboratori/lab-git-2.html#examina-els-canvis-del-commit",
+    "href": "laboratori/lab-git-2.html#examina-els-canvis-del-commit",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Examina els canvis del commit",
+    "text": "Examina els canvis del commit\nUtilitza git show &lt;id&gt; per veure els canvis del commit identificat en el pas anterior, que modificava README.md, i busca la següent informació:\n\nQui va fer el commit?\nQuina data?\nQuins fitxers van canviar?\nQuantes línies es van afegir o eliminar?"
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#compara-dos-commits",
+    "href": "laboratori/lab-git-2.html#compara-dos-commits",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Compara dos commits",
+    "text": "Compara dos commits\nTria dos commits que tinguin diferències en el fitxer README.md (o en qualsevol altre).\ngit diff &lt;commit1&gt;..&lt;commit2&gt;\nObserva el resultat. Ara compara el primer commit amb l’estat actual (HEAD):\ngit diff &lt;commit1&gt;..HEAD\n\n\n\n\n\n\nConsell\n\n\n\nPots ometre HEAD i escriure simplement git diff &lt;commit1&gt; per comparar amb l’estat actual."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#recupera-una-versió-antiga-dun-fitxer",
+    "href": "laboratori/lab-git-2.html#recupera-una-versió-antiga-dun-fitxer",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Recupera una versió antiga d’un fitxer",
+    "text": "Recupera una versió antiga d’un fitxer\nPrimer de tot, consulta el contingut actual del fitxer README.md:\ncat README.md\nBusca l’identificador del commit anterior a canviar el títol, i recupera el fitxer. Per veure la història d’un fitxer concret, utilitza:\ngit log --oneline README.md\nUn cop tinguis l’identificador, utilitza:\ngit restore --source=&lt;id&gt; README.md\nQuin és el contingut del fitxer? En quin estat està el fitxer README.md?\nHauries de veure README.md com a modified. Això és perquè has modificat l’àrea working, però no la història.\nDescarta els canvis de l’àrea working fent servir:\ngit restore README.md\nI comprova que el repositori està net i el contingut és el mateix que teniem abans de fer el primer restore.\n\n\n\n\n\n\nNota\n\n\n\nSi volguessim conservar el contingut que hem recuperat amb restore --source=&lt;id&gt;, hauriem d’afegir el fitxer i fer un nou commit."
+  },
+  {
+    "objectID": "laboratori/lab-git-2.html#exercici-final-posat-a-prova",
+    "href": "laboratori/lab-git-2.html#exercici-final-posat-a-prova",
+    "title": "Laboratori 4: Navegant la història",
+    "section": "Exercici final: posa’t a prova",
+    "text": "Exercici final: posa’t a prova\nFes els següents passos i respon a les preguntes.\n\nCrea un nou fitxer prova.txt amb el text “Primera línia”.\nAfegeix-lo i fes un commit amb missatge “Afegeix prova”.\nModifica prova.txt perquè contingui dues línies de contingut.\nAfegeix els canvis a l’àrea staging.\nModifica prova.txt de nou, ara afegeix “Tercera línia” sense fer git add.\nExecuta git status i descriu què veus.\nExecuta git diff i git diff --staged. Quina diferència hi ha?\nFes un commit amb el canvis que tenies a staging. Quin missatge posaries?\nDesprés del commit, executa git log --oneline. Quants commits tens ara?\nRecupera prova.txt tal com era en el commit anterior al que acabes de fer (sense perdre la història). Fes servir git restore --source i comprova el contingut.\nCrea un nou commit amb el contingut anterior."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html",
+    "href": "laboratori/lab-virt-2.html",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
     "section": "",
-    "text": "Instal·lar i configurar Git a la màquina virtual.\nReplicar l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git."
+    "text": "En aquesta pràctica aprendrem a:\n\nCrear i configurar una màquina virtual preparada per instal·lar un sistema operatiu.\nInstal·lar Debian 12 dins d’una màquina virtual.\nEntendre les principals decisions que prenem durant la instal·lació d’un sistema Linux.\nConfigurar la xarxa, els usuaris i el sistema de fitxers.\nInstal·lar un sistema Debian en mode text, sense interfície gràfica.\nAccedir al sistema i començar a treballar amb la línia de comandes.\n\n\n\n\n\n\n\nConsell\n\n\n\nAquesta pràctica continua directament el que hem fet al Laboratori 1. Partim de VMware instal·lat i de la ISO de Debian disponible."
   },
   {
-    "objectID": "laboratori/lab04.html#objectius",
-    "href": "laboratori/lab04.html#objectius",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "objectID": "laboratori/lab-virt-2.html#nom-de-la-màquina",
+    "href": "laboratori/lab-virt-2.html#nom-de-la-màquina",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "9.1 Nom de la màquina",
+    "text": "9.1 Nom de la màquina\nEl primer pas és configurar el hostname.\n\nEl hostname és el nom que identifica la màquina dins de la xarxa.\nPodem utilitzar, per exemple:\nvm-curs0-debian12\nTambé pots utilitzar un altre nom.\n\n\n\n\n\n\nNota\n\n\n\nMés endavant, quan treballem amb xarxes i servidors, el hostname serà especialment important perquè permetrà identificar diferents màquines."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#domini",
+    "href": "laboratori/lab-virt-2.html#domini",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "9.2 Domini",
+    "text": "9.2 Domini\nA continuació es demanarà el nom del domini.\n\nEn el nostre cas podem deixar aquest camp en blanc.\nNo necessitem configurar cap domini per a aquesta pràctica.\n\n\n\n\n\n\nNota\n\n\n\nUn domini permet agrupar i identificar màquines dins d’una infraestructura de xarxa. En una xarxa domèstica o en aquesta pràctica no necessitem disposar d’un domini propi."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#lusuari-root",
+    "href": "laboratori/lab-virt-2.html#lusuari-root",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "10.1 L’usuari root",
+    "text": "10.1 L’usuari root\nDebian ens permet configurar una contrasenya per a l’usuari root.\n\nroot és l’usuari administrador del sistema.\nTé permisos per realitzar pràcticament qualsevol operació sobre el sistema.\n\n10.1.1 Una decisió important\nSi no introduïm cap contrasenya per a root, Debian desactivarà l’accés directe de root mitjançant contrasenya i configurarà el primer usuari normal amb permisos administratius mitjançant sudo.\nSi, en canvi, configurem una contrasenya per a root, podrem iniciar sessió com a root.\n\n\n\n\n\n\nNota\n\n\n\nEn aquesta pràctica treballarem principalment amb un usuari normal i utilitzarem sudo quan necessitem permisos d’administrador.\nAquesta és una pràctica habitual en sistemes Linux perquè evita treballar constantment com a root."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#nom-complet",
+    "href": "laboratori/lab-virt-2.html#nom-complet",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "11.1 Nom complet",
+    "text": "11.1 Nom complet\n\nIntrodueix el teu nom complet.\nPer exemple:\nJordi Mateo Fornés"
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#nom-dusuari",
+    "href": "laboratori/lab-virt-2.html#nom-dusuari",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "11.2 Nom d’usuari",
+    "text": "11.2 Nom d’usuari\n\nIntrodueix el nom d’usuari que utilitzaràs per iniciar sessió.\nPer exemple:\njordi\nAquest nom serà el que utilitzarem posteriorment a la terminal."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#contrasenya",
+    "href": "laboratori/lab-virt-2.html#contrasenya",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "11.3 Contrasenya",
+    "text": "11.3 Contrasenya\n\nDefineix una contrasenya per a l’usuari.\n\n\n\n\n\n\nAlerta\n\n\n\nCom que aquesta màquina virtual s’utilitzarà exclusivament per a pràctiques, pots utilitzar una contrasenya senzilla que recordis fàcilment.\nNo utilitzis aquesta contrasenya en sistemes reals o comptes personals.\nEn un sistema real, les contrasenyes han de ser prou robustes i no s’han de reutilitzar entre serveis."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#particionament-guiat",
+    "href": "laboratori/lab-virt-2.html#particionament-guiat",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "13.1 Particionament guiat",
+    "text": "13.1 Particionament guiat\nSelecciona:\nGuiat - utilitzar el disc sencer\n\n\n\n\n\n\n\nAlerta\n\n\n\nAquí estem treballant amb el disc virtual de la màquina virtual, no amb el disc físic del teu ordinador.\nEl disc que Debian veu dins de la VM és el disc virtual que hem creat anteriorment.\n\n\nAixò és precisament un dels avantatges de treballar amb una màquina virtual: podem experimentar amb la instal·lació d’un sistema operatiu sense modificar directament el disc físic del nostre ordinador."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#seleccionar-el-disc",
+    "href": "laboratori/lab-virt-2.html#seleccionar-el-disc",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "13.2 Seleccionar el disc",
+    "text": "13.2 Seleccionar el disc\nDebian mostrarà els discs disponibles.\n\nEn el nostre cas només hauríem de veure el disc virtual que hem creat per a la màquina.\nPot aparèixer amb un nom com:\n/dev/nvme0n1\nTambé podem trobar altres noms en diferents configuracions:\n\n/dev/sda\n/dev/vda\n\nEl nom depèn del tipus de dispositiu que Debian detecta.\n\n\n\n\n\n\nNota\n\n\n\nNo cal memoritzar ara els noms dels dispositius.\nMés endavant, quan treballem amb Linux, aprendrem què significa aquesta nomenclatura."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#esquema-de-particions",
+    "href": "laboratori/lab-virt-2.html#esquema-de-particions",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "13.3 Esquema de particions",
+    "text": "13.3 Esquema de particions\nSelecciona:\nTots els fitxers en una partició\n\nAquesta és l’opció més senzilla per a aquesta pràctica.\nDebian crearà automàticament les particions necessàries."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#revisar-les-particions",
+    "href": "laboratori/lab-virt-2.html#revisar-les-particions",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "13.4 Revisar les particions",
+    "text": "13.4 Revisar les particions\nAbans d’aplicar els canvis, Debian mostrarà el resum del particionament.\nEn una instal·lació típica podem trobar particions com:\n\nuna partició d’arrencada, com /boot o una partició EFI segons la configuració;\nla partició principal /, on es troba el sistema;\nuna àrea de swap.\n\n\n\n13.4.1 Què és swap?\nLa swap és espai d’emmagatzematge que Linux pot utilitzar com a memòria virtual quan la RAM disponible no és suficient.\nNo és equivalent a la RAM: és molt més lenta, perquè utilitza emmagatzematge.\n\n\n\n\n\n\nNota\n\n\n\nAquesta és una primera aproximació al concepte de swap. Més endavant veurem amb més detall com Linux gestiona la memòria."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#confirmar-els-canvis",
+    "href": "laboratori/lab-virt-2.html#confirmar-els-canvis",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "13.5 Confirmar els canvis",
+    "text": "13.5 Confirmar els canvis\nSelecciona l’opció per finalitzar el particionament i escriure els canvis al disc.\n\nDebian demanarà confirmació abans d’escriure els canvis.\n\n\n\n\n\n\nAlerta\n\n\n\nEn aquest punt estem modificant el disc virtual de Debian.\nCom que estem treballant dins d’una màquina virtual, no estem particionant directament el disc físic de l’ordinador host.\n\n\nConfirma els canvis."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#analitzar-els-mitjans-dinstallació",
+    "href": "laboratori/lab-virt-2.html#analitzar-els-mitjans-dinstallació",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "15.1 Analitzar els mitjans d’instal·lació",
+    "text": "15.1 Analitzar els mitjans d’instal·lació\nDebian pot preguntar si vols analitzar altres mitjans d’instal·lació.\n\nEn la nostra instal·lació només utilitzarem la ISO que ja hem connectat.\nNormalment no cal afegir cap altre mitjà."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#seleccionar-un-servidor-de-paquets",
+    "href": "laboratori/lab-virt-2.html#seleccionar-un-servidor-de-paquets",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "15.2 Seleccionar un servidor de paquets",
+    "text": "15.2 Seleccionar un servidor de paquets\nDebian utilitza repositoris de programari per descarregar paquets.\nPrimer seleccionarem la ubicació del servidor.\n\nSelecciona:\nEspanya\nA continuació selecciona un servidor disponible.\n\n\n\n\n\n\n\nNota\n\n\n\nEls repositoris són servidors que proporcionen els paquets de programari de Debian.\nMés endavant, quan instal·lem programari amb apt, serà d’aquests repositoris d’on es descarregaran els paquets."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#configurar-un-proxy",
+    "href": "laboratori/lab-virt-2.html#configurar-un-proxy",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "15.3 Configurar un proxy",
+    "text": "15.3 Configurar un proxy\nDebian preguntarà si necessitem configurar un proxy.\n\nEn la nostra situació normalment podem deixar aquest camp en blanc.\n\n15.3.1 Què és un proxy?\nUn proxy és un servidor intermediari entre un ordinador i altres servidors de la xarxa.\nPer exemple:\nOrdinador → Proxy → Internet\nEn una xarxa corporativa o educativa, un proxy pot utilitzar-se per controlar l’accés a Internet, aplicar polítiques de seguretat o gestionar les connexions.\nEn una xarxa domèstica normalment no és necessari configurar-ne un."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#per-què-no-installem-una-interfície-gràfica",
+    "href": "laboratori/lab-virt-2.html#per-què-no-installem-una-interfície-gràfica",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "18.1 Per què no instal·lem una interfície gràfica?",
+    "text": "18.1 Per què no instal·lem una interfície gràfica?\nUn sistema Linux no necessita obligatòriament una interfície gràfica.\nPodem interactuar directament amb el sistema mitjançant una terminal.\nPer exemple:\nusuari@debian:~$\nAquest tipus d’instal·lació és habitual en servidors.\n\n\n\n\n\n\nNota\n\n\n\nUn servidor no necessita necessàriament tenir una pantalla ni un entorn gràfic.\nMolts servidors Linux es gestionen completament des de la línia de comandes, sovint de manera remota mitjançant SSH."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#què-és-ssh",
+    "href": "laboratori/lab-virt-2.html#què-és-ssh",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "18.2 Què és SSH?",
+    "text": "18.2 Què és SSH?\nSSH (Secure Shell) és un protocol que permet connectar-se de manera segura a un altre ordinador a través de la xarxa.\nConceptualment:\nEl teu ordinador\n       │\n       │ SSH\n       ↓\nServidor Debian\nAixò permet administrar un servidor sense haver d’estar físicament davant de la seva pantalla.\n\n\n\n\n\n\nNota\n\n\n\nNo necessitem aprofundir ara en SSH. El més important és entendre que ens permetrà treballar amb un sistema Linux remot mitjançant la terminal."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#qui-sóc",
+    "href": "laboratori/lab-virt-2.html#qui-sóc",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "24.1 Qui sóc?",
+    "text": "24.1 Qui sóc?\nExecuta:\nwhoami\nLa comanda mostrarà el nom de l’usuari amb el qual has iniciat sessió."
+  },
+  {
+    "objectID": "laboratori/lab-virt-2.html#comprovació-final-què-veu-debian",
+    "href": "laboratori/lab-virt-2.html#comprovació-final-què-veu-debian",
+    "title": "Laboratori 2 · Instal·lació de Debian 12",
+    "section": "26.1 Comprovació final: què veu Debian?",
+    "text": "26.1 Comprovació final: què veu Debian?\nExecuta cada comandament dins de Debian i compara el resultat amb el que vam configurar durant la pràctica.\n\n\n\n\n\n\n\n\n\nRecurs\nComanda\nQuè havíem configurat\nEl teu resultat\n\n\n\n\nCPU\nlscpu\n2 cores (creació de la VM)\n\n\n\nMemòria\nfree -h\n2 GB de RAM (creació de la VM)\n\n\n\nDisc (particions)\nlsblk\nDisc de 20 GB, particionament guiat\n\n\n\nDisc (ús)\ndf -h\nEspai utilitzat pel sistema a /\n\n\n\nXarxa\nip a\nConnexió NAT amb una IP assignada\n\n\n\nNom de la màquina\nhostname\nEl nom que vam triar durant la instal·lació\n\n\n\nSistema\nuname -a\nKernel Linux i arquitectura de la VM\n\n\n\n\nAra que sabem identificar els recursos de la màquina virtual, comprovarem què hi ha realment darrere.\n\n26.1.1 El disc virtual és un fitxer\nApaga la màquina virtual i ves a la carpeta on VMware ha creat la VM.\nLocalitza els fitxers associats al disc virtual (normalment amb extensió .vmdk).\n\n\n\n\n\n\nNota\n\n\n\nPregunta\nSi el disc virtual de 20 GB és, en realitat, un fitxer del nostre ordinador físic, què creus que passarà si eliminem aquest fitxer?\n\n\n\n\n\n\n\n\nAlerta\n\n\n\nNo cal eliminar-lo de debò!\n\n\nEl disc virtual conté les dades de la màquina virtual. Si l’eliminéssim, VMware ja no trobaria el disc necessari per arrencar Debian.\n\nLa màquina virtual sembla tenir un disc propi, però aquest disc està emmagatzemat físicament al host, en forma d’un únic fitxer.\n\nHost\n  → fitxer .vmdk\n  → VMware el presenta com un disc virtual\nGuest\n  → lsblk mostra el disc (p. ex. /dev/sda o /dev/nvme0n1)\n  → Debian el tracta com un disc normal\n\n\n26.1.2 Quant ocupa realment el disc?\nComprova el disc des de Debian:\nlsblk\nHauries de veure un disc d’aproximadament 20 GB.\nAra compara-ho amb:\ndf -h\nEls dos comandaments no mostren exactament el mateix.\n\n\n\n\n\n\nNotaPer què no coincideixen?\n\n\n\nlsblk mostra els dispositius i les particions del disc.\ndf -h mostra l’espai dels sistemes de fitxers que estan muntats.\nUn disc virtual de 20 GB no significa que els 20 GB apareguin com a espai disponible per als fitxers: el disc conté particions i sistemes de fitxers, que ocupen espai propi.\n\n\n\n\n26.1.3 La xarxa també és virtual\nComprova la configuració de xarxa:\nip a\nLocalitza la interfície de xarxa i la seva adreça IP.\nAra mira la ruta per defecte:\nip route\nBusca la línia que comença per default via .... Aquesta adreça és la porta d’enllaç de la VM.\nProva ara de fer ping des del host cap a la mateixa adreça de la porta d’enllaç:\n\nWindows (PowerShell)macOS (Terminal)\n\n\nping -n 4 &lt;adreça_de_la_porta_d'enllaç&gt;\n\n\nping -c 4 &lt;adreça_de_la_porta_d'enllaç&gt;\n\n\n\n\n\n\n\n\n\nConsellPer què hauria de funcionar?\n\n\n\nL’adreça de la porta d’enllaç no és només una IP que veu la VM: correspon a una interfície de xarxa virtual real que VMware crea al teu propi ordinador. Per això el host també la pot veure i respondre-hi directament, sense passar per la VM.\n\n\n\n\n\n\n\n\nNota\n\n\n\nSi el ping no respon des del host, no vol dir necessàriament que hi hagi un problema: el tallafocs del teu sistema operatiu pot bloquejar les respostes ICMP (ping) per defecte. No cal solucionar-ho per a aquesta pràctica.\n\n\n\n\n\n\n\n\nNotaQuè estem comprovant?\n\n\n\nHost\n  → VMware NAT\n  → interfície de xarxa virtual\nGuest\n  → ip a\n  → Debian veu una targeta de xarxa normal"
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html",
+    "href": "laboratori/lab-git-1.html",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
     "section": "",
-    "text": "Instal·lar i configurar Git a la màquina virtual.\nReplicar l’exemple de les diapositives utilitzant Visual Studio Code (VSCode) i Git."
+    "text": "Aprendre a utilitzar les comandes bàsiques de GIT\nEntendre el cicle de vida dels fitxers: untracked, modified, staged i committed."
   },
   {
-    "objectID": "laboratori/lab04.html#requisits-previs",
-    "href": "laboratori/lab04.html#requisits-previs",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
+    "objectID": "laboratori/lab-git-1.html#objectius",
+    "href": "laboratori/lab-git-1.html#objectius",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "",
+    "text": "Aprendre a utilitzar les comandes bàsiques de GIT\nEntendre el cicle de vida dels fitxers: untracked, modified, staged i committed."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#requisits-previs",
+    "href": "laboratori/lab-git-1.html#requisits-previs",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
     "section": "Requisits previs",
-    "text": "Requisits previs\n\nMàquina virtual en funcionament (vegeu Laboratori 2).\nVisual Studio Code (VSCode) connectat a la màquina virtual mitjançant SSH (vegeu Laboratori 3)."
+    "text": "Requisits previs\n\nConeixements bàsics de la línia de comandes de Linux.\nGit està instal·lat al sistema."
   },
   {
-    "objectID": "laboratori/lab04.html#installació-de-git-a-la-màquina-virtual",
-    "href": "laboratori/lab04.html#installació-de-git-a-la-màquina-virtual",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
-    "section": "Instal·lació de Git a la màquina virtual",
-    "text": "Instal·lació de Git a la màquina virtual\n\nConnecteu VSCode a la màquina virtual mitjançant SSH (vegeu Laboratori 3).\nInicia la sessió de l’usuari root amb la comanda:\nsu -\nEl guionet - és important perquè carregui correctament les variables d’entorn de l’usuari root.\nCom a usuari root. Instal·la el programari git amb la comanda:\napt install git -y\nUn cop finalitzi la instal·lació, comproveu la versió de git amb la comanda:\ngit --version\nSortiu de la sessió de l’usuari root amb la comanda:\nexit"
+    "objectID": "laboratori/lab-git-1.html#inicialització-del-repositori",
+    "href": "laboratori/lab-git-1.html#inicialització-del-repositori",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Inicialització del repositori",
+    "text": "Inicialització del repositori\nPrimer de tot, creem un nou repositori de Git:\nmkdir hands-on-1\ncd hands-on-1\ngit init\nO, en un sol pas:\ngit init hands-on-1"
   },
   {
-    "objectID": "laboratori/lab04.html#configuració-de-git",
-    "href": "laboratori/lab04.html#configuració-de-git",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
-    "section": "Configuració de Git",
-    "text": "Configuració de Git\nPer començar a treballar amb Git, primer cal configurar el nostre usuari i correu electrònic. Aquesta informació s’utilitzarà per identificar els commits que fem al repositori. Per configurar el nostre usuari i correu electrònic, executem les següents comandes:\ngit config --global user.name \"JordiMateo\"\ngit config --global user.email \"jordi.mateo@udl.cat\""
+    "objectID": "laboratori/lab-git-1.html#estat-inicial",
+    "href": "laboratori/lab-git-1.html#estat-inicial",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Estat inicial",
+    "text": "Estat inicial\nSi fem git status des de dins del directori hands-on-1, hauríem de veure que el repositori està net:\n$ git status\nOn branch main\n\nNo commits yet\n\nnothing to commit (create/copy files and use \"git add\" to track)\n\n\nDepenent de la configuració, veurem master enlloc de main."
   },
   {
-    "objectID": "laboratori/lab04.html#replicació-de-lexemple",
-    "href": "laboratori/lab04.html#replicació-de-lexemple",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
-    "section": "Replicació de l’exemple",
-    "text": "Replicació de l’exemple\n\nCrearem un repositori nou anomenat projecte-final:\nmkdir projecte-final\nAccedim al directori del projecte:\ncd projecte-final\no bé podeu fer click a Obre la carpeta a VSCode i seleccionar el directori projecte-final.\n\nCrearem els 3 fitxers (treball.txt, figura1.png, figura2.png) i els afegirem al directori de treball:\necho \"Aquest és el fitxer de treball.\" &gt; treball.txt\ntouch figura1.png figura2.png\n\nAra inicialitzarem el repositori Git:\ngit init\n\no bé, podeu fer click a la icona de Git a la barra lateral esquerra de VSCode i fer click a Inicia el repositori Git.\n\n\n\n\n\n\n\nNota\n\n\n\n\nSi feu anar la línia de comandes, haures de posar els fitxers a la caixa d’espera (staging area) manualment. git add . afegeix tots els fitxers del directori actual a la caixa d’espera.\nSi feu servir la eina integrada de Git a VSCode, us apareixerà una finestra emergent que us demanarà si voleu afegir tots els fitxers a la caixa d’espera (staging area). Feu click a Yes.\n\n\n\n\nSi us fixeu, veureu que VSCODE us indica que hi ha 3 fitxers nous que encara no s’han confirmat (posats al camió de mudances).\n\n\n\nAra farem el primer commit amb el missatge “Primer commit: Afegits els fitxers inicials”. Podeu fer-ho des de la línia de comandes:\ngit commit -m \"Primer commit: Afegits els fitxers inicials\"\no bé, podeu fer click a la icona de Git a la barra lateral esquerra de VSCode, escriure el missatge del commit i fer click a la icona de check (✓) per confirmar els canvis.\n\n\n\n\n\n\n\n\nNota\n\n\n\nObserveu que després de fer el commit, els fitxers ja no apareixen a la secció de canvis pendents (Changes). I teniu la linia temporal inicialitzada amb un commit.\n\n\n\n\nFarem un canvi al fitxer treball.txt:\necho \"Afegit la introducció.\" &gt;&gt; treball.txt\n\nCom el document treball.txt ja està a la caixa d’espera, només cal que fem un nou commit:\ngit commit -am \"Segon commit: Afegida la introducció al fitxer de treball\"\n\nAra podem veure l’historial dels commits fets fins ara:\ngit log\n\nPodem tornar a una versió anterior si cal. Per exemple, per tornar al primer commit:\ngit checkout HEAD~1\no bé, utilitzant VSCODE i fent click a la icona de Git a la barra lateral esquerra, després a la pestanya d’Historial (History) i fent click dret al commit on volem tornar i seleccionant l’opció Checkout.\n\n\n\n\n\n\n\n\nNota\n\n\n\nQuan fem un checkout a una versió anterior, el directori de treball es posa en la versió seleccionada, ara ja no tenim el text “Afegit la introducció.” al fitxer treball.txt. Això és perquè hem tornat a la versió anterior on aquest canvi no existia.\n\n\n\nPer tornar a la versió més recent, fem:\ngit checkout main\n\n\n\n\n\n\n\n\nNota\n\n\n\nQuan fem un checkout a la versió més recent, el directori de treball es torna a la versió més nova, i ara tornem a tenir el text “Afegit la introducció.” al fitxer treball.txt.\n\n\n\nAra podem crear una branca nova per treballar en una nova funcionalitat:\ngit checkout -b metodologia\no bé, utilitzant VSCODE i fent click a la icona de Git a la barra lateral esquerra, després a la part inferior esquerra on apareix el nom de la branca actual (main) i fent click a Create new branch.\n\nFarem un canvi al fitxer treball.txt a la branca metodologia:\necho \"Afegida la secció de metodologia.\" &gt;&gt; treball.txt\n\nFem un commit amb aquest canvi:\ngit commit -m \"Afegida la secció de metodologia al fitxer de treball\"\nPodem veure les branques existents:\ngit branch\n\nPer tornar a la branca principal:\ngit checkout main\nPer anar a la branca metodologia:\ngit checkout metodologia\nTambé podem fusionar la branca metodologia a la branca main:\ngit checkout main\ngit merge metodologia\n\n\nAmb això hem explorat les funcionalitats bàsiques de Git. Podeu continuar experimentant amb més canvis, branques i commits per familiaritzar-vos amb el flux de treball de Git."
+    "objectID": "laboratori/lab-git-1.html#afegim-el-nostre-primer-fitxer",
+    "href": "laboratori/lab-git-1.html#afegim-el-nostre-primer-fitxer",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Afegim el nostre primer fitxer",
+    "text": "Afegim el nostre primer fitxer\nCrea un fitxer anomenat README.md dins del directori amb el següent contingut:\n# Hello, World!\nConsulta l’estat del repositori amb git status.\nEl fitxer apareixerà com a untracked.\nGit detecta que existeix un fitxer que encara no forma part de cap commit, però no l’inclourà automàticament en el pròxim commit."
   },
   {
-    "objectID": "laboratori/lab04.html#exercici-extra-opcional",
-    "href": "laboratori/lab04.html#exercici-extra-opcional",
-    "title": "Laboratori 4: Configurant Git a la màquina virtual",
-    "section": "Exercici Extra (opcional)",
-    "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis MAIN."
+    "objectID": "laboratori/lab-git-1.html#afegim-el-fitxer-a-lstaging",
+    "href": "laboratori/lab-git-1.html#afegim-el-fitxer-a-lstaging",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Afegim el fitxer a l’staging",
+    "text": "Afegim el fitxer a l’staging\nPer indicar a Git que volem incloure README.md en el pròxim commit:\ngit add README.md\nConsulta de nou l’estat:\ngit status\nAra README.md apareixerà sota:\nChanges to be committed:\nEl fitxer està staged."
   },
   {
-    "objectID": "laboratori/lab05.html",
-    "href": "laboratori/lab05.html",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "",
-    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
+    "objectID": "laboratori/lab-git-1.html#creem-el-primer-commit",
+    "href": "laboratori/lab-git-1.html#creem-el-primer-commit",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Creem el primer commit",
+    "text": "Creem el primer commit\nAra podem crear una nova versió del projecte:\ngit commit -m \"Afegeix README\"\nConsulta l’estat:\ngit status\nEl repositori hauria d’estar net:\nOn branch main\nnothing to commit, working tree clean\nAcabem de crear el nostre primer commit."
   },
   {
-    "objectID": "laboratori/lab05.html#configurant-github",
-    "href": "laboratori/lab05.html#configurant-github",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "",
-    "text": "Crea un compte a GitHub: Si no tens un compte a GitHub, visita https://github.com/ i crea un compte gratuït.\nInicia la sessió al teu compte de GitHub en el navegador web.\nFes clic a la teva foto de perfil a la cantonada superior dreta i selecciona Configuració al menú desplegable.\nA la pàgina de configuració de GitHub, selecciona Configuració de desenvolupador al menú lateral esquerre.\nA la secció Tokens personals, fes clic a Genera un token personal i selecciona un Token (clássic) per a l’ús amb la línia de comandes.\n\n\n\n\nGenerar token\n\n\n\nCompleta la informació requerida i fes clic a “Generar token”:\n\nIntrodueix un nom per al teu token.\n\n\n🚀 Per exemple:\nToken per a la màquina virtual del curs 0.\n\n\nSelecciona un temps d’expiració per al teu token.\n\n\n🧐 Simplicitat:\nPodeu posar 7 dies per a aquest laboratori."
+    "objectID": "laboratori/lab-git-1.html#modifiquem-el-projecte",
+    "href": "laboratori/lab-git-1.html#modifiquem-el-projecte",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Modifiquem el projecte",
+    "text": "Modifiquem el projecte\nModifica README.md i afegeix-hi, per exemple:\nAquest és el meu primer repositori de Git.\nConsulta l’estat del repositori:\ngit status\nAra README.md apareixerà com a modified.\nGit ha detectat que el fitxer és diferent del que hi havia en l’últim commit.\nPer veure els canvis que s’han fet al projecte, podem executar:\ngit diff\n\n\n\n\n\n\nConsellInterpretant la sortida de git diff\n\n\n\nLes línies que comencen amb - indiquen contingut que s’ha eliminat.\nLes línies que comencen amb + indiquen contingut que s’ha afegit.\nPer exemple:\n-Hello, World!\n+Hola, món!\nsignifica que la primera línia ha estat substituïda per la segona.\n\n\nUn cop estem segurs de voler incorporar els canvis al pròxim commit, fem\ngit add README.md\nQue passa si tornem a executar git diff?\nPer defecte, git diff només mostra els canvis en l’àrea working, però després de fer git add el fitxer README.md es troba en l’àrea staging. Per veure els canvis de l’àrea staging hem de fer:\ngit diff --staged"
   },
   {
-    "objectID": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
-    "href": "laboratori/lab05.html#configuració-de-laccés-a-github-des-de-la-màquina-virtual",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "Configuració de l’accés a GitHub des de la màquina virtual",
-    "text": "Configuració de l’accés a GitHub des de la màquina virtual\n\nInicia una sessió a la terminal de la màquina virtual com a usuari normal.\nConfigura Git per utilitzar el token de GitHub executant la següent comanda:\ngit config --global github.token TOKEN\n\n🔑 Actualitza:\nReemplaça TOKEN pel token d’accés que has generat al pas anterior.\n\nAixò emmagatzemarà el token de GitHub en la configuració global de Git al teu sistema Debian.\nVerifica que el token s’hagi configurat correctament executant:\ngit config --global --get github.token\nSi tot ha anat bé, veuràs el token que has configurat."
+    "objectID": "laboratori/lab-git-1.html#un-últim-canvi-abans-del-commit",
+    "href": "laboratori/lab-git-1.html#un-últim-canvi-abans-del-commit",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Un últim canvi abans del commit",
+    "text": "Un últim canvi abans del commit\nAnem a canviar el títol del fitxer README.md.\n\n\n\n\n\n\nNota\n\n\n\nEn un fitxer markdown, una línea que comença amb # &lt;XXXX&gt; és un títol.\n\n\nCanvia la línea\n# Hello, World!\nper\n# Hola, món!\nQuè veus quan fas git status? I git diff? I git diff --staged?\n\n\n\n\n\n\nImportant\n\n\n\nQuan hem fet git add abans, hem incorporat els canvis fins aquell moment a l’àrea staging, però els nous canvis no s’han afegit automàticament. Git ens permet tenir canvis d’un fitxer en l’àrea staging i working a la vegada, per tenir més control sobre el contingut dels commits.\nEn el pròxim commit, els canvis que no s’hagin afegit a staging no s’inclouran.\n\n\nAnem a fer un commit sense el canvi del títol:\ngit commit -m \"Canviant el contingut de README.md\"\nSi fem git status i git diff, veurem que ara només queda pendent el canvi del títol. Per exemple, la sortida de git diff serà similar a:\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# Hello, World!\n+# Hola, món!\n Hello from my new git repository\n\n Aquest és el meu primer repositori de Git.\nAfegeix el fitxer un altre cop, i fes un nou commit.\n\n\n\n\n\n\nConsell\n\n\n\nPer afegir tots els fitxers a la vegada, pots fer: - git add -A: afegeix a l’àrea staging els canvis a tots els fitxers, tracked i untracked. - git add -u: afegeix a l’àrea staging els canvis només als fitxers tracked."
   },
   {
-    "objectID": "laboratori/lab05.html#tasques",
-    "href": "laboratori/lab05.html#tasques",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "Tasques",
-    "text": "Tasques\n\nCreació d’equips\n\nFormeu equips de 3 persones. Cada grup haurà d’escollir un líder, que serà el responsable de coordinar el treball, gestionar el repositori i fer el seguiment del projecte.\nTrieu un nom d’equip original.\n\n\n\nPreparació del projecte\nEnllaç de la tasca a GitHub Classroom: https://classroom.github.com/a/HZQmHzs-)\n\nEl líder de l’equip haurà d’iniciar el grup a través de GitHub Classroom.\n\nIntrodueix el nom de l’equip.\n\nAccepta la tasca.\n\nUn cop acceptada la tasca, es crearà un repositori per a l’equip.\n\n\nLa resta de membres s’hi podran unir seleccionant el nom de l’equip al mateix enllaç https://classroom.github.com/a/HZQmHzs-.\nEl repositori base contindrà el codi inicial necessari i la seva estructura.\n\nEl líder és responsable d’assignar les tasques a cada membre mitjançant issues a GitHub.\nPer fer-ho:\n\nFer clic a la pestanya Issues.\n\nFer clic a New issue, i seleccionar Feature request.\n\nUs he preparat una plantilla per a les issues. Feu clic a Get started.\n\nOmplir el títol i la descripció de la tasca.\nAssignar la tasca a un membre de l’equip. Click a Assignees i seleccionar el membre.\nUn cop assignada la tasca, fer clic a Submit new issue.\n\nLlista de tasques i assignació:\n\n\n\nTasca\nAssignat a\n\n\n\n\nImplementació de la funció de suma\nlíder\n\n\nImplementació de la funció de resta\nlíder\n\n\nImplementació de la funció de multiplicació\nmembre1\n\n\nImplementació de la funció de divisió\nmembre1\n\n\nImplementació de la funció de potència\nmembre2\n\n\nImplementació de la funció de arrels quadrades\nmembre2\n\n\n\n\n\n\nTreball individual\nInstal·la el paquet build-essential, que inclou les eines i llibreries necessàries per compilar i construir programes en C. Aquest paquet inclou el compilador GCC, que és comunament utilitzat per programar en C.\n```sh\napt install build-essential -y\n```\n\nCada membre de l’equip haurà de clonar el repositori al seu ordinador i crear una branca develop per les seves tasques.\ngit clone URL_DEL_REPOSITORI\ncd NOM_DEL_REPOSITORI\n\nℹ️ Informació\nSi feu clic a Code al repositori, podreu copiar la URL del repositori.\n\n\n\n🚀 Recomanació\nTanqueu la sessió de VSCode i torneu-la a obrir però indicant la ruta a la carpeta del projecte. En el meu cas, seria /home/jordi/test/projecte-0-calculadora-teacher. D’aquesta manera, podreu utilitzar les eines de VSCode per a desenvolupar el projecte.\n\n\n\nPer cada tasca assignada, el membre haurà de crear una branca amb el nom de la tasca. Per exemple, si la tasca és implementar la funció de suma, la branca es podria anomenar feature-suma.\ngit checkout -b feature-suma\nObserveu que VSCode us mostra la branca actual a la part inferior esquerra.\n\nEl codi de la funció suma podria ser:\n// calc.c\nint suma(int a, int b) {\n    return a + b;\n}\n// calc.h\nint suma(int a, int b);\nCompileu el codi i comproveu que funciona correctament.\nmake\n./calc\n\nSi tot funciona correctament, el codi s’executarà i mostrarà el resultat de la suma.\nUn cop finalitzada la tasca, fer un commit amb els canvis realitzats indicant la tasca realitzada.\nHo podeu fer amb les eines de VSCode o amb la terminal.\nSi feu servir la terminal, la comanda seria:\ngit add src/calc.c src/calc.h src/main.c\ngit commit -m \"@feat: Implementació de la funció de suma\"\n\n\n⚠️ Compte!\nSi no feu git add abans de fer el commit, no es pujaran els canvis al repositori. Així que assegureu-vos de fer git add abans de fer el commit.\n\n\n\n💡 TIP:\nUtilitza els missatges de commit per tancar les issues relacionades amb la tasca. Per exemple, si la tasca és implementar la funció de suma, el missatge de commit podria ser: git commit -m \"@feat: Implementació de la funció de suma. Closes #1\". Si la tasca 1 és la implementació de la funció de suma.\n\nPer fer-ho amb VSCode, feu clic a la icona de la branca a la part inferior esquerra i seleccioneu Commit. Després, introduïu el missatge de commit i confirmeu-lo.\n\nRepeteix els passos 2 i 3 per a cada tasca assignada. Sempre creant la branca des de main. Per tornar a la branca main, feu git checkout main. O bé, click a la branca a la part inferior esquerra de VSCode i seleccioneu main.\nUn cop finalitzades les seves tasques ajuntarem totes les branques a la nostra branca local main.\n\nPer fer-ho, amb la terminal, farem:\ngit checkout -b main\ngit merge feature-suma \n\n\n⚠️ Compte!\nSi hi ha conflictes, caldrà resoldre’ls abans de fer el commit.\n\nPer fer-ho amb VSCode, farem clic a la icona de la branca a la part inferior esquerra i seleccionarem Merge branch into current.\n\nSeleccioneu la branca a ajuntar.\n\nQuan integreu la segona funcionalitat (resta, multiplicació, etc.), caldrà fer un merge ja que es detectaran conflictes.\n\nUn dels conflictes es el fitxer calc.c. Cada branca ha modificat aquest fitxer i caldrà resoldre els conflictes. Acceptant els canvis de les dues branques. Podeu fer-ho manualment o amb el resolutor de conflictes de VSCode.\n\nRepetiu el mateix procediment per tots els conflictes que apareguin.\nUn cop resolts els conflictes, feu un commit amb el missatge @feat: Merge branch feature-resta.\n\n\n\n\nAjuntar les tasques\n\nUn cop totes les tasques estiguin implementades i ajuntades a la branca main, caldrà testar que el codi funciona correctament.\nAquestes tasques estaràn en la branca main del repositori local. Ara caldrà pujar aquestes tasques al repositori remot.\n\nCrea a GitHub una branca remota anomenada develop-&lt;nom-usuari&gt; i la vincularem amb la branca main local.\n\n\n\n\nBranca develop\n\n\nPrimer, caldrà actualitzar les branques remotes del repositori.\ngit fetch origin\n\nUn cop actualitzades les branques remotes, caldrà fer un push de la branca main a la branca develop-&lt;nom-usuari&gt;.\ngit push origin main:develop-&lt;nom-usuari&gt;\nUn cop pujades totes les tasques al repositori remot, el líder actualitzarà les branques remotes de tots els membres de l’equip.\ngit fetch origin\nFara un merge de totes les tasques a la seva branca main.\nFinalment, testeu que el codi funciona correctament.\nUn cop testejat, caldrà pujar la branca main al repositori remot.\ngit push origin main"
+    "objectID": "laboratori/lab-git-1.html#ignorant-fitxers",
+    "href": "laboratori/lab-git-1.html#ignorant-fitxers",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Ignorant fitxers",
+    "text": "Ignorant fitxers\nA vegades podem tenir fitxers que son temporals, o que son artefactes d’un procès automàtic (p.e. de compilar un projecte, fitxers autogenerats…). Habitualment no volem que Git gestioni aquests fitxers. Tenim dues opcions:\n\nVigilar cada vegada que fem un commit, per no introduïr aquests fitxers a Git.\nIndicar a Git que els ignori.\n\nLa primera opció és propensa a errors, per tant farem la segona.\nPrimer de tot, anem a crear un fitxer que no vulguem al repositori, per exemple un fitxer on escriurem notes per nosaltres:\ntouch notes.tmp\n\n\n\n\n\n\nConsell\n\n\n\ntouch crea un fitxer buit a la ruta especificada.\n\n\nSi ara fem git status, veurem aquest fitxer com a untracked. Si ara fessim git add -A o git add ., s’afegiria a l’àrea staging. Per evitar-ho, crearem un nou fitxer que es diu .gitignore amb el següent contingut:\n*.tmp\nConsulta l’estat:\ngit status\nAra notes.tmp ja no apareix com a untracked.\nEl fitxer .gitignore sí que apareix com a untracked, perquè és un fitxer normal del projecte i encara no l’hem afegit.\n\n\n\n\n\n\nNota\n\n\n\n.gitignore permet indicar patrons de fitxers que Git no ha de mostrar com a fitxers untracked. És habitual utilitzar-lo per fitxers temporals, fitxers generats automàticament o altres fitxers que no volem guardar al repositori.\nEn el nostre cas, el patró és *.tmp, que significa “qualsevol fitxer que el seu nom acabi amb .tmp”\n\n\nAfegim el fitxer .gitignore al repositori amb git add .gitignore, i podem fer un nou commit amb git commit -m \"Afegeix gitignore\"."
   },
   {
-    "objectID": "laboratori/lab05.html#exercici-extra-opcional",
-    "href": "laboratori/lab05.html#exercici-extra-opcional",
-    "title": "Laboratori 5: Calculadora col·laborativa",
-    "section": "Exercici Extra (opcional)",
-    "text": "Exercici Extra (opcional)\nPodeu intentar superar els nivells del joc Learn Git Branching per practicar més les vostres habilitats amb Git. Centreu-vos en els exercicis REMOTE."
+    "objectID": "laboratori/lab-git-1.html#fitxers-que-no-són-de-text",
+    "href": "laboratori/lab-git-1.html#fitxers-que-no-són-de-text",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Fitxers que no són de text",
+    "text": "Fitxers que no són de text\nGit no només pot gestionar fitxers de text.\nTambé podem afegir fitxers binaris al repositori, com ara imatges.\nPodem afegir-los a l’àrea staging de la mateixa manera:\ngit add foto.png\nI crear un commit:\ngit commit -m \"Afegeix imatge\"\nGit guardarà el fitxer com a part del commit.\n\n\n\n\n\n\nImportant\n\n\n\nEls fitxers de text permeten a Git calcular i mostrar fàcilment les diferències entre versions. Amb fitxers binaris, com una imatge, Git no pot mostrar aquestes diferències de la mateixa manera.\nSi editessim la imatge, git diff no ens mostraria que ha canviat."
+  },
+  {
+    "objectID": "laboratori/lab-git-1.html#exercici-practicant-el-cicle-de-git",
+    "href": "laboratori/lab-git-1.html#exercici-practicant-el-cicle-de-git",
+    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "section": "Exercici: practicant el cicle de Git",
+    "text": "Exercici: practicant el cicle de Git\nAra fes els següents canvis sense seguir instruccions pas a pas:\n\nCrea un fitxer anomenat projecte.txt.\nAfegeix-hi algunes línies de text.\nConsulta l’estat del repositori.\nAfegeix el fitxer a l’àrea staging.\nConsulta de nou l’estat.\nCrea un commit amb un missatge descriptiu.\nAfegeix una imatge al repositori, i fes un commit que l’afegeixi.\nModifica projecte.txt.\nConsulta els canvis amb git diff.\nAfegeix els canvis a l’staging.\nConsulta els canvis amb git diff --staged.\nCrea un altre commit.\n\nFinalment, comprova que el repositori està net amb:\n\ngit status"
   },
   {
     "objectID": "laboratori/lab-git-3.html",
@@ -418,90 +586,6 @@
     "title": "Control de Versions Git",
     "section": "Recap: Comandes",
     "text": "Recap: Comandes\n\ngit init\ngit add\ngit commit\ngit log\ngit show\ngit diff\ngit restore"
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#una-analogia-amb-el-bus-escolar",
-    "href": "teoria/02-virtualitzation.html#una-analogia-amb-el-bus-escolar",
-    "title": "Virtualització",
-    "section": "🚗 Una analogia amb el bus escolar",
-    "text": "🚗 Una analogia amb el bus escolar\nImagineu un món sense bus escolar:\n\nPer portar cada estudiant (una aplicació o servei) a l’escola, cada família utilitza el seu propi cotxe (un servidor físic).\nCada cotxe malgasta molts recursos: un motor (processador), benzina (energia), rodes (disc dur) i un espai d’aparcament (espai físic), tot per a un sol passatger.\n\n\nAixò és extremadament ineficient."
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#larribada-del-bus-escolar-la-virtualització",
-    "href": "teoria/02-virtualitzation.html#larribada-del-bus-escolar-la-virtualització",
-    "title": "Virtualització",
-    "section": "🚌 L’arribada del Bus Escolar (La Virtualització)",
-    "text": "🚌 L’arribada del Bus Escolar (La Virtualització)\n\nEn lloc de que cada estudiant vingui amb el seu cotxe, tots poden agafar un bus escolar (un únic servidor físic amb virtualització).\nEl bus és un vehicle molt més gran i potent (un únic servidor físic). En lloc de N cotxes, només en necessitem un.\nEl bus comparteix els seus recursos (motor, benzina, rodes, espai d’aparcament) entre tots els estudiants (aplicacions o serveis), fent un ús molt més eficient dels recursos."
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#les-cabines-del-bus-les-màquines-virtuals",
-    "href": "teoria/02-virtualitzation.html#les-cabines-del-bus-les-màquines-virtuals",
-    "title": "Virtualització",
-    "section": "👩‍🎓 Les Cabines del Bus (Les Màquines Virtuals)",
-    "text": "👩‍🎓 Les Cabines del Bus (Les Màquines Virtuals)\nImagineu un autobús futurista:\n\nCada estudiant té el seu propi seient, que és com una petita cabina aïllada (una màquina virtual). Aquesta cabina té la seva pròpia pantalla, controls i espai personal, totalment independent de les altres.\nSi un estudiant mira una pel·lícula en veu alta, només afecta la seva cabina, no la resta del bus. Les accions d’un estudiant no interfereixen amb les dels altres."
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#lhipervisor-el-conductor-del-bus",
-    "href": "teoria/02-virtualitzation.html#lhipervisor-el-conductor-del-bus",
-    "title": "Virtualització",
-    "section": "👩‍✈️ L’hipervisor: El Conductor del Bus",
-    "text": "👩‍✈️ L’hipervisor: El Conductor del Bus\n\nEll és qui s’assegura que cada estudiant tingui el seu seient (recursos), arribi a la seva destinació (funcioni) i que no hi hagi problemes entre ells.\nGestiona els seus recursos de manera que totes les cabines funcionin sense problemes, fins i tot si alguns estudiants necessiten més atenció o recursos en certs moments."
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#esquema-sense-virtualització",
-    "href": "teoria/02-virtualitzation.html#esquema-sense-virtualització",
-    "title": "Virtualització",
-    "section": "Esquema sense virtualització",
-    "text": "Esquema sense virtualització"
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#esquema-amb-virtualització",
-    "href": "teoria/02-virtualitzation.html#esquema-amb-virtualització",
-    "title": "Virtualització",
-    "section": "Esquema amb virtualització",
-    "text": "Esquema amb virtualització"
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#laboratori-2-objectiu",
-    "href": "teoria/02-virtualitzation.html#laboratori-2-objectiu",
-    "title": "Virtualització",
-    "section": "Laboratori 2: Objectiu",
-    "text": "Laboratori 2: Objectiu\n\nUna màquina virtual amb Debian 12 comparint recursos amb el vostre ordinador físic."
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#laboratori-2-tasques",
-    "href": "teoria/02-virtualitzation.html#laboratori-2-tasques",
-    "title": "Virtualització",
-    "section": "Laboratori 2: Tasques",
-    "text": "Laboratori 2: Tasques\n\nInstal·lar un hypervisor: VMWare Workstation Player o VMWare Fusion.\nDesplegar una màquina virtual amb Linux dins de l’hypervisor.\n\n\n📄 Laboratori 2: Instal·lació de Debian 12"
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#laboratori-3-objectiu",
-    "href": "teoria/02-virtualitzation.html#laboratori-3-objectiu",
-    "title": "Virtualització",
-    "section": "Laboratori 3: Objectiu",
-    "text": "Laboratori 3: Objectiu\n\nConnectar VSCode que s’executa a la màquina real per executar i comunicar-se amb la màquina virtual via SSH."
-  },
-  {
-    "objectID": "teoria/02-virtualitzation.html#laboratori-3-tasques",
-    "href": "teoria/02-virtualitzation.html#laboratori-3-tasques",
-    "title": "Virtualització",
-    "section": "Laboratori 3: Tasques",
-    "text": "Laboratori 3: Tasques\n\nConfigurar VSCode per connectar-se a la màquina virtual via SSH.\nProvar la connexió i executar ordres a la màquina virtual des de VSCode\n\n\n📄 Laboratori 3: Connexió via SSH"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Curs zero d’Informàtica",
-    "section": "",
-    "text": "El curs s’organitza en sessions diàries de 2 hores. L’enfoc és eminentment pràctic. En cadascuna de les sessions s’abordarà un dels temes del programa, presentant primer, i breument, els coneixements teòrics bàsics, per abordar tot seguit el plantejament i resolució de problemes a l’aula. L’estudiantat ha de portar el seu propi portàtil."
-  },
-  {
-    "objectID": "index.html#planificació",
-    "href": "index.html#planificació",
-    "title": "Curs zero d’Informàtica",
-    "section": "Planificació",
-    "text": "Planificació\n\n\n\nSessió\nData\nTema\nDiapositives\nLaboratori\n\n\n\n\n1\n04/09/2024\nIntroducció i entorns de programació\n\n\n\n\n2\n05/09/2024\nVirtualització\n📖\n📄 📄\n\n\n3\n08/09/2024\nIntroducció al control de versions\n📖\n📄 📄\n\n\n4\n08/09/2024\nIntroducció al control de versions\n📖\n📄"
   },
   {
     "objectID": "teoria/04-version-control.html#commits",
@@ -833,262 +917,416 @@
     "text": "Recap\nGit és distribuït: cada repositori té la seva pròpia còpia de la història.\n\n\n\n\n\nflowchart LR\n    A[\"Repositori local\"] &lt;--&gt; B[\"Repositori remot\"]\n\n\n\n\n\n\nPodem sincronitzar els repositoris amb:\n\ngit fetch\ngit pull\ngit push\n\nI quan les històries divergeixen, Git ens pot demanar que integrem els canvis o que resolguem conflictes."
   },
   {
-    "objectID": "laboratori/lab02.html",
-    "href": "laboratori/lab02.html",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Curs zero d’Informàtica",
     "section": "",
-    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+    "text": "El curs s’organitza en sessions diàries de 2 hores. L’enfoc és eminentment pràctic. En cadascuna de les sessions s’abordarà un dels temes del programa, presentant primer, i breument, els coneixements teòrics bàsics, per abordar tot seguit el plantejament i resolució de problemes a l’aula. L’estudiantat ha de portar el seu propi portàtil."
   },
   {
-    "objectID": "laboratori/lab02.html#objectius",
-    "href": "laboratori/lab02.html#objectius",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
+    "objectID": "index.html#planificació",
+    "href": "index.html#planificació",
+    "title": "Curs zero d’Informàtica",
+    "section": "Planificació",
+    "text": "Planificació\n\n\n\nSessió\nData\nTema\nDiapositives\nLaboratori\n\n\n\n\n1\n01/09/2026\nVirtualització\n📖\n📄 📄\n\n\n2\n02/09/2026\nLinux\n-\n📄 📄 📄\n\n\n3\n03/09/2026\nIntroducció al control de versions\n📖\n📄 📄\n\n\n4\n04/09/2026\nIntroducció al control de versions\n📖\n📄"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#per-què-necessitem-virtualització",
+    "href": "teoria/01-virtual-machines.html#per-què-necessitem-virtualització",
+    "title": "Virtualització",
+    "section": "Per què necessitem virtualització?",
+    "text": "Per què necessitem virtualització?\nImagineu un món sense bus escolar\n\n\n\nCada estudiant necessita el seu propi cotxe.\nCada cotxe necessita recursos.\nPerò cada cotxe transporta només una persona.\n\n\n\n\nMolts recursos utilitzats per transportar molt poca gent."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#la-solució-compartir-recursos",
+    "href": "teoria/01-virtual-machines.html#la-solució-compartir-recursos",
+    "title": "Virtualització",
+    "section": "La solució: compartir recursos",
+    "text": "La solució: compartir recursos\n\n\n\n\n\nUn únic vehicle compartit.\nDiversos passatgers.\nEls recursos es comparteixen.\n\n\n\nAixò és,…, la idea de la virtualització."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#definició",
+    "href": "teoria/01-virtual-machines.html#definició",
+    "title": "Virtualització",
+    "section": "Definició",
+    "text": "Definició\n\nDefinició formal\nTècnica que permet crear diversos entorns lògics independents sobre un mateix maquinari físic.\n\n\nEn poques paraules\nUn ordinador → es comporta com si fossin molts ordinadors.\n\n\nLlegir la definició formal ràpidament, sense aturar-s’hi gaire. La frase que ha de quedar és la segona. Es pot dir explícitament: “la frase que vull que us quedeu és aquesta.”"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#per-a-què-serveix-a-la-pràctica",
+    "href": "teoria/01-virtual-machines.html#per-a-què-serveix-a-la-pràctica",
+    "title": "Virtualització",
+    "section": "Per a què serveix, a la pràctica?",
+    "text": "Per a què serveix, a la pràctica?\n\nProvar un sistema operatiu diferent sense modificar el sistema operatiu principal.\nTenir un entorn de treball aïllat: si l’espatlles, no afecta el teu ordinador real.\nPoder recuperar l’entorn fàcilment després d’un error.\nExecutar diversos serveis o projectes de manera separada en un sol servidor físic.\n\n\nSobre “recuperar l’entorn fàcilment”: no anomenar encara “snapshots”; es pot dir “més endavant veurem com es fan còpies de les màquines virtuals.”\nEXEMPLE ORAL (no cal diapositiva nova): “Imagineu un servidor amb 64 GB de RAM. En lloc de tenir un sol sistema operatiu fent una sola tasca, hi podem crear: VM1 → servidor web, VM2 → base de dades, VM3 → servidor de proves. Totes comparteixen el mateix servidor físic, però cada una té el seu propi entorn.” Pregunta: “Quin és l’avantatge respecte a tenir tres servidors físics separats?” Connecta directament amb la motivació inicial del bus: compartir infraestructura."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#com-funciona",
+    "href": "teoria/01-virtual-machines.html#com-funciona",
+    "title": "Virtualització",
+    "section": "Com funciona?",
+    "text": "Com funciona?\n\n\n\n\n\nUn únic ordinador físic.\nDiversos entorns virtuals.\nEls recursos es comparteixen.\n\n\n\nUn ordinador físic → diversos ordinadors virtuals"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#què-és-una-màquina-virtual",
+    "href": "teoria/01-virtual-machines.html#què-és-una-màquina-virtual",
+    "title": "Virtualització",
+    "section": "Què és una màquina virtual?",
+    "text": "Què és una màquina virtual?\n\nUna VM té el seu propi maquinari virtual.\n\n\n\n\n\n\nSistema Operatiu\nCPU virtual\nMemòria RAM virtual\nDisc virtual\nInterfície de xarxa virtual"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#host-i-guest",
+    "href": "teoria/01-virtual-machines.html#host-i-guest",
+    "title": "Virtualització",
+    "section": "Host i Guest",
+    "text": "Host i Guest\nQuan treballem amb màquines virtuals utilitzarem dos conceptes:\nHost\nL’ordinador físic que proporciona els recursos.\nGuest\nLa màquina virtual que funciona sobre el host."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#compartir-interferir",
+    "href": "teoria/01-virtual-machines.html#compartir-interferir",
+    "title": "Virtualització",
+    "section": "Compartir ≠ interferir",
+    "text": "Compartir ≠ interferir\nLes VMs comparteixen els recursos físics del host, però mantenen el seu propi entorn, funcionant de manera aïllada entre elles.\n\nCada VM té el seu propi: sistema de fitxers, processos, configuració…\nEls processos d’una VM estan aïllats dels processos de les altres VM.\nUn problema dins d’una VM queda, en general, aïllat de les altres VM i del host.\n\n\n“Aquí hi ha una aparent contradicció. Si comparteixen els recursos, com poden estar aïllades?” [pausa] “Comparteixen el maquinari físic, però cada VM té el seu propi entorn.”\nAclariment: no són bombolles màgiques. Com que comparteixen recursos físics, una VM que consumeixi massa CPU o RAM pot afectar el rendiment de les altres i del host. Aïllament ≠ independència total de recursos."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#esquema-sense-virtualització",
+    "href": "teoria/01-virtual-machines.html#esquema-sense-virtualització",
+    "title": "Virtualització",
+    "section": "Esquema sense virtualització",
+    "text": "Esquema sense virtualització"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#esquema-amb-virtualització",
+    "href": "teoria/01-virtual-machines.html#esquema-amb-virtualització",
+    "title": "Virtualització",
+    "section": "Esquema amb virtualització",
+    "text": "Esquema amb virtualització"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#hypervisor",
+    "href": "teoria/01-virtual-machines.html#hypervisor",
+    "title": "Virtualització",
+    "section": "Hypervisor",
+    "text": "Hypervisor"
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#dos-tipus-dhipervisor",
+    "href": "teoria/01-virtual-machines.html#dos-tipus-dhipervisor",
+    "title": "Virtualització",
+    "section": "Dos tipus d’hipervisor",
+    "text": "Dos tipus d’hipervisor\n\n\n\n\n\n\n\n\n\nTipus 1\nTipus 2\n\n\n\n\nOn s’executa\nDirectament sobre el maquinari\nSobre un sistema operatiu host\n\n\nÚs típic\nServidors\nOrdinadors personals\n\n\nExemple\nVMware ESXi, Hyper-V\nVMware Workstation, VirtualBox\n\n\n\n\nNosaltres utilitzarem VMware Workstation, un hipervisor de Tipus 2."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#don-surten-els-recursos",
+    "href": "teoria/01-virtual-machines.html#don-surten-els-recursos",
+    "title": "Virtualització",
+    "section": "D’on surten els recursos?",
+    "text": "D’on surten els recursos?\n\n\n\nORDINADOR: 16 GB RAM\n\n\n↓\n\n\nVM: 4 GB RAM\n\n\n↓\n\n\nD’on surten aquests 4 GB?\n\n\nPausa real: NO fer clic al següent fragment. Deixar que responguin abans de revelar-ho.\n\n\nDe la RAM física de l’ordinador host.\n\n\nI si en creo dues VM de 4 GB?\n\n\nI si en creo quatre?\n\n\nDeixar que raonin en veu alta abans de tancar-ho. L’objectiu és que arribin sols a la conclusió: no podem assignar recursos il·limitadament, perquè les VM comparteixen els recursos físics reals del host.\n\n\n\nNo podem assignar recursos il·limitadament: els recursos físics del host són finits."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#virtual-imaginari",
+    "href": "teoria/01-virtual-machines.html#virtual-imaginari",
+    "title": "Virtualització",
+    "section": "Virtual ≠ imaginari",
+    "text": "Virtual ≠ imaginari\nEls recursos de la màquina virtual són virtuals, però utilitzen recursos físics reals.\n\n\n\nRecurs virtual\nRecurs físic\n\n\n\n\nCPU virtual\nCPU del host\n\n\nRAM virtual\nRAM del host\n\n\nDisc virtual\nEmmagatzematge del host\n\n\nXarxa virtual\nInterfície de xarxa del host\n\n\n\n\nLa virtualització crea una abstracció del maquinari."
+  },
+  {
+    "objectID": "teoria/01-virtual-machines.html#un-últim-càlcul",
+    "href": "teoria/01-virtual-machines.html#un-últim-càlcul",
+    "title": "Virtualització",
+    "section": "Un últim càlcul",
+    "text": "Un últim càlcul\nUn host amb 16 GB de RAM executa:\n\n\n\nVM 1 → 4 GB\nVM 2 → 4 GB\nVM 3 → 4 GB\n\n\n\nQuè li queda al host?\n\n\n16 − 4 − 4 − 4 = 4 GB\n\n\n\nPausa oral aquí (no cal fragment nou): “Això vol dir que podem donar aquests 4 GB restants a una quarta VM?” Deixar que responguin (probablement diran que sí). “Teòricament encara hi ha 4 GB lliures, però no hauríem d’assignar tots els recursos del host a les VM: el propi host també en necessita per funcionar.”\n\n\nÉs exactament així de senzill en un sistema real?\n\n\nNo del tot: el sistema operatiu host i la virtualització també necessiten recursos."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html",
+    "href": "laboratori/lab-virt-1.html",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
     "section": "",
-    "text": "Instal·lar el programari de virtualització VMWare Workstation Pro o VMWare Fusion.\nInstal·lar una màquina virtual basada en un sistema operatiu Linux."
+    "text": "En aquesta pràctica aprendrem a:\n\nComprovar que l’ordinador està preparat per executar màquines virtuals.\nUtilitzar VMware Workstation Pro o VMware Fusion.\nCrear i arrencar una màquina virtual amb Alpine Linux.\nComprovar quin maquinari virtual veu la màquina.\nComprovar experimentalment que la VM està aïllada del host (teclat, ratolí, porta-retalls).\nModificar la CPU i la RAM assignades i observar-ne l’efecte.\nComprovar que el treball fet dins la VM consumeix recursos físics reals del host.\nExecutar dues VMs simultàniament i observar que comparteixen recursos físics."
   },
   {
-    "objectID": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
-    "href": "laboratori/lab02.html#installació-del-hypervisor-vmware-workstation-pro-o-vmware-fusion",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)",
-    "text": "Instal·lació del Hypervisor (VMWare Workstation Pro o VMWare Fusion)\nAquestes instruccions et guiaran a través del procés per crear un compte a Broadcom i descarregar una de les versions gratuïtes de VMware Workstation Pro (per a Windows) o VMware Fusion (per a macOS).\n\nRegistra’t per a un compte gratuït a Broadcom: Per accedir a les descàrregues de programari de VMware, necessites un compte a la plataforma de Broadcom.\n\nDirigeix-te a la pàgina de registre de Broadcom: https://profile.broadcom.com/web/registration\nIntrodueix la teva adreça de correu electrònic, realitza la verificació de seguretat i fes clic a Next \nIntrodueix el codi de verificació que has rebut al teu correu electrònic. Fes clic a Verify per continuar. \nCompleta el formulari de registre amb la teva informació personal i crea una contrasenya. Fes clic a Create Account per completar el registre. \nUn cop completat el registre, visualitzaràs un missatge de registre correcte. I us demanarà si voleu completar el perfil. Seleccioneu, I will do it later per continuar. \n\nAccedeix a les descàrregues gratuïtes de VMware:\n\nVes a la pàgina de login de Broadcom: https://profile.broadcom.com/web/login\nInicia sessió amb el teu correu electrònic i la contrasenya que has creat.\nVes directament a la secció de descàrregues a (https://support.broadcom.com/group/ecx/free-downloads). \nSelecciona VMware Workstation Pro o VMware Fusion segons el teu sistema operatiu (Windows o macOS). En el meu cas, utiltizo Mac, així que seleccionaré VMware Fusion.\nSeleccioneu la versió que voleu descarregar. En aquest cas, podem seleccionar la versió més recent. \nEn la pàgina següent:\n\nFes clic a l’enllaç de termes i condicions per que s’activi el checkbox de l’acceptació.\nAcceptar els termes i condicions.\nFes clic a descàrrega per començar a descarregar el fitxer d’instal·lació. \n\n\nInstal·la VMware Workstation Pro o VMware Fusion."
+    "objectID": "laboratori/lab-virt-1.html#comprova-la-virtualització-per-maquinari",
+    "href": "laboratori/lab-virt-1.html#comprova-la-virtualització-per-maquinari",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Comprova la virtualització per maquinari",
+    "text": "Comprova la virtualització per maquinari\nLes màquines virtuals necessiten que l’ordinador pugui executar instruccions de virtualització de manera eficient.\n\nWindows\nObre:\nGestor de tasques → Rendiment → CPU\nBusca:\n\nVirtualització: Activada\n\n\n\n\n\n\n\nNota\n\n\n\nSi el teu Windows està en anglès, l’opció apareix com Task Manager → Performance → CPU → Virtualization: Enabled.\n\n\n\n\n\n\n\n\nAlerta\n\n\n\nSi apareix Desactivada, avisa el professor abans de continuar. En alguns ordinadors cal activar Intel VT-x o AMD-V des de la BIOS/UEFI.\n\n\n\n\nmacOS\nEn els Mac amb Apple Silicon, VMware Fusion utilitza les funcions de virtualització proporcionades per Apple. No cal buscar una opció VT-x a la BIOS. La virtualització acostuma a estar disponible per defecte."
   },
   {
-    "objectID": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
-    "href": "laboratori/lab02.html#descarrega-de-la-imatge-iso-de-debian-12.5.0",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Descarrega de la imatge ISO de Debian 12.5.0",
-    "text": "Descarrega de la imatge ISO de Debian 12.5.0\n\nVes a la pàgina de descàrrega de Debian 12.5.0: https://get.debian.org/images/archive/12.5.0/\nSelecciona la imatge ISO per a la teva arquitectura (amd64 o arm64). La majoria dels vostres ordinadors tenen processadors amd64 (Intel o AMD). Els processadors ARM són més comuns en dispositius mòbils i en els nous Mac amb xips M.\nSeleccioneu la carpeta iso-cd.\nSeleccioneu el fitxer debian-12.5.0-x-netinst.iso. On x és l’arquitectura del vostre sistema (amd64 o arm64).\n\n💡 Nota:\nLa imatge netinst és una imatge d’instal·lació mínima que descarrega els paquets necessaris durant la instal·lació. Això permet personalitzar la instal·lació i seleccionar els paquets que voleu instal·lar."
+    "objectID": "laboratori/lab-virt-1.html#quina-arquitectura-té-el-teu-ordinador",
+    "href": "laboratori/lab-virt-1.html#quina-arquitectura-té-el-teu-ordinador",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Quina arquitectura té el teu ordinador?",
+    "text": "Quina arquitectura té el teu ordinador?\nAnota:\nSistema operatiu: ______________________________________\nArquitectura del processador: ___________________________\nInstruccions per comprovar l’arquitectura:\n\nWindowsmacOS\n\n\n\nPrem Windows + I per obrir Configuració.\nVes a Sistema → Quant al dispositiu.\nAnota el valor de Tipus de sistema.\n\nAlternativament, des del Símbol del sistema (cmd):\necho %PROCESSOR_ARCHITECTURE%\n\n\n\nObre Terminal.\nExecuta:\n\nuname -m\n\n\n\n\n\n\n\n\n\nConsell\n\n\n\nEls ordinadors amb processadors Intel/AMD utilitzen habitualment x86-64, mentre que els Mac amb Apple Silicon utilitzen ARM64."
   },
   {
-    "objectID": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
-    "href": "laboratori/lab02.html#configuració-de-la-màquina-virtual-amb-vmware",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Configuració de la màquina virtual amb VMWare",
-    "text": "Configuració de la màquina virtual amb VMWare\n\nSelecciona l’opció Create a New Virtual Machine a VMWare Workstation Pro o VMWare Fusion.\nSelecciona Install from disc or image. \nSelecciona la imatge ISO de Debian 12. \nConfigura els recursos de la màquina virtual. \nAnomena la màquina virtual i selecciona la ubicació on es guardarà. Per exemple, podeu posar el nom vm-curs0-debian12 i seleccionar una ubicació al vostre directori d’usuari."
+    "objectID": "laboratori/lab-virt-1.html#creació-dun-compte-a-broadcom-i-descàrrega-de-vmware",
+    "href": "laboratori/lab-virt-1.html#creació-dun-compte-a-broadcom-i-descàrrega-de-vmware",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Creació d’un compte a Broadcom i descàrrega de VMware",
+    "text": "Creació d’un compte a Broadcom i descàrrega de VMware\nAquestes instruccions et guiaran a través del procés per crear un compte a Broadcom i descarregar una de les versions gratuïtes de VMware Workstation Pro (per a Windows) o VMware Fusion (per a macOS).\n\nRegistra’t per a un compte gratuït a Broadcom: per accedir a les descàrregues de programari de VMware, necessites un compte a la plataforma de Broadcom.\n\nDirigeix-te a la pàgina de registre de Broadcom: https://profile.broadcom.com/web/registration\nIntrodueix la teva adreça de correu electrònic, realitza la verificació de seguretat i fes clic a Next \nIntrodueix el codi de verificació que has rebut al teu correu electrònic. Fes clic a Verify per continuar. \nCompleta el formulari de registre amb la teva informació personal i crea una contrasenya. Fes clic a Create Account per completar el registre. \nUn cop completat el registre, visualitzaràs un missatge de registre correcte i et demanarà si vols completar el perfil. Selecciona I will do it later per continuar. \n\nAccedeix a les descàrregues gratuïtes de VMware:\n\nVes a la pàgina de login de Broadcom: https://profile.broadcom.com/web/login\nInicia sessió amb el teu correu electrònic i la contrasenya que has creat.\nVes directament a la secció de descàrregues a https://support.broadcom.com/group/ecx/free-downloads. \nSelecciona VMware Workstation Pro (Windows) o VMware Fusion (macOS) segons el teu sistema operatiu.\nSelecciona la versió 26H1, tant si tries Windows com macOS.\nEn la pàgina següent:\n\nFes clic a l’enllaç de termes i condicions perquè s’activi el checkbox de l’acceptació.\nAccepta els termes i condicions.\nFes clic a descàrrega per començar a descarregar el fitxer d’instal·lació. \n\n\nInstal·la VMware Workstation Pro o VMware Fusion."
   },
   {
-    "objectID": "laboratori/lab02.html#installació-del-sistema-operatiu",
-    "href": "laboratori/lab02.html#installació-del-sistema-operatiu",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Instal·lació del sistema operatiu",
-    "text": "Instal·lació del sistema operatiu\n\nUn cop iniciada la màquina virtual, podeu seleccionar la opció Install o bé Graphical install. \nEn aquest tutoriral, seleccionarem la opció Graphical install per a una instal·lació més amigable. La principal diferència entre les dues opcions és l’entorn gràfic.\nSelecciona l’idioma d’instal·lació. \nPodeu seleccionar l’idioma que vulgueu per a la instal·lació. En aquest cas, seleccionarem l’idioma Català.\nSelecciona la ubicació geogràfica. \nEn aquest cas, seleccionarem la ubicació Espanya.\nSelecciona la disposició del teclat. \nEn aquest cas, seleccionarem la disposició de teclat Català. Això ens asegurarà un mapeig correcte del teclat.\nEspereu que el sistema carregui els components necessaris. \nConfigura la xarxa.\n\nEl primer pas és configurar el nom d’amfitrió o hostname. Aquest nom permet identificar de forma única el vostre sistema. Podeu deixar el nom per defecte o canviar-lo al vostre gust.\n\n\nEn aquest cas, hem canviat el nom d’amfitrió a vm-curs0-debian12, però podeu posar el nom que vulgeu com debianlab, etc.\n\nEl segon pas és configurar el domini de la xarxa. Aquest pas el podeu deixar en blanc si no teniu un domini específic. O bé, podem utilitzar .local com a domini local per identicar que el servidor pertany a la xarxa local.\n\n\nConfigura l’usuari administrador.\n\nEn aquest punt, heu de tenir en compte que si no poseu cap contrasenya, es crearà l’usuari normal amb permisos de sudo i això us permetra executar comandes amb privilegis d’administrador.\nSi poseu una contrasenya, aquesta serà la contrasenya de l’usuari root i no es crearà un usuari normal amb permisos de sudo. I tampoc s’instal·larà el paquet sudo.\n\n⚠️ Compte\nCom utilitzarem les màquines virtuals com a laboratoris de pràctiques, no cal que poseu una contrasenya molt segura. Podeu utilitzar una com a 1234. Però, recordeu que en un entorn real, la seguretat és molt important i cal utilitzar contrasenyes segures.\n\nConfigura un usuari normal.\n\nNom complet: Podeu posar el vostre nom complet o el que vulgueu.\n\n\n\nNom d’usuari: Podeu posar el vostre nom d’usuari o el que vulgueu.\n\n\n\nContrasenya: El mateix que per l’usuari root.\n\n\nConfigura la zona horària.\n\nEn aquest cas, seleccionarem la zona horària de Madrid.\nConfigura el disc dur.\n\nParticionament: En aquest curs, el tema del particionament no és molt important. Per tant, podeu fer servir la configuració per defecte més senzilla (Guiat - utilitzar el disc sencer). Aquesta configuració crearà les particions necessàries per a l’instal·lació del sistema.\n\n\n\nSelecciona el disc on instal·lar el sistema. En el meu cas, només tinc un disc virtual amb l’etiqueta /dev/nvme0n1. L’etiqueta indica el tipus de disc (NVMe) i el número de disc (1). Es possible tenir altres etiquetes com /dev/sda per discos SATA o /dev/vda per discos virtuals.\n\n\n\nParticions: Podeu seleccionar (Tots els fitxers en una partició) per simplificar la gestió i evitar problemes podeu seleccionar aquesta opció. Aquesta opció crearà una sola partició per a tot el sistema.\n\n\n\nConfirmeu els canvis. En aquest punt, el sistema crearà les particions necessàries:\n\nLa primera partició serà la partició /boot on es guardaran els fitxers per arrancar el sistema.\nLa segona partició serà la partició / on es guardaran els fitxers del sistema.\nLa tercera partició serà la partició de swap on es guardaran les dades de la memòria virtual.\n\n\n\nℹ️ Què és la partició swap?\nLa swap és una partició especial que s’utilitza com a memòria virtual quan la memòria RAM s’omple. Aquesta partició permet alliberar memòria RAM i evitar que el sistema es bloquegi.\n\n\n\nEscriu els canvis al disc.\n\n\nEspera que s’instal·li el sistema.\n\nConfigura el gestor de paquets.\n\nAnalitzar els discos de la instal·lació. Aquest pas permet seleccionar els discos on es troben els paquets d’instal·lació. Normalment, aquest pas no cal modificar-lo.\n\n\n\nConfigura el gestor de paquets. En aquest cas, seleccionarem el servidor de paquets més proper a la nostra ubicació.\n\nFiltrar els servidors de paquets per ubicació. \nSeleccionar el servidor de paquets. \n\n\n👀 Nota:\nA vegades, els servidors de paquets poden estar saturats o no funcionar correctament. En aquest cas, podeu seleccionar un servidor alternatiu o provar més tard.\n\nConfigura el proxy. Si esteu darrere d’un proxy, podeu configurar-lo en aquest pas.\n\n\nℹ️ Què és un proxy?\nUn proxy és un servidor intermediari entre el vostre sistema i Internet. Aquest servidor pot ser utilitzat per controlar l’accés a Internet, per protegir la vostra privacitat o per accelerar la connexió a Internet. Les peticions de connexió a Internet es fan a través del servidor proxy, que actua com a intermediari i reenvia les peticions al servidor de destinació. Per exemple, en una empresa, el proxy pot ser utilitzat per controlar l’accés a Internet dels empleats i protegir la xarxa interna de possibles amenaces.\n\n\nEspera que s’instal·lin els paquets.\n\nConfigura el paquet popularity-contest.\n\nAquest paquet permet enviar informació anònima sobre els paquets instal·lats al servidor de Debian per millorar la selecció de paquets i la qualitat dels paquets. Podeu seleccionar si voleu participar en aquest programa o no.\n\n\nSelecció de programari. En aquest punt podeu seleccionar si voleu un servidor en mode text o amb interfície gràfica. També us permet seleccionar si voleu instal·lar els serveis web i ssh al servidor i finalment si voleu les utilitats estàndard del sistema. Seleccionarem el servidor en mode text, el servei SSH activat i les utilitats estàndard del sistema.\n\n\nℹ️ Què és un servidor en mode text?\nUn servidor en mode text és un servidor que no té una interfície gràfica. Això significa que tota la interacció amb el servidor es fa a través de la línia de comandes. Aquest tipus de servidor és molt comú en entorns de producció, ja que consumeix menys recursos i és més segur que un servidor amb interfície gràfica.\n\n\n\nℹ️ Què és el servei SSH?\nEl servei SSH (Secure Shell) és un protocol de xifratament que permet connectar-se de forma segura a un servidor remot. Aquest servei és molt utilitzat per administrar servidors a distància, ja que permet accedir al servidor de forma segura i xifratada.\n\nEspera que s’instal·li el programari.\n\nInstal·la el gestor d’arrancada GRUB. \nInstal·lació acabada. Un cop finalitzada la instal·lació, el sistema es reiniciarà i podreu accedir al GRUB per seleccionar el sistema operatiu. \nEl GRUB us permet accedir al sistema operatiu. En aquest cas, seleccionarem Debian GNU/Linux. La resta d’opcions les veurem més endavant en el curs.\n\n\nℹ️ Què és el GRUB?\nEl GRUB és un gestor d’arrencada que permet seleccionar el sistema operatiu que volem iniciar. Aquest gestor és molt útil en sistemes amb múltiples sistemes operatius o múltiples versions del mateix sistema operatiu.\n\nInicieu sessió amb l’usuari i la contrasenya que heu configurat durant la instal·lació.\n\n\n\n\n\n\n\nAlerta\n\n\n\nQuan escriviu la contrasenya, no es mostrarà cap caràcter a la pantalla. Això és normal en sistemes Unix/Linux per motius de seguretat. Simplement escriviu la contrasenya i premeu Enter.\n\n\nTanqueu la sessió amb la comanda exit.\nInicieu sessió amb l’usuari root i la contrasenya que heu configurat durant la instal·lació."
+    "objectID": "laboratori/lab-virt-1.html#descarrega-alpine-linux",
+    "href": "laboratori/lab-virt-1.html#descarrega-alpine-linux",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Descarrega Alpine Linux",
+    "text": "Descarrega Alpine Linux\nNavega a la pàgina oficial d’Alpine Linux: https://alpinelinux.org/downloads/ i selecciona la imatge VIRTUAL que correspon a l’arquitectura del teu ordinador."
   },
   {
-    "objectID": "laboratori/lab02.html#exercicis-adicionals",
-    "href": "laboratori/lab02.html#exercicis-adicionals",
-    "title": "Laboratori 2: Instal·lació de Debian 12",
-    "section": "Exercicis adicionals",
-    "text": "Exercicis adicionals\n\nInstal·leu altres màquines virtuals amb altres sistemes operatius en mode gràfic com:\n\nUbuntu 24.04 LTS\nFedora 39"
+    "objectID": "laboratori/lab-virt-1.html#creació-de-la-màquina-virtual",
+    "href": "laboratori/lab-virt-1.html#creació-de-la-màquina-virtual",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Creació de la màquina virtual",
+    "text": "Creació de la màquina virtual\nCrearem una màquina virtual anomenada: vm-curs0-alpine, amb les característiques següents:\n\n\n\n\n\n\n\nRecurs\nConfiguració\n\n\n\n\nCPU\n1 processador, 1 core per processador\n\n\nRAM\n512 MB\n\n\nDisc\nNo necessari\n\n\nXarxa\nNAT\n\n\nSistema operatiu convidat\nOther Linux 5.x kernel 64-bit (Alpine no hi apareix llistat)\n\n\n\n\nWindows (VMware Workstation Pro)macOS (VMware Fusion)\n\n\n\nObre VMware Workstation Pro i selecciona Create a New Virtual Machine.\nTria Custom (advanced) i deixa la compatibilitat per defecte.\nSelecciona I will install the operating system later.\nCom a sistema convidat: Linux → Other Linux 5.x kernel 64-bit.\nAnomena la VM vm-curs0-alpine.\nA processadors: Number of processors = 1, Number of cores per processor = 1.\nA memòria: 512 MB.\nA xarxa: Use network address translation (NAT).\nAcaba l’assistent (Finish) sense preocupar-te encara pel disc.\nObre Edit virtual machine settings, selecciona el disc dur i fes Remove — no el necessitem.\n\n\n\n\nObre VMware Fusion i fes File → New…\nSelecciona Create a custom virtual machine (no “Install from disc or image”).\nCom a sistema convidat: Linux → Other Linux 5.x kernel 64-bit.\nDeixa Legacy BIOS o UEFI per defecte.\nMarca Customize Settings abans de crear-la i anomena-la vm-curs0-alpine.\nA Settings:\n\nProcessors & Memory: 1 processador, 512 MB.\nNetwork Adapter: Share with my Mac (NAT).\nHard Disk: elimina’l amb el botó –.\n\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nAlpine no apareix a la llista de distribucions convidades a cap dels dos programes. No passa res: l’opció genèrica Other Linux 5.x kernel 64-bit és suficient.\n\n\n\n\n\n\n\n\nConsell\n\n\n\nCreus que Alpine Linux funcionarà amb només 512 MB de RAM?\n\nSí\nNo\nNo ho sé\n\nPer què?"
   },
   {
-    "objectID": "laboratori/lab-git-1.html",
-    "href": "laboratori/lab-git-1.html",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "objectID": "laboratori/lab-virt-1.html#connectar-alpine-i-arrencar-la-vm",
+    "href": "laboratori/lab-virt-1.html#connectar-alpine-i-arrencar-la-vm",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Connectar Alpine i arrencar la VM",
+    "text": "Connectar Alpine i arrencar la VM\nObre la configuració de maquinari de la VM (Edit virtual machine settings a Windows, o l’engranatge de Settings a Mac).\nBusca l’apartat del CD/DVD i indica que utilitzi un fitxer ISO (Use ISO image file / Choose a disc or disc image).\nSelecciona la ISO d’Alpine i fes Power on.\n\n\n\n\n\n\nConsellAcabes de crear un ordinador virtual\n\n\n\nVMware està proporcionant a Alpine: una CPU virtual, memòria RAM virtual, una interfície de xarxa virtual, i els altres dispositius virtuals necessaris per arrencar."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#entrar-a-alpine-linux",
+    "href": "laboratori/lab-virt-1.html#entrar-a-alpine-linux",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Entrar a Alpine Linux",
+    "text": "Entrar a Alpine Linux\nQuan Alpine arrenqui, apareixerà una consola.\nInicia sessió com:\nroot\nEn aquesta imatge d’Alpine no cal introduir cap contrasenya per iniciar aquesta sessió temporal.\nHauries d’arribar a un prompt semblant a:\nlocalhost:~#\n\n\n\n\n\n\nAlerta\n\n\n\nEn aquesta pràctica l’utilitzarem en mode live, arrencant des de la ISO. No farem cap instal·lació permanent. Això vol dir que qualsevol canvi que fem a la VM no es conservarà quan l’apaguem. No tenim cap disc virtual assignat a la VM, així que Alpine s’executa completament a la memòria RAM."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#què-veu-la-màquina-virtual",
+    "href": "laboratori/lab-virt-1.html#què-veu-la-màquina-virtual",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Què veu la màquina virtual?",
+    "text": "Què veu la màquina virtual?\nAra comprovarem experimentalment una de les idees principals de la teoria:\n\nLa VM té el seu propi maquinari virtual.\n\nObserva que, mentre la VM té el focus, el teclat i el ratolí responen al guest i no al host. Per alliberar el control del ratolí, prem la combinació de tecles: Ctrl + Alt (Windows) o Ctrl + Cmd (Mac).\nSi no fem cap configuració especial, les funcions de copiar i enganxar entre el host i la VM no funcionen. Això és una altra prova que la VM està aïllada del host. Pots intentar copiar text de la VM i enganxar-lo al host, o viceversa: no funcionarà.\nAquesta VM té el teclat configurat amb el layout US. Intenta escriure ls -la i veuràs que la tecla - no té el mateix comportament que al teu ordinador. Per modificar el layout del teclat, executa setup-keymap i selecciona es a les dues preguntes que et farà (layout i variant).\n\n\n\n\n\n\nNota\n\n\n\nsetup-keymap et demanarà el layout i després la variant. Escriu es a totes dues.\nTruc: escriu setup i prem Tab per autocompletar el nom del comandament i així no cal escriure el guionet.\n\n\n\nQuantes CPU veu?\nExecuta:\ngrep -c '^processor' /proc/cpuinfo\nCPU que veu Alpine: __________________\nCPU que havíem assignat a la VM: __________________\nCoincideixen?\n\nSí\nNo\n\n\n\nQuanta RAM veu?\nExecuta:\nfree -h\nBusca la línia:\nMem:\nRAM que veu Alpine: __________________\nRAM assignada a la VM: 512 MB\nÉs aproximadament el que esperaves?\n\nSí\nNo\n\nAra executa dmesg | grep -i memory i observa el missatge que apareix. Aquest missatge és generat pel kernel d’Alpine quan arrenca i indica quanta memòria RAM veu.\n\n\nQuina arquitectura veu Alpine?\nExecuta:\nuname -m\nArquitectura que veu Alpine: __________________\nAra compara-la amb l’arquitectura que has anotat a l’inici de la pràctica, a l’apartat “Quina arquitectura té el teu ordinador?”.\nSón iguals?\n\nSí\nNo\n\n\n\n\n\n\n\nConsellPregunta de reflexió\n\n\n\nLa VM sempre ha de veure exactament la mateixa arquitectura que l’ordinador físic?\n\n\n\n\n\n\nI la xarxa?\nExecuta:\nip addr\nObserva les interfícies que apareixen.\nQuantes interfícies observes? __________________\nHi ha alguna interfície que representi la xarxa de la VM?\n\n\n\n\n\n\n\nNota\n\n\n\nLa interfície que veu Alpine és una interfície de xarxa virtual. VMware s’encarrega de connectar-la amb la xarxa física de l’ordinador. Si eth0 apareix sense adreça IP o en estat DOWN, és normal en mode live; no cal solucionar-ho.\n\n\n\n\nI el disc?\nExecuta:\ndf -h\nObserva els sistemes de fitxers.\nHas creat algun disc virtual per a aquesta VM?\n\nSí\nNo\n\nCom pot funcionar Alpine si no hem creat cap disc virtual?\n\n\n\n\n\n\n\n\nNota\n\n\n\nAlpine, en mode live, s’executa a partir de la ISO i utilitza la memòria RAM. No necessita un disc persistent per a aquesta pràctica.\nQuan instal·lem un sistema operatiu que volem conservar, com farem en una pràctica posterior, sí que necessitarem un disc virtual persistent.\n\n\n\n\n\n\n\n\nConsellQuè acabem de comprovar?\n\n\n\nLa VM no veu directament tot el maquinari físic. Està veient una representació virtual del maquinari que VMware li proporciona."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#experiment-canviem-la-ram",
+    "href": "laboratori/lab-virt-1.html#experiment-canviem-la-ram",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Experiment: canviem la RAM",
+    "text": "Experiment: canviem la RAM\nAra farem exactament el que parlàvem a la teoria:\n\nCanviar un recurs virtual i comprovar què passa dins de la VM.\n\nLa VM actual té:\n\n512 MB de RAM\n\nLa canviarem a:\n\n1 GB de RAM\n\n\n\n\n\n\n\nConsell\n\n\n\nQuanta RAM creus que veurà Alpine després del canvi?\n\n\n\nPrimer apaga Alpine:\npoweroff\nEspera que la VM s’apagui completament.\nA VMware:\n\nObre la configuració de la VM.\nBusca Memory.\nCanvia:\n\n512 MB → 1 GB\n\nTorna a arrencar la VM.\nInicia sessió com root.\nExecuta:\n\nfree -h\nRAM que veu ara Alpine: __________________\nCoincideix amb la teva predicció?\n\nSí\nNo\n\nQuè ha canviat?\n\n\n\n\n\n\n\n\nConsell\n\n\n\nEl que hem fet és modificar un recurs virtual. Però aquest recurs virtual necessita RAM física del host."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#experiment-canviem-la-cpu",
+    "href": "laboratori/lab-virt-1.html#experiment-canviem-la-cpu",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Experiment: canviem la CPU",
+    "text": "Experiment: canviem la CPU\nAra farem el mateix experiment, però amb la CPU.\nLa VM actual té:\n\n1 core\n\nLa canviarem a:\n\n2 cores\n\n\n\n\n\n\n\nConsell\n\n\n\nQuants processadors creus que veurà Alpine després del canvi?\n\n\n\nPrimer apaga Alpine:\npoweroff\nA VMware, obre la configuració de la VM i modifica:\nNumber of cores per processor: 1 → 2\nTorna a arrencar la VM, inicia sessió com root i executa:\ngrep -c '^processor' /proc/cpuinfo\nCPU que veu Alpine: __________________\nCoincideix amb la teva predicció?\n\nSí\nNo\n\nQuè ha canviat respecte a abans?\n\n\n\n\n\n\n\n\nNota\n\n\n\nDeixa la VM configurada amb 2 cores: la farem servir a l’experiment següent."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#experiment-fem-treballar-la-cpu",
+    "href": "laboratori/lab-virt-1.html#experiment-fem-treballar-la-cpu",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Experiment: fem treballar la CPU",
+    "text": "Experiment: fem treballar la CPU\nFins ara hem comprovat que la CPU virtual existeix. Ara comprovarem que també fa treball real.\n\n\n\n\n\n\nConsellAbans de començar: fes una predicció\n\n\n\nEstem a punt d’executar dins la VM un procés que fa treballar la CPU al màxim de manera continuada.\nQuin percentatge de CPU creus que consumirà, dins d’Alpine?\n\nI creus que el teu ordinador físic (el host) notarà aquest treball d’alguna manera?\n\nSí\nNo\nNo ho sé\n\n\n\n\nGenera treball de CPU dins la VM\nExecuta:\nyes &gt; /dev/null &\nAquest comandament llança un procés que repeteix una tasca sense parar, en segon pla (&).\nAra observa els processos actius:\ntop\nBusca la línia corresponent al procés yes i fixa’t en la columna %CPU.\nQuin percentatge de CPU consumeix yes dins d’Alpine? __________________\nCoincideix amb la teva predicció?\n\nSí\nNo\n\n\n\n\n\n\n\nNota\n\n\n\nCom que a l’experiment anterior has configurat la VM amb 2 cores, pot ser que yes mostri un percentatge proper al 100%, ja que és un sol procés i només pot fer servir un core alhora.\n\n\n\n\nComprova-ho també al host\nSense tancar top, mira ara el teu ordinador físic:\n\nWindows: obre el Gestor de tasques → Rendiment, o la pestanya Processos i busca VMware Workstation / vmware-vmx.exe.\nmacOS: obre el Monitor d’activitat i busca VMware Fusion o vmware-vmx.\n\n\n\n\n\n\n\nAlerta\n\n\n\nNo busquis un procés anomenat yes al host: no hi apareixerà. El procés yes viu dins la VM; el que veurà el host és el propi procés de VMware (vmware-vmx) consumint més CPU física, perquè és ell qui executa realment la CPU virtual per compte de la VM.\n\n\nQuant de CPU física consumeix el procés de VMware al host? __________________\n\n\n\n\n\n\nConsellConnecta-ho amb la teoria\n\n\n\nLa CPU que acaba de treballar dins la VM no és una CPU imaginària. El treball que hem generat amb yes s’ha traduït en consum real de CPU física del host, gestionat pel procés de VMware.\nVirtual ≠ imaginari.\n\n\n\n\nAtura el procés\nSurt de top prement:\nq\nDesprés atura el procés yes:\nkill %1\n\n\n\n\n\n\nNota\n\n\n\nSi kill %1 respon amb un error com no such job, prova en canvi:\npkill yes\n\n\nComprova que el procés yes ha desaparegut executant top de nou, i que el consum de CPU del procés de VMware al host també ha baixat."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#dues-vms-alhora",
+    "href": "laboratori/lab-virt-1.html#dues-vms-alhora",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Dues VMs alhora",
+    "text": "Dues VMs alhora\nL’objectiu és observar una altra idea de la teoria:\n\nLes VMs estan aïllades, però comparteixen els recursos físics.\n\n\nPrepara una segona VM\nCrea una segona VM d’Alpine o clona l’actual.\nAnomena-la, per exemple:\nvm-curs0-alpine-2\nConfigura-la amb:\n\n1 processador, 1 core per processador\n512 MB o 1 GB de RAM\n\nArrenca les dues VMs alhora.\n\n\nFes treballar una VM\nA la primera VM executa:\nyes &gt; /dev/null &\nI observa amb:\ntop\nA l’altra VM observa també el seu sistema.\nNotes algun canvi de rendiment?\n\nSí\nNo\nNo ho sé notar\n\nPer què creus que pot passar?\n\n\n\n\n\n\n\n\nConsell\n\n\n\nCada VM té el seu propi entorn i els seus propis processos, però les dues comparteixen el mateix maquinari físic del host. Per això, una VM que consumeix molts recursos pot afectar el rendiment de les altres. Aïllament ≠ independència total de recursos."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#pregunta-1",
+    "href": "laboratori/lab-virt-1.html#pregunta-1",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Pregunta 1",
+    "text": "Pregunta 1\nQuanta RAM hem assignat en total a les VMs?"
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#pregunta-2",
+    "href": "laboratori/lab-virt-1.html#pregunta-2",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Pregunta 2",
+    "text": "Pregunta 2\nQuanta RAM queda teòricament?"
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#pregunta-3",
+    "href": "laboratori/lab-virt-1.html#pregunta-3",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Pregunta 3",
+    "text": "Pregunta 3\nPodem assignar els 4 GB restants a una quarta VM?\n\nSí, sense cap problema.\nSí, però cal tenir en compte el host.\nNo, mai podem crear una quarta VM."
+  },
+  {
+    "objectID": "laboratori/lab-virt-1.html#pregunta-4",
+    "href": "laboratori/lab-virt-1.html#pregunta-4",
+    "title": "Laboratori 1 · Alpine Linux · Primera màquina virtual",
+    "section": "Pregunta 4",
+    "text": "Pregunta 4\nPer què?\n\n\n\n\n\n\n\n\nNota\n\n\n\nEn un sistema real, el host també necessita recursos per funcionar i la virtualització té un cert cost. Per tant, no podem considerar tota la RAM física com a disponible per a les màquines virtuals. El mateix aplica a la CPU i a la resta de recursos. Sempre hem de deixar una part per al host."
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html",
+    "href": "laboratori/lab-linux-3.html",
+    "title": "Laboratori 5 · Introducció a vi/vim",
     "section": "",
-    "text": "Aprendre a utilitzar les comandes bàsiques de GIT\nEntendre el cicle de vida dels fitxers: untracked, modified, staged i committed."
+    "text": "En aquesta pràctica aprendrem a:\n\nInstal·lar vim des de la terminal.\nObrir i crear fitxers de text amb vim.\nEntendre els dos modes bàsics de vim.\nEscriure i modificar text.\nGuardar i sortir de l’editor.\nMoure’ns pel text i eliminar text.\nCopiar i enganxar línies.\nBuscar text dins d’un fitxer.\nUtilitzar vim per editar un fitxer real des de la terminal.\n\n\n\n\n\n\n\nConsell\n\n\n\nObjectiu de la pràctica: al final hauríeu de ser capaços d’obrir un fitxer amb vim, modificar-lo, guardar els canvis i sortir de l’editor sense ajuda."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#objectius",
-    "href": "laboratori/lab-git-1.html#objectius",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
+    "objectID": "laboratori/lab-linux-3.html#més-maneres-dentrar-en-mode-inserció",
+    "href": "laboratori/lab-linux-3.html#més-maneres-dentrar-en-mode-inserció",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "5.1 Més maneres d’entrar en mode inserció",
+    "text": "5.1 Més maneres d’entrar en mode inserció\ni no és l’única manera d’entrar en mode inserció. Aquestes tres són les més habituals:\n\n\n\nTecla\nEfecte\n\n\n\n\ni\nInsereix abans del cursor\n\n\na\nInsereix després del cursor (append)\n\n\no\nObre una línia nova a sota i entra en mode inserció\n\n\nO\nObre una línia nova a sobre i entra en mode inserció\n\n\n\n\n\n\n\n\n\nNota\n\n\n\no és probablement la que faràs servir més sovint: en comptes d’anar manualment fins al final d’una línia per prémer Enter, o ho fa directament en un sol pas."
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html#guardar",
+    "href": "laboratori/lab-linux-3.html#guardar",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "6.1 Guardar",
+    "text": "6.1 Guardar\nEn mode normal, escriu:\n:w\ni prem Enter. La comanda significa w (write) → guardar.\nAra surt de Vim:\n:q\n\n\n\n\n\n\nNota\n\n\n\nLes comandes que comencen amb : s’escriuen des del mode normal.\n\n\nComprova que el fitxer existeix i mostra’n el contingut:\nls -l primer.txt\ncat primer.txt"
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html#una-altra-manera-wq",
+    "href": "laboratori/lab-linux-3.html#una-altra-manera-wq",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "6.2 Una altra manera: :wq",
+    "text": "6.2 Una altra manera: :wq\nEn lloc de fer :w i després :q, pots fer directament:\n:wq\nAixò significa write + quit → guardar i sortir, tot en un sol pas."
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html#sortir-sense-guardar",
+    "href": "laboratori/lab-linux-3.html#sortir-sense-guardar",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "7.1 Sortir sense guardar",
+    "text": "7.1 Sortir sense guardar\nAra obre de nou el fitxer, modifica alguna cosa (per exemple, afegeix una línia que digui “Aquesta línia no la guardarem.”), i torna al mode normal amb Esc.\nAquest cop, en comptes de :wq, prova de sortir amb:\n:q\nQuè passa? __________________\n\n\n\n\n\n\nNota\n\n\n\nVim no et deixa sortir amb :q sol si hi ha canvis sense guardar — és una protecció perquè no perdis feina per error. Si realment vols descartar els canvis i sortir igualment, cal forçar-ho afegint !:\n:q!\nFes servir :q! només quan estiguis segur que vols perdre els canvis. Si el fitxer ja està guardat i no hi ha res pendent, :q sol ja funciona sense necessitat del !.\n\n\nComprova el fitxer:\ncat primer.txt\n\n\n\n\n\n\nConsell\n\n\n\nHa aparegut la línia que havies afegit?\n\nSí\nNo"
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html#moviments-ràpids",
+    "href": "laboratori/lab-linux-3.html#moviments-ràpids",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "8.1 Moviments ràpids",
+    "text": "8.1 Moviments ràpids\nPer a fitxers amb diverses línies, aquests moviments estalvien molt de temps:\n\n\n\nTecla\nEt porta a…\n\n\n\n\n0\nl’inici de la línia actual\n\n\n$\nel final de la línia actual\n\n\ngg\nl’inici del fitxer\n\n\nG\nel final del fitxer\n\n\n\n\n\n\n\n\n\nConsellExercici\n\n\n\nAmb el fitxer primer.txt obert, prova gg per anar a l’inici, G per anar al final, i 0/$ per moure’t dins d’una línia."
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html#eliminar-un-caràcter-x",
+    "href": "laboratori/lab-linux-3.html#eliminar-un-caràcter-x",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "9.1 Eliminar un caràcter: x",
+    "text": "9.1 Eliminar un caràcter: x\nSitua el cursor sobre un caràcter i prem x en mode normal. El caràcter desapareix.\nx és útil per a correccions petites; si necessites eliminar tota una línia, fas servir dd."
+  },
+  {
+    "objectID": "laboratori/lab-linux-3.html#eliminar-una-línia-dd",
+    "href": "laboratori/lab-linux-3.html#eliminar-una-línia-dd",
+    "title": "Laboratori 5 · Introducció a vi/vim",
+    "section": "9.2 Eliminar una línia: dd",
+    "text": "9.2 Eliminar una línia: dd\nObre el fitxer, situa el cursor sobre una línia que vulguis eliminar, i en mode normal prem:\ndd\nLa línia desapareix. dd significa, de manera simplificada, delete line.\nAra desfés l’operació amb:\nu\nu significa undo.\n\n\n\n\n\n\nConsellExercici\n\n\n\n\nElimina una línia amb dd.\nComprova que ha desaparegut.\nRecupera-la amb u.\nGuarda el fitxer amb :w.\nSurt amb :q."
+  },
+  {
+    "objectID": "laboratori/lab-linux-1.html",
+    "href": "laboratori/lab-linux-1.html",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
     "section": "",
-    "text": "Aprendre a utilitzar les comandes bàsiques de GIT\nEntendre el cicle de vida dels fitxers: untracked, modified, staged i committed."
+    "text": "En aquesta pràctica aprendrem a:\n\nMoure’ns pel sistema de fitxers amb pwd, ls i cd.\nConsultar la documentació incorporada de Linux amb man.\nDistingir entre rutes absolutes i rutes relatives.\nReconèixer l’estructura de directoris d’un sistema Linux i identificar les carpetes més importants.\nCrear, copiar, moure i eliminar fitxers i directoris.\nComprimir i descomprimir fitxers amb tar.\nInstal·lar i eliminar programari amb apt.\n\n\n\n\n\n\n\nConsell\n\n\n\nAquesta pràctica es fa dins de la màquina virtual Debian que vam instal·lar al Laboratori 2. Arrenca-la i inicia sessió amb el teu usuari normal."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#requisits-previs",
-    "href": "laboratori/lab-git-1.html#requisits-previs",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Requisits previs",
-    "text": "Requisits previs\n\nConeixements bàsics de la línia de comandes de Linux.\nGit està instal·lat al sistema."
+    "objectID": "laboratori/lab-linux-1.html#com-sé-què-fa-una-comanda-que-no-conec",
+    "href": "laboratori/lab-linux-1.html#com-sé-què-fa-una-comanda-que-no-conec",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "4.1 Com sé què fa una comanda que no conec?",
+    "text": "4.1 Com sé què fa una comanda que no conec?\nNo cal memoritzar totes les opcions de totes les comandes: Linux té documentació incorporada.\nman ls\nDesplaça’t amb les fletxes o Enter, i surt prement q.\nProva-ho també amb una comanda que ja coneixes:\nman pwd\n\n\n\n\n\n\nNota\n\n\n\nman mostra el manual d’una comanda: què fa, quines opcions accepta i exemples d’ús. És una de les eines més importants per aprendre Linux pel teu compte.\nUna alternativa més ràpida i resumida és ls --help."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#inicialització-del-repositori",
-    "href": "laboratori/lab-git-1.html#inicialització-del-repositori",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Inicialització del repositori",
-    "text": "Inicialització del repositori\nPrimer de tot, creem un nou repositori de Git:\nmkdir hands-on-1\ncd hands-on-1\ngit init\nO, en un sol pas:\ngit init hands-on-1"
+    "objectID": "laboratori/lab-linux-1.html#rutes-absolutes-vs.-rutes-relatives",
+    "href": "laboratori/lab-linux-1.html#rutes-absolutes-vs.-rutes-relatives",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "5.1 Rutes absolutes vs. rutes relatives",
+    "text": "5.1 Rutes absolutes vs. rutes relatives\n\nRuta absoluta: comença sempre des de l’arrel (/). És independent d’on estiguis situat.\nRuta relativa: es descriu des del directori actual.\n\n\n\n\n\n\n\nConsellUn pas més\n\n\n\nTorna al teu directori personal amb cd, i des d’allà entra a practica.\nEscriu ara una ruta relativa (fent servir ..) que et porti fins a /etc des de practica:\n\n\n\nComprova-ho:\ncd ~/practica\ncd ../../etc\npwd\n\n\n\n\n\n\nNota\n\n\n\nUna ruta relativa depèn d’on estiguis; si canvies de directori, la mateixa ruta relativa et portarà a un lloc diferent. Una ruta absoluta sempre et porta al mateix lloc, des d’on sigui que l’executis."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#estat-inicial",
-    "href": "laboratori/lab-git-1.html#estat-inicial",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Estat inicial",
-    "text": "Estat inicial\nSi fem git status des de dins del directori hands-on-1, hauríem de veure que el repositori està net:\n$ git status\nOn branch main\n\nNo commits yet\n\nnothing to commit (create/copy files and use \"git add\" to track)\n\n\nDepenent de la configuració, veurem master enlloc de main."
+    "objectID": "laboratori/lab-linux-1.html#carpetes-importants",
+    "href": "laboratori/lab-linux-1.html#carpetes-importants",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "6.1 Carpetes importants",
+    "text": "6.1 Carpetes importants\n\n\n\n\n\n\n\nDirectori\nContingut\n\n\n\n\n/\nDirectori arrel: conté tot l’arbre de fitxers\n\n\n/home\nDirectoris personals dels usuaris normals\n\n\n/root\nDirectori personal de l’usuari root (no confondre amb /)\n\n\n/bin\nOrdres bàsiques del sistema (ls, cat, cp…)\n\n\n/etc\nFitxers de configuració del sistema\n\n\n/var\nDades que canvien (registres, cues, etc.)\n\n\n/tmp\nFitxers temporals, s’esborren en reiniciar\n\n\n/dev\nFitxers que representen dispositius (discos, terminals…)\n\n\n/usr\nProgrames i biblioteques instal·lades a l’usuari\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nNo cal memoritzar-los tots avui. Torna a aquesta taula sempre que et trobis un directori que no reconeguis.\n\n\n\n\n\n\n\n\nConsell\n\n\n\nPredicció: si el teu usuari es diu jordi, quina serà la ruta absoluta del seu directori personal?"
   },
   {
-    "objectID": "laboratori/lab-git-1.html#afegim-el-nostre-primer-fitxer",
-    "href": "laboratori/lab-git-1.html#afegim-el-nostre-primer-fitxer",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Afegim el nostre primer fitxer",
-    "text": "Afegim el nostre primer fitxer\nCrea un fitxer anomenat README.md dins del directori amb el següent contingut:\n# Hello, World!\nConsulta l’estat del repositori amb git status.\nEl fitxer apareixerà com a untracked.\nGit detecta que existeix un fitxer que encara no forma part de cap commit, però no l’inclourà automàticament en el pròxim commit."
+    "objectID": "laboratori/lab-linux-1.html#installar-tree",
+    "href": "laboratori/lab-linux-1.html#installar-tree",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "7.1 Instal·lar tree",
+    "text": "7.1 Instal·lar tree\nsudo apt update\nsudo apt install tree -y\n\n\n\n\n\n\nNota\n\n\n\napt és el gestor de paquets de Debian. apt update actualitza la llista de paquets disponibles, i apt install &lt;paquet&gt; n’instal·la un.\n\n\nAra mira l’arbre de directoris des de l’arrel, limitat a un sol nivell de profunditat:\ntree -L 1 -d /\nQuins dels directoris de la taula anterior reconeixes a la sortida? __________________"
   },
   {
-    "objectID": "laboratori/lab-git-1.html#afegim-el-fitxer-a-lstaging",
-    "href": "laboratori/lab-git-1.html#afegim-el-fitxer-a-lstaging",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Afegim el fitxer a l’staging",
-    "text": "Afegim el fitxer a l’staging\nPer indicar a Git que volem incloure README.md en el pròxim commit:\ngit add README.md\nConsulta de nou l’estat:\ngit status\nAra README.md apareixerà sota:\nChanges to be committed:\nEl fitxer està staged."
+    "objectID": "laboratori/lab-linux-1.html#eliminar-tree",
+    "href": "laboratori/lab-linux-1.html#eliminar-tree",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "7.2 Eliminar tree",
+    "text": "7.2 Eliminar tree\nAra que ja l’hem fet servir, l’eliminarem:\nsudo apt remove tree\nTorna a intentar executar-lo:\ntree\nQuè ha passat? __________________\n\n\n\n\n\n\nConsellPensa-hi\n\n\n\nHem eliminat el programa tree. Hem eliminat també el directori practica que vam crear abans?\nComprova-ho:\nls ~/practica\n\n\n\n\n\n\n\n\nNota\n\n\n\nEliminar un programa amb apt remove no afecta els fitxers personals que hagis creat tu mateix. Un gestor de paquets com apt només gestiona el programari instal·lat al sistema, no els teus documents."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#creem-el-primer-commit",
-    "href": "laboratori/lab-git-1.html#creem-el-primer-commit",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Creem el primer commit",
-    "text": "Creem el primer commit\nAra podem crear una nova versió del projecte:\ngit commit -m \"Afegeix README\"\nConsulta l’estat:\ngit status\nEl repositori hauria d’estar net:\nOn branch main\nnothing to commit, working tree clean\nAcabem de crear el nostre primer commit."
+    "objectID": "laboratori/lab-linux-1.html#mkdir-i-touch",
+    "href": "laboratori/lab-linux-1.html#mkdir-i-touch",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "8.1 mkdir i touch",
+    "text": "8.1 mkdir i touch\ncd ~/practica\ntouch nota.txt\nls -l\nmkdir crea un directori nou; touch crea un fitxer buit (o actualitza la seva data si ja existeix)."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#modifiquem-el-projecte",
-    "href": "laboratori/lab-git-1.html#modifiquem-el-projecte",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Modifiquem el projecte",
-    "text": "Modifiquem el projecte\nModifica README.md i afegeix-hi, per exemple:\nAquest és el meu primer repositori de Git.\nConsulta l’estat del repositori:\ngit status\nAra README.md apareixerà com a modified.\nGit ha detectat que el fitxer és diferent del que hi havia en l’últim commit.\nPer veure els canvis que s’han fet al projecte, podem executar:\ngit diff\n\n\n\n\n\n\nConsellInterpretant la sortida de git diff\n\n\n\nLes línies que comencen amb - indiquen contingut que s’ha eliminat.\nLes línies que comencen amb + indiquen contingut que s’ha afegit.\nPer exemple:\n-Hello, World!\n+Hola, món!\nsignifica que la primera línia ha estat substituïda per la segona.\n\n\nUn cop estem segurs de voler incorporar els canvis al pròxim commit, fem\ngit add README.md\nQue passa si tornem a executar git diff?\nPer defecte, git diff només mostra els canvis en l’àrea working, però després de fer git add el fitxer README.md es troba en l’àrea staging. Per veure els canvis de l’àrea staging hem de fer:\ngit diff --staged"
+    "objectID": "laboratori/lab-linux-1.html#echo-la-redirecció-i-cat",
+    "href": "laboratori/lab-linux-1.html#echo-la-redirecció-i-cat",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "8.2 echo, la redirecció i cat",
+    "text": "8.2 echo, la redirecció i cat\necho mostra text per pantalla. Combinat amb el símbol &gt;, podem enviar aquest text a un fitxer en lloc de mostrar-lo:\necho \"Hola món\" &gt; nota.txt\ncat nota.txt\n\n\n\n\n\n\nNota\n\n\n\ncat mostra el contingut d’un fitxer directament al terminal. És una de les comandes que faràs servir més sovint, sobretot més endavant quan comencem a consultar fitxers de configuració.\n\n\n\n\n\n\n\n\nAlerta\n\n\n\n&gt; sobreescriu tot el contingut del fitxer. Si el fitxer ja tenia contingut, es perd.\n\n\nPer afegir contingut sense esborrar l’anterior, fem servir &gt;&gt;:\necho \"Segona línia\" &gt;&gt; nota.txt\ncat nota.txt\nQuantes línies té ara nota.txt? __________________\n\n\n\n\n\n\nConsell\n\n\n\nPredicció: si ara executes echo \"Adéu\" &gt; nota.txt, què creus que contindrà el fitxer després?\n\nLes tres línies (Hola món, Segona línia, Adéu)\nNomés “Adéu”\nNo ho sé\n\n\n\nComprova-ho:\necho \"Adéu\" &gt; nota.txt\ncat nota.txt"
   },
   {
-    "objectID": "laboratori/lab-git-1.html#un-últim-canvi-abans-del-commit",
-    "href": "laboratori/lab-git-1.html#un-últim-canvi-abans-del-commit",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Un últim canvi abans del commit",
-    "text": "Un últim canvi abans del commit\nAnem a canviar el títol del fitxer README.md.\n\n\n\n\n\n\nNota\n\n\n\nEn un fitxer markdown, una línea que comença amb # &lt;XXXX&gt; és un títol.\n\n\nCanvia la línea\n# Hello, World!\nper\n# Hola, món!\nQuè veus quan fas git status? I git diff? I git diff --staged?\n\n\n\n\n\n\nImportant\n\n\n\nQuan hem fet git add abans, hem incorporat els canvis fins aquell moment a l’àrea staging, però els nous canvis no s’han afegit automàticament. Git ens permet tenir canvis d’un fitxer en l’àrea staging i working a la vegada, per tenir més control sobre el contingut dels commits.\nEn el pròxim commit, els canvis que no s’hagin afegit a staging no s’inclouran.\n\n\nAnem a fer un commit sense el canvi del títol:\ngit commit -m \"Canviant el contingut de README.md\"\nSi fem git status i git diff, veurem que ara només queda pendent el canvi del títol. Per exemple, la sortida de git diff serà similar a:\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# Hello, World!\n+# Hola, món!\n Hello from my new git repository\n\n Aquest és el meu primer repositori de Git.\nAfegeix el fitxer un altre cop, i fes un nou commit.\n\n\n\n\n\n\nConsell\n\n\n\nPer afegir tots els fitxers a la vegada, pots fer: - git add -A: afegeix a l’àrea staging els canvis a tots els fitxers, tracked i untracked. - git add -u: afegeix a l’àrea staging els canvis només als fitxers tracked."
+    "objectID": "laboratori/lab-linux-1.html#cp",
+    "href": "laboratori/lab-linux-1.html#cp",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "9.1 cp",
+    "text": "9.1 cp\ncp nota.txt copia.txt\nls -l\ncp origen destinació crea una còpia. L’arxiu original es manté intacte."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#ignorant-fitxers",
-    "href": "laboratori/lab-git-1.html#ignorant-fitxers",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Ignorant fitxers",
-    "text": "Ignorant fitxers\nA vegades podem tenir fitxers que son temporals, o que son artefactes d’un procès automàtic (p.e. de compilar un projecte, fitxers autogenerats…). Habitualment no volem que Git gestioni aquests fitxers. Tenim dues opcions:\n\nVigilar cada vegada que fem un commit, per no introduïr aquests fitxers a Git.\nIndicar a Git que els ignori.\n\nLa primera opció és propensa a errors, per tant farem la segona.\nPrimer de tot, anem a crear un fitxer que no vulguem al repositori, per exemple un fitxer on escriurem notes per nosaltres:\ntouch notes.tmp\n\n\n\n\n\n\nConsell\n\n\n\ntouch crea un fitxer buit a la ruta especificada.\n\n\nSi ara fem git status, veurem aquest fitxer com a untracked. Si ara fessim git add -A o git add ., s’afegiria a l’àrea staging. Per evitar-ho, crearem un nou fitxer que es diu .gitignore amb el següent contingut:\n*.tmp\nConsulta l’estat:\ngit status\nAra notes.tmp ja no apareix com a untracked.\nEl fitxer .gitignore sí que apareix com a untracked, perquè és un fitxer normal del projecte i encara no l’hem afegit.\n\n\n\n\n\n\nNota\n\n\n\n.gitignore permet indicar patrons de fitxers que Git no ha de mostrar com a fitxers untracked. És habitual utilitzar-lo per fitxers temporals, fitxers generats automàticament o altres fitxers que no volem guardar al repositori.\nEn el nostre cas, el patró és *.tmp, que significa “qualsevol fitxer que el seu nom acabi amb .tmp”\n\n\nAfegim el fitxer .gitignore al repositori amb git add .gitignore, i podem fer un nou commit amb git commit -m \"Afegeix gitignore\"."
+    "objectID": "laboratori/lab-linux-1.html#mv",
+    "href": "laboratori/lab-linux-1.html#mv",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "9.2 mv",
+    "text": "9.2 mv\nmv serveix tant per moure com per reanomenar un fitxer (a Linux són la mateixa operació).\nmv copia.txt copia2.txt\nls -l\nmkdir ../altre\nmv copia2.txt ../altre/\nls ../altre"
   },
   {
-    "objectID": "laboratori/lab-git-1.html#fitxers-que-no-són-de-text",
-    "href": "laboratori/lab-git-1.html#fitxers-que-no-són-de-text",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Fitxers que no són de text",
-    "text": "Fitxers que no són de text\nGit no només pot gestionar fitxers de text.\nTambé podem afegir fitxers binaris al repositori, com ara imatges.\nPodem afegir-los a l’àrea staging de la mateixa manera:\ngit add foto.png\nI crear un commit:\ngit commit -m \"Afegeix imatge\"\nGit guardarà el fitxer com a part del commit.\n\n\n\n\n\n\nImportant\n\n\n\nEls fitxers de text permeten a Git calcular i mostrar fàcilment les diferències entre versions. Amb fitxers binaris, com una imatge, Git no pot mostrar aquestes diferències de la mateixa manera.\nSi editessim la imatge, git diff no ens mostraria que ha canviat."
+    "objectID": "laboratori/lab-linux-1.html#rm",
+    "href": "laboratori/lab-linux-1.html#rm",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "9.3 rm",
+    "text": "9.3 rm\nrm copia.txt\nPer eliminar un directori amb contingut, cal l’opció -r (recursiu):\nrm -r ../altre\n\n\n\n\n\n\nAlerta\n\n\n\nrm -rf elimina de manera recursiva (-r) i forçada (-f, sense demanar confirmació). No hi ha paperera de reciclatge: un cop executat, no es pot desfer.\nVés amb molt de compte, sobretot amb rutes absolutes com / o $HOME. No l’executis mai sense estar segur del que estàs eliminant."
   },
   {
-    "objectID": "laboratori/lab-git-1.html#exercici-practicant-el-cicle-de-git",
-    "href": "laboratori/lab-git-1.html#exercici-practicant-el-cicle-de-git",
-    "title": "Laboratori 3: Comandes bàsiques de Git",
-    "section": "Exercici: practicant el cicle de Git",
-    "text": "Exercici: practicant el cicle de Git\nAra fes els següents canvis sense seguir instruccions pas a pas:\n\nCrea un fitxer anomenat projecte.txt.\nAfegeix-hi algunes línies de text.\nConsulta l’estat del repositori.\nAfegeix el fitxer a l’àrea staging.\nConsulta de nou l’estat.\nCrea un commit amb un missatge descriptiu.\nAfegeix una imatge al repositori, i fes un commit que l’afegeixi.\nModifica projecte.txt.\nConsulta els canvis amb git diff.\nAfegeix els canvis a l’staging.\nConsulta els canvis amb git diff --staged.\nCrea un altre commit.\n\nFinalment, comprova que el repositori està net amb:\n\ngit status"
+    "objectID": "laboratori/lab-linux-1.html#crear-un-arxiu-.tar",
+    "href": "laboratori/lab-linux-1.html#crear-un-arxiu-.tar",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "10.1 Crear un arxiu .tar",
+    "text": "10.1 Crear un arxiu .tar\ncd\ntar cf exemple.tar exemple\nls -l exemple.tar\n\nc = create (crear)\nf = indica que a continuació ve el nom del fitxer"
   },
   {
-    "objectID": "laboratori/lab06.html",
-    "href": "laboratori/lab06.html",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
+    "objectID": "laboratori/lab-linux-1.html#comprimir-amb-gzip",
+    "href": "laboratori/lab-linux-1.html#comprimir-amb-gzip",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "10.2 Comprimir amb Gzip",
+    "text": "10.2 Comprimir amb Gzip\ntar czf exemple.tar.gz exemple\nls -l exemple.tar.gz\nLa z afegeix compressió Gzip. Compara la mida amb la de exemple.tar:\nexemple.tar.gz és més petit que exemple.tar? __________________"
+  },
+  {
+    "objectID": "laboratori/lab-linux-1.html#extreure-un-arxiu",
+    "href": "laboratori/lab-linux-1.html#extreure-un-arxiu",
+    "title": "Laboratori 3 · Navegació i sistema de fitxers",
+    "section": "10.3 Extreure un arxiu",
+    "text": "10.3 Extreure un arxiu\nmkdir prova_extraccio\ncd prova_extraccio\ntar xzf ../exemple.tar.gz\nls -l\n\nx = extract (extreure)\n\n\n\n\n\n\n\nNota\n\n\n\nTruc mnemotècnic: crear, extreure, fitxer, comzimir (gzip). Les lletres es poden combinar en qualsevol ordre (tar xzf o tar zxf funcionen igual)."
+  },
+  {
+    "objectID": "laboratori/lab-linux-2.html",
+    "href": "laboratori/lab-linux-2.html",
+    "title": "Laboratori 4 · Usuaris, privilegis i permisos",
     "section": "",
-    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+    "text": "En aquesta pràctica aprendrem a:\n\nIdentificar l’usuari i els grups amb què treballem (id, whoami).\nEntendre la diferència entre l’usuari root i un usuari normal.\nElevar privilegis temporalment amb sudo.\nInterpretar els permisos d’un fitxer i d’un directori (lectura, escriptura, execució).\nModificar permisos amb chmod.\nCanviar el propietari d’un fitxer amb chown.\n\n\n\n\n\n\n\nConsell\n\n\n\nAquesta pràctica continua directament la Sessió 1 (navegació i sistema de fitxers). Arrenca la teva màquina virtual Debian i inicia sessió amb el teu usuari normal."
   },
   {
-    "objectID": "laboratori/lab06.html#objectius",
-    "href": "laboratori/lab06.html#objectius",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "",
-    "text": "Aquest laboratori pràctic té com a objectiu mostrar-te com crear un lloc web personal utilitzant Jekyll i GitHub Pages de manera senzilla i ràpida. Al final d’aquest laboratori, hauràs creat un lloc web personalitzat on podràs compartir informació sobre tu mateix, els teus interessos i qualsevol altra cosa que vulguis."
+    "objectID": "laboratori/lab-linux-2.html#elevar-privilegis-amb-sudo",
+    "href": "laboratori/lab-linux-2.html#elevar-privilegis-amb-sudo",
+    "title": "Laboratori 4 · Usuaris, privilegis i permisos",
+    "section": "3.1 Elevar privilegis amb sudo",
+    "text": "3.1 Elevar privilegis amb sudo\nsudo permet executar una sola comanda amb privilegis de root, demanant la teva pròpia contrasenya (no la de root).\nsudo touch /etc/prova.txt\nls -l /etc/prova.txt\nHa funcionat aquest cop? __________________\nElimina el fitxer de prova:\nsudo rm /etc/prova.txt\n\n\n\n\n\n\nNota\n\n\n\nsudo només afecta la comanda que hi ha immediatament després. Un cop executada, tornes a ser el teu usuari normal.\nRecorda del Laboratori 2: en la configuració habitual de Debian en què no s’estableix una contrasenya per a root, el primer usuari creat disposa de privilegis administratius mitjançant sudo."
   },
   {
-    "objectID": "laboratori/lab06.html#introducció",
-    "href": "laboratori/lab06.html#introducció",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Introducció",
-    "text": "Introducció\nGitHub Pages amaga la complexitat de configurar un servidor web i et permet allotjar un lloc web de manera gratuïta. Aquesta eina et permetrà allotjar llocs web estàtics directament des del teu repositori de GitHub. Tu ets responsable de crear el lloc web i de pujar-lo al teu repositori, i GitHub s’encarrega de la resta.\nUtilitzarem una plantilla de lloc web creada per Dean Attali, les seves instruccions sobre com utilitzar la plantilla es troben aquí, però no et preocupis per això, utilitzarem una simplificació per a fer les coses més fàcils."
-  },
-  {
-    "objectID": "laboratori/lab06.html#prerequisits",
-    "href": "laboratori/lab06.html#prerequisits",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Prerequisits",
-    "text": "Prerequisits\n\nCompte de GitHub (crea’n un a https://github.com si no en tens un)"
-  },
-  {
-    "objectID": "laboratori/lab06.html#eines",
-    "href": "laboratori/lab06.html#eines",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Eines",
-    "text": "Eines\n\nJekyll (un generador de llocs estàtics) - https://jekyllrb.com\nGitHub Pages (un servei d’allotjament de llocs estàtics) - https://pages.github.com"
-  },
-  {
-    "objectID": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
-    "href": "laboratori/lab06.html#tasca-1-configuració-del-teu-lloc-web-personal",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Tasca 1: Configuració del teu lloc web personal",
-    "text": "Tasca 1: Configuració del teu lloc web personal\n\nFes un fork de https://github.com/ferranad/website-template al teu compte de GitHub fent clic al botó “Fork” a la part superior dreta d’aquesta pàgina.\n\nCanvia el nom del repositori a username.github.io, on username és el teu nom d’usuari de GitHub.\n\nVes a la configuració del repositori i troba la secció GitHub Pages.\n\nHabilita GitHub Pages seleccionant la branca main com a origen. Fes clic al botó “Save” i torna a la pàgina principal del teu repositori.\n\nEspera un parell de minuts fins que el teu lloc web es desplegui. Quan el desplegament s’hagi completat, veuràs una marca verda al costat del teu darrer commit. Veuràs un punt taronja mentre el desplegament està en curs (intenta actualitzar la pàgina si no veus la marca verda després d’uns minuts).\n\n&lt;div style=“display: flex; justify-content: center; gap: 10px;”&gt; &lt;img src=“figures/pages/ci-waiting.png” width=“35%”&gt; &lt;img src=“figures/pages/ci-done.png” width=“35%”&gt; &lt;/div&gt;\n\nOpcionalment, pots editar la descripció del repositori perquè contingui l’URL del teu lloc web. Això et facilitarà a tu i als altres l’accés al teu lloc web des de la pàgina del repositori de GitHub.\n\nProva el teu lloc web visitant https://username.github.io al teu navegador web (substitueix username pel teu nom d’usuari de GitHub). Notaràs que el lloc web ja està ple de contingut d’exemple."
-  },
-  {
-    "objectID": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
-    "href": "laboratori/lab06.html#tasca-2-personalització-del-teu-lloc-web-personal",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Tasca 2: Personalització del teu lloc web personal",
-    "text": "Tasca 2: Personalització del teu lloc web personal\n\nEdita el fitxer _config.yml per personalitzar el teu lloc web. Pots utilitzar la interfície web de GitHub per editar el fitxer directament, tal com es mostra al vídeo següent. Un cop hagis confirmat els canvis a la branca principal, el desplegament del lloc web s’activarà automàticament de nou i en un parell de minuts tindràs el teu lloc web actualitzat.\n\n\n\n\n\n\n\nNota\n\n\n\nEn lloc d’editar el fitxer utilitzant la interfície web de GitHub, pots clonar el repositori a la teva màquina local i editar el fitxer amb un editor de text si et sents més còmode.\n\n\nEdita el fitxer aboutme.md per afegir la teva informació personal, sent lliure d’escriure el que vulguis. Repeteix el mateix procés que a l’apartat anterior, però ara editant el fitxer aboutme.md.\nCanvia la imatge de l’avatar editant _config.yml i reemplaçant la ruta. Observa que és només una cadena amb la ruta a un fitxer present al repositori, en aquest cas, el fitxer images/ferran.jpeg. Pots pujar qualsevol imatge que vulguis al repositori navegant al directori images i fent clic al botó “Add file -&gt; Upload files”. Si, per exemple, has pujat un fitxer anomenat myavatar.jpg, hauries de canviar la ruta a _config.yml a images/myavatar.jpg. Si no vols utilitzar una imatge d’avatar, pots eliminar la línia avatar: \"/images/ferran.jpeg del fitxer _config.yml."
-  },
-  {
-    "objectID": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
-    "href": "laboratori/lab06.html#tasca-3-escriptura-duna-entrada-de-blog",
-    "title": "Laboratori 6: Web personal amb Jekyll i GitHub Pages",
-    "section": "Tasca 3: Escriptura d’una entrada de blog",
-    "text": "Tasca 3: Escriptura d’una entrada de blog\nAra que tenim el lloc web a punt, escrivim una entrada de blog. Potser ja has notat que a la pàgina d’inici del lloc web hi ha una publicació de blog anomenada Sample blog post... en la qual pots fer clic per llegir-la completament. Aquesta és una publicació de blog de plantilla que pots utilitzar per aprendre les diferents sintaxis i estils que pots fer servir per escriure la teva pròpia publicació. Aquest fitxer es troba a _posts/2020-02-26-example-post.md. Sempre pots consultar aquest fitxer per veure com escriure una publicació de blog. En cas que no vulguis que es mostri al teu lloc web, només has d’eliminar-lo i consultar el que hi ha al repositori que has fet un fork.\nPer escriure una nova entrada de blog, només has de crear un nou fitxer dins del directori _posts amb el següent format de nom: YYYY-MM-DD-títol.md. Si no segueixes aquest format, la publicació de blog no es mostrarà al teu lloc web. Pots crear un nou fitxer navegant al directori _posts i fent clic al botó “Add file -&gt; Create a new file”. Ara que ja sabem com crear una nova publicació de blog, escrivim-ne una!"
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html",
-    "href": "laboratori/lab-git-2.html",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "",
-    "text": "Aprendre a consultar la història d’un repositori Git."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#objectius",
-    "href": "laboratori/lab-git-2.html#objectius",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "",
-    "text": "Aprendre a consultar la història d’un repositori Git."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#requisits-previs",
-    "href": "laboratori/lab-git-2.html#requisits-previs",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Requisits previs",
-    "text": "Requisits previs\n\nHaver completat el laboratori anterior.\nTenir un repositori Git amb més de 4 commits.\nGit està instal·lat al sistema."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#preparant-el-repositori",
-    "href": "laboratori/lab-git-2.html#preparant-el-repositori",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Preparant el repositori",
-    "text": "Preparant el repositori\nContinuarem treballant amb el repositori creat al laboratori anterior.\nComprova que el repositori està net:\ngit status\nConsulta també la història:\ngit log --oneline\nHauries de veure diversos commits. Anota els 5 primers caràcters dels tres últims commits. Els necessitaràs més endavant.\n\n\n\n\n\n\nConsell\n\n\n\nNo cal escriure l’identificador complet d’un commit. Habitualment podem utilitzar la seva forma abreviada, sempre que sigui prou llarga per identificar-lo de manera inequívoca."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#consultant-la-història",
-    "href": "laboratori/lab-git-2.html#consultant-la-història",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Consultant la història",
-    "text": "Consultant la història\nExecuta git log per veure els commits en el projecte. Per veure una versió més compacta:\ngit log --oneline\nUtilitza git log --stat per veure quins fitxers es van modificar en cada commit i quantes línies. Identifica un commit on es canviés README.md i fixa’t en el nombre d’insercions i supressions.\n\n\n\n\n\n\nNota\n\n\n\nPots veure tots els canvis de la història amb git log --patch (o git log -p). Això pot ser molt extens, però. NO és recomanable fer-ho servir excepte en casos molt concrets."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#examina-els-canvis-del-commit",
-    "href": "laboratori/lab-git-2.html#examina-els-canvis-del-commit",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Examina els canvis del commit",
-    "text": "Examina els canvis del commit\nUtilitza git show &lt;id&gt; per veure els canvis del commit identificat en el pas anterior, que modificava README.md, i busca la següent informació:\n\nQui va fer el commit?\nQuina data?\nQuins fitxers van canviar?\nQuantes línies es van afegir o eliminar?"
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#compara-dos-commits",
-    "href": "laboratori/lab-git-2.html#compara-dos-commits",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Compara dos commits",
-    "text": "Compara dos commits\nTria dos commits que tinguin diferències en el fitxer README.md (o en qualsevol altre).\ngit diff &lt;commit1&gt;..&lt;commit2&gt;\nObserva el resultat. Ara compara el primer commit amb l’estat actual (HEAD):\ngit diff &lt;commit1&gt;..HEAD\n\n\n\n\n\n\nConsell\n\n\n\nPots ometre HEAD i escriure simplement git diff &lt;commit1&gt; per comparar amb l’estat actual."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#recupera-una-versió-antiga-dun-fitxer",
-    "href": "laboratori/lab-git-2.html#recupera-una-versió-antiga-dun-fitxer",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Recupera una versió antiga d’un fitxer",
-    "text": "Recupera una versió antiga d’un fitxer\nPrimer de tot, consulta el contingut actual del fitxer README.md:\ncat README.md\nBusca l’identificador del commit anterior a canviar el títol, i recupera el fitxer. Per veure la història d’un fitxer concret, utilitza:\ngit log --oneline README.md\nUn cop tinguis l’identificador, utilitza:\ngit restore --source=&lt;id&gt; README.md\nQuin és el contingut del fitxer? En quin estat està el fitxer README.md?\nHauries de veure README.md com a modified. Això és perquè has modificat l’àrea working, però no la història.\nDescarta els canvis de l’àrea working fent servir:\ngit restore README.md\nI comprova que el repositori està net i el contingut és el mateix que teniem abans de fer el primer restore.\n\n\n\n\n\n\nNota\n\n\n\nSi volguessim conservar el contingut que hem recuperat amb restore --source=&lt;id&gt;, hauriem d’afegir el fitxer i fer un nou commit."
-  },
-  {
-    "objectID": "laboratori/lab-git-2.html#exercici-final-posat-a-prova",
-    "href": "laboratori/lab-git-2.html#exercici-final-posat-a-prova",
-    "title": "Laboratori 4: Navegant la història",
-    "section": "Exercici final: posa’t a prova",
-    "text": "Exercici final: posa’t a prova\nFes els següents passos i respon a les preguntes.\n\nCrea un nou fitxer prova.txt amb el text “Primera línia”.\nAfegeix-lo i fes un commit amb missatge “Afegeix prova”.\nModifica prova.txt perquè contingui dues línies de contingut.\nAfegeix els canvis a l’àrea staging.\nModifica prova.txt de nou, ara afegeix “Tercera línia” sense fer git add.\nExecuta git status i descriu què veus.\nExecuta git diff i git diff --staged. Quina diferència hi ha?\nFes un commit amb el canvis que tenies a staging. Quin missatge posaries?\nDesprés del commit, executa git log --oneline. Quants commits tens ara?\nRecupera prova.txt tal com era en el commit anterior al que acabes de fer (sense perdre la història). Fes servir git restore --source i comprova el contingut.\nCrea un nou commit amb el contingut anterior."
+    "objectID": "laboratori/lab-linux-2.html#llegint-els-permisos-amb-ls--la",
+    "href": "laboratori/lab-linux-2.html#llegint-els-permisos-amb-ls--la",
+    "title": "Laboratori 4 · Usuaris, privilegis i permisos",
+    "section": "4.1 Llegint els permisos amb ls -la",
+    "text": "4.1 Llegint els permisos amb ls -la\nCrea un fitxer nou i mira’n els permisos:\ncd ~/practica\ntouch document.txt\nls -l document.txt\nHauries de veure una línia semblant a:\n-rw-r--r-- 1 jordi jordi 0 ago 31 10:00 document.txt\nEls primers 10 caràcters es llegeixen en 4 blocs:\n-   rw-   r--   r--\n│    │     │     │\ntipus  u     g     o\nQuins permisos té el propietari (u)? __________________\nQuins permisos té “others” (o)? __________________\n\n\n\n\n\n\nNota\n\n\n\nEl primer caràcter indica el tipus de fitxer: - per a un fitxer normal, d per a un directori.\nPer defecte, un fitxer nou sol tenir permisos rw-r--r--: el propietari pot llegir i escriure, mentre que el grup i la resta només poden llegir."
   }
 ]
