@@ -32,3 +32,6 @@ format:
     theme:
       - cosmo
     toc: true
+
+filters:
+  - diagram

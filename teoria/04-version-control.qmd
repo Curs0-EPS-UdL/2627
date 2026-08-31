@@ -21,10 +21,6 @@ execute:
   echo: false
 ---
 
-# Recordatori
-
-<!-- TODO -->
-
 # Referències: commits, tags, i branques
 
 ## Commits
@@ -319,7 +315,7 @@ Amb les branques podem desenvolupar en paral·lel parts del nostre projecte, arr
 
 Git no només ens permet divergir la nostra història sinó també convergir-la.
 
-## Merge de branques
+## Merge de branques {.smaller}
 
 ``` tikz
 %%| filename: merge-before
@@ -360,9 +356,11 @@ Podem fer dues coses:
 - Portar els canvis de `fix-error` cap a `main`
 - Portar els canvis de `main` cap a `fix-error`
 
+. . .
+
 **El merge sempre es fa des de la branca que volem actualitzar.**
 
-## Merge de branques
+## Merge de branques {.smaller}
 
 ``` tikz
 %%| filename: merge-before-2
@@ -578,7 +576,7 @@ git switch fix-error
 git merge main
 ```
 
-## Merge de branques: fast-forward
+## Merge de branques: fast-forward {.smaller}
 
 ``` tikz
 %%| filename: ff-2
@@ -626,7 +624,7 @@ La branca `fix-error` no té cap commit que no tingui `main`. En aquest cas, die
 
 **No té sentit crear un commit de merge, no estariem unificant res!**
 
-. . .
+## Merge de branques: fast-forward {.smaller}
 
 Git ens permet **avançar** la branca `fix-error` fins on fa referència `main`. D'això se'n diu **fast-forward merge**.
 
@@ -789,7 +787,7 @@ a:
 
 **"Apliquem" els commits de `fix-error` sobre els commits de `main`.**
 
-## Rebase de branques
+## Rebase de branques {.smaller}
 
 `git rebase main`
 
@@ -800,6 +798,10 @@ Git agafa els commits de `fix-error` que no formen part de `main` i els torna a 
 Els commits de `fix-error` s'han **recreat** a partir de `main`.
 
 Per tant, **no són els mateixos commits** (tenen un ID diferent):
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 Abans:
 
@@ -834,6 +836,9 @@ Abans:
     \draw[->] (fix-error) -- (G);
 \end{tikzpicture}
 ```
+:::
+
+::: {.column width="50%"}
 
 Després:
 
@@ -858,7 +863,7 @@ Després:
     \node[commit, nearly transparent] (G) [right=of F] {G};
 
     \node[branch] (main) [above=of E] {main};
-    \node[branch] (fix-error) [below=of G2] {fix-error};
+    \node[branch] (fix-error) [above=of G2] {fix-error};
     
     \draw[->] (A.east) -- (B.west);
     \draw[->] (B.east) -- (C.west);
@@ -872,11 +877,17 @@ Després:
     \draw[->] (fix-error) -- (G2);
 \end{tikzpicture}
 ```
+:::
+
+::::
 
 ## Merge o rebase?
 
 Podem incorporar els canvis de `main` a `fix-error` de dues maneres.
 
+:::: {.columns}
+
+::: {.column width="50%"}
 **Merge:**
 
 ``` tikz
@@ -900,7 +911,9 @@ Podem incorporar els canvis de `main` a `fix-error` de dues maneres.
     \draw[->] (C.east) -- (D.west);
 \end{tikzpicture}
 ```
+:::
 
+::: {.column width="50%"}
 **Rebase:**
 
 ``` tikz
@@ -923,6 +936,9 @@ Podem incorporar els canvis de `main` a `fix-error` de dues maneres.
     \draw[->] (B.east) -- (C2.west);
 \end{tikzpicture}
 ```
+:::
+
+::::
 
 El **merge** conserva la història tal com ha succeït.
 
@@ -932,7 +948,7 @@ El **rebase** recrea els commits de la branca sobre una nova base i produeix una
 
 [📄 Laboratori 5: Branques](../laboratori/lab-git-3.html#prepare)
 
-# Conflictes i com resoldre'ls
+# Conflictes i com resoldre'ls {.smaller}
 
 Fins ara, Git ha pogut unificar les nostres branques automàticament.
 
@@ -940,9 +956,11 @@ Git és capaç de gestionar canvis que no interfereixen entre ells (p.e., una br
 
 També és capaç de gestionar múltiples canvis en un mateix fitxer, sempre que no sigui al mateix lloc (p.e. una branca edita el principi del fitxer A i l'altra el final).
 
+. . .
+
 **Però què passa si les dues branques han modificat la mateixa part d'un fitxer?**
 
-## Conflictes
+## Conflictes {.smaller}
 
 Imaginem que tenim el fitxer `README.md`:
 
@@ -1042,7 +1060,7 @@ Git modifica el fitxer per indicar-nos on és el conflicte.
 
 Per exemple, `README.md` ara conté:
 
-```text
+``` text
 <<<<<<< HEAD
 Hola des de main!
 =======
@@ -1070,7 +1088,7 @@ Podem decidir conservar una versió o l'altra, o una combinació de les dues.
 
 Per exemple, editem `README.md` per a que contingui:
 
-```text
+``` text
 Hola des de main i b1!
 ```
 
@@ -1103,11 +1121,11 @@ Seguint les instruccions que ens dona Git, fem `git commit` per acabar el merge 
 Si alguna cosa no ens quadra, sempre podem abortar el merge fent servir `git merge --abort`
 :::
 
-## **Conflictes durant un rebase**
+## Conflictes durant un rebase {.smaller}
 
 Els conflictes també poden aparèixer quan fem un `rebase`.
 
-```bash
+``` bash
 git rebase main
 ```
 
@@ -1172,13 +1190,15 @@ Git no estableix cap repositori com a "central", sinó que els canvis es poden i
 
 ```{mermaid}
 flowchart LR
-    A["Repositori d'Alice"]
-    B["Repositori de Bob"]
-    C["Nostre repositori"]
+    A["Repositori d'Alice"]:::wide
+    B["Repositori de Bob"]:::wide
+    C["Nostre repositori"]:::wide
 
     A <--> B
     A <--> C
     B <--> C
+
+    classDef wide padding:100px
 ```
 
 El nostre repositori s'anomena **local**, i els que es troben en altres sistemes **remots**.
@@ -1193,12 +1213,14 @@ Alternativament, podem tenir un repositori que utilitzem com a punt de trobada e
 
 ```{mermaid}
 flowchart LR
-    A["Repositori local<br/>Alice"]
-    B["Repositori remot"]
-    C["Repositori local<br/>Bob"]
+    A["Repositori local<br/>Alice"]:::wide
+    B["Repositori remot"]:::wide
+    C["Repositori local<br/>Bob"]:::wide
 
     A <--> B
     B <--> C
+
+    classDef wide padding:100px
 ```
 
 Aquest repositori remot és un repositori Git normal, **que li donem un ús especial**.
@@ -1225,7 +1247,7 @@ Suposem que tenim un repositori local amb una branca `main` i un repositori remo
 ::: column
 Repositori local:
 
-```tikz
+``` tikz
 %%| filename: remotes-1
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1250,7 +1272,7 @@ Repositori local:
 ::: column
 Repositori remot:
 
-```tikz
+``` tikz
 %%| filename: remotes-2
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1275,11 +1297,11 @@ Repositori remot:
 :::
 :::::
 
-. . .
+## `main` i `origin/main`
 
 Un cop hem sincronitzat el repositori remot amb el local, des del repositori local veiem això:
 
-```tikz
+``` tikz
 %%| filename: remotes-3
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1311,7 +1333,7 @@ Tenim dues branques:
 
 ## `main` i `origin/main`
 
-```tikz
+``` tikz
 %%| filename: remotes-3
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1353,7 +1375,7 @@ Les operacions bàsiques són:
 - `git push` Publica els nostres commits al remot
 - `git pull` Descarrega els canvis del remot i els integra
 
-## `git clone`
+## `git clone` {.smaller}
 
 Per començar a treballar amb un projecte que ja existeix en un repositori remot:
 
@@ -1381,7 +1403,7 @@ Imaginem que hem fet nous commits al nostre repositori local:
 ::: column
 Local:
 
-```tikz
+``` tikz
 %%| filename: push-1
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1408,7 +1430,7 @@ Local:
 ::: column
 Remot:
 
-```tikz
+``` tikz
 %%| filename: push-2
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1435,7 +1457,7 @@ Podem publicar els nostres commits al repositori remot amb `git push`:
 ::: column
 Local:
 
-```tikz
+``` tikz
 %%| filename: push-3
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1462,7 +1484,7 @@ Local:
 ::: column
 Remot:
 
-```tikz
+``` tikz
 %%| filename: push-4
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1495,7 +1517,7 @@ Ara imaginem la situació contrària: algú ha publicat nous commits al reposito
 ::: column
 Local:
 
-```tikz
+``` tikz
 %%| filename: fetch-1
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1520,7 +1542,7 @@ Local:
 ::: column
 Remot:
 
-```tikz
+``` tikz
 %%| filename: fetch-2
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1549,7 +1571,7 @@ Podem descarregar aquests nous commits amb `git fetch`:
 ::: column
 Local:
 
-```tikz
+``` tikz
 %%| filename: fetch-3
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1576,7 +1598,7 @@ Local:
 ::: column
 Remot:
 
-```tikz
+``` tikz
 %%| filename: fetch-4
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1622,7 +1644,7 @@ Per exemple, si estem a `main`, `git pull` seria equivalent conceptualment a: 1.
 ::: column
 Local:
 
-```tikz
+``` tikz
 %%| filename: pull-1
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1647,7 +1669,7 @@ Local:
 ::: column
 Remot:
 
-```tikz
+``` tikz
 %%| filename: pull-2
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1676,7 +1698,7 @@ Remot:
 ::: column
 Local:
 
-```tikz
+``` tikz
 %%| filename: pull-3
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1703,7 +1725,7 @@ Local:
 ::: column
 Remot:
 
-```tikz
+``` tikz
 %%| filename: pull-4
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[
@@ -1741,7 +1763,7 @@ Per evitar sorpreses, és recomanable actualitzar sovint la informació del nost
 
 Hem après a treballar amb diferents línies de la història d'un projecte:
 
-```tikz
+``` tikz
 %%| filename: commits-tags-branches
 \usetikzlibrary{positioning}
 \begin{tikzpicture}[

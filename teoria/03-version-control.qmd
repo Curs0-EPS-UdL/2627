@@ -57,7 +57,9 @@ Després d'aquestes dues hores, el nostre projecte no funciona, i volem recupera
 
 No necessitem còpies dels fitxers, **necessitem la seva història**.
 
-## Sistemes de control de versions
+## Sistemes de control de versions {.smaller}
+
+![Control de versions](../figures/git/snapshots.png)
 
 Un sistema de control de versions guarda la història d'un projecte.
 
@@ -69,35 +71,6 @@ Aquesta història permet:
 - Consultar qui ha fet/quan s'ha fet/perquè s'ha fet un canvi concret.
 - Permeten la col·laboració de múltiples desenvolupadors *(pròxima sessió)*
 - Permeten treballar en paral·lel *(pròxima sessió)*
-
-## Sistemes de control de versions
-
-```{mermaid}
-flowchart LR
-    V1[Versió #1]
-    V2[Versió #2]
-    V3[Versió #3]
-    V4[Versió #4]
-
-    A1[Fitxer A]
-    A2[Fitxer A]
-    A3[Fitxer A]
-    A4[Fitxer A]
-    B1[Fitxer B]
-    B2[Fitxer B]
-    B3[Fitxer B]
-    B4[Fitxer B]
-    C1[Fitxer C]
-    C2[Fitxer C]
-    C3[Fitxer C]
-    C4[Fitxer C]
-
-    V1 --> V2 --> V3 --> V4
-
-    A1 -->|Canvis| A2 --> A3 -->|Canvis| A4
-    B1 --> B2 -->|Canvis| B3 --> B4
-    C1 --> C2 --> C3 -->|Canvis| C4
-```
 
 ## Git
 
@@ -116,36 +89,13 @@ Un **commit** té associat:
 - l'estat dels fitxers del projecte en un moment concret
 - metadades dels canvis: autor, data, missatge...
 
+. . .
+
 Podem imaginar un commit com una **fotografia de l'estat del projecte**.
 
 ## Git: Què és una versió?
 
-```{mermaid}
-flowchart LR
-    V1[Versió #1]
-    V2[Versió #2]
-    V3[Versió #3]
-    V4[Versió #4]
-
-    A1[Fitxer A]
-    A2[Fitxer A]
-    A3[Fitxer A]
-    A4[Fitxer A]
-    B1[Fitxer B]
-    B2[Fitxer B]
-    B3[Fitxer B]
-    B4[Fitxer B]
-    C1[Fitxer C]
-    C2[Fitxer C]
-    C3[Fitxer C]
-    C4[Fitxer C]
-
-    V1 --> V2 --> V3 --> V4
-
-    A1 -->|Canvis| A2 --> A3 -->|Canvis| A4
-    B1 --> B2 -->|Canvis| B3 --> B4
-    C1 --> C2 --> C3 -->|Canvis| C4
-```
+![](../figures/git/snapshots.png)
 
 # Model mental de Git
 
@@ -172,35 +122,28 @@ En Git, els fitxers poden estar en diferents estats:
 
 Quan treballem amb Git, podem distingir tres àrees:
 
-```{mermaid}
-flowchart LR
-    W["**Working directory**<br/><br/>On fem els canvis"]
-    S["**Staging area**<br/><br/>Canvis preparats<br/>per al pròxim commit"]
-    R["**Repository**<br/><br/>Història del projecte<br/>(commits)"]
-
-    W -->|afegim canvis| S
-    S -->|nou commit| R
-```
+![Àrees de Git](../figures/git/areas.png)
 
 - Working directory: els fitxers amb què estem treballant.
 - Staging area: els canvis que hem seleccionat per incloure en el pròxim commit.
 - Repository: la història del projecte, formada pels commits.
 
-# Hands-On: Instal·lació de Git
+# Hands-On
+## Hands-On: Instal·lació
 
 <https://git-scm.com/>
 
 Verificar amb la línia de comandes:
 
-```         
+```console
 git --version
 ```
 
-# Hands-On: Configuració de Git
+## Hands-On: Configuració
 
 Configurem el nostre nom i el correu:
 
-```         
+```console  
 git config --global user.name "Mr Potato"
 git config --global user.email "mr@potato.com"
 ```
@@ -208,7 +151,7 @@ git config --global user.email "mr@potato.com"
 `--global` indica que s'aplicarà a tots els projectes.
 
 ::: aside
-Més informació a: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+Més informació a: <https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup>
 :::
 
 # Comandes bàsiques
@@ -217,7 +160,7 @@ Més informació a: https://git-scm.com/book/en/v2/Getting-Started-First-Time-Gi
 
 Les comandes de Git tenen el següent format:
 
-```         
+```console
 git <verb> <opcions>
 ```
 
@@ -233,7 +176,7 @@ Per crear un repositori nou, naveguem al directori del projecte[^1] i executem:
 
 [^1]: Per navegar, podem fer servir `cd`, i per crear un directori nou `mkdir`
 
-```         
+```console
 git init
 ```
 
@@ -245,31 +188,31 @@ Aquesta comanda crea el directori `.git`[^2] on es guardarà tota la informació
 
 La comanda `git status` ens mostra en quin estat/àrea estan els fitxers/canvis:
 
-```         
+```console
 On branch main
 Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        new file:   .devcontainer/devcontainer.json
+        new file:   README.md
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        modified:   teoria/03-version-control.qmd
+        modified:   LICENSE.txt
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        teoria/04-version-control.qmd
+        Notes.txt
 ```
 
 ## Comandes bàsiques: `git status` {.smaller}
 
-```         
+```console
 [...]
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        new file:   .devcontainer/devcontainer.json
+        new file:   README.md
 [...]
 ```
 
@@ -277,12 +220,12 @@ Els canvis indicats estan dins de l'àrea d'staging. S'afegiran a la següent ve
 
 ## Comandes bàsiques: `git status` {.smaller}
 
-```         
+```console
 [...]
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        modified:   teoria/03-version-control.qmd
+        modified:   LICENSE.txt
 [...]
 ```
 
@@ -290,11 +233,11 @@ Els canvis indicats estan dins de l'àrea de treball. Git coneix els fitxers, ha
 
 ## Comandes bàsiques: `git status` {.smaller}
 
-```         
+```console
 [...]
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-        teoria/04-version-control.qmd
+        Notes.txt
 ```
 
 Git ha detectat que hi ha fitxers que no havia vist anteriorment. No estan en cap àrea.
@@ -303,11 +246,11 @@ Git ha detectat que hi ha fitxers que no havia vist anteriorment. No estan en ca
 
 També podem veure la sortida simplificada fent `git status -s`:
 
-```         
+```console
 $ git status -s
-A  .devcontainer/devcontainer.json
- M teoria/03-version-control.qmd
-?? teoria/04-version-control.qmd
+A  README.md
+ M LICENSE.txt
+?? Notes.txt
 ```
 
 ## Comandes bàsiques: `git add`
@@ -316,19 +259,19 @@ La comanda `git add <file>` ens permet moure un fitxer des de l'àrea de treball
 
 [^3]: Per tant els canvis s'afegiran a la següent versió.
 
-```         
+```console
 $ git status
 [...]
 Changes not staged for commit:
   [...]
-        modified:   teoria/03-version-control.qmd
+        modified:   LICENSE.txt
 [...]
-$ git add teoria/03-version-control.qmd
+$ git add LICENSE.txt
 $ git status
 [...]
 Changes to be committed:
   [...]
-        modified:   teoria/03-version-control.qmd
+        modified:   LICENSE.txt
 [...]
 ```
 
@@ -381,30 +324,45 @@ Fins ara hem après com crear commits, i tenim una història.
 
 La comanda `git log` mostra els commits del repositori.
 
-Cada commit conté informació com: - identificador - autor - data - missatge
+Cada commit conté informació com:
 
-``` text
-commit 8f3a21c...
+- identificador
+- autor
+- data
+- missatge
+
+## Visualitzant la història: `git log`
+
+```console
+$ git log
+commit bc2c21477b82b61d797d3774017b4e6d001ed977 (HEAD -> main)
 Author: Mr Potato <mr@potato.com>
 Date:   ...
 
-    Afegeix informació sobre Git
+    updated files
 
-commit 42b17de...
+commit d680b727d6a7291f8b3ddb99a6c0bc65eaf6ca24
 Author: Mr Potato <mr@potato.com>
 Date:   ...
 
-    Primer commit
+    added license
+
+commit efb97ff19b232ca54878f5ae1368a436606c9b77
+Author: Mr Potato <mr@potato.com>
+Date:   ...
+
+    added readme
 ```
 
 ## Visualitzant la història: `git log`
 
 Podem simplificar la sortida fent servir `--oneline`:
 
-```         
+``` console
 $ git log --oneline
-8f3a21c Afegeix informació sobre Git
-42b17de Primer commit
+bc2c214 (HEAD -> main) updated files
+d680b72 added license
+efb97ff added readme
 ```
 
 ::: aside
@@ -421,9 +379,17 @@ Podem fer servir l'identificador especial `HEAD` per indicar el commit on ens tr
 
 Amb `git show` podem consultar quins canvis introdueix un commit concret:
 
-```         
-$ git show 8f3a21c
-...TODO...
+```console    
+$ git show d680b72
+commit d680b727d6a7291f8b3ddb99a6c0bc65eaf6ca24
+Author: Mr Potato <mr@potato.com>
+Date:   ...
+
+    added license
+
+diff --git a/LICENSE.txt b/LICENSE.txt
+new file mode 100644
+index 0000000..e69de29
 ```
 
 ## Visualitzant la història: `git diff <c1>..<c2>`
@@ -432,21 +398,30 @@ Per comparar dues versions (no necessàriament consecutives), podem fer servir `
 
 Per exemple:
 
-Versió `aaaaaa`: `README.md` té:
+Versió `efb97ff`: `README.md` té:
 
 ``` text
-...TODO...
+Hola
 ```
 
-Versió `bbbbbb`: `README.md` té:
+Versió `bc2c214`: `README.md` té:
 
 ``` text
-...TODO...
+Hola que tal
 ```
+
+## Visualitzant la història: `git diff <c1>..<c2>`
 
 ```         
-$ git diff aaaaaa..bbbbbb
-...TODO...
+$ git diff efb97ff..bc2c214
+[...]
+diff --git a/README.md b/README.md
+index a19abfe..a111ef1 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-Hola
++Hola que tal
 ```
 
 # Recuperar versions antigues
@@ -461,17 +436,17 @@ Un dels punts forts dels VCS és poder recuperar versions anteriors.
 
 Podem recuperar un fitxer tal com estava en un commit anterior amb:
 
-```         
+```console
 git restore --source=<commit> <fitxer>
 ```
 
 Per exemple:
 
-```         
-git restore --source=42b17de README.md
+```console
+git restore --source=efb97ff README.md
 ```
 
-El fitxer README.md tornarà a tenir el contingut que tenia en aquell commit.
+El fitxer `README.md` tornarà a tenir el contingut que tenia en aquell commit.
 
 . . .
 
