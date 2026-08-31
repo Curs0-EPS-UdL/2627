@@ -1,0 +1,127 @@
+---
+title: "Laboratori 4: Navegant la història"
+lang: "ca"
+---
+
+## Objectius
+- Aprendre a consultar la història d'un repositori Git.
+
+## Requisits previs
+- Haver completat el laboratori anterior.
+- Tenir un repositori Git amb més de 4 commits.
+- Git està instal·lat al sistema.
+
+## Preparant el repositori
+
+Continuarem treballant amb el repositori creat al laboratori anterior.
+
+Comprova que el repositori està net:
+
+```console
+git status
+```
+
+Consulta també la història:
+
+```console
+git log --oneline
+```
+
+Hauries de veure diversos commits. Anota els 5 primers caràcters dels tres últims commits. Els necessitaràs més endavant.
+
+::: {.callout-tip}
+No cal escriure l'identificador complet d'un commit. Habitualment podem utilitzar la seva forma abreviada, sempre que sigui prou llarga per identificar-lo de manera inequívoca.
+:::
+
+## Consultant la història
+
+Executa `git log` per veure els commits en el projecte. Per veure una versió més compacta:
+
+```console
+git log --oneline
+```
+
+Utilitza `git log --stat` per veure quins fitxers es van modificar en cada commit i quantes línies. Identifica un commit on es canviés `README.md` i fixa't en el nombre d’insercions i supressions.
+
+::: {.callout-note}
+Pots veure tots els canvis de la història amb `git log --patch` (o `git log -p`). Això pot ser molt extens, però. **NO** és recomanable fer-ho servir excepte en casos molt concrets.
+:::
+
+## Examina els canvis del commit
+
+Utilitza `git show <id>` per veure els canvis del commit identificat en el pas anterior, que modificava `README.md`, i busca la següent informació:
+
+- Qui va fer el commit?
+- Quina data?
+- Quins fitxers van canviar?
+- Quantes línies es van afegir o eliminar?
+
+## Compara dos commits
+
+Tria dos commits que tinguin diferències en el fitxer `README.md` (o en qualsevol altre).
+
+```console
+git diff <commit1>..<commit2>
+```
+
+Observa el resultat. Ara compara el primer commit amb l’estat actual (HEAD):
+
+```console
+git diff <commit1>..HEAD
+```
+
+::: {.callout-tip}
+Pots ometre HEAD i escriure simplement `git diff <commit1>` per comparar amb l’estat actual.
+:::
+
+## Recupera una versió antiga d'un fitxer
+
+Primer de tot, consulta el contingut actual del fitxer `README.md`:
+
+```console
+cat README.md
+```
+
+Busca l'identificador del commit anterior a canviar el títol, i recupera el fitxer. Per veure la història d'un fitxer concret, utilitza:
+
+```console
+git log --oneline README.md
+```
+
+Un cop tinguis l'identificador, utilitza:
+
+```console
+git restore --source=<id> README.md
+```
+
+Quin és el contingut del fitxer? En quin estat està el fitxer `README.md`?
+
+Hauries de veure `README.md` com a modified. Això és perquè has modificat l'àrea *working*, però no la història.
+
+Descarta els canvis de l'àrea *working* fent servir:
+```console
+git restore README.md
+```
+
+I comprova que el repositori està net i el contingut és el mateix que teniem abans de fer el primer *restore*.
+
+::: {.callout-note}
+Si volguessim conservar el contingut que hem recuperat amb `restore --source=<id>`, hauriem d'afegir el fitxer i fer un nou commit.
+:::
+
+
+## Exercici final: posa’t a prova
+
+Fes els següents passos i respon a les preguntes.
+
+- Crea un nou fitxer `prova.txt` amb el text "Primera línia".
+- Afegeix-lo i fes un commit amb missatge "Afegeix prova".
+- Modifica `prova.txt` perquè contingui dues línies de contingut.
+- Afegeix els canvis a l’àrea *staging*.
+- Modifica `prova.txt` de nou, ara afegeix "Tercera línia" sense fer `git add`.
+- Executa `git status` i descriu què veus.
+- Executa `git diff` i `git diff --staged`. Quina diferència hi ha?
+- Fes un commit amb el canvis que tenies a *staging*. Quin missatge posaries?
+- Després del commit, executa `git log --oneline`. Quants commits tens ara?
+- Recupera `prova.txt` tal com era en el commit anterior al que acabes de fer (sense perdre la història). Fes servir `git restore --source` i comprova el contingut.
+- Crea un nou commit amb el contingut anterior.

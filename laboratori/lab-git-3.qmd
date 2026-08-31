@@ -1,0 +1,205 @@
+---
+title: "Laboratori 5: Branques i conflictes"
+lang: "ca"
+---
+
+## Objectius
+- Aprendre a crear i canviar entre branques.
+- Entendre el *merge*.
+- Resoldre conflictes de *merge*.
+
+## Requisits previs
+- Haver completat els laboratoris anteriors (fins al Lab 4).
+- Disposar d'un repositori amb diversos commits.
+- Git instal·lat al sistema.
+
+## Crear una nova branca
+
+Crearem una branca anomenada `nou-contingut` per treballar en modificacions separades:
+
+```console
+git branch nou-contingut
+```
+
+Comprova que la nova branca apareix quan fas `git branch`. **L'asterisc indica la branca actual**.
+
+::: {.callout-note}
+Recorda que `git branch` només crea la branca, però no canvia quina és la branca actual.
+:::
+
+Canvia a la nova branca fent servir:
+
+```console
+git switch nou-contingut
+```
+
+Verifica que ets a la branca que toca fent servir `git branch`.
+
+Ara crea un nou fitxer que es digui `contingut.md`, amb el següent text:
+
+```text
+Aquest és un contingut nou.
+```
+
+Fes un commit amb aquest nou fitxer.
+
+Torna a la branca `main` i comprova que `contingut.md` no existeix:
+
+```console
+git switch main
+ls -la
+```
+
+## Merge de branques (*fast-forward*)
+
+Un cop acabats els canvis a `nou-contingut`, podem fer merge cap a `main`.
+
+Primer de tot, visualitza la història en forma de graf:
+
+```console
+git log --all --graph --oneline --decorate
+```
+
+Com que `main` no ha avançat des de que vam crear `nou-contingut`, podem fer un **fast-forward** merge (és a dir, no ens cal crear un commit de merge):
+
+::: {.callout-important}
+Assegura't que estas a la branca `main`.
+:::
+
+```console
+git merge nou-contingut
+```
+
+Si visualitzes el graf de commits, veuras que no s'ha creat cap commit nou sinó que s'ha mogut `main` cap al mateix commit que `nou-contingut`.
+
+
+::: {.callout-tip}
+Podem forçar un commit de merge fent `git merge --no-ff <branca>`
+
+Prova de crear una nova branca `b1`, modifica algun fitxer a la nova branca, i fes merge cap a `main` utilitzant `no-ff`.
+:::
+
+Un cop hem enllestit la feina, podem borrar les branques que ja no necessitem amb:
+
+```console
+git branch -d nou-contingut
+# opcionalment si has creat la branca b1, també la pots eliminar
+```
+
+
+
+## Merge de branques (*3-way*)
+Crea una nova branca `proves`. Canvia a aquesta branca i modifica el fitxer `contingut.md` (fent el commit corresponent).
+
+Torna a `main` i fes un canvi al fitxer `README.md`
+
+En aquest punt tens dues branques que han avançat de forma independent, i cada una té commits que no té l'altra.
+
+Visualitza el graf de commits per comprovar que, efectivament, cada una té commits addicionals.
+
+Ara prova d'unificar les dues branques fent un *merge* des de `proves` cap a `main`.
+
+**T'ha generat algun conflicte? Perquè creus que és així?**
+
+Comprova que `main` ara té els canvis de `README.md` i `contingut.md`.
+
+::: {.callout-tip}
+Aquest tipus de *merge* s'anomena 3-way perquè Git utilitza tres commits per fer la fusió: el més recent de la branca actual, el més recent de la branca que fusionem, i l'ancestre comú (el punt on es van separar les branques).
+:::
+
+Fes un *fast-forward merge* des de `main` cap a `proves` per a que estiguin al mateix punt.
+
+## Merge de branques (amb conflictes)
+
+Ara veurem què passa quan dues branques modifiquen el mateix fitxer.
+
+Situa’t a la branca `proves` i modifica `contingut.md` perquè contingui:
+```text
+Aquest és un contingut nou.
+Contingut des de proves
+```
+
+Modifica `README.md` i canvia la primera línea a majúscules.
+
+Fes commit:
+
+```console
+git add contingut.md README.md
+git commit -m "Canvis des de proves"
+```
+
+Torna a `main` i modifica `contingut.md` perquè contingui:
+```text
+Aquest és un contingut nou.
+Contingut des de main
+```
+
+Modifica `README.md` i afegeix una nova línea al final.
+
+Fes commit:
+```console
+git add contingut.md README.md
+git commit -m "Canvis des de main"
+```
+
+
+Abans de fer un merge, analitzem la situació:
+
+La situació actual és:
+
+- `proves` ha modificat el fitxer `README.md` i `contingut.md`
+- `main` ha modificat el fitxer `README.md` i `contingut.md`
+- Les dues branques han modificat tot el contingut de `contingut.md`.
+- Les dues branques han modificat línies diferents de `README.md`.
+
+En aquesta situació, Git hauria de generar un conflicte a `contingut.md` però no a `README.md`. Això és degut a que, per defecte, Git interpreta els fitxers de text línea a línea i pot gestionar els canvis en diferents parts del fitxer automàticament.
+
+Ara sí, fes un *merge* des de `proves` cap a `main`.
+
+**Quins conflictes s'han generat? És coherent amb el que hem analitzat previament?**
+
+Abans de resoldre el conflicte, executa `git diff --staged`. Quins canvis veus a `README.md`?
+
+::: {.callout-note}
+Git automàticament ha afegit tots els fitxers sense conflicte a l'àrea *staging*, llestos pel futur commit de merge.
+:::
+
+Resol el conflicte i acaba el merge:
+
+1. Edita el fitxer i deixa el contingut desitjat. **Recorda eliminar les marques de merge (`<<<<<<< HEAD`, `=======`, i `>>>>>>> proves`)**.
+2. Marca el conflicte com a resolt fent `git add contingut.md`.
+3. Acaba el merge fent `git commit`.
+
+::: {.callout-tip}
+Si en qualsevol moment vols avortar el merge, pots fer `git merge --abort`.
+:::
+
+
+Comprova el resultat fent:
+
+```
+git log --all --graph --oneline --decorate
+```
+
+Per confirmar que `README.md` s'ha fusionat automàticament, executa `cat README.md` i comprova que conté **ambdues** modificacions: la primera línia en majúscules **i** la nova línia al final. En canvi, `contingut.md` conté només el text que has escollit durant la resolució del conflicte.
+
+## Exercici
+
+Fes els següents passos i respon a les preguntes.
+
+- Crea una branca `exercici` des de `main`.
+- En aquesta branca, crea un fitxer `exercici.md` amb el text `# Exercici\nContingut inicial`.
+- Fes un commit a `exercici`.
+- Torna a `main` i modifica `README.md` afegint `Main ha canviat`.
+- Fes un commit a `main`.
+- Torna a `exercici` i fes un merge de `main` a `exercici` (per actualitzar la branca). Aquest *merge* no hauria de generar conflictes.
+- Torna a `main` i fes un merge de la branca `exercici`. Hauries de veure que no es crea un commit de *merge*.
+- Torna a la branca `exercici`.
+- Modifica `exercici.md` perquè contingui `# Exercici\nContingut des de exercici`.
+- Fes commit a `exercici`.
+- Torna a `main` i modifica `exercici.md` perquè contingui `# Exercici\nContingut des de main`.
+- Fes commit a `main`.
+- Fes un merge de la branca `exercici` a `main` i resol el conflicte (el text final ha de ser `# Exercici\nContingut resolt finalment`).
+- Un cop resolt, finalitza el *merge*.
+- Elimina les branques que ja no necessites.
+- Comprova que el repositori està net amb `git status`.

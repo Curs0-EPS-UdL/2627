@@ -1,0 +1,302 @@
+---
+title: "Laboratori 3: Comandes bàsiques de Git"
+lang: "ca"
+---
+
+## Objectius
+- Aprendre a utilitzar les comandes bàsiques de GIT
+- Entendre el cicle de vida dels fitxers: *untracked*, *modified*, *staged* i *committed*.
+
+## Requisits previs
+- Coneixements bàsics de la línia de comandes de Linux.
+- Git està instal·lat al sistema.
+
+## Inicialització del repositori
+
+Primer de tot, creem un nou repositori de Git:
+
+```console
+mkdir hands-on-1
+cd hands-on-1
+git init
+```
+
+O, en un sol pas:
+```console
+git init hands-on-1
+```
+
+## Estat inicial
+
+Si fem `git status` **des de dins del directori `hands-on-1`**, hauríem de veure que el repositori està *net*:
+
+```console
+$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+::: aside
+Depenent de la configuració, veurem *master* enlloc de *main*.
+:::
+
+## Afegim el nostre primer fitxer
+
+Crea un fitxer anomenat `README.md` dins del directori amb el següent contingut:
+```markdown
+# Hello, World!
+```
+
+Consulta l'estat del repositori amb `git status`.
+
+El fitxer apareixerà com a *untracked*.
+
+Git detecta que existeix un fitxer que encara no forma part de cap commit, però no l'inclourà automàticament en el pròxim commit.
+
+
+## Afegim el fitxer a l'staging
+Per indicar a Git que volem incloure `README.md` en el pròxim commit:
+
+```console
+git add README.md
+```
+
+Consulta de nou l'estat:
+
+```console
+git status
+```
+
+Ara `README.md` apareixerà sota:
+
+```
+Changes to be committed:
+```
+
+El fitxer està *staged*.
+
+## Creem el primer commit
+
+Ara podem crear una nova versió del projecte:
+
+```console
+git commit -m "Afegeix README"
+```
+
+Consulta l'estat:
+
+```console
+git status
+```
+
+El repositori hauria d'estar net:
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+Acabem de crear el nostre primer commit.
+
+## Modifiquem el projecte
+
+Modifica `README.md` i afegeix-hi, per exemple:
+
+```markdown
+Aquest és el meu primer repositori de Git.
+```
+
+Consulta l'estat del repositori:
+```console
+git status
+```
+
+Ara `README.md` apareixerà com a *modified*.
+
+Git ha detectat que el fitxer és diferent del que hi havia en l'últim commit.
+
+Per veure els canvis que s'han fet al projecte, podem executar:
+
+```console
+git diff
+```
+
+::: {.callout-tip}
+## Interpretant la sortida de `git diff`
+Les línies que comencen amb `-` indiquen contingut que s'ha eliminat.
+
+Les línies que comencen amb `+` indiquen contingut que s'ha afegit.
+
+Per exemple:
+
+```diff
+-Hello, World!
++Hola, món!
+```
+
+significa que la primera línia ha estat substituïda per la segona.
+:::
+
+Un cop estem segurs de voler incorporar els canvis al pròxim commit, fem
+
+```console
+git add README.md
+```
+
+**Que passa si tornem a executar `git diff`?**
+
+Per defecte, `git diff` només mostra els canvis en l'àrea *working*, però després de fer `git add` el fitxer `README.md` es troba en l'àrea *staging*. Per veure els canvis de l'àrea *staging* hem de fer:
+
+```console
+git diff --staged
+```
+
+## Un últim canvi abans del commit
+
+Anem a canviar el títol del fitxer `README.md`.
+
+::: {.callout-note}
+En un fitxer markdown, una línea que comença amb `# <XXXX>` és un títol.
+:::
+
+Canvia la línea
+
+```markdown
+# Hello, World!
+```
+
+per
+
+```markdown
+# Hola, món!
+```
+
+**Què veus quan fas `git status`? I `git diff`? I `git diff --staged`?**
+
+::: {.callout-important}
+Quan hem fet `git add` abans, hem incorporat els canvis fins aquell moment a l'àrea *staging*, però els nous canvis no s'han afegit automàticament. Git ens permet tenir canvis d'un fitxer en l'àrea *staging* i *working* a la vegada, per tenir més control sobre el contingut dels commits.
+
+En el pròxim commit, **els canvis que no s'hagin afegit a *staging* no s'inclouran**.
+:::
+
+Anem a fer un commit sense el canvi del títol:
+
+```console
+git commit -m "Canviant el contingut de README.md"
+```
+
+Si fem `git status` i `git diff`, veurem que ara només queda pendent el canvi del títol. Per exemple, la sortida de `git diff` serà similar a:
+
+```
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,4 @@
+-# Hello, World!
++# Hola, món!
+ Hello from my new git repository
+
+ Aquest és el meu primer repositori de Git.
+```
+
+Afegeix el fitxer un altre cop, i fes un nou commit.
+
+::: {.callout-tip}
+Per afegir tots els fitxers a la vegada, pots fer:
+- `git add -A`: afegeix a l'àrea *staging* els canvis a tots els fitxers, *tracked* i *untracked*.
+- `git add -u`: afegeix a l'àrea *staging* els canvis només als fitxers *tracked*.
+:::
+
+
+## Ignorant fitxers
+
+A vegades podem tenir fitxers que son temporals, o que son artefactes d'un procès automàtic (p.e. de compilar un projecte, fitxers autogenerats...).
+Habitualment no volem que Git gestioni aquests fitxers. Tenim dues opcions:
+
+1. Vigilar cada vegada que fem un commit, per no introduïr aquests fitxers a Git.
+2. Indicar a Git que els ignori.
+
+La primera opció és propensa a errors, per tant farem la segona.
+
+Primer de tot, anem a crear un fitxer que no vulguem al repositori, per exemple un fitxer on escriurem notes per nosaltres:
+
+```console
+touch notes.tmp
+```
+
+::: {.callout-tip}
+`touch` crea un fitxer buit a la ruta especificada.
+:::
+
+Si ara fem `git status`, veurem aquest fitxer com a *untracked*. Si ara fessim `git add -A` o `git add .`, s'afegiria a l'àrea *staging*. Per evitar-ho, crearem un nou fitxer que es diu `.gitignore` amb el següent contingut:
+
+```text
+*.tmp
+```
+
+Consulta l'estat:
+
+```console
+git status
+```
+
+Ara notes.tmp ja no apareix com a *untracked*.
+
+El fitxer `.gitignore` sí que apareix com a *untracked*, perquè és un fitxer normal del projecte i encara no l'hem afegit.
+
+::: {.callout-note}
+.gitignore permet indicar patrons de fitxers que Git no ha de mostrar com a fitxers untracked. És habitual utilitzar-lo per fitxers temporals, fitxers generats automàticament o altres fitxers que no volem guardar al repositori.
+
+En el nostre cas, el patró és `*.tmp`, que significa "qualsevol fitxer que el seu nom acabi amb `.tmp`"
+:::
+
+Afegim el fitxer `.gitignore` al repositori amb `git add .gitignore`, i podem fer un nou commit amb `git commit -m "Afegeix gitignore"`.
+
+## Fitxers que no són de text
+
+Git no només pot gestionar fitxers de text.
+
+També podem afegir fitxers binaris al repositori, com ara imatges.
+
+Podem afegir-los a l'àrea *staging* de la mateixa manera:
+
+```console
+git add foto.png
+```
+
+I crear un commit:
+
+```console
+git commit -m "Afegeix imatge"
+```
+
+Git guardarà el fitxer com a part del commit.
+
+::: {.callout-important}
+Els fitxers de text permeten a Git calcular i mostrar fàcilment les diferències entre versions. Amb fitxers binaris, com una imatge, Git no pot mostrar aquestes diferències de la mateixa manera.
+
+Si editessim la imatge, `git diff` no ens mostraria que ha canviat.
+:::
+
+
+## Exercici: practicant el cicle de Git
+Ara fes els següents canvis sense seguir instruccions pas a pas:
+
+- Crea un fitxer anomenat projecte.txt.
+- Afegeix-hi algunes línies de text.
+- Consulta l'estat del repositori.
+- Afegeix el fitxer a l'àrea *staging*.
+- Consulta de nou l'estat.
+- Crea un commit amb un missatge descriptiu.
+- Afegeix una imatge al repositori, i fes un commit que l'afegeixi.
+- Modifica projecte.txt.
+- Consulta els canvis amb `git diff`.
+- Afegeix els canvis a l'staging.
+- Consulta els canvis amb `git diff --staged`.
+- Crea un altre commit.
+
+Finalment, comprova que el repositori està net amb:
+
+- `git status`

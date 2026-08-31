@@ -13,6 +13,7 @@ El curs s’organitza en sessions diàries de 2 hores. L’enfoc és eminentment
 |-------:|:----------|:-------------|:-----------|:-----------|
 |      1 | 04/09/2024 | Introducció i entorns de programació | | |
 |      2 | 05/09/2024 | Virtualització | [📖](teoria/02-virtualitzation.html#prepare) | [📄](laboratori/lab02.html#prepare) [📄](laboratori/lab03.html#prepare) |
-|      3 | 08/09/2024 | Introducció al control de versions | [📖](teoria/03-version-control.html#prepare) | [📄](laboratori/lab04.html#prepare) [📄](laboratori/lab05.html#prepare) [📄](laboratori/lab06.html#prepare)  |
+|      3 | 08/09/2024 | Introducció al control de versions | [📖](teoria/03-version-control.html#prepare) | [📄](laboratori/lab-git-1.html#prepare) [📄](laboratori/lab-git-2.html#prepare) |
+|      4 | 08/09/2024 | Introducció al control de versions | [📖](teoria/04-version-control.html#prepare) | [📄](laboratori/lab-git-3.html#prepare) |
 
 ![](/figures/corporative/institute.png){width=200px}
